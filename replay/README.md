@@ -49,44 +49,16 @@ The dev server serves `../data/replays` at `/replays/`.
 ## Exporting a replay
 
 ```bash
-uv run python replay/export_sample.py ins_compass --route yosemite/drone-gen0 --seed 0
-uv run python replay/export_sample.py path/to/some_experiment     # any folder holding an algo.py
+uv run gpsfree replay terrain_ekf kyiv              # run 0 of the Kyiv scenario
+uv run gpsfree replay terrain_ekf steppe --run 3    # any experiment, scenario and run index
 ```
 
-It runs the experiment exactly like `gpsfree.evaluate.run_one` (same route, seed and sensor streams), records the
-estimate at 10 Hz, ray-casts the map from the estimated position for the predicted ranges, crops the world mesh to
-the true route and the estimated path (clipped to the world) plus 600 m (and clusters vertices if it is still above 400k triangles), then writes the folder below and
-refreshes `data/replays/index.json`. Today the map is the true world, so `truth.glb` and `map.glb` are the same mesh.
-`write_replay()` in that script can be reused by an evaluator that has its own truth and map.
-
-`index.json` is a list of `{id, experiment, scenario, world, run_id}` plus a compact summary for the run browser:
-`score_m` (last geo-mean error), `final_err_m`, `worst_err_m`, `time_over_50_s`, `duration_s`, `echo_agree` (share
-of returned echoes within `3·(0.05 + 0.01·predicted)` of the map) and `err`, a ~60-point max-pooled error sparkline.
-Summaries are cached by replay.json mtime and size (`stamp`). Rebuild it after adding replays by hand with
-`uv run python -c "import sys; sys.path.insert(0,'replay'); import export_sample as e; e.update_index()"`. The viewer
-also accepts entries without the summary, or plain `"<experiment>/<run_id>"` strings.
-
-## Integrity: the method's own uncertainty
-
-When `replay.json` carries `uncertainty[n]` (the method's 95 % horizontal radius per pose; `"inf"` = "I don't know
-where I am", `null` = no claim), the viewer shows whether the method can be trusted about itself:
-
-- **Drone's world:** a disc of that radius around the estimate, blue under the 50 m alert limit and amber above it,
-  with the value in the corner. `"inf"` shows a **LOST: I don't know where I am** banner instead.
-- **Real world:** the same disc around the estimate; it turns red, with a **HAZARDOUSLY MISLEADING** banner, when the
-  error is over 50 m while the radius claims under 50 m.
-- **Error chart:** the radius as a blue band under the error line, amber spans where the method declared itself
-  lost, and red spans (with the error line in red) where it was hazardously misleading.
-- **Summary and run list:**
-  - *Misleading* is the share of the time a radius was claimed in which the error was outside it. A calibrated
-    95 % radius should be near 5 %.
-  - *Silent failure* is **yes** when a hazardously misleading episode lasts longer than the 6 s time-to-alert
-    (ICAO LPV-200) without an alarm, **late alarm** when the alarm (lost, or a radius past 50 m) came after it,
-    and **no** otherwise.
-  - The run list badges these runs.
-
-The dev server builds `/replays/index.json` itself from `data/replays/*/*/replay.json` (cached by file mtime), so
-runs from any exporter show up with their summaries; the logic is in `src/summary.js`.
+`gpsfree/replay.py` re-runs the benchmark run exactly as `gpsfree eval` does (same route, wind, noise, map and
+start), records the estimate and the method's uncertainty at 10 Hz, ray-casts the drone's map from the estimated
+position for the predicted ranges, crops both meshes to the flight plus 600 m (clustering vertices above 400k
+triangles) and writes the folder below. `truth.glb` is the world the sensors measured (terrain, buildings,
+trees); `map.glb` is the map the drone carried (terrain errors, roof errors, missing buildings, no trees).
+The dev server lists every folder in `data/replays`.
 
 ## Format
 
@@ -118,6 +90,7 @@ runs from any exporter show up with their summaries; the logic is in `src/summar
 | `metrics.dev_xy` | `[n]` | horizontal \|est − truth\| |
 | `metrics.dev_z` | `[n]` | est z − truth z (signed; the log chart plots its magnitude) |
 | `metrics.dev_plan` | `[n]` | \|truth − planned route at the same time\| |
+| `uncertainty` | `[n]` | the method's 95% horizontal radius, m; `"inf"` = it says it is lost; `null` = no claim |
 
 Meshes convert ENU to Y-up as `(x, z, −y)`, as `gpsfree/worlds/bake.py` does. Algorithms only report a
 position, so both drones and both beam fans use the true attitude.
