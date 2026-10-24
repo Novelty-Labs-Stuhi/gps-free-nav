@@ -3,9 +3,9 @@
  "author": "Arsenii Chistiakov",
  "hardware": "icm42688p",
  "ranger": "tf03",
- "suite": "2884b9e3223e",
+ "suite": "7cdbd00f445f",
  "partial": false,
- "elapsed_s": 32.8,
+ "elapsed_s": 33.4,
  "summary": {
   "alpine": {
    "runs": 20,
@@ -22,7 +22,7 @@
    },
    "lost_at_m": 390.0,
    "growth_k": 2.88,
-   "min_realtime_factor": 290.6
+   "min_realtime_factor": 323.1
   },
   "fells": {
    "runs": 20,
@@ -39,7 +39,7 @@
    },
    "lost_at_m": 390.8,
    "growth_k": 2.92,
-   "min_realtime_factor": 411.3
+   "min_realtime_factor": 462.8
   },
   "boreal": {
    "runs": 20,
@@ -56,7 +56,7 @@
    },
    "lost_at_m": 396.5,
    "growth_k": 2.89,
-   "min_realtime_factor": 425.6
+   "min_realtime_factor": 457.8
   },
   "archipelago": {
    "runs": 20,
@@ -73,24 +73,24 @@
    },
    "lost_at_m": 0.0,
    "growth_k": 1.9,
-   "min_realtime_factor": 421.6
+   "min_realtime_factor": 453.5
   },
   "tampere": {
    "runs": 20,
    "score_log10": 3.346,
    "score_m": 2220.75,
-   "p90_score_m": 3771.38,
+   "p90_score_m": 3772.25,
    "lost_frac": 1.0,
    "mae_m": {
-    "0-250": 6.12,
-    "250-500": 84.97,
-    "500-1000": 670.82,
-    "1000-2000": 4596.65,
-    "2000+": 17905.69
+    "0-250": 6.13,
+    "250-500": 84.94,
+    "500-1000": 671.41,
+    "1000-2000": 4607.38,
+    "2000+": 17920.38
    },
-   "lost_at_m": 325.8,
+   "lost_at_m": 325.6,
    "growth_k": 2.92,
-   "min_realtime_factor": 438.3
+   "min_realtime_factor": 368.8
   },
   "bordertown": {
    "runs": 20,
@@ -99,15 +99,15 @@
    "p90_score_m": 3824.72,
    "lost_frac": 1.0,
    "mae_m": {
-    "0-250": 5.85,
-    "250-500": 86.4,
-    "500-1000": 698.7,
-    "1000-2000": 5122.47,
-    "2000+": 17865.29
+    "0-250": 5.89,
+    "250-500": 86.92,
+    "500-1000": 699.92,
+    "1000-2000": 5125.4,
+    "2000+": 17871.06
    },
-   "lost_at_m": 323.9,
-   "growth_k": 2.89,
-   "min_realtime_factor": 505.8
+   "lost_at_m": 323.1,
+   "growth_k": 2.88,
+   "min_realtime_factor": 449.7
   },
   "kyiv": {
    "runs": 20,
@@ -117,14 +117,14 @@
    "lost_frac": 1.0,
    "mae_m": {
     "0-250": 106.67,
-    "250-500": 120.68,
-    "500-1000": 679.57,
-    "1000-2000": 5457.74,
-    "2000+": 20891.62
+    "250-500": 120.91,
+    "500-1000": 684.14,
+    "1000-2000": 5472.94,
+    "2000+": 20909.26
    },
    "lost_at_m": 0.0,
-   "growth_k": 2.36,
-   "min_realtime_factor": 392.5
+   "growth_k": 2.37,
+   "min_realtime_factor": 437.7
   },
   "steppe": {
    "runs": 20,
@@ -141,7 +141,7 @@
    },
    "lost_at_m": 0.0,
    "growth_k": 2.15,
-   "min_realtime_factor": 471.4
+   "min_realtime_factor": 467.3
   },
   "farmland": {
    "runs": 20,
@@ -158,7 +158,7 @@
    },
    "lost_at_m": 408.2,
    "growth_k": 2.87,
-   "min_realtime_factor": 357.4
+   "min_realtime_factor": 306.7
   },
   "carpathians": {
    "runs": 20,
@@ -175,24 +175,24 @@
    },
    "lost_at_m": 370.9,
    "growth_k": 2.85,
-   "min_realtime_factor": 332.5
+   "min_realtime_factor": 318.0
   },
   "rotterdam": {
    "runs": 20,
    "score_log10": 3.365,
    "score_m": 2317.39,
-   "p90_score_m": 3661.0,
+   "p90_score_m": 3668.6,
    "lost_frac": 1.0,
    "mae_m": {
-    "0-250": 6.73,
-    "250-500": 90.67,
-    "500-1000": 688.7,
-    "1000-2000": 4955.53,
-    "2000+": 18911.71
+    "0-250": 6.74,
+    "250-500": 90.69,
+    "500-1000": 688.56,
+    "1000-2000": 4836.12,
+    "2000+": 18770.94
    },
-   "lost_at_m": 316.5,
+   "lost_at_m": 316.4,
    "growth_k": 2.9,
-   "min_realtime_factor": 734.4
+   "min_realtime_factor": 552.4
   },
   "desert": {
    "runs": 20,
@@ -209,7 +209,7 @@
    },
    "lost_at_m": 393.9,
    "growth_k": 2.88,
-   "min_realtime_factor": 221.7
+   "min_realtime_factor": 367.3
   },
   "overall": {
    "scenarios": 12,
@@ -245,7 +245,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.4,
-   "realtime_factor": 591.4
+   "realtime_factor": 580.4
   },
   {
    "distance_m": 3141.2,
@@ -270,7 +270,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.7,
-   "realtime_factor": 330.7
+   "realtime_factor": 387.9
   },
   {
    "distance_m": 2897.0,
@@ -295,7 +295,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.0,
-   "realtime_factor": 596.8
+   "realtime_factor": 586.0
   },
   {
    "distance_m": 3206.6,
@@ -320,7 +320,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.8,
-   "realtime_factor": 507.3
+   "realtime_factor": 649.4
   },
   {
    "distance_m": 3210.4,
@@ -345,7 +345,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.0,
-   "realtime_factor": 580.2
+   "realtime_factor": 632.9
   },
   {
    "distance_m": 2997.1,
@@ -370,7 +370,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 290.5,
-   "realtime_factor": 662.7
+   "realtime_factor": 503.9
   },
   {
    "distance_m": 3201.5,
@@ -395,7 +395,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.5,
-   "realtime_factor": 368.4
+   "realtime_factor": 383.6
   },
   {
    "distance_m": 2895.0,
@@ -420,7 +420,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.4,
-   "realtime_factor": 621.5
+   "realtime_factor": 660.7
   },
   {
    "distance_m": 3201.4,
@@ -445,7 +445,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.3,
-   "realtime_factor": 502.6
+   "realtime_factor": 639.2
   },
   {
    "distance_m": 3124.1,
@@ -470,7 +470,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.9,
-   "realtime_factor": 580.8
+   "realtime_factor": 658.8
   },
   {
    "distance_m": 3157.5,
@@ -495,7 +495,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.6,
-   "realtime_factor": 590.2
+   "realtime_factor": 634.0
   },
   {
    "distance_m": 3488.5,
@@ -520,7 +520,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.1,
-   "realtime_factor": 290.6
+   "realtime_factor": 398.7
   },
   {
    "distance_m": 2916.1,
@@ -545,7 +545,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.2,
-   "realtime_factor": 656.8
+   "realtime_factor": 591.8
   },
   {
    "distance_m": 3114.5,
@@ -570,7 +570,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.6,
-   "realtime_factor": 601.6
+   "realtime_factor": 606.4
   },
   {
    "distance_m": 3301.4,
@@ -595,7 +595,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.5,
-   "realtime_factor": 581.7
+   "realtime_factor": 631.2
   },
   {
    "distance_m": 3129.1,
@@ -620,7 +620,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.7,
-   "realtime_factor": 588.2
+   "realtime_factor": 584.7
   },
   {
    "distance_m": 2891.6,
@@ -645,7 +645,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.2,
-   "realtime_factor": 292.1
+   "realtime_factor": 323.1
   },
   {
    "distance_m": 3213.2,
@@ -670,7 +670,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.8,
-   "realtime_factor": 575.7
+   "realtime_factor": 498.9
   },
   {
    "distance_m": 3117.1,
@@ -695,7 +695,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.5,
-   "realtime_factor": 577.0
+   "realtime_factor": 624.8
   },
   {
    "distance_m": 3185.6,
@@ -720,7 +720,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.0,
-   "realtime_factor": 561.9
+   "realtime_factor": 476.7
   },
   {
    "distance_m": 2910.4,
@@ -745,7 +745,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.4,
-   "realtime_factor": 480.5
+   "realtime_factor": 556.5
   },
   {
    "distance_m": 2903.3,
@@ -770,7 +770,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.0,
-   "realtime_factor": 507.6
+   "realtime_factor": 670.1
   },
   {
    "distance_m": 2890.7,
@@ -795,7 +795,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.9,
-   "realtime_factor": 603.5
+   "realtime_factor": 651.7
   },
   {
    "distance_m": 2874.2,
@@ -820,7 +820,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 286.9,
-   "realtime_factor": 589.6
+   "realtime_factor": 584.6
   },
   {
    "distance_m": 2895.6,
@@ -845,7 +845,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.0,
-   "realtime_factor": 619.1
+   "realtime_factor": 683.7
   },
   {
    "distance_m": 2885.1,
@@ -870,7 +870,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.6,
-   "realtime_factor": 475.6
+   "realtime_factor": 599.2
   },
   {
    "distance_m": 2883.4,
@@ -895,7 +895,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.9,
-   "realtime_factor": 411.3
+   "realtime_factor": 596.4
   },
   {
    "distance_m": 2883.7,
@@ -920,7 +920,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.2,
-   "realtime_factor": 607.4
+   "realtime_factor": 554.0
   },
   {
    "distance_m": 2917.7,
@@ -945,7 +945,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.3,
-   "realtime_factor": 611.5
+   "realtime_factor": 462.8
   },
   {
    "distance_m": 2889.0,
@@ -970,7 +970,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.8,
-   "realtime_factor": 623.1
+   "realtime_factor": 528.1
   },
   {
    "distance_m": 2904.1,
@@ -995,7 +995,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.8,
-   "realtime_factor": 612.5
+   "realtime_factor": 558.6
   },
   {
    "distance_m": 2882.8,
@@ -1020,7 +1020,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.8,
-   "realtime_factor": 493.3
+   "realtime_factor": 678.4
   },
   {
    "distance_m": 2887.2,
@@ -1045,7 +1045,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.7,
-   "realtime_factor": 615.1
+   "realtime_factor": 623.3
   },
   {
    "distance_m": 2922.6,
@@ -1070,7 +1070,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.6,
-   "realtime_factor": 570.5
+   "realtime_factor": 495.0
   },
   {
    "distance_m": 2911.7,
@@ -1095,7 +1095,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.6,
-   "realtime_factor": 645.5
+   "realtime_factor": 640.8
   },
   {
    "distance_m": 2892.9,
@@ -1120,7 +1120,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.3,
-   "realtime_factor": 578.3
+   "realtime_factor": 632.1
   },
   {
    "distance_m": 2894.0,
@@ -1145,7 +1145,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.4,
-   "realtime_factor": 493.6
+   "realtime_factor": 656.0
   },
   {
    "distance_m": 2895.7,
@@ -1170,7 +1170,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.2,
-   "realtime_factor": 607.8
+   "realtime_factor": 599.2
   },
   {
    "distance_m": 2923.3,
@@ -1195,7 +1195,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.2,
-   "realtime_factor": 624.7
+   "realtime_factor": 465.2
   },
   {
    "distance_m": 2882.0,
@@ -1220,7 +1220,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.2,
-   "realtime_factor": 603.2
+   "realtime_factor": 591.7
   },
   {
    "distance_m": 2872.1,
@@ -1245,7 +1245,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.1,
-   "realtime_factor": 425.6
+   "realtime_factor": 585.4
   },
   {
    "distance_m": 2882.1,
@@ -1270,7 +1270,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.0,
-   "realtime_factor": 518.8
+   "realtime_factor": 670.3
   },
   {
    "distance_m": 2882.3,
@@ -1295,7 +1295,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.0,
-   "realtime_factor": 573.3
+   "realtime_factor": 619.6
   },
   {
    "distance_m": 2883.4,
@@ -1320,7 +1320,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.3,
-   "realtime_factor": 561.3
+   "realtime_factor": 598.6
   },
   {
    "distance_m": 2902.7,
@@ -1345,7 +1345,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.7,
-   "realtime_factor": 592.2
+   "realtime_factor": 619.9
   },
   {
    "distance_m": 2896.1,
@@ -1370,7 +1370,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.5,
-   "realtime_factor": 475.1
+   "realtime_factor": 457.8
   },
   {
    "distance_m": 2871.6,
@@ -1395,7 +1395,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.1,
-   "realtime_factor": 508.8
+   "realtime_factor": 631.4
   },
   {
    "distance_m": 2901.2,
@@ -1420,7 +1420,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.6,
-   "realtime_factor": 609.8
+   "realtime_factor": 594.0
   },
   {
    "distance_m": 2880.6,
@@ -1445,7 +1445,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.8,
-   "realtime_factor": 622.3
+   "realtime_factor": 611.0
   },
   {
    "distance_m": 2891.7,
@@ -1470,7 +1470,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.7,
-   "realtime_factor": 582.6
+   "realtime_factor": 663.0
   },
   {
    "distance_m": 2886.7,
@@ -1495,7 +1495,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.5,
-   "realtime_factor": 562.7
+   "realtime_factor": 538.2
   },
   {
    "distance_m": 2900.6,
@@ -1520,7 +1520,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.8,
-   "realtime_factor": 446.6
+   "realtime_factor": 556.4
   },
   {
    "distance_m": 2888.9,
@@ -1545,7 +1545,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.6,
-   "realtime_factor": 624.4
+   "realtime_factor": 493.5
   },
   {
    "distance_m": 2877.5,
@@ -1570,7 +1570,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.6,
-   "realtime_factor": 585.3
+   "realtime_factor": 575.6
   },
   {
    "distance_m": 2904.0,
@@ -1595,7 +1595,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 290.2,
-   "realtime_factor": 590.5
+   "realtime_factor": 651.8
   },
   {
    "distance_m": 2893.1,
@@ -1620,7 +1620,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.2,
-   "realtime_factor": 638.9
+   "realtime_factor": 581.5
   },
   {
    "distance_m": 2884.9,
@@ -1645,7 +1645,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.4,
-   "realtime_factor": 475.5
+   "realtime_factor": 552.5
   },
   {
    "distance_m": 2895.2,
@@ -1670,7 +1670,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.4,
-   "realtime_factor": 637.0
+   "realtime_factor": 638.3
   },
   {
    "distance_m": 2886.8,
@@ -1695,7 +1695,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.5,
-   "realtime_factor": 642.6
+   "realtime_factor": 646.0
   },
   {
    "distance_m": 2895.8,
@@ -1720,7 +1720,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.3,
-   "realtime_factor": 605.6
+   "realtime_factor": 632.8
   },
   {
    "distance_m": 2885.8,
@@ -1745,7 +1745,7 @@
    "platform": "drone",
    "start_offset_m": 293.5,
    "duration_s": 288.5,
-   "realtime_factor": 454.4
+   "realtime_factor": 453.5
   },
   {
    "distance_m": 2883.3,
@@ -1770,7 +1770,7 @@
    "platform": "drone",
    "start_offset_m": 138.3,
    "duration_s": 288.2,
-   "realtime_factor": 421.6
+   "realtime_factor": 472.1
   },
   {
    "distance_m": 2878.7,
@@ -1795,7 +1795,7 @@
    "platform": "drone",
    "start_offset_m": 117.6,
    "duration_s": 287.6,
-   "realtime_factor": 653.6
+   "realtime_factor": 635.7
   },
   {
    "distance_m": 2885.4,
@@ -1820,7 +1820,7 @@
    "platform": "drone",
    "start_offset_m": 283.6,
    "duration_s": 288.3,
-   "realtime_factor": 628.2
+   "realtime_factor": 649.4
   },
   {
    "distance_m": 2885.5,
@@ -1845,7 +1845,7 @@
    "platform": "drone",
    "start_offset_m": 168.2,
    "duration_s": 288.5,
-   "realtime_factor": 644.6
+   "realtime_factor": 551.2
   },
   {
    "distance_m": 2887.4,
@@ -1870,7 +1870,7 @@
    "platform": "drone",
    "start_offset_m": 291.9,
    "duration_s": 288.7,
-   "realtime_factor": 511.8
+   "realtime_factor": 516.1
   },
   {
    "distance_m": 2886.9,
@@ -1895,7 +1895,7 @@
    "platform": "drone",
    "start_offset_m": 167.7,
    "duration_s": 288.7,
-   "realtime_factor": 474.4
+   "realtime_factor": 627.7
   },
   {
    "distance_m": 2876.6,
@@ -1920,7 +1920,7 @@
    "platform": "drone",
    "start_offset_m": 236.1,
    "duration_s": 287.7,
-   "realtime_factor": 634.7
+   "realtime_factor": 632.8
   },
   {
    "distance_m": 2900.2,
@@ -1945,7 +1945,7 @@
    "platform": "drone",
    "start_offset_m": 230.4,
    "duration_s": 289.9,
-   "realtime_factor": 591.7
+   "realtime_factor": 569.0
   },
   {
    "distance_m": 2876.3,
@@ -1970,7 +1970,7 @@
    "platform": "drone",
    "start_offset_m": 267.4,
    "duration_s": 287.5,
-   "realtime_factor": 633.3
+   "realtime_factor": 618.3
   },
   {
    "distance_m": 2887.3,
@@ -1995,7 +1995,7 @@
    "platform": "drone",
    "start_offset_m": 278.8,
    "duration_s": 288.5,
-   "realtime_factor": 452.1
+   "realtime_factor": 634.2
   },
   {
    "distance_m": 2899.4,
@@ -2020,7 +2020,7 @@
    "platform": "drone",
    "start_offset_m": 287.6,
    "duration_s": 289.7,
-   "realtime_factor": 600.9
+   "realtime_factor": 586.5
   },
   {
    "distance_m": 2889.0,
@@ -2045,7 +2045,7 @@
    "platform": "drone",
    "start_offset_m": 240.6,
    "duration_s": 288.9,
-   "realtime_factor": 596.7
+   "realtime_factor": 573.3
   },
   {
    "distance_m": 2894.1,
@@ -2070,7 +2070,7 @@
    "platform": "drone",
    "start_offset_m": 206.8,
    "duration_s": 289.3,
-   "realtime_factor": 582.6
+   "realtime_factor": 645.5
   },
   {
    "distance_m": 2873.8,
@@ -2095,7 +2095,7 @@
    "platform": "drone",
    "start_offset_m": 289.0,
    "duration_s": 287.3,
-   "realtime_factor": 580.9
+   "realtime_factor": 532.3
   },
   {
    "distance_m": 2878.6,
@@ -2120,7 +2120,7 @@
    "platform": "drone",
    "start_offset_m": 277.0,
    "duration_s": 287.9,
-   "realtime_factor": 604.6
+   "realtime_factor": 549.1
   },
   {
    "distance_m": 2885.0,
@@ -2145,7 +2145,7 @@
    "platform": "drone",
    "start_offset_m": 185.1,
    "duration_s": 288.4,
-   "realtime_factor": 609.2
+   "realtime_factor": 615.2
   },
   {
    "distance_m": 2876.6,
@@ -2170,7 +2170,7 @@
    "platform": "drone",
    "start_offset_m": 225.8,
    "duration_s": 287.5,
-   "realtime_factor": 561.0
+   "realtime_factor": 677.0
   },
   {
    "distance_m": 2885.7,
@@ -2195,7 +2195,7 @@
    "platform": "drone",
    "start_offset_m": 167.4,
    "duration_s": 288.3,
-   "realtime_factor": 588.6
+   "realtime_factor": 592.5
   },
   {
    "distance_m": 2898.9,
@@ -2220,24 +2220,24 @@
    "platform": "drone",
    "start_offset_m": 122.6,
    "duration_s": 289.8,
-   "realtime_factor": 589.6
+   "realtime_factor": 556.4
   },
   {
-   "distance_m": 2884.4,
-   "score_log10": 3.617,
+   "distance_m": 2882.8,
+   "score_log10": 3.618,
    "mae_m": {
-    "0-250": 10.38,
-    "250-500": 140.85,
-    "500-1000": 1128.16,
-    "1000-2000": 9050.87,
-    "2000+": 35470.96
+    "0-250": 10.39,
+    "250-500": 140.88,
+    "500-1000": 1130.48,
+    "1000-2000": 9080.73,
+    "2000+": 35515.38
    },
-   "lost_at_m": 272.1,
+   "lost_at_m": 272.0,
    "lost": true,
    "growth_k": 2.97,
-   "max_error_m": 55272.0,
+   "max_error_m": 55273.0,
    "integrity": false,
-   "xy_rmse_m": 21372.3,
+   "xy_rmse_m": 21372.56,
    "z_rmse_m": 0.58,
    "scenario": "tampere",
    "run": 0,
@@ -2245,24 +2245,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.0,
-   "realtime_factor": 631.8
+   "realtime_factor": 680.2
   },
   {
-   "distance_m": 2891.4,
-   "score_log10": 3.243,
+   "distance_m": 2890.9,
+   "score_log10": 3.244,
    "mae_m": {
-    "0-250": 4.68,
-    "250-500": 65.43,
-    "500-1000": 492.48,
-    "1000-2000": 3661.81,
-    "2000+": 14421.84
+    "0-250": 4.69,
+    "250-500": 65.54,
+    "500-1000": 493.7,
+    "1000-2000": 3668.03,
+    "2000+": 14429.5
    },
-   "lost_at_m": 354.6,
+   "lost_at_m": 354.2,
    "lost": true,
    "growth_k": 2.91,
-   "max_error_m": 22406.8,
+   "max_error_m": 22408.9,
    "integrity": false,
-   "xy_rmse_m": 8705.75,
+   "xy_rmse_m": 8706.78,
    "z_rmse_m": 0.45,
    "scenario": "tampere",
    "run": 1,
@@ -2270,24 +2270,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 361.2,
-   "realtime_factor": 596.0
+   "realtime_factor": 549.0
   },
   {
-   "distance_m": 2894.7,
+   "distance_m": 2892.9,
    "score_log10": 3.572,
    "mae_m": {
-    "0-250": 9.84,
-    "250-500": 144.84,
-    "500-1000": 1139.91,
-    "1000-2000": 7789.17,
-    "2000+": 28726.36
+    "0-250": 9.85,
+    "250-500": 144.81,
+    "500-1000": 1139.96,
+    "1000-2000": 7802.33,
+    "2000+": 28748.67
    },
    "lost_at_m": 273.2,
    "lost": true,
    "growth_k": 2.87,
-   "max_error_m": 44031.3,
+   "max_error_m": 44030.5,
    "integrity": false,
-   "xy_rmse_m": 17381.13,
+   "xy_rmse_m": 17380.82,
    "z_rmse_m": 0.52,
    "scenario": "tampere",
    "run": 2,
@@ -2295,24 +2295,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 361.0,
-   "realtime_factor": 582.9
+   "realtime_factor": 578.5
   },
   {
-   "distance_m": 2907.4,
-   "score_log10": 3.143,
+   "distance_m": 2903.4,
+   "score_log10": 3.142,
    "mae_m": {
-    "0-250": 3.65,
-    "250-500": 44.23,
-    "500-1000": 355.49,
-    "1000-2000": 2912.33,
-    "2000+": 12050.69
+    "0-250": 3.64,
+    "250-500": 44.25,
+    "500-1000": 357.76,
+    "1000-2000": 2925.45,
+    "2000+": 12066.18
    },
-   "lost_at_m": 407.2,
+   "lost_at_m": 406.8,
    "lost": true,
-   "growth_k": 2.97,
-   "max_error_m": 19279.0,
+   "growth_k": 2.98,
+   "max_error_m": 19279.7,
    "integrity": false,
-   "xy_rmse_m": 7328.65,
+   "xy_rmse_m": 7328.73,
    "z_rmse_m": 0.47,
    "scenario": "tampere",
    "run": 3,
@@ -2320,24 +2320,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 361.8,
-   "realtime_factor": 438.3
+   "realtime_factor": 411.4
   },
   {
-   "distance_m": 2886.1,
+   "distance_m": 2884.1,
    "score_log10": 3.335,
    "mae_m": {
-    "0-250": 6.17,
-    "250-500": 86.28,
-    "500-1000": 601.37,
-    "1000-2000": 4464.83,
-    "2000+": 18270.69
+    "0-250": 6.18,
+    "250-500": 86.26,
+    "500-1000": 602.41,
+    "1000-2000": 4475.41,
+    "2000+": 18285.52
    },
    "lost_at_m": 321.4,
    "lost": true,
    "growth_k": 2.9,
-   "max_error_m": 29417.7,
+   "max_error_m": 29416.0,
    "integrity": false,
-   "xy_rmse_m": 11030.01,
+   "xy_rmse_m": 11029.44,
    "z_rmse_m": 0.4,
    "scenario": "tampere",
    "run": 4,
@@ -2345,24 +2345,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 359.8,
-   "realtime_factor": 628.2
+   "realtime_factor": 604.9
   },
   {
-   "distance_m": 2880.2,
-   "score_log10": 3.094,
+   "distance_m": 2878.7,
+   "score_log10": 3.093,
    "mae_m": {
     "0-250": 3.22,
-    "250-500": 44.86,
-    "500-1000": 350.18,
-    "1000-2000": 2702.18,
-    "2000+": 10140.61
+    "250-500": 44.85,
+    "500-1000": 350.85,
+    "1000-2000": 2708.53,
+    "2000+": 10148.66
    },
-   "lost_at_m": 402.9,
+   "lost_at_m": 402.8,
    "lost": true,
    "growth_k": 2.93,
-   "max_error_m": 15378.1,
+   "max_error_m": 15378.0,
    "integrity": false,
-   "xy_rmse_m": 6095.89,
+   "xy_rmse_m": 6095.86,
    "z_rmse_m": 0.33,
    "scenario": "tampere",
    "run": 5,
@@ -2370,24 +2370,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 359.3,
-   "realtime_factor": 548.6
+   "realtime_factor": 600.0
   },
   {
-   "distance_m": 2883.0,
+   "distance_m": 2881.3,
    "score_log10": 3.538,
    "mae_m": {
     "0-250": 9.14,
-    "250-500": 129.44,
+    "250-500": 129.41,
     "500-1000": 1014.39,
-    "1000-2000": 7380.83,
-    "2000+": 27746.83
+    "1000-2000": 7387.0,
+    "2000+": 27758.24
    },
    "lost_at_m": 281.5,
    "lost": true,
    "growth_k": 2.9,
-   "max_error_m": 43383.9,
+   "max_error_m": 43384.5,
    "integrity": false,
-   "xy_rmse_m": 16723.61,
+   "xy_rmse_m": 16723.62,
    "z_rmse_m": 0.35,
    "scenario": "tampere",
    "run": 6,
@@ -2395,24 +2395,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.0,
-   "realtime_factor": 589.1
+   "realtime_factor": 647.3
   },
   {
-   "distance_m": 2900.1,
+   "distance_m": 2899.5,
    "score_log10": 3.781,
    "mae_m": {
     "0-250": 14.72,
-    "250-500": 220.67,
-    "500-1000": 1752.5,
-    "1000-2000": 13069.18,
-    "2000+": 47368.98
+    "250-500": 220.72,
+    "500-1000": 1752.34,
+    "1000-2000": 13068.54,
+    "2000+": 47368.2
    },
    "lost_at_m": 237.5,
    "lost": true,
    "growth_k": 2.92,
-   "max_error_m": 71099.3,
+   "max_error_m": 71097.8,
    "integrity": false,
-   "xy_rmse_m": 28646.49,
+   "xy_rmse_m": 28645.91,
    "z_rmse_m": 0.43,
    "scenario": "tampere",
    "run": 7,
@@ -2420,24 +2420,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 361.6,
-   "realtime_factor": 640.2
+   "realtime_factor": 546.4
   },
   {
-   "distance_m": 2883.7,
+   "distance_m": 2883.5,
    "score_log10": 3.256,
    "mae_m": {
     "0-250": 6.08,
     "250-500": 70.96,
-    "500-1000": 517.65,
-    "1000-2000": 3853.28,
-    "2000+": 13561.1
+    "500-1000": 517.64,
+    "1000-2000": 3853.24,
+    "2000+": 13561.05
    },
    "lost_at_m": 342.2,
    "lost": true,
    "growth_k": 2.81,
    "max_error_m": 20244.9,
    "integrity": false,
-   "xy_rmse_m": 8174.14,
+   "xy_rmse_m": 8174.1,
    "z_rmse_m": 0.6,
    "scenario": "tampere",
    "run": 8,
@@ -2445,24 +2445,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.3,
-   "realtime_factor": 493.4
+   "realtime_factor": 394.6
   },
   {
-   "distance_m": 2893.5,
+   "distance_m": 2892.8,
    "score_log10": 3.358,
    "mae_m": {
     "0-250": 5.89,
-    "250-500": 81.18,
-    "500-1000": 637.25,
-    "1000-2000": 4816.64,
-    "2000+": 18976.29
+    "250-500": 81.17,
+    "500-1000": 638.45,
+    "1000-2000": 4823.9,
+    "2000+": 18984.84
    },
    "lost_at_m": 329.7,
    "lost": true,
    "growth_k": 2.93,
-   "max_error_m": 29799.2,
+   "max_error_m": 29799.9,
    "integrity": false,
-   "xy_rmse_m": 11470.94,
+   "xy_rmse_m": 11471.31,
    "z_rmse_m": 0.31,
    "scenario": "tampere",
    "run": 9,
@@ -2470,24 +2470,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 361.2,
-   "realtime_factor": 572.8
+   "realtime_factor": 572.7
   },
   {
-   "distance_m": 2894.0,
-   "score_log10": 3.264,
+   "distance_m": 2893.2,
+   "score_log10": 3.265,
    "mae_m": {
     "0-250": 6.39,
-    "250-500": 75.29,
-    "500-1000": 534.46,
-    "1000-2000": 3886.55,
-    "2000+": 13226.21
+    "250-500": 75.31,
+    "500-1000": 534.5,
+    "1000-2000": 3889.84,
+    "2000+": 13231.55
    },
-   "lost_at_m": 332.5,
+   "lost_at_m": 332.4,
    "lost": true,
    "growth_k": 2.78,
-   "max_error_m": 18842.0,
+   "max_error_m": 18843.3,
    "integrity": false,
-   "xy_rmse_m": 7989.86,
+   "xy_rmse_m": 7990.23,
    "z_rmse_m": 0.32,
    "scenario": "tampere",
    "run": 10,
@@ -2495,24 +2495,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 361.6,
-   "realtime_factor": 581.7
+   "realtime_factor": 580.1
   },
   {
-   "distance_m": 2904.2,
+   "distance_m": 2903.2,
    "score_log10": 3.375,
    "mae_m": {
-    "0-250": 6.76,
-    "250-500": 98.26,
-    "500-1000": 748.23,
-    "1000-2000": 4728.47,
-    "2000+": 17540.69
+    "0-250": 6.83,
+    "250-500": 98.99,
+    "500-1000": 750.65,
+    "1000-2000": 4739.34,
+    "2000+": 17555.24
    },
-   "lost_at_m": 312.0,
+   "lost_at_m": 311.7,
    "lost": true,
    "growth_k": 2.81,
-   "max_error_m": 26775.9,
+   "max_error_m": 26776.1,
    "integrity": false,
-   "xy_rmse_m": 10644.23,
+   "xy_rmse_m": 10644.54,
    "z_rmse_m": 0.38,
    "scenario": "tampere",
    "run": 11,
@@ -2520,24 +2520,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 362.0,
-   "realtime_factor": 565.9
+   "realtime_factor": 598.2
   },
   {
-   "distance_m": 2899.0,
+   "distance_m": 2898.6,
    "score_log10": 3.407,
    "mae_m": {
     "0-250": 6.25,
-    "250-500": 87.89,
-    "500-1000": 714.24,
-    "1000-2000": 5652.41,
-    "2000+": 20314.39
+    "250-500": 87.91,
+    "500-1000": 714.17,
+    "1000-2000": 5652.24,
+    "2000+": 20314.01
    },
-   "lost_at_m": 321.8,
+   "lost_at_m": 321.0,
    "lost": true,
    "growth_k": 2.94,
-   "max_error_m": 29909.4,
+   "max_error_m": 29908.8,
    "integrity": false,
-   "xy_rmse_m": 12268.38,
+   "xy_rmse_m": 12268.14,
    "z_rmse_m": 0.37,
    "scenario": "tampere",
    "run": 12,
@@ -2545,24 +2545,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 362.0,
-   "realtime_factor": 594.0
+   "realtime_factor": 583.3
   },
   {
-   "distance_m": 2882.5,
+   "distance_m": 2881.9,
    "score_log10": 3.387,
    "mae_m": {
     "0-250": 4.0,
-    "250-500": 83.65,
-    "500-1000": 715.95,
-    "1000-2000": 5477.59,
-    "2000+": 21560.97
+    "250-500": 83.62,
+    "500-1000": 717.19,
+    "1000-2000": 5485.53,
+    "2000+": 21569.77
    },
    "lost_at_m": 333.4,
    "lost": true,
    "growth_k": 3.1,
-   "max_error_m": 34099.1,
+   "max_error_m": 34098.7,
    "integrity": false,
-   "xy_rmse_m": 13001.13,
+   "xy_rmse_m": 13000.96,
    "z_rmse_m": 0.4,
    "scenario": "tampere",
    "run": 13,
@@ -2570,24 +2570,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.0,
-   "realtime_factor": 559.1
+   "realtime_factor": 424.3
   },
   {
-   "distance_m": 2895.1,
+   "distance_m": 2893.1,
    "score_log10": 3.28,
    "mae_m": {
     "0-250": 5.64,
-    "250-500": 94.38,
-    "500-1000": 759.44,
-    "1000-2000": 4328.88,
-    "2000+": 9931.93
+    "250-500": 94.37,
+    "500-1000": 759.4,
+    "1000-2000": 4328.82,
+    "2000+": 9931.94
    },
    "lost_at_m": 317.6,
    "lost": true,
    "growth_k": 2.63,
-   "max_error_m": 11824.9,
+   "max_error_m": 11825.2,
    "integrity": false,
-   "xy_rmse_m": 6204.25,
+   "xy_rmse_m": 6204.24,
    "z_rmse_m": 0.38,
    "scenario": "tampere",
    "run": 14,
@@ -2595,24 +2595,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.7,
-   "realtime_factor": 627.8
+   "realtime_factor": 609.8
   },
   {
-   "distance_m": 2869.1,
+   "distance_m": 2868.6,
    "score_log10": 3.478,
    "mae_m": {
     "0-250": 7.3,
-    "250-500": 108.36,
-    "500-1000": 861.71,
-    "1000-2000": 6703.7,
-    "2000+": 25147.97
+    "250-500": 108.34,
+    "500-1000": 861.61,
+    "1000-2000": 6709.4,
+    "2000+": 25157.17
    },
-   "lost_at_m": 301.2,
+   "lost_at_m": 301.0,
    "lost": true,
    "growth_k": 2.96,
-   "max_error_m": 38233.0,
+   "max_error_m": 38231.4,
    "integrity": false,
-   "xy_rmse_m": 15055.03,
+   "xy_rmse_m": 15054.46,
    "z_rmse_m": 0.36,
    "scenario": "tampere",
    "run": 15,
@@ -2620,24 +2620,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 358.3,
-   "realtime_factor": 575.8
+   "realtime_factor": 675.2
   },
   {
-   "distance_m": 2882.6,
+   "distance_m": 2881.5,
    "score_log10": 3.092,
    "mae_m": {
     "0-250": 6.32,
-    "250-500": 72.59,
-    "500-1000": 422.26,
-    "1000-2000": 2192.28,
-    "2000+": 8200.95
+    "250-500": 72.63,
+    "500-1000": 422.93,
+    "1000-2000": 2193.53,
+    "2000+": 8201.06
    },
-   "lost_at_m": 336.7,
+   "lost_at_m": 336.3,
    "lost": true,
    "growth_k": 2.55,
-   "max_error_m": 13454.0,
+   "max_error_m": 13453.9,
    "integrity": false,
-   "xy_rmse_m": 4976.99,
+   "xy_rmse_m": 4977.05,
    "z_rmse_m": 0.98,
    "scenario": "tampere",
    "run": 16,
@@ -2645,24 +2645,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.0,
-   "realtime_factor": 616.3
+   "realtime_factor": 589.7
   },
   {
-   "distance_m": 2882.9,
+   "distance_m": 2882.6,
    "score_log10": 2.999,
    "mae_m": {
     "0-250": 2.73,
-    "250-500": 37.42,
-    "500-1000": 278.78,
-    "1000-2000": 2153.59,
-    "2000+": 8109.68
+    "250-500": 37.43,
+    "500-1000": 278.75,
+    "1000-2000": 2155.47,
+    "2000+": 8112.7
    },
    "lost_at_m": 428.1,
    "lost": true,
    "growth_k": 2.91,
-   "max_error_m": 12106.5,
+   "max_error_m": 12106.4,
    "integrity": false,
-   "xy_rmse_m": 4869.77,
+   "xy_rmse_m": 4869.66,
    "z_rmse_m": 0.36,
    "scenario": "tampere",
    "run": 17,
@@ -2670,24 +2670,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.1,
-   "realtime_factor": 578.8
+   "realtime_factor": 608.1
   },
   {
-   "distance_m": 2872.1,
+   "distance_m": 2870.7,
    "score_log10": 3.403,
    "mae_m": {
-    "0-250": 5.84,
-    "250-500": 88.23,
-    "500-1000": 704.39,
-    "1000-2000": 5577.93,
-    "2000+": 21847.84
+    "0-250": 5.85,
+    "250-500": 88.19,
+    "500-1000": 704.37,
+    "1000-2000": 5583.1,
+    "2000+": 21857.15
    },
-   "lost_at_m": 321.5,
+   "lost_at_m": 321.6,
    "lost": true,
    "growth_k": 2.99,
-   "max_error_m": 34434.0,
+   "max_error_m": 34434.3,
    "integrity": false,
-   "xy_rmse_m": 13119.77,
+   "xy_rmse_m": 13119.86,
    "z_rmse_m": 0.35,
    "scenario": "tampere",
    "run": 18,
@@ -2695,24 +2695,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 358.4,
-   "realtime_factor": 562.1
+   "realtime_factor": 368.8
   },
   {
-   "distance_m": 2890.7,
+   "distance_m": 2888.2,
    "score_log10": 3.152,
    "mae_m": {
-    "0-250": 3.54,
-    "250-500": 56.94,
-    "500-1000": 412.21,
-    "1000-2000": 2878.54,
-    "2000+": 12063.11
+    "0-250": 3.53,
+    "250-500": 56.92,
+    "500-1000": 412.95,
+    "1000-2000": 2885.13,
+    "2000+": 12071.99
    },
-   "lost_at_m": 373.1,
+   "lost_at_m": 373.0,
    "lost": true,
    "growth_k": 2.92,
-   "max_error_m": 19629.4,
+   "max_error_m": 19626.8,
    "integrity": false,
-   "xy_rmse_m": 7293.92,
+   "xy_rmse_m": 7292.89,
    "z_rmse_m": 0.39,
    "scenario": "tampere",
    "run": 19,
@@ -2720,24 +2720,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.5,
-   "realtime_factor": 590.0
+   "realtime_factor": 674.6
   },
   {
-   "distance_m": 2881.8,
+   "distance_m": 2881.4,
    "score_log10": 3.754,
    "mae_m": {
-    "0-250": 15.57,
-    "250-500": 215.66,
-    "500-1000": 1649.21,
-    "1000-2000": 11988.66,
-    "2000+": 45843.82
+    "0-250": 15.56,
+    "250-500": 215.65,
+    "500-1000": 1649.24,
+    "1000-2000": 11999.02,
+    "2000+": 45862.98
    },
-   "lost_at_m": 235.5,
+   "lost_at_m": 235.4,
    "lost": true,
    "growth_k": 2.89,
-   "max_error_m": 72470.2,
+   "max_error_m": 72470.9,
    "integrity": false,
-   "xy_rmse_m": 27653.58,
+   "xy_rmse_m": 27653.63,
    "z_rmse_m": 0.89,
    "scenario": "bordertown",
    "run": 0,
@@ -2745,24 +2745,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.0,
-   "realtime_factor": 625.1
+   "realtime_factor": 616.1
   },
   {
-   "distance_m": 2905.5,
+   "distance_m": 2905.0,
    "score_log10": 3.504,
    "mae_m": {
-    "0-250": 8.63,
-    "250-500": 127.37,
-    "500-1000": 911.81,
-    "1000-2000": 6535.31,
-    "2000+": 25355.54
+    "0-250": 8.62,
+    "250-500": 127.38,
+    "500-1000": 911.84,
+    "1000-2000": 6535.21,
+    "2000+": 25354.94
    },
-   "lost_at_m": 283.9,
+   "lost_at_m": 284.6,
    "lost": true,
-   "growth_k": 2.87,
-   "max_error_m": 39280.9,
+   "growth_k": 2.88,
+   "max_error_m": 39279.6,
    "integrity": false,
-   "xy_rmse_m": 15359.25,
+   "xy_rmse_m": 15358.9,
    "z_rmse_m": 0.44,
    "scenario": "bordertown",
    "run": 1,
@@ -2770,24 +2770,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 362.8,
-   "realtime_factor": 589.7
+   "realtime_factor": 550.6
   },
   {
-   "distance_m": 2883.0,
+   "distance_m": 2882.6,
    "score_log10": 3.566,
    "mae_m": {
     "0-250": 7.42,
-    "250-500": 123.49,
-    "500-1000": 1037.18,
-    "1000-2000": 8188.84,
-    "2000+": 32171.98
+    "250-500": 123.99,
+    "500-1000": 1038.4,
+    "1000-2000": 8188.89,
+    "2000+": 32172.49
    },
    "lost_at_m": 292.1,
    "lost": true,
    "growth_k": 3.03,
-   "max_error_m": 50061.1,
+   "max_error_m": 50062.0,
    "integrity": false,
-   "xy_rmse_m": 19370.85,
+   "xy_rmse_m": 19371.16,
    "z_rmse_m": 0.39,
    "scenario": "bordertown",
    "run": 2,
@@ -2795,24 +2795,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.2,
-   "realtime_factor": 505.8
+   "realtime_factor": 494.3
   },
   {
-   "distance_m": 2897.0,
+   "distance_m": 2895.2,
    "score_log10": 3.375,
    "mae_m": {
-    "0-250": 8.39,
-    "250-500": 102.24,
-    "500-1000": 725.76,
-    "1000-2000": 4737.06,
-    "2000+": 16874.81
+    "0-250": 8.46,
+    "250-500": 102.54,
+    "500-1000": 727.12,
+    "1000-2000": 4747.11,
+    "2000+": 16886.35
    },
-   "lost_at_m": 299.1,
+   "lost_at_m": 299.0,
    "lost": true,
    "growth_k": 2.74,
-   "max_error_m": 25476.9,
+   "max_error_m": 25474.5,
    "integrity": false,
-   "xy_rmse_m": 10236.29,
+   "xy_rmse_m": 10235.33,
    "z_rmse_m": 0.73,
    "scenario": "bordertown",
    "run": 3,
@@ -2820,24 +2820,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 361.3,
-   "realtime_factor": 587.6
+   "realtime_factor": 594.5
   },
   {
-   "distance_m": 2891.2,
+   "distance_m": 2890.7,
    "score_log10": 3.385,
    "mae_m": {
-    "0-250": 8.1,
-    "250-500": 113.31,
-    "500-1000": 848.13,
-    "1000-2000": 5145.7,
-    "2000+": 14494.92
+    "0-250": 8.09,
+    "250-500": 113.23,
+    "500-1000": 849.56,
+    "1000-2000": 5151.59,
+    "2000+": 14499.55
    },
-   "lost_at_m": 293.6,
+   "lost_at_m": 293.5,
    "lost": true,
    "growth_k": 2.67,
-   "max_error_m": 20598.6,
+   "max_error_m": 20598.8,
    "integrity": false,
-   "xy_rmse_m": 8891.63,
+   "xy_rmse_m": 8891.59,
    "z_rmse_m": 0.56,
    "scenario": "bordertown",
    "run": 4,
@@ -2845,24 +2845,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 361.1,
-   "realtime_factor": 520.3
+   "realtime_factor": 575.5
   },
   {
-   "distance_m": 2898.4,
+   "distance_m": 2898.1,
    "score_log10": 3.396,
    "mae_m": {
     "0-250": 6.09,
-    "250-500": 87.89,
-    "500-1000": 699.86,
-    "1000-2000": 5319.68,
-    "2000+": 20607.26
+    "250-500": 87.88,
+    "500-1000": 701.14,
+    "1000-2000": 5322.82,
+    "2000+": 20607.4
    },
-   "lost_at_m": 321.8,
+   "lost_at_m": 321.7,
    "lost": true,
    "growth_k": 2.95,
    "max_error_m": 32459.4,
    "integrity": false,
-   "xy_rmse_m": 12488.53,
+   "xy_rmse_m": 12488.6,
    "z_rmse_m": 0.64,
    "scenario": "bordertown",
    "run": 5,
@@ -2870,22 +2870,22 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 362.1,
-   "realtime_factor": 569.1
+   "realtime_factor": 561.8
   },
   {
-   "distance_m": 2878.2,
-   "score_log10": 3.346,
+   "distance_m": 2877.3,
+   "score_log10": 3.347,
    "mae_m": {
-    "0-250": 4.47,
+    "0-250": 4.48,
     "250-500": 73.63,
-    "500-1000": 625.76,
-    "1000-2000": 5099.23,
+    "500-1000": 625.84,
+    "1000-2000": 5099.2,
     "2000+": 18855.77
    },
-   "lost_at_m": 344.9,
+   "lost_at_m": 344.7,
    "lost": true,
    "growth_k": 3.03,
-   "max_error_m": 28547.4,
+   "max_error_m": 28547.7,
    "integrity": false,
    "xy_rmse_m": 11321.16,
    "z_rmse_m": 0.46,
@@ -2895,17 +2895,17 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 359.3,
-   "realtime_factor": 564.7
+   "realtime_factor": 572.7
   },
   {
-   "distance_m": 2907.1,
+   "distance_m": 2906.6,
    "score_log10": 2.962,
    "mae_m": {
     "0-250": 4.02,
-    "250-500": 30.46,
-    "500-1000": 221.46,
+    "250-500": 30.37,
+    "500-1000": 221.18,
     "1000-2000": 1914.74,
-    "2000+": 7633.48
+    "2000+": 7633.46
    },
    "lost_at_m": 472.8,
    "lost": true,
@@ -2920,17 +2920,17 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 363.2,
-   "realtime_factor": 709.4
+   "realtime_factor": 608.0
   },
   {
-   "distance_m": 2886.0,
-   "score_log10": 2.759,
+   "distance_m": 2885.8,
+   "score_log10": 2.76,
    "mae_m": {
     "0-250": 2.29,
     "250-500": 28.31,
     "500-1000": 189.12,
-    "1000-2000": 1144.63,
-    "2000+": 3779.69
+    "1000-2000": 1144.65,
+    "2000+": 3779.7
    },
    "lost_at_m": 476.2,
    "lost": true,
@@ -2945,24 +2945,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.6,
-   "realtime_factor": 571.6
+   "realtime_factor": 564.1
   },
   {
-   "distance_m": 2888.7,
+   "distance_m": 2887.2,
    "score_log10": 3.732,
    "mae_m": {
     "0-250": 12.77,
-    "250-500": 201.68,
-    "500-1000": 1599.33,
-    "1000-2000": 11602.85,
-    "2000+": 42688.56
+    "250-500": 201.78,
+    "500-1000": 1601.94,
+    "1000-2000": 11628.07,
+    "2000+": 42723.07
    },
-   "lost_at_m": 246.0,
+   "lost_at_m": 245.9,
    "lost": true,
    "growth_k": 2.93,
-   "max_error_m": 67213.8,
+   "max_error_m": 67213.4,
    "integrity": false,
-   "xy_rmse_m": 25871.38,
+   "xy_rmse_m": 25871.21,
    "z_rmse_m": 0.46,
    "scenario": "bordertown",
    "run": 9,
@@ -2970,24 +2970,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.6,
-   "realtime_factor": 597.3
+   "realtime_factor": 619.5
   },
   {
-   "distance_m": 2887.2,
+   "distance_m": 2886.6,
    "score_log10": 3.086,
    "mae_m": {
     "0-250": 2.64,
-    "250-500": 46.28,
-    "500-1000": 343.58,
-    "1000-2000": 2615.41,
-    "2000+": 10402.62
+    "250-500": 46.27,
+    "500-1000": 343.6,
+    "1000-2000": 2617.9,
+    "2000+": 10406.52
    },
    "lost_at_m": 399.1,
    "lost": true,
    "growth_k": 2.98,
-   "max_error_m": 15850.1,
+   "max_error_m": 15849.4,
    "integrity": false,
-   "xy_rmse_m": 6250.58,
+   "xy_rmse_m": 6250.37,
    "z_rmse_m": 0.37,
    "scenario": "bordertown",
    "run": 10,
@@ -2995,24 +2995,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.7,
-   "realtime_factor": 605.9
+   "realtime_factor": 559.7
   },
   {
-   "distance_m": 2893.0,
+   "distance_m": 2889.9,
    "score_log10": 3.397,
    "mae_m": {
-    "0-250": 5.9,
-    "250-500": 86.97,
-    "500-1000": 697.55,
-    "1000-2000": 5541.03,
-    "2000+": 20286.11
+    "0-250": 5.94,
+    "250-500": 87.07,
+    "500-1000": 698.71,
+    "1000-2000": 5558.91,
+    "2000+": 20309.44
    },
-   "lost_at_m": 322.7,
+   "lost_at_m": 322.6,
    "lost": true,
    "growth_k": 2.96,
-   "max_error_m": 30335.9,
+   "max_error_m": 30335.8,
    "integrity": false,
-   "xy_rmse_m": 12250.48,
+   "xy_rmse_m": 12250.43,
    "z_rmse_m": 0.34,
    "scenario": "bordertown",
    "run": 11,
@@ -3020,24 +3020,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.8,
-   "realtime_factor": 556.0
+   "realtime_factor": 449.7
   },
   {
-   "distance_m": 2882.2,
+   "distance_m": 2880.5,
    "score_log10": 3.558,
    "mae_m": {
     "0-250": 10.73,
     "250-500": 153.56,
-    "500-1000": 1152.42,
-    "1000-2000": 8108.42,
-    "2000+": 23796.73
+    "500-1000": 1152.37,
+    "1000-2000": 8120.23,
+    "2000+": 23812.86
    },
    "lost_at_m": 264.3,
    "lost": true,
    "growth_k": 2.78,
-   "max_error_m": 33454.2,
+   "max_error_m": 33455.7,
    "integrity": false,
-   "xy_rmse_m": 14484.22,
+   "xy_rmse_m": 14484.74,
    "z_rmse_m": 0.66,
    "scenario": "bordertown",
    "run": 12,
@@ -3045,24 +3045,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 359.9,
-   "realtime_factor": 627.5
+   "realtime_factor": 596.5
   },
   {
-   "distance_m": 2879.0,
+   "distance_m": 2876.7,
    "score_log10": 2.929,
    "mae_m": {
     "0-250": 2.51,
-    "250-500": 36.98,
-    "500-1000": 266.33,
-    "1000-2000": 1834.89,
-    "2000+": 6032.85
+    "250-500": 36.97,
+    "500-1000": 266.76,
+    "1000-2000": 1837.25,
+    "2000+": 6034.78
    },
    "lost_at_m": 430.3,
    "lost": true,
    "growth_k": 2.8,
-   "max_error_m": 8995.6,
+   "max_error_m": 8995.7,
    "integrity": false,
-   "xy_rmse_m": 3645.71,
+   "xy_rmse_m": 3645.56,
    "z_rmse_m": 0.32,
    "scenario": "bordertown",
    "run": 13,
@@ -3070,24 +3070,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 359.3,
-   "realtime_factor": 600.9
+   "realtime_factor": 596.5
   },
   {
-   "distance_m": 2904.3,
+   "distance_m": 2903.0,
    "score_log10": 2.896,
    "mae_m": {
     "0-250": 1.44,
-    "250-500": 24.41,
-    "500-1000": 213.78,
-    "1000-2000": 1731.12,
-    "2000+": 6989.95
+    "250-500": 24.42,
+    "500-1000": 213.83,
+    "1000-2000": 1732.63,
+    "2000+": 6992.14
    },
    "lost_at_m": 488.0,
    "lost": true,
    "growth_k": 3.05,
-   "max_error_m": 11218.4,
+   "max_error_m": 11217.1,
    "integrity": false,
-   "xy_rmse_m": 4246.14,
+   "xy_rmse_m": 4245.69,
    "z_rmse_m": 0.36,
    "scenario": "bordertown",
    "run": 14,
@@ -3095,24 +3095,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 362.7,
-   "realtime_factor": 610.7
+   "realtime_factor": 595.0
   },
   {
-   "distance_m": 2878.8,
+   "distance_m": 2877.4,
    "score_log10": 3.059,
    "mae_m": {
     "0-250": 3.39,
     "250-500": 45.85,
     "500-1000": 336.28,
-    "1000-2000": 2434.04,
-    "2000+": 8919.02
+    "1000-2000": 2436.1,
+    "2000+": 8922.44
    },
    "lost_at_m": 400.1,
    "lost": true,
-   "growth_k": 2.85,
-   "max_error_m": 13799.0,
+   "growth_k": 2.86,
+   "max_error_m": 13798.7,
    "integrity": false,
-   "xy_rmse_m": 5374.8,
+   "xy_rmse_m": 5374.72,
    "z_rmse_m": 0.53,
    "scenario": "bordertown",
    "run": 15,
@@ -3120,17 +3120,17 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 359.6,
-   "realtime_factor": 627.2
+   "realtime_factor": 584.5
   },
   {
-   "distance_m": 2894.3,
+   "distance_m": 2893.9,
    "score_log10": 3.252,
    "mae_m": {
     "0-250": 4.3,
     "250-500": 61.69,
-    "500-1000": 496.3,
-    "1000-2000": 3864.19,
-    "2000+": 15078.59
+    "500-1000": 496.29,
+    "1000-2000": 3867.65,
+    "2000+": 15084.75
    },
    "lost_at_m": 362.9,
    "lost": true,
@@ -3145,24 +3145,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 361.7,
-   "realtime_factor": 583.8
+   "realtime_factor": 497.2
   },
   {
-   "distance_m": 2897.6,
-   "score_log10": 3.403,
+   "distance_m": 2895.8,
+   "score_log10": 3.404,
    "mae_m": {
-    "0-250": 5.79,
-    "250-500": 85.83,
-    "500-1000": 702.39,
-    "1000-2000": 5527.9,
-    "2000+": 21003.88
+    "0-250": 5.85,
+    "250-500": 86.77,
+    "500-1000": 705.72,
+    "1000-2000": 5541.63,
+    "2000+": 21021.94
    },
-   "lost_at_m": 325.1,
+   "lost_at_m": 323.7,
    "lost": true,
-   "growth_k": 2.98,
-   "max_error_m": 32369.7,
+   "growth_k": 2.97,
+   "max_error_m": 32371.2,
    "integrity": false,
-   "xy_rmse_m": 12710.99,
+   "xy_rmse_m": 12711.79,
    "z_rmse_m": 0.34,
    "scenario": "bordertown",
    "run": 17,
@@ -3170,24 +3170,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 361.8,
-   "realtime_factor": 572.0
+   "realtime_factor": 514.7
   },
   {
-   "distance_m": 2893.0,
+   "distance_m": 2889.0,
    "score_log10": 2.986,
    "mae_m": {
     "0-250": 3.0,
     "250-500": 55.56,
-    "500-1000": 434.82,
-    "1000-2000": 2117.39,
-    "2000+": 4539.04
+    "500-1000": 436.32,
+    "1000-2000": 2122.92,
+    "2000+": 4542.93
    },
    "lost_at_m": 375.9,
    "lost": true,
    "growth_k": 2.54,
-   "max_error_m": 6391.7,
+   "max_error_m": 6391.5,
    "integrity": false,
-   "xy_rmse_m": 2892.29,
+   "xy_rmse_m": 2891.96,
    "z_rmse_m": 0.56,
    "scenario": "bordertown",
    "run": 18,
@@ -3195,24 +3195,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.2,
-   "realtime_factor": 622.7
+   "realtime_factor": 676.9
   },
   {
-   "distance_m": 2908.7,
+   "distance_m": 2905.9,
    "score_log10": 3.453,
    "mae_m": {
-    "0-250": 7.4,
-    "250-500": 99.55,
-    "500-1000": 824.31,
-    "1000-2000": 6153.11,
-    "2000+": 21224.32
+    "0-250": 7.47,
+    "250-500": 100.18,
+    "500-1000": 827.06,
+    "1000-2000": 6176.46,
+    "2000+": 21257.08
    },
-   "lost_at_m": 307.2,
+   "lost_at_m": 306.4,
    "lost": true,
-   "growth_k": 2.89,
-   "max_error_m": 33002.6,
+   "growth_k": 2.88,
+   "max_error_m": 33002.9,
    "integrity": false,
-   "xy_rmse_m": 12985.33,
+   "xy_rmse_m": 12985.69,
    "z_rmse_m": 0.48,
    "scenario": "bordertown",
    "run": 19,
@@ -3220,24 +3220,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 362.9,
-   "realtime_factor": 618.7
+   "realtime_factor": 651.8
   },
   {
-   "distance_m": 2889.0,
+   "distance_m": 2887.1,
    "score_log10": 3.509,
    "mae_m": {
     "0-250": 54.62,
-    "250-500": 106.9,
-    "500-1000": 822.98,
-    "1000-2000": 6203.84,
-    "2000+": 24459.03
+    "250-500": 106.97,
+    "500-1000": 825.84,
+    "1000-2000": 6222.25,
+    "2000+": 24479.54
    },
    "lost_at_m": 0.0,
    "lost": true,
    "growth_k": 2.59,
-   "max_error_m": 38198.4,
+   "max_error_m": 38198.5,
    "integrity": false,
-   "xy_rmse_m": 14764.74,
+   "xy_rmse_m": 14764.81,
    "z_rmse_m": 0.39,
    "scenario": "kyiv",
    "run": 0,
@@ -3245,24 +3245,24 @@
    "platform": "drone",
    "start_offset_m": 57.2,
    "duration_s": 360.0,
-   "realtime_factor": 515.0
+   "realtime_factor": 448.6
   },
   {
-   "distance_m": 2881.2,
+   "distance_m": 2880.0,
    "score_log10": 3.372,
    "mae_m": {
     "0-250": 142.56,
-    "250-500": 160.63,
-    "500-1000": 535.43,
-    "1000-2000": 3736.28,
-    "2000+": 14944.0
+    "250-500": 160.64,
+    "500-1000": 536.28,
+    "1000-2000": 3741.76,
+    "2000+": 14950.6
    },
    "lost_at_m": 0.0,
    "lost": true,
    "growth_k": 2.1,
-   "max_error_m": 23657.9,
+   "max_error_m": 23658.1,
    "integrity": false,
-   "xy_rmse_m": 8995.38,
+   "xy_rmse_m": 8995.49,
    "z_rmse_m": 0.45,
    "scenario": "kyiv",
    "run": 1,
@@ -3270,24 +3270,24 @@
    "platform": "drone",
    "start_offset_m": 142.5,
    "duration_s": 359.6,
-   "realtime_factor": 620.8
+   "realtime_factor": 523.8
   },
   {
-   "distance_m": 2896.4,
+   "distance_m": 2891.9,
    "score_log10": 3.496,
    "mae_m": {
     "0-250": 112.9,
     "250-500": 92.01,
-    "500-1000": 676.88,
-    "1000-2000": 6083.93,
-    "2000+": 23525.07
+    "500-1000": 679.77,
+    "1000-2000": 6112.82,
+    "2000+": 23562.56
    },
    "lost_at_m": 0.0,
    "lost": true,
    "growth_k": 2.48,
-   "max_error_m": 36435.6,
+   "max_error_m": 36434.6,
    "integrity": false,
-   "xy_rmse_m": 14214.09,
+   "xy_rmse_m": 14213.55,
    "z_rmse_m": 0.56,
    "scenario": "kyiv",
    "run": 2,
@@ -3295,24 +3295,24 @@
    "platform": "drone",
    "start_offset_m": 116.2,
    "duration_s": 360.5,
-   "realtime_factor": 613.4
+   "realtime_factor": 591.7
   },
   {
-   "distance_m": 2900.0,
+   "distance_m": 2898.1,
    "score_log10": 3.013,
    "mae_m": {
     "0-250": 111.57,
-    "250-500": 124.69,
-    "500-1000": 258.82,
-    "1000-2000": 1400.16,
-    "2000+": 5202.31
+    "250-500": 124.73,
+    "500-1000": 258.99,
+    "1000-2000": 1401.42,
+    "2000+": 5204.69
    },
    "lost_at_m": 0.0,
    "lost": true,
    "growth_k": 1.75,
-   "max_error_m": 7941.7,
+   "max_error_m": 7942.0,
    "integrity": false,
-   "xy_rmse_m": 3144.47,
+   "xy_rmse_m": 3144.64,
    "z_rmse_m": 0.38,
    "scenario": "kyiv",
    "run": 3,
@@ -3320,24 +3320,24 @@
    "platform": "drone",
    "start_offset_m": 111.3,
    "duration_s": 360.9,
-   "realtime_factor": 556.1
+   "realtime_factor": 553.2
   },
   {
-   "distance_m": 2906.3,
+   "distance_m": 2904.1,
    "score_log10": 3.204,
    "mae_m": {
     "0-250": 79.59,
-    "250-500": 109.91,
-    "500-1000": 357.55,
-    "1000-2000": 2503.74,
-    "2000+": 9836.95
+    "250-500": 110.3,
+    "500-1000": 360.07,
+    "1000-2000": 2514.78,
+    "2000+": 9848.84
    },
    "lost_at_m": 0.0,
    "lost": true,
    "growth_k": 2.12,
-   "max_error_m": 14977.0,
+   "max_error_m": 14977.3,
    "integrity": false,
-   "xy_rmse_m": 5961.71,
+   "xy_rmse_m": 5961.74,
    "z_rmse_m": 0.63,
    "scenario": "kyiv",
    "run": 4,
@@ -3345,24 +3345,24 @@
    "platform": "drone",
    "start_offset_m": 76.7,
    "duration_s": 361.9,
-   "realtime_factor": 424.4
+   "realtime_factor": 467.9
   },
   {
-   "distance_m": 2887.1,
+   "distance_m": 2885.1,
    "score_log10": 3.449,
    "mae_m": {
-    "0-250": 109.64,
-    "250-500": 52.53,
-    "500-1000": 682.26,
-    "1000-2000": 5795.32,
-    "2000+": 21148.34
+    "0-250": 109.63,
+    "250-500": 52.89,
+    "500-1000": 688.51,
+    "1000-2000": 5821.1,
+    "2000+": 21176.51
    },
    "lost_at_m": 0.0,
    "lost": true,
    "growth_k": 2.56,
-   "max_error_m": 32183.1,
+   "max_error_m": 32187.9,
    "integrity": false,
-   "xy_rmse_m": 12780.6,
+   "xy_rmse_m": 12782.61,
    "z_rmse_m": 0.4,
    "scenario": "kyiv",
    "run": 5,
@@ -3370,24 +3370,24 @@
    "platform": "drone",
    "start_offset_m": 116.8,
    "duration_s": 359.6,
-   "realtime_factor": 538.6
+   "realtime_factor": 557.6
   },
   {
-   "distance_m": 2927.7,
+   "distance_m": 2922.8,
    "score_log10": 3.386,
    "mae_m": {
     "0-250": 147.76,
-    "250-500": 160.76,
+    "250-500": 160.74,
     "500-1000": 526.0,
-    "1000-2000": 3778.96,
-    "2000+": 15381.0
+    "1000-2000": 3782.44,
+    "2000+": 15387.89
    },
    "lost_at_m": 0.0,
    "lost": true,
    "growth_k": 2.11,
-   "max_error_m": 24699.5,
+   "max_error_m": 24700.2,
    "integrity": false,
-   "xy_rmse_m": 9375.92,
+   "xy_rmse_m": 9376.15,
    "z_rmse_m": 0.42,
    "scenario": "kyiv",
    "run": 6,
@@ -3395,24 +3395,24 @@
    "platform": "drone",
    "start_offset_m": 149.5,
    "duration_s": 363.8,
-   "realtime_factor": 624.2
+   "realtime_factor": 600.8
   },
   {
-   "distance_m": 2907.5,
+   "distance_m": 2906.2,
    "score_log10": 3.623,
    "mae_m": {
     "0-250": 146.42,
-    "250-500": 261.05,
-    "500-1000": 1092.06,
-    "1000-2000": 6622.34,
-    "2000+": 25816.25
+    "250-500": 261.54,
+    "500-1000": 1095.12,
+    "1000-2000": 6631.97,
+    "2000+": 25827.25
    },
    "lost_at_m": 0.0,
    "lost": true,
    "growth_k": 2.18,
-   "max_error_m": 41606.0,
+   "max_error_m": 41605.9,
    "integrity": false,
-   "xy_rmse_m": 15743.32,
+   "xy_rmse_m": 15743.44,
    "z_rmse_m": 0.36,
    "scenario": "kyiv",
    "run": 7,
@@ -3420,24 +3420,24 @@
    "platform": "drone",
    "start_offset_m": 136.4,
    "duration_s": 363.0,
-   "realtime_factor": 555.6
+   "realtime_factor": 584.9
   },
   {
-   "distance_m": 2888.3,
-   "score_log10": 3.367,
+   "distance_m": 2887.3,
+   "score_log10": 3.368,
    "mae_m": {
-    "0-250": 54.53,
-    "250-500": 116.67,
-    "500-1000": 619.96,
-    "1000-2000": 4371.78,
-    "2000+": 13816.73
+    "0-250": 54.54,
+    "250-500": 117.08,
+    "500-1000": 622.05,
+    "1000-2000": 4378.83,
+    "2000+": 13823.88
    },
    "lost_at_m": 0.0,
    "lost": true,
    "growth_k": 2.32,
-   "max_error_m": 19562.2,
+   "max_error_m": 19565.3,
    "integrity": false,
-   "xy_rmse_m": 8373.15,
+   "xy_rmse_m": 8374.69,
    "z_rmse_m": 0.35,
    "scenario": "kyiv",
    "run": 8,
@@ -3445,24 +3445,24 @@
    "platform": "drone",
    "start_offset_m": 50.8,
    "duration_s": 360.7,
-   "realtime_factor": 507.1
+   "realtime_factor": 574.5
   },
   {
-   "distance_m": 2908.3,
+   "distance_m": 2904.1,
    "score_log10": 3.313,
    "mae_m": {
-    "0-250": 134.67,
-    "250-500": 170.15,
-    "500-1000": 487.32,
-    "1000-2000": 3125.31,
-    "2000+": 11489.18
+    "0-250": 134.66,
+    "250-500": 170.24,
+    "500-1000": 488.41,
+    "1000-2000": 3134.99,
+    "2000+": 11502.49
    },
    "lost_at_m": 0.0,
    "lost": true,
    "growth_k": 1.98,
-   "max_error_m": 17785.3,
+   "max_error_m": 17784.9,
    "integrity": false,
-   "xy_rmse_m": 6990.76,
+   "xy_rmse_m": 6990.68,
    "z_rmse_m": 0.52,
    "scenario": "kyiv",
    "run": 9,
@@ -3470,24 +3470,24 @@
    "platform": "drone",
    "start_offset_m": 131.5,
    "duration_s": 362.6,
-   "realtime_factor": 508.6
+   "realtime_factor": 510.8
   },
   {
-   "distance_m": 2919.7,
-   "score_log10": 3.358,
+   "distance_m": 2918.2,
+   "score_log10": 3.357,
    "mae_m": {
     "0-250": 108.06,
     "250-500": 58.05,
-    "500-1000": 527.97,
-    "1000-2000": 4561.93,
-    "2000+": 15442.9
+    "500-1000": 527.92,
+    "1000-2000": 4569.24,
+    "2000+": 15453.63
    },
    "lost_at_m": 0.0,
    "lost": true,
    "growth_k": 2.43,
-   "max_error_m": 22634.7,
+   "max_error_m": 22634.2,
    "integrity": false,
-   "xy_rmse_m": 9435.71,
+   "xy_rmse_m": 9435.54,
    "z_rmse_m": 0.51,
    "scenario": "kyiv",
    "run": 10,
@@ -3495,24 +3495,24 @@
    "platform": "drone",
    "start_offset_m": 110.9,
    "duration_s": 364.5,
-   "realtime_factor": 543.6
+   "realtime_factor": 560.8
   },
   {
-   "distance_m": 2905.1,
+   "distance_m": 2901.5,
    "score_log10": 3.318,
    "mae_m": {
-    "0-250": 103.81,
-    "250-500": 57.02,
-    "500-1000": 479.76,
-    "1000-2000": 3920.98,
-    "2000+": 14552.23
+    "0-250": 103.7,
+    "250-500": 57.01,
+    "500-1000": 484.27,
+    "1000-2000": 3940.58,
+    "2000+": 14578.26
    },
    "lost_at_m": 0.0,
    "lost": true,
-   "growth_k": 2.4,
-   "max_error_m": 22698.6,
+   "growth_k": 2.39,
+   "max_error_m": 22702.2,
    "integrity": false,
-   "xy_rmse_m": 8862.91,
+   "xy_rmse_m": 8864.8,
    "z_rmse_m": 0.4,
    "scenario": "kyiv",
    "run": 11,
@@ -3520,49 +3520,49 @@
    "platform": "drone",
    "start_offset_m": 109.3,
    "duration_s": 361.5,
-   "realtime_factor": 392.5
+   "realtime_factor": 592.4
   },
   {
-   "distance_m": 2892.1,
+   "distance_m": 2891.4,
    "score_log10": 3.509,
    "mae_m": {
     "0-250": 105.28,
-    "250-500": 79.57,
-    "500-1000": 701.08,
-    "1000-2000": 6312.7,
-    "2000+": 26198.19
+    "250-500": 79.56,
+    "500-1000": 702.63,
+    "1000-2000": 6322.83,
+    "2000+": 26210.06
    },
    "lost_at_m": 0.0,
    "lost": true,
    "growth_k": 2.56,
-   "max_error_m": 42094.4,
+   "max_error_m": 42095.2,
    "integrity": false,
-   "xy_rmse_m": 15827.18,
-   "z_rmse_m": 0.54,
+   "xy_rmse_m": 15827.58,
+   "z_rmse_m": 0.55,
    "scenario": "kyiv",
    "run": 12,
    "world": "kyiv",
    "platform": "drone",
    "start_offset_m": 109.7,
    "duration_s": 361.2,
-   "realtime_factor": 529.4
+   "realtime_factor": 484.7
   },
   {
-   "distance_m": 2896.0,
+   "distance_m": 2895.4,
    "score_log10": 3.643,
    "mae_m": {
     "0-250": 102.75,
-    "250-500": 83.37,
-    "500-1000": 1101.76,
-    "1000-2000": 9129.69,
-    "2000+": 37508.35
+    "250-500": 83.33,
+    "500-1000": 1101.75,
+    "1000-2000": 9137.57,
+    "2000+": 37522.36
    },
    "lost_at_m": 0.0,
    "lost": true,
    "growth_k": 2.75,
-   "max_error_m": 59503.1,
+   "max_error_m": 59500.4,
    "integrity": false,
-   "xy_rmse_m": 22697.79,
+   "xy_rmse_m": 22696.63,
    "z_rmse_m": 0.66,
    "scenario": "kyiv",
    "run": 13,
@@ -3570,24 +3570,24 @@
    "platform": "drone",
    "start_offset_m": 114.6,
    "duration_s": 361.3,
-   "realtime_factor": 553.5
+   "realtime_factor": 651.6
   },
   {
-   "distance_m": 2895.0,
+   "distance_m": 2893.3,
    "score_log10": 3.61,
    "mae_m": {
     "0-250": 68.42,
-    "250-500": 167.72,
-    "500-1000": 1085.66,
-    "1000-2000": 7419.51,
-    "2000+": 28800.12
+    "250-500": 167.76,
+    "500-1000": 1085.55,
+    "1000-2000": 7432.5,
+    "2000+": 28821.96
    },
    "lost_at_m": 0.0,
    "lost": true,
    "growth_k": 2.49,
-   "max_error_m": 44684.0,
+   "max_error_m": 44681.5,
    "integrity": false,
-   "xy_rmse_m": 17431.23,
+   "xy_rmse_m": 17430.19,
    "z_rmse_m": 0.85,
    "scenario": "kyiv",
    "run": 14,
@@ -3595,16 +3595,16 @@
    "platform": "drone",
    "start_offset_m": 66.5,
    "duration_s": 360.6,
-   "realtime_factor": 455.6
+   "realtime_factor": 541.5
   },
   {
-   "distance_m": 2902.6,
+   "distance_m": 2900.0,
    "score_log10": 3.545,
    "mae_m": {
-    "0-250": 82.14,
-    "250-500": 170.05,
-    "500-1000": 874.4,
-    "1000-2000": 6358.1,
+    "0-250": 82.13,
+    "250-500": 169.98,
+    "500-1000": 874.3,
+    "1000-2000": 6358.11,
     "2000+": 22554.72
    },
    "lost_at_m": 0.0,
@@ -3612,7 +3612,7 @@
    "growth_k": 2.36,
    "max_error_m": 33040.5,
    "integrity": false,
-   "xy_rmse_m": 13625.5,
+   "xy_rmse_m": 13625.51,
    "z_rmse_m": 0.44,
    "scenario": "kyiv",
    "run": 15,
@@ -3620,24 +3620,24 @@
    "platform": "drone",
    "start_offset_m": 75.1,
    "duration_s": 361.8,
-   "realtime_factor": 626.3
+   "realtime_factor": 614.3
   },
   {
-   "distance_m": 2889.1,
+   "distance_m": 2887.5,
    "score_log10": 3.543,
    "mae_m": {
-    "0-250": 79.94,
-    "250-500": 152.45,
-    "500-1000": 813.39,
-    "1000-2000": 6441.51,
-    "2000+": 24365.49
+    "0-250": 79.95,
+    "250-500": 153.14,
+    "500-1000": 817.79,
+    "1000-2000": 6460.64,
+    "2000+": 24384.81
    },
    "lost_at_m": 0.0,
    "lost": true,
    "growth_k": 2.43,
-   "max_error_m": 36523.0,
+   "max_error_m": 36523.4,
    "integrity": false,
-   "xy_rmse_m": 14670.37,
+   "xy_rmse_m": 14670.49,
    "z_rmse_m": 0.41,
    "scenario": "kyiv",
    "run": 16,
@@ -3645,24 +3645,24 @@
    "platform": "drone",
    "start_offset_m": 75.1,
    "duration_s": 360.6,
-   "realtime_factor": 536.8
+   "realtime_factor": 588.5
   },
   {
-   "distance_m": 2904.4,
+   "distance_m": 2901.1,
    "score_log10": 3.502,
    "mae_m": {
     "0-250": 144.13,
-    "250-500": 193.61,
-    "500-1000": 731.42,
-    "1000-2000": 5120.17,
-    "2000+": 20634.91
+    "250-500": 193.59,
+    "500-1000": 731.39,
+    "1000-2000": 5124.78,
+    "2000+": 20642.01
    },
    "lost_at_m": 0.0,
    "lost": true,
    "growth_k": 2.18,
-   "max_error_m": 32788.0,
+   "max_error_m": 32784.7,
    "integrity": false,
-   "xy_rmse_m": 12511.02,
+   "xy_rmse_m": 12510.08,
    "z_rmse_m": 0.42,
    "scenario": "kyiv",
    "run": 17,
@@ -3670,24 +3670,24 @@
    "platform": "drone",
    "start_offset_m": 143.3,
    "duration_s": 361.8,
-   "realtime_factor": 517.1
+   "realtime_factor": 437.7
   },
   {
-   "distance_m": 2895.7,
+   "distance_m": 2892.0,
    "score_log10": 3.557,
    "mae_m": {
-    "0-250": 120.07,
-    "250-500": 135.51,
-    "500-1000": 873.96,
-    "1000-2000": 6914.87,
-    "2000+": 22906.18
+    "0-250": 120.03,
+    "250-500": 135.89,
+    "500-1000": 874.76,
+    "1000-2000": 6937.65,
+    "2000+": 22937.75
    },
    "lost_at_m": 0.0,
    "lost": true,
-   "growth_k": 2.36,
-   "max_error_m": 32439.8,
+   "growth_k": 2.37,
+   "max_error_m": 32439.7,
    "integrity": false,
-   "xy_rmse_m": 13876.1,
+   "xy_rmse_m": 13875.98,
    "z_rmse_m": 0.49,
    "scenario": "kyiv",
    "run": 18,
@@ -3695,24 +3695,24 @@
    "platform": "drone",
    "start_offset_m": 124.1,
    "duration_s": 360.1,
-   "realtime_factor": 553.9
+   "realtime_factor": 539.7
   },
   {
-   "distance_m": 2895.8,
+   "distance_m": 2894.6,
    "score_log10": 2.918,
    "mae_m": {
     "0-250": 84.0,
     "250-500": 48.9,
-    "500-1000": 184.4,
-    "1000-2000": 1418.2,
-    "2000+": 5078.86
+    "500-1000": 184.79,
+    "1000-2000": 1419.85,
+    "2000+": 5080.17
    },
    "lost_at_m": 0.0,
    "lost": true,
    "growth_k": 2.1,
-   "max_error_m": 7719.2,
+   "max_error_m": 7718.3,
    "integrity": false,
-   "xy_rmse_m": 3078.33,
+   "xy_rmse_m": 3077.9,
    "z_rmse_m": 0.61,
    "scenario": "kyiv",
    "run": 19,
@@ -3720,7 +3720,7 @@
    "platform": "drone",
    "start_offset_m": 87.1,
    "duration_s": 361.5,
-   "realtime_factor": 505.4
+   "realtime_factor": 522.2
   },
   {
    "distance_m": 2893.8,
@@ -3745,7 +3745,7 @@
    "platform": "drone",
    "start_offset_m": 67.6,
    "duration_s": 289.3,
-   "realtime_factor": 652.1
+   "realtime_factor": 601.4
   },
   {
    "distance_m": 2897.1,
@@ -3770,7 +3770,7 @@
    "platform": "drone",
    "start_offset_m": 115.3,
    "duration_s": 289.5,
-   "realtime_factor": 643.5
+   "realtime_factor": 664.9
   },
   {
    "distance_m": 2903.8,
@@ -3795,7 +3795,7 @@
    "platform": "drone",
    "start_offset_m": 156.5,
    "duration_s": 290.3,
-   "realtime_factor": 577.4
+   "realtime_factor": 611.3
   },
   {
    "distance_m": 2882.3,
@@ -3820,7 +3820,7 @@
    "platform": "drone",
    "start_offset_m": 61.6,
    "duration_s": 288.2,
-   "realtime_factor": 613.6
+   "realtime_factor": 647.5
   },
   {
    "distance_m": 2881.3,
@@ -3845,7 +3845,7 @@
    "platform": "drone",
    "start_offset_m": 65.9,
    "duration_s": 288.1,
-   "realtime_factor": 520.8
+   "realtime_factor": 657.4
   },
   {
    "distance_m": 2886.5,
@@ -3870,7 +3870,7 @@
    "platform": "drone",
    "start_offset_m": 57.3,
    "duration_s": 288.6,
-   "realtime_factor": 669.0
+   "realtime_factor": 531.7
   },
   {
    "distance_m": 2892.4,
@@ -3895,7 +3895,7 @@
    "platform": "drone",
    "start_offset_m": 82.8,
    "duration_s": 288.9,
-   "realtime_factor": 579.3
+   "realtime_factor": 617.2
   },
   {
    "distance_m": 2888.7,
@@ -3920,7 +3920,7 @@
    "platform": "drone",
    "start_offset_m": 178.9,
    "duration_s": 288.9,
-   "realtime_factor": 615.1
+   "realtime_factor": 614.1
   },
   {
    "distance_m": 2871.1,
@@ -3945,7 +3945,7 @@
    "platform": "drone",
    "start_offset_m": 92.2,
    "duration_s": 287.1,
-   "realtime_factor": 575.0
+   "realtime_factor": 529.9
   },
   {
    "distance_m": 2871.8,
@@ -3970,7 +3970,7 @@
    "platform": "drone",
    "start_offset_m": 69.2,
    "duration_s": 287.2,
-   "realtime_factor": 524.3
+   "realtime_factor": 543.1
   },
   {
    "distance_m": 2894.5,
@@ -3995,7 +3995,7 @@
    "platform": "drone",
    "start_offset_m": 116.4,
    "duration_s": 289.4,
-   "realtime_factor": 471.4
+   "realtime_factor": 491.9
   },
   {
    "distance_m": 2879.7,
@@ -4020,7 +4020,7 @@
    "platform": "drone",
    "start_offset_m": 172.4,
    "duration_s": 287.8,
-   "realtime_factor": 493.2
+   "realtime_factor": 503.3
   },
   {
    "distance_m": 2885.2,
@@ -4045,7 +4045,7 @@
    "platform": "drone",
    "start_offset_m": 131.2,
    "duration_s": 288.4,
-   "realtime_factor": 628.0
+   "realtime_factor": 634.3
   },
   {
    "distance_m": 2876.3,
@@ -4070,7 +4070,7 @@
    "platform": "drone",
    "start_offset_m": 185.9,
    "duration_s": 287.6,
-   "realtime_factor": 541.5
+   "realtime_factor": 559.5
   },
   {
    "distance_m": 2878.3,
@@ -4095,7 +4095,7 @@
    "platform": "drone",
    "start_offset_m": 113.7,
    "duration_s": 287.8,
-   "realtime_factor": 545.7
+   "realtime_factor": 529.5
   },
   {
    "distance_m": 2878.6,
@@ -4120,7 +4120,7 @@
    "platform": "drone",
    "start_offset_m": 174.4,
    "duration_s": 287.9,
-   "realtime_factor": 609.2
+   "realtime_factor": 535.9
   },
   {
    "distance_m": 2897.7,
@@ -4145,7 +4145,7 @@
    "platform": "drone",
    "start_offset_m": 103.8,
    "duration_s": 289.5,
-   "realtime_factor": 483.3
+   "realtime_factor": 526.1
   },
   {
    "distance_m": 2898.2,
@@ -4170,7 +4170,7 @@
    "platform": "drone",
    "start_offset_m": 163.5,
    "duration_s": 289.8,
-   "realtime_factor": 519.7
+   "realtime_factor": 554.5
   },
   {
    "distance_m": 2896.4,
@@ -4195,7 +4195,7 @@
    "platform": "drone",
    "start_offset_m": 61.1,
    "duration_s": 289.5,
-   "realtime_factor": 601.1
+   "realtime_factor": 467.3
   },
   {
    "distance_m": 2903.4,
@@ -4220,7 +4220,7 @@
    "platform": "drone",
    "start_offset_m": 150.2,
    "duration_s": 290.3,
-   "realtime_factor": 536.1
+   "realtime_factor": 594.4
   },
   {
    "distance_m": 2877.0,
@@ -4245,7 +4245,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.6,
-   "realtime_factor": 468.4
+   "realtime_factor": 449.8
   },
   {
    "distance_m": 2881.2,
@@ -4270,7 +4270,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.0,
-   "realtime_factor": 488.4
+   "realtime_factor": 460.2
   },
   {
    "distance_m": 2896.8,
@@ -4295,7 +4295,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.6,
-   "realtime_factor": 613.7
+   "realtime_factor": 554.4
   },
   {
    "distance_m": 2898.1,
@@ -4320,7 +4320,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.7,
-   "realtime_factor": 516.0
+   "realtime_factor": 583.2
   },
   {
    "distance_m": 2886.5,
@@ -4345,7 +4345,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.5,
-   "realtime_factor": 576.1
+   "realtime_factor": 584.8
   },
   {
    "distance_m": 2881.0,
@@ -4370,7 +4370,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.0,
-   "realtime_factor": 504.1
+   "realtime_factor": 579.9
   },
   {
    "distance_m": 2874.9,
@@ -4395,7 +4395,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.4,
-   "realtime_factor": 494.8
+   "realtime_factor": 473.3
   },
   {
    "distance_m": 2907.7,
@@ -4420,7 +4420,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 290.7,
-   "realtime_factor": 600.6
+   "realtime_factor": 478.6
   },
   {
    "distance_m": 2885.3,
@@ -4445,7 +4445,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.3,
-   "realtime_factor": 570.2
+   "realtime_factor": 548.2
   },
   {
    "distance_m": 2878.7,
@@ -4470,7 +4470,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.8,
-   "realtime_factor": 597.7
+   "realtime_factor": 588.0
   },
   {
    "distance_m": 2888.2,
@@ -4495,7 +4495,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.7,
-   "realtime_factor": 505.6
+   "realtime_factor": 590.6
   },
   {
    "distance_m": 2873.7,
@@ -4520,7 +4520,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.3,
-   "realtime_factor": 540.0
+   "realtime_factor": 573.3
   },
   {
    "distance_m": 2877.9,
@@ -4545,7 +4545,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.7,
-   "realtime_factor": 506.5
+   "realtime_factor": 587.3
   },
   {
    "distance_m": 2893.8,
@@ -4570,7 +4570,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.2,
-   "realtime_factor": 564.7
+   "realtime_factor": 520.3
   },
   {
    "distance_m": 2887.1,
@@ -4595,7 +4595,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.7,
-   "realtime_factor": 357.4
+   "realtime_factor": 306.7
   },
   {
    "distance_m": 2877.8,
@@ -4620,7 +4620,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.7,
-   "realtime_factor": 501.6
+   "realtime_factor": 593.2
   },
   {
    "distance_m": 2867.7,
@@ -4645,7 +4645,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 286.5,
-   "realtime_factor": 614.0
+   "realtime_factor": 498.1
   },
   {
    "distance_m": 2897.2,
@@ -4670,7 +4670,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.6,
-   "realtime_factor": 671.1
+   "realtime_factor": 497.6
   },
   {
    "distance_m": 2887.7,
@@ -4695,7 +4695,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.7,
-   "realtime_factor": 504.2
+   "realtime_factor": 459.8
   },
   {
    "distance_m": 2878.4,
@@ -4720,7 +4720,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.8,
-   "realtime_factor": 408.0
+   "realtime_factor": 546.0
   },
   {
    "distance_m": 2887.8,
@@ -4745,7 +4745,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.6,
-   "realtime_factor": 595.6
+   "realtime_factor": 527.2
   },
   {
    "distance_m": 2892.0,
@@ -4770,7 +4770,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.7,
-   "realtime_factor": 684.2
+   "realtime_factor": 510.0
   },
   {
    "distance_m": 2903.0,
@@ -4795,7 +4795,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.5,
-   "realtime_factor": 481.4
+   "realtime_factor": 318.0
   },
   {
    "distance_m": 2897.0,
@@ -4820,7 +4820,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.4,
-   "realtime_factor": 332.5
+   "realtime_factor": 442.8
   },
   {
    "distance_m": 2895.3,
@@ -4845,7 +4845,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.8,
-   "realtime_factor": 423.4
+   "realtime_factor": 474.0
   },
   {
    "distance_m": 2891.5,
@@ -4870,7 +4870,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.3,
-   "realtime_factor": 507.8
+   "realtime_factor": 466.5
   },
   {
    "distance_m": 2891.6,
@@ -4895,7 +4895,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.0,
-   "realtime_factor": 533.7
+   "realtime_factor": 580.6
   },
   {
    "distance_m": 2910.9,
@@ -4920,7 +4920,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 290.4,
-   "realtime_factor": 388.9
+   "realtime_factor": 362.0
   },
   {
    "distance_m": 2883.5,
@@ -4945,7 +4945,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.9,
-   "realtime_factor": 371.9
+   "realtime_factor": 446.6
   },
   {
    "distance_m": 2892.3,
@@ -4970,7 +4970,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.3,
-   "realtime_factor": 437.0
+   "realtime_factor": 517.2
   },
   {
    "distance_m": 2899.0,
@@ -4995,7 +4995,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.0,
-   "realtime_factor": 448.6
+   "realtime_factor": 354.8
   },
   {
    "distance_m": 2900.8,
@@ -5020,7 +5020,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.7,
-   "realtime_factor": 480.6
+   "realtime_factor": 471.8
   },
   {
    "distance_m": 2900.7,
@@ -5045,7 +5045,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.8,
-   "realtime_factor": 525.0
+   "realtime_factor": 400.0
   },
   {
    "distance_m": 2897.7,
@@ -5070,7 +5070,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.2,
-   "realtime_factor": 517.0
+   "realtime_factor": 479.8
   },
   {
    "distance_m": 2893.6,
@@ -5095,7 +5095,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.7,
-   "realtime_factor": 467.4
+   "realtime_factor": 454.3
   },
   {
    "distance_m": 2930.9,
@@ -5120,7 +5120,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 291.3,
-   "realtime_factor": 450.2
+   "realtime_factor": 433.7
   },
   {
    "distance_m": 2910.3,
@@ -5145,7 +5145,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.8,
-   "realtime_factor": 467.7
+   "realtime_factor": 495.1
   },
   {
    "distance_m": 2906.8,
@@ -5170,7 +5170,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.5,
-   "realtime_factor": 548.5
+   "realtime_factor": 514.2
   },
   {
    "distance_m": 2897.8,
@@ -5195,7 +5195,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.4,
-   "realtime_factor": 499.6
+   "realtime_factor": 464.0
   },
   {
    "distance_m": 2896.4,
@@ -5220,24 +5220,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.0,
-   "realtime_factor": 580.8
+   "realtime_factor": 452.9
   },
   {
-   "distance_m": 2898.5,
-   "score_log10": 3.561,
+   "distance_m": 2894.2,
+   "score_log10": 3.562,
    "mae_m": {
-    "0-250": 10.82,
-    "250-500": 135.5,
-    "500-1000": 968.6,
-    "1000-2000": 7507.44,
-    "2000+": 29983.25
+    "0-250": 10.83,
+    "250-500": 137.1,
+    "500-1000": 977.06,
+    "1000-2000": 7547.67,
+    "2000+": 30032.78
    },
-   "lost_at_m": 269.5,
+   "lost_at_m": 269.0,
    "lost": true,
    "growth_k": 2.89,
-   "max_error_m": 47659.8,
+   "max_error_m": 47658.0,
    "integrity": false,
-   "xy_rmse_m": 18164.66,
+   "xy_rmse_m": 18164.22,
    "z_rmse_m": 0.54,
    "scenario": "rotterdam",
    "run": 0,
@@ -5245,24 +5245,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.5,
-   "realtime_factor": 873.4
+   "realtime_factor": 552.4
   },
   {
-   "distance_m": 2907.8,
-   "score_log10": 3.459,
+   "distance_m": 2894.8,
+   "score_log10": 3.46,
    "mae_m": {
-    "0-250": 7.38,
-    "250-500": 104.2,
-    "500-1000": 805.89,
-    "1000-2000": 5865.68,
-    "2000+": 22658.94
+    "0-250": 7.59,
+    "250-500": 106.62,
+    "500-1000": 829.1,
+    "1000-2000": 5986.52,
+    "2000+": 22797.8
    },
-   "lost_at_m": 302.8,
+   "lost_at_m": 300.4,
    "lost": true,
    "growth_k": 2.9,
-   "max_error_m": 35301.8,
+   "max_error_m": 35302.0,
    "integrity": false,
-   "xy_rmse_m": 13821.67,
+   "xy_rmse_m": 13821.63,
    "z_rmse_m": 0.56,
    "scenario": "rotterdam",
    "run": 1,
@@ -5270,24 +5270,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 359.6,
-   "realtime_factor": 979.3
+   "realtime_factor": 905.2
   },
   {
-   "distance_m": 2872.0,
+   "distance_m": 2871.8,
    "score_log10": 3.352,
    "mae_m": {
     "0-250": 6.89,
     "250-500": 93.14,
-    "500-1000": 678.95,
-    "1000-2000": 4945.37,
-    "2000+": 16268.11
+    "500-1000": 678.89,
+    "1000-2000": 4949.25,
+    "2000+": 16273.78
    },
-   "lost_at_m": 313.3,
+   "lost_at_m": 313.2,
    "lost": true,
    "growth_k": 2.82,
-   "max_error_m": 23215.3,
+   "max_error_m": 23215.1,
    "integrity": false,
-   "xy_rmse_m": 9778.97,
+   "xy_rmse_m": 9778.88,
    "z_rmse_m": 0.32,
    "scenario": "rotterdam",
    "run": 2,
@@ -5295,24 +5295,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 358.9,
-   "realtime_factor": 930.9
+   "realtime_factor": 958.2
   },
   {
-   "distance_m": 2894.1,
-   "score_log10": 3.33,
+   "distance_m": 2889.9,
+   "score_log10": 3.329,
    "mae_m": {
-    "0-250": 4.96,
-    "250-500": 79.09,
-    "500-1000": 595.18,
-    "1000-2000": 4496.67,
-    "2000+": 18325.25
+    "0-250": 4.94,
+    "250-500": 79.26,
+    "500-1000": 596.8,
+    "1000-2000": 4507.27,
+    "2000+": 18341.65
    },
-   "lost_at_m": 334.6,
+   "lost_at_m": 335.3,
    "lost": true,
    "growth_k": 2.97,
-   "max_error_m": 29451.0,
+   "max_error_m": 29455.4,
    "integrity": false,
-   "xy_rmse_m": 11089.1,
+   "xy_rmse_m": 11089.55,
    "z_rmse_m": 0.98,
    "scenario": "rotterdam",
    "run": 3,
@@ -5320,24 +5320,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.3,
-   "realtime_factor": 1011.5
+   "realtime_factor": 964.1
   },
   {
-   "distance_m": 2879.3,
+   "distance_m": 2873.4,
    "score_log10": 3.54,
    "mae_m": {
     "0-250": 9.13,
-    "250-500": 129.61,
+    "250-500": 129.6,
     "500-1000": 983.7,
-    "1000-2000": 7467.43,
-    "2000+": 29277.78
+    "1000-2000": 7467.54,
+    "2000+": 29278.19
    },
    "lost_at_m": 280.4,
    "lost": true,
    "growth_k": 2.93,
-   "max_error_m": 46262.1,
+   "max_error_m": 46261.8,
    "integrity": false,
-   "xy_rmse_m": 17562.92,
+   "xy_rmse_m": 17563.17,
    "z_rmse_m": 0.71,
    "scenario": "rotterdam",
    "run": 4,
@@ -5345,24 +5345,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 358.4,
-   "realtime_factor": 1138.4
+   "realtime_factor": 980.0
   },
   {
-   "distance_m": 2884.6,
-   "score_log10": 3.63,
+   "distance_m": 2883.8,
+   "score_log10": 3.629,
    "mae_m": {
-    "0-250": 8.32,
-    "250-500": 139.47,
-    "500-1000": 1187.51,
-    "1000-2000": 9558.29,
-    "2000+": 37334.36
+    "0-250": 8.33,
+    "250-500": 139.46,
+    "500-1000": 1187.45,
+    "1000-2000": 9566.07,
+    "2000+": 37347.79
    },
    "lost_at_m": 280.8,
    "lost": true,
    "growth_k": 3.05,
-   "max_error_m": 57915.6,
+   "max_error_m": 57912.6,
    "integrity": false,
-   "xy_rmse_m": 22472.69,
+   "xy_rmse_m": 22471.48,
    "z_rmse_m": 0.38,
    "scenario": "rotterdam",
    "run": 5,
@@ -5370,24 +5370,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.2,
-   "realtime_factor": 734.4
+   "realtime_factor": 852.6
   },
   {
-   "distance_m": 2927.9,
-   "score_log10": 3.327,
+   "distance_m": 2921.6,
+   "score_log10": 3.328,
    "mae_m": {
-    "0-250": 5.71,
-    "250-500": 88.21,
-    "500-1000": 669.67,
-    "1000-2000": 4178.83,
-    "2000+": 15322.83
+    "0-250": 5.72,
+    "250-500": 88.23,
+    "500-1000": 672.26,
+    "1000-2000": 4209.85,
+    "2000+": 15372.68
    },
-   "lost_at_m": 322.5,
+   "lost_at_m": 322.4,
    "lost": true,
-   "growth_k": 2.8,
-   "max_error_m": 24591.0,
+   "growth_k": 2.81,
+   "max_error_m": 24592.8,
    "integrity": false,
-   "xy_rmse_m": 9466.75,
+   "xy_rmse_m": 9467.13,
    "z_rmse_m": 0.5,
    "scenario": "rotterdam",
    "run": 6,
@@ -5395,24 +5395,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 361.7,
-   "realtime_factor": 936.6
+   "realtime_factor": 958.1
   },
   {
-   "distance_m": 2975.6,
-   "score_log10": 3.435,
+   "distance_m": 2960.1,
+   "score_log10": 3.4,
    "mae_m": {
-    "0-250": 7.64,
-    "250-500": 97.3,
-    "500-1000": 705.58,
-    "1000-2000": 5043.26,
-    "2000+": 21922.77
+    "0-250": 7.71,
+    "250-500": 97.8,
+    "500-1000": 706.47,
+    "1000-2000": 4622.91,
+    "2000+": 18719.29
    },
-   "lost_at_m": 306.5,
+   "lost_at_m": 304.7,
    "lost": true,
-   "growth_k": 2.87,
-   "max_error_m": 36447.6,
+   "growth_k": 2.79,
+   "max_error_m": 31194.1,
    "integrity": false,
-   "xy_rmse_m": 13854.51,
+   "xy_rmse_m": 11784.93,
    "z_rmse_m": 0.49,
    "scenario": "rotterdam",
    "run": 7,
@@ -5420,24 +5420,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.8,
-   "realtime_factor": 881.6
+   "realtime_factor": 966.9
   },
   {
-   "distance_m": 2908.3,
+   "distance_m": 2908.1,
    "score_log10": 3.262,
    "mae_m": {
     "0-250": 6.22,
-    "250-500": 80.49,
-    "500-1000": 595.7,
-    "1000-2000": 3540.12,
-    "2000+": 12731.52
+    "250-500": 80.47,
+    "500-1000": 595.63,
+    "1000-2000": 3540.07,
+    "2000+": 12731.36
    },
-   "lost_at_m": 328.9,
+   "lost_at_m": 328.8,
    "lost": true,
    "growth_k": 2.72,
-   "max_error_m": 20299.5,
+   "max_error_m": 20299.3,
    "integrity": false,
-   "xy_rmse_m": 7790.67,
+   "xy_rmse_m": 7790.57,
    "z_rmse_m": 0.34,
    "scenario": "rotterdam",
    "run": 8,
@@ -5445,24 +5445,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 363.4,
-   "realtime_factor": 965.8
+   "realtime_factor": 936.2
   },
   {
-   "distance_m": 2889.3,
+   "distance_m": 2888.7,
    "score_log10": 3.587,
    "mae_m": {
     "0-250": 10.01,
-    "250-500": 142.17,
-    "500-1000": 1090.97,
-    "1000-2000": 8351.39,
-    "2000+": 30865.85
+    "250-500": 142.2,
+    "500-1000": 1090.91,
+    "1000-2000": 8358.19,
+    "2000+": 30877.64
    },
    "lost_at_m": 271.4,
    "lost": true,
    "growth_k": 2.92,
-   "max_error_m": 48092.8,
+   "max_error_m": 48091.8,
    "integrity": false,
-   "xy_rmse_m": 18675.43,
+   "xy_rmse_m": 18675.1,
    "z_rmse_m": 0.36,
    "scenario": "rotterdam",
    "run": 9,
@@ -5470,24 +5470,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.9,
-   "realtime_factor": 1016.0
+   "realtime_factor": 1066.7
   },
   {
-   "distance_m": 2951.7,
+   "distance_m": 2939.6,
    "score_log10": 3.115,
    "mae_m": {
     "0-250": 2.75,
     "250-500": 47.81,
-    "500-1000": 378.95,
-    "1000-2000": 2696.86,
-    "2000+": 9575.25
+    "500-1000": 381.13,
+    "1000-2000": 2728.63,
+    "2000+": 9607.08
    },
    "lost_at_m": 395.4,
    "lost": true,
    "growth_k": 2.91,
-   "max_error_m": 14017.1,
+   "max_error_m": 13998.2,
    "integrity": false,
-   "xy_rmse_m": 5919.98,
+   "xy_rmse_m": 5912.15,
    "z_rmse_m": 0.38,
    "scenario": "rotterdam",
    "run": 10,
@@ -5495,24 +5495,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 362.9,
-   "realtime_factor": 883.0
+   "realtime_factor": 873.1
   },
   {
-   "distance_m": 2894.0,
+   "distance_m": 2891.3,
    "score_log10": 3.527,
    "mae_m": {
-    "0-250": 9.73,
-    "250-500": 140.7,
-    "500-1000": 1023.32,
-    "1000-2000": 6884.94,
-    "2000+": 24900.51
+    "0-250": 9.74,
+    "250-500": 140.79,
+    "500-1000": 1031.71,
+    "1000-2000": 6920.5,
+    "2000+": 24928.97
    },
    "lost_at_m": 273.2,
    "lost": true,
    "growth_k": 2.82,
-   "max_error_m": 37805.0,
+   "max_error_m": 37804.5,
    "integrity": false,
-   "xy_rmse_m": 15091.94,
+   "xy_rmse_m": 15091.37,
    "z_rmse_m": 0.63,
    "scenario": "rotterdam",
    "run": 11,
@@ -5520,24 +5520,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.2,
-   "realtime_factor": 930.0
+   "realtime_factor": 952.1
   },
   {
-   "distance_m": 2895.1,
+   "distance_m": 2889.3,
    "score_log10": 2.786,
    "mae_m": {
     "0-250": 1.6,
-    "250-500": 22.71,
-    "500-1000": 181.88,
-    "1000-2000": 1362.34,
-    "2000+": 4539.88
+    "250-500": 22.8,
+    "500-1000": 182.34,
+    "1000-2000": 1363.97,
+    "2000+": 4542.21
    },
-   "lost_at_m": 507.1,
+   "lost_at_m": 506.1,
    "lost": true,
    "growth_k": 2.87,
-   "max_error_m": 6698.2,
+   "max_error_m": 6699.8,
    "integrity": false,
-   "xy_rmse_m": 2742.7,
+   "xy_rmse_m": 2743.07,
    "z_rmse_m": 0.35,
    "scenario": "rotterdam",
    "run": 12,
@@ -5545,24 +5545,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 358.8,
-   "realtime_factor": 925.2
+   "realtime_factor": 956.3
   },
   {
-   "distance_m": 2886.9,
-   "score_log10": 3.341,
+   "distance_m": 2886.7,
+   "score_log10": 3.342,
    "mae_m": {
-    "0-250": 5.38,
-    "250-500": 78.64,
-    "500-1000": 596.42,
-    "1000-2000": 4718.68,
-    "2000+": 19009.72
+    "0-250": 5.39,
+    "250-500": 78.68,
+    "500-1000": 596.4,
+    "1000-2000": 4723.0,
+    "2000+": 19017.9
    },
-   "lost_at_m": 334.1,
+   "lost_at_m": 334.0,
    "lost": true,
    "growth_k": 2.97,
-   "max_error_m": 30338.5,
+   "max_error_m": 30339.0,
    "integrity": false,
-   "xy_rmse_m": 11474.49,
+   "xy_rmse_m": 11474.57,
    "z_rmse_m": 0.33,
    "scenario": "rotterdam",
    "run": 13,
@@ -5570,24 +5570,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.7,
-   "realtime_factor": 1003.9
+   "realtime_factor": 957.9
   },
   {
-   "distance_m": 2902.5,
+   "distance_m": 2901.7,
    "score_log10": 2.91,
    "mae_m": {
     "0-250": 2.16,
     "250-500": 31.86,
     "500-1000": 230.63,
-    "1000-2000": 1656.54,
-    "2000+": 6611.04
+    "1000-2000": 1657.86,
+    "2000+": 6613.58
    },
    "lost_at_m": 451.6,
    "lost": true,
    "growth_k": 2.89,
-   "max_error_m": 10692.4,
+   "max_error_m": 10692.1,
    "integrity": false,
-   "xy_rmse_m": 4023.36,
+   "xy_rmse_m": 4023.2,
    "z_rmse_m": 0.34,
    "scenario": "rotterdam",
    "run": 14,
@@ -5595,24 +5595,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 361.9,
-   "realtime_factor": 1087.7
+   "realtime_factor": 1067.4
   },
   {
-   "distance_m": 2883.7,
+   "distance_m": 2881.0,
    "score_log10": 3.024,
    "mae_m": {
-    "0-250": 2.66,
-    "250-500": 37.64,
-    "500-1000": 288.6,
-    "1000-2000": 2273.76,
-    "2000+": 8910.48
+    "0-250": 2.68,
+    "250-500": 38.15,
+    "500-1000": 291.82,
+    "1000-2000": 2287.68,
+    "2000+": 8926.16
    },
-   "lost_at_m": 426.8,
+   "lost_at_m": 425.1,
    "lost": true,
-   "growth_k": 2.96,
-   "max_error_m": 13884.5,
+   "growth_k": 2.95,
+   "max_error_m": 13885.7,
    "integrity": false,
-   "xy_rmse_m": 5371.19,
+   "xy_rmse_m": 5371.75,
    "z_rmse_m": 0.37,
    "scenario": "rotterdam",
    "run": 15,
@@ -5620,24 +5620,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 359.5,
-   "realtime_factor": 761.4
+   "realtime_factor": 881.7
   },
   {
-   "distance_m": 2905.7,
-   "score_log10": 3.093,
+   "distance_m": 2901.5,
+   "score_log10": 3.094,
    "mae_m": {
-    "0-250": 1.8,
-    "250-500": 36.96,
-    "500-1000": 348.86,
-    "1000-2000": 2788.39,
-    "2000+": 10833.62
+    "0-250": 1.81,
+    "250-500": 37.29,
+    "500-1000": 350.34,
+    "1000-2000": 2802.92,
+    "2000+": 10857.17
    },
-   "lost_at_m": 427.9,
+   "lost_at_m": 425.9,
    "lost": true,
    "growth_k": 3.11,
-   "max_error_m": 16747.5,
+   "max_error_m": 16750.0,
    "integrity": false,
-   "xy_rmse_m": 6586.82,
+   "xy_rmse_m": 6587.77,
    "z_rmse_m": 0.33,
    "scenario": "rotterdam",
    "run": 16,
@@ -5645,24 +5645,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.7,
-   "realtime_factor": 917.8
+   "realtime_factor": 960.9
   },
   {
-   "distance_m": 2882.7,
+   "distance_m": 2882.2,
    "score_log10": 3.483,
    "mae_m": {
-    "0-250": 11.53,
-    "250-500": 154.94,
-    "500-1000": 1092.87,
-    "1000-2000": 6000.48,
-    "2000+": 18813.7
+    "0-250": 11.54,
+    "250-500": 154.93,
+    "500-1000": 1094.46,
+    "1000-2000": 6007.85,
+    "2000+": 18822.59
    },
-   "lost_at_m": 262.3,
+   "lost_at_m": 262.1,
    "lost": true,
    "growth_k": 2.62,
-   "max_error_m": 28693.4,
+   "max_error_m": 28696.2,
    "integrity": false,
-   "xy_rmse_m": 11466.43,
+   "xy_rmse_m": 11467.48,
    "z_rmse_m": 0.7,
    "scenario": "rotterdam",
    "run": 17,
@@ -5670,24 +5670,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.2,
-   "realtime_factor": 959.4
+   "realtime_factor": 941.8
   },
   {
-   "distance_m": 2868.6,
+   "distance_m": 2868.2,
    "score_log10": 3.425,
    "mae_m": {
     "0-250": 6.69,
     "250-500": 97.67,
-    "500-1000": 785.57,
-    "1000-2000": 6100.08,
-    "2000+": 20358.9
+    "500-1000": 785.59,
+    "1000-2000": 6100.15,
+    "2000+": 20359.12
    },
    "lost_at_m": 311.0,
    "lost": true,
    "growth_k": 2.92,
-   "max_error_m": 29480.8,
+   "max_error_m": 29481.1,
    "integrity": false,
-   "xy_rmse_m": 12226.27,
+   "xy_rmse_m": 12226.39,
    "z_rmse_m": 0.44,
    "scenario": "rotterdam",
    "run": 18,
@@ -5695,24 +5695,24 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 358.4,
-   "realtime_factor": 971.6
+   "realtime_factor": 984.8
   },
   {
-   "distance_m": 2892.7,
+   "distance_m": 2892.3,
    "score_log10": 3.378,
    "mae_m": {
-    "0-250": 6.77,
-    "250-500": 88.04,
-    "500-1000": 698.44,
-    "1000-2000": 4965.7,
-    "2000+": 19061.36
+    "0-250": 6.78,
+    "250-500": 88.02,
+    "500-1000": 698.23,
+    "1000-2000": 4969.22,
+    "2000+": 19067.95
    },
-   "lost_at_m": 319.6,
+   "lost_at_m": 319.5,
    "lost": true,
    "growth_k": 2.88,
-   "max_error_m": 30653.4,
+   "max_error_m": 30651.7,
    "integrity": false,
-   "xy_rmse_m": 11565.0,
+   "xy_rmse_m": 11564.14,
    "z_rmse_m": 0.33,
    "scenario": "rotterdam",
    "run": 19,
@@ -5720,7 +5720,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 361.4,
-   "realtime_factor": 1038.2
+   "realtime_factor": 1108.7
   },
   {
    "distance_m": 2901.5,
@@ -5745,7 +5745,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.5,
-   "realtime_factor": 478.7
+   "realtime_factor": 534.6
   },
   {
    "distance_m": 2880.3,
@@ -5770,7 +5770,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.9,
-   "realtime_factor": 510.2
+   "realtime_factor": 533.1
   },
   {
    "distance_m": 2912.0,
@@ -5795,7 +5795,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.5,
-   "realtime_factor": 520.8
+   "realtime_factor": 446.9
   },
   {
    "distance_m": 2900.2,
@@ -5820,7 +5820,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.9,
-   "realtime_factor": 519.6
+   "realtime_factor": 456.0
   },
   {
    "distance_m": 2871.1,
@@ -5845,7 +5845,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 286.9,
-   "realtime_factor": 699.1
+   "realtime_factor": 671.2
   },
   {
    "distance_m": 2898.7,
@@ -5870,7 +5870,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 286.5,
-   "realtime_factor": 390.4
+   "realtime_factor": 458.7
   },
   {
    "distance_m": 2882.5,
@@ -5895,7 +5895,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.7,
-   "realtime_factor": 514.7
+   "realtime_factor": 411.0
   },
   {
    "distance_m": 2884.3,
@@ -5920,7 +5920,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.0,
-   "realtime_factor": 515.1
+   "realtime_factor": 367.3
   },
   {
    "distance_m": 2908.7,
@@ -5945,7 +5945,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.7,
-   "realtime_factor": 617.3
+   "realtime_factor": 635.0
   },
   {
    "distance_m": 2901.2,
@@ -5970,7 +5970,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.6,
-   "realtime_factor": 766.9
+   "realtime_factor": 727.2
   },
   {
    "distance_m": 2896.7,
@@ -5995,7 +5995,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.7,
-   "realtime_factor": 494.4
+   "realtime_factor": 469.1
   },
   {
    "distance_m": 2890.2,
@@ -6020,7 +6020,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.2,
-   "realtime_factor": 556.1
+   "realtime_factor": 384.6
   },
   {
    "distance_m": 2878.8,
@@ -6045,7 +6045,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.2,
-   "realtime_factor": 572.2
+   "realtime_factor": 665.6
   },
   {
    "distance_m": 2942.1,
@@ -6070,7 +6070,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.0,
-   "realtime_factor": 729.1
+   "realtime_factor": 758.4
   },
   {
    "distance_m": 2934.3,
@@ -6095,7 +6095,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.3,
-   "realtime_factor": 664.5
+   "realtime_factor": 528.7
   },
   {
    "distance_m": 2881.2,
@@ -6120,7 +6120,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.2,
-   "realtime_factor": 531.2
+   "realtime_factor": 372.6
   },
   {
    "distance_m": 2886.8,
@@ -6145,7 +6145,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.4,
-   "realtime_factor": 583.1
+   "realtime_factor": 587.0
   },
   {
    "distance_m": 2909.8,
@@ -6170,7 +6170,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.2,
-   "realtime_factor": 737.7
+   "realtime_factor": 716.0
   },
   {
    "distance_m": 2899.0,
@@ -6195,7 +6195,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.5,
-   "realtime_factor": 648.7
+   "realtime_factor": 704.7
   },
   {
    "distance_m": 2953.3,
@@ -6220,7 +6220,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 290.0,
-   "realtime_factor": 221.7
+   "realtime_factor": 499.6
   }
  ]
 }

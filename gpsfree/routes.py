@@ -8,7 +8,7 @@ from gpsfree.paths import ROUTES
 from gpsfree.trajectory import Route, horizontal_distance
 
 PLATFORMS = {
-    "drone": {"speed": 10.0, "length": 3000.0, "segment": 150.0, "max_turn": np.radians(50)},
+    "drone": {"speed": (5.0, 15.0), "agl": (30.0, 150.0), "length": 3000.0, "segment": 150.0, "max_turn": np.radians(50)},
     "walker": {"speed": 1.4, "length": 1200.0, "segment": 15.0, "max_turn": np.radians(70)},
 }
 DEVICE_HEIGHT = 1.2  # walker carries the sensors at hand height
@@ -25,7 +25,7 @@ def _walker_ok(world, a, b):
     return world.raycast([origin], [np.r_[seg / length, 0]], length + 2)[0] == np.inf
 
 
-ROUTE_GENERATOR_VERSION = 2
+ROUTE_GENERATOR_VERSION = 3
 
 
 def generate_route(world, platform: str, name: str, seed: int, style: dict | None = None) -> Route:
@@ -65,14 +65,15 @@ def generate_route(world, platform: str, name: str, seed: int, style: dict | Non
     curve = CubicSpline(chord, pts)
     dense = curve(np.linspace(0, chord[-1], int(chord[-1] / 0.5)))
     arc = horizontal_distance(np.c_[dense, np.zeros(len(dense))])
-    t = np.arange(0, arc[-1] / cfg["speed"], 0.1)
-    xy = np.c_[np.interp(t * cfg["speed"], arc, dense[:, 0]), np.interp(t * cfg["speed"], arc, dense[:, 1])]
+    speed = rng.uniform(*cfg["speed"]) if isinstance(cfg["speed"], tuple) else cfg["speed"]
+    t = np.arange(0, arc[-1] / speed, 0.1)
+    xy = np.c_[np.interp(t * speed, arc, dense[:, 0]), np.interp(t * speed, arc, dense[:, 1])]
 
     if platform == "drone":
         top = world.height(xy)
-        agl = rng.uniform(*style.get("agl_m", (40, 100)))
-        # Smooth the cruise altitude over ~20 s windows but never below agl above anything.
-        k = 200
+        agl = rng.uniform(*style.get("agl_m", cfg["agl"]))
+        # Smooth the cruise altitude over ~400 m windows but never below agl above anything.
+        k = int(200 / (speed * 0.1))
         pad = np.pad(top, k, mode="edge")
         clearance = np.array([pad[i:i + 2 * k + 1].max() for i in range(len(top))])
         z = np.convolve(np.pad(clearance, k, mode="edge"), np.ones(2 * k + 1) / (2 * k + 1), "valid") + agl
@@ -84,16 +85,31 @@ def generate_route(world, platform: str, name: str, seed: int, style: dict | Non
     return Route(name, world.id, platform, t, np.c_[xy, z], yaw, source="generated")
 
 
-def generate_all(world, per_platform: int = 3):
+def generate_all(world, per_platform: int = 3, platforms=None, oversample: int = 4):
+    """Legacy fixed route files in benchmark/routes (not used by the scenario suite). Draws oversample x
+    per_platform candidates per platform and keeps per_platform of them spread evenly over terrain ruggedness
+    (mean ground slope under the path), so flat and rugged ground are both covered."""
     paths = []
-    for platform in PLATFORMS:
-        for k in range(per_platform):
-            name = f"{platform}-gen{k}"
-            route = generate_route(world, platform, name, seed=stable_seed(world.id, platform, k))
-            path = ROUTES / world.id / f"{name}.json"
+    for platform in platforms or PLATFORMS:
+        for old in (ROUTES / world.id).glob(f"{platform}-gen*.json"):
+            old.unlink()
+        cands = [generate_route(world, platform, "", seed=stable_seed(world.id, platform, k))
+                 for k in range(per_platform * oversample)]
+        rugged = np.array([ruggedness(world, r) for r in cands])
+        keep = np.argsort(rugged)[np.linspace(0, len(cands) - 1, per_platform).round().astype(int)]
+        for k, i in enumerate(keep):
+            route = cands[i]
+            route.name = f"{platform}-gen{k}"
+            path = ROUTES / world.id / f"{route.name}.json"
             route.save(path)
             paths.append(path)
     return paths
+
+
+def ruggedness(world, route) -> float:
+    xy = route.position[::10, :2]
+    ground = world.height(xy, ground_only=True)
+    return float(np.mean(np.abs(np.diff(ground)) / np.maximum(np.linalg.norm(np.diff(xy, axis=0), axis=1), 1e-6)))
 
 
 def scenario_route(scenario: dict, index: int, world) -> Route:
