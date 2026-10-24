@@ -17,7 +17,7 @@ jobs:
         id: changed
         run: |
           exps=$(git diff --name-only "${{ github.event.pull_request.base.sha }}...HEAD" \
-            | grep -oE '^experiments/[^/]+' | sort -u \
+            | grep -vE '\.md$' | grep -oE '^experiments/[^/]+' | sort -u \
             | while read d; do [ -f "$d/algo.py" ] && basename "$d"; done | xargs)
           echo "experiments: ${exps:-none}"
           echo "list=$exps" >> "$GITHUB_OUTPUT"
