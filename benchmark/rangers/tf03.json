@@ -1,0 +1,14 @@
+{
+ "part": "Benewake TF03-180 single-beam laser rangefinder, pointing straight down",
+ "rate_hz": 10,
+ "max_range_m": 100,
+ "_max_range_m": "Datasheet: 100 m operating range, 180 m maximum on bright targets; natural ground is dark, so 100 m.",
+ "noise_m": 0.1,
+ "noise_frac": 0.01,
+ "_noise": "Datasheet accuracy: +-10 cm below 10 m, 1% beyond 10 m. Output decimated to 10 Hz from 100 Hz.",
+ "dropout": 0.02,
+ "pattern": {"azimuths": 0, "elevations_deg": [], "down": true},
+ "_source": "https://www.robotshop.com/products/benewake-tf03-lidar-led-rangefinder-ip67-180-m",
+ "price_usd": 229.0,
+ "_price": "Acroname, qty 1, 2026-10: https://acroname.com/node/570"
+}

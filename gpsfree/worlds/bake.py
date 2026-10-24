@@ -181,14 +181,17 @@ def bake_terrain(cfg, out: Path, raw: dict, step=15.0):
     ex, ey = _mercator_px(lat, lon, elev["z"])
     h = sample(ex - elev["x0"] * 256, ey - elev["y0"] * 256)
     cx, cy = _mercator_px(np.array(cfg["lat"]), np.array(cfg["lon"]), elev["z"])
-    h -= float(sample(cx - elev["x0"] * 256, cy - elev["y0"] * 256))
+    h0 = float(sample(cx - elev["x0"] * 256, cy - elev["y0"] * 256))
+    if cfg.get("sea_level"):
+        h, h0 = np.maximum(h, 0.0), max(h0, 0.0)
+    h -= h0
     gv, gf = _grid_mesh(xs, xs, h)
 
     tex = _mosaic(out / "img", img, "jpg")
     ix, iy = _mercator_px(lat, lon, img["z"])
     uv = np.c_[((ix - img["x0"] * 256) / tex.width).ravel(), ((iy - img["y0"] * 256) / tex.height).ravel()]
     tex.save(out / "texture.jpg", quality=85)
-    return {"ground": (gv, gf, uv), "buildings": (np.zeros((0, 3)), np.zeros((0, 3), dtype=np.int64))}
+    return {"ground": (gv, gf, uv), "buildings": (np.zeros((0, 3)), np.zeros((0, 3), dtype=np.int64)), "grid": (xs, h)}
 
 
 # --------------------------------------------------------------------- output
@@ -243,16 +246,152 @@ def _write_glb(path: Path, meshes: dict, texture: str | None):
     path.write_bytes(glb)
 
 
+BAKE_VERSION = 2
+
+
+def _ground_sampler(xs, h):
+    """Bilinear height on the baked terrain grid (rows = y, cols = x, both = xs)."""
+    step = xs[1] - xs[0]
+
+    def f(x, y):
+        fx = np.clip((np.asarray(x) - xs[0]) / step, 0, len(xs) - 1.001)
+        fy = np.clip((np.asarray(y) - xs[0]) / step, 0, len(xs) - 1.001)
+        x0, y0 = fx.astype(int), fy.astype(int)
+        tx, ty = fx - x0, fy - y0
+        return ((h[y0, x0] * (1 - tx) + h[y0, x0 + 1] * tx) * (1 - ty) + (h[y0 + 1, x0] * (1 - tx) + h[y0 + 1, x0 + 1] * tx) * ty)
+    return f
+
+
+def _to_enu(cfg):
+    m_per_deg = math.pi * 6378137.0 / 180
+    c = math.cos(math.radians(cfg["lat"]))
+    return lambda ll: np.c_[(np.asarray(ll)[:, 0] - cfg["lon"]) * m_per_deg * c, (np.asarray(ll)[:, 1] - cfg["lat"]) * m_per_deg]
+
+
+def _osm_buildings(cfg, osm, ground, rng):
+    """Extrude OSM footprints: earcut roof + walls, base sunk 1 m under the lowest corner.
+    Heights: OSM tag, else a seeded guess by building type. Returns verts, faces, per-face building id."""
+    import mapbox_earcut as earcut
+    from shapely.geometry import Polygon
+    enu, half = _to_enu(cfg), cfg["radius"] * 1.05
+    V, F, ids, n = [], [], [], 0
+    guess = {"house": (5, 8), "detached": (5, 8), "garage": (2.5, 3.5), "shed": (2.5, 3.5), "apartments": (12, 30),
+             "commercial": (8, 20), "industrial": (6, 14), "retail": (5, 12), "church": (12, 30)}
+    for bid, (ring, height, kind) in enumerate(osm["buildings"]):
+        xy = enu(ring)[:-1]
+        if len(xy) < 3 or np.abs(xy).max() > half:
+            continue
+        poly = Polygon(xy)
+        if not poly.is_valid or poly.area < 4:
+            continue
+        if not poly.exterior.is_ccw:
+            xy = xy[::-1]
+        lo, hi = guess.get(kind, (4, 12))
+        hgt = height if height and 1 < height < 400 else rng.uniform(lo, hi)
+        g = ground(xy[:, 0], xy[:, 1])
+        base, top = g.min() - 1.0, g.max() + hgt
+        tri = earcut.triangulate_float64(xy, np.array([len(xy)], dtype=np.uint32)).reshape(-1, 3)
+        k = len(xy)
+        verts = np.r_[np.c_[xy, np.full(k, base)], np.c_[xy, np.full(k, top)]]
+        i = np.arange(k)
+        j = (i + 1) % k
+        walls = np.r_[np.c_[i, j, j + k], np.c_[i, j + k, i + k]]
+        faces = np.r_[tri + k, walls]
+        V.append(verts)
+        F.append(faces + n)
+        ids.append(np.full(len(faces), bid))
+        n += len(verts)
+    if not V:
+        return np.zeros((0, 3)), np.zeros((0, 3), dtype=np.int64), np.zeros(0, dtype=np.int64)
+    return np.concatenate(V), np.concatenate(F), np.concatenate(ids)
+
+
+MAX_TREES = 250_000
+
+
+def _osm_trees(cfg, osm, ground, rng):
+    """Tree list (x, y, ground z, height, crown radius) from forest polygons plus seeded scattered trees.
+    Forest density follows the world's canopy cover."""
+    from shapely import contains_xy
+    from shapely.geometry import Polygon, box
+    from shapely.ops import unary_union
+    t = cfg.get("trees")
+    if not t:
+        return np.zeros((0, 5))
+    enu, R = _to_enu(cfg), cfg["radius"]
+    area_box = box(-R, -R, R, R)
+    r_mean = float(np.mean(t["crown_r_m"]))
+    pts = []
+    polys = []
+    for rings in osm["forests"]:
+        p = Polygon(enu(rings[0]), [enu(h) for h in rings[1:]])
+        if not p.is_valid:
+            p = p.buffer(0)
+        if not p.is_empty:
+            polys.append(p.intersection(area_box))
+    if polys:
+        forest = unary_union(polys)
+        n = int(t["forest_cover"] * forest.area / (np.pi * r_mean ** 2))
+        if n:
+            x0, y0, x1, y1 = forest.bounds
+            cand = rng.uniform([x0, y0], [x1, y1], (int(n * (x1 - x0) * (y1 - y0) / max(forest.area, 1) * 1.2) + 10, 2))
+            inside = cand[contains_xy(forest, cand[:, 0], cand[:, 1])]
+            pts.append(inside[:n])
+    n_sc = int(t.get("scatter_per_ha", 0) * (2 * R) ** 2 / 1e4)
+    if n_sc:
+        pts.append(rng.uniform(-R, R, (n_sc, 2)))
+    xy = np.concatenate(pts) if pts else np.zeros((0, 2))
+    xy = xy[(np.abs(xy) < R).all(1)]
+    if len(xy) > MAX_TREES:
+        xy = xy[rng.choice(len(xy), MAX_TREES, replace=False)]
+    h = rng.uniform(*t["height_m"], len(xy))
+    r = rng.uniform(*t["crown_r_m"], len(xy))
+    return np.c_[xy, ground(xy[:, 0], xy[:, 1]), h, r]
+
+
+def tree_mesh(trees):
+    """Square pyramids: crown from 25% of the height to the top (4 faces per tree, open base)."""
+    if len(trees) == 0:
+        return np.zeros((0, 3)), np.zeros((0, 3), dtype=np.int64)
+    x, y, g, h, r = trees.T
+    zb, zt = g + 0.25 * h, g + h
+    ring = np.stack([np.c_[x + r, y, zb], np.c_[x, y + r, zb], np.c_[x - r, y, zb], np.c_[x, y - r, zb], np.c_[x, y, zt]], 1)
+    k = np.arange(len(trees))[:, None, None] * 5
+    faces = np.array([[0, 1, 4], [1, 2, 4], [2, 3, 4], [3, 0, 4]])[None] + k
+    return ring.reshape(-1, 3), faces.reshape(-1, 3)
+
+
 def bake(world_id: str, cfg: dict, out: Path, raw: dict):
     meshes = (bake_city if cfg["kind"] == "city" else bake_terrain)(cfg, out, raw)
     gv, gf = meshes["ground"][:2]
     bv, bf = meshes["buildings"]
+    bid = np.full(len(bf), -1)
+    trees = np.zeros((0, 5))
+    if cfg.get("layers"):
+        from gpsfree.worlds.overture import fetch_layers
+        osm = fetch_layers(world_id, cfg)
+        ground = _ground_sampler(*meshes["grid"])
+        rng = np.random.default_rng(zlib_seed(world_id))
+        bv, bf, bid = _osm_buildings(cfg, osm, ground, rng)
+        trees = _osm_trees(cfg, osm, ground, rng)
+        meshes["buildings"] = (bv, bf)
+    tv, tf = tree_mesh(trees)
+    meshes["trees"] = (tv, tf)
     np.savez_compressed(out / "world.npz", ground_v=gv.astype(np.float32), ground_f=gf.astype(np.int32),
-                        buildings_v=bv.astype(np.float32), buildings_f=bf.astype(np.int32))
+                        buildings_v=bv.astype(np.float32), buildings_f=bf.astype(np.int32), buildings_id=bid.astype(np.int32),
+                        trees=trees.astype(np.float32))
+    meshes.pop("grid", None)
     texture = "texture.jpg" if (out / "texture.jpg").exists() else None
     _write_glb(out / "world.glb", meshes, texture)
-    allv = np.r_[gv, bv]
-    meta = {"id": world_id, **cfg, "raw": raw, "bounds": [allv.min(0).tolist(), allv.max(0).tolist()],
-            "triangles": int(len(gf) + len(bf))}
+    allv = np.r_[gv, bv, tv]
+    meta = {"id": world_id, **cfg, "raw": raw, "bake_version": BAKE_VERSION,
+            "bounds": [allv.min(0).tolist(), allv.max(0).tolist()],
+            "triangles": int(len(gf) + len(bf) + len(tf)), "buildings": int(len(set(bid.tolist())) - (1 if -1 in bid else 0)),
+            "trees": int(len(trees))}
     (out / "meta.json").write_text(json.dumps(meta, indent=1))
     return meta
+
+
+def zlib_seed(*parts):
+    import zlib
+    return zlib.crc32("/".join(map(str, parts)).encode())

@@ -25,8 +25,15 @@ def _walker_ok(world, a, b):
     return world.raycast([origin], [np.r_[seg / length, 0]], length + 2)[0] == np.inf
 
 
-def generate_route(world, platform: str, name: str, seed: int) -> Route:
-    cfg = PLATFORMS[platform]
+ROUTE_GENERATOR_VERSION = 3
+
+
+def generate_route(world, platform: str, name: str, seed: int, style: dict | None = None) -> Route:
+    """style (drone): speed_mps, length_m, agl_m [lo, hi] override the platform defaults."""
+    cfg = dict(PLATFORMS[platform])
+    style = style or {}
+    cfg["speed"] = style.get("speed_mps", cfg["speed"])
+    cfg["length"] = style.get("length_m", cfg["length"])
     rng = np.random.default_rng(seed)
     limit = world.radius * 0.8
     for _attempt in range(50):
@@ -64,7 +71,7 @@ def generate_route(world, platform: str, name: str, seed: int) -> Route:
 
     if platform == "drone":
         top = world.height(xy)
-        agl = rng.uniform(*cfg["agl"])
+        agl = rng.uniform(*style.get("agl_m", cfg["agl"]))
         # Smooth the cruise altitude over ~400 m windows but never below agl above anything.
         k = int(200 / (speed * 0.1))
         pad = np.pad(top, k, mode="edge")
@@ -79,8 +86,9 @@ def generate_route(world, platform: str, name: str, seed: int) -> Route:
 
 
 def generate_all(world, per_platform: int = 3, platforms=None, oversample: int = 4):
-    """Draw oversample x per_platform candidates per platform and keep per_platform of them spread evenly over
-    terrain ruggedness (mean ground slope under the path), so flat and rugged ground are both covered."""
+    """Legacy fixed route files in benchmark/routes (not used by the scenario suite). Draws oversample x
+    per_platform candidates per platform and keeps per_platform of them spread evenly over terrain ruggedness
+    (mean ground slope under the path), so flat and rugged ground are both covered."""
     paths = []
     for platform in platforms or PLATFORMS:
         for old in (ROUTES / world.id).glob(f"{platform}-gen*.json"):
@@ -102,6 +110,19 @@ def ruggedness(world, route) -> float:
     xy = route.position[::10, :2]
     ground = world.height(xy, ground_only=True)
     return float(np.mean(np.abs(np.diff(ground)) / np.maximum(np.linalg.norm(np.diff(xy, axis=0), axis=1), 1e-6)))
+
+
+def scenario_route(scenario: dict, index: int, world) -> Route:
+    """Route `index` of a scenario: generated deterministically once, then cached in data/routes."""
+    from gpsfree.paths import DATA
+    sid = scenario["id"]
+    path = DATA / "routes" / f"v{ROUTE_GENERATOR_VERSION}" / sid / f"r{index:02d}.json"
+    if path.exists():
+        return Route.load(path)
+    route = generate_route(world, scenario["platform"], f"{sid}-r{index:02d}",
+                           seed=stable_seed("route", sid, index), style=scenario.get("route"))
+    route.save(path)
+    return route
 
 
 def stable_seed(*parts) -> int:

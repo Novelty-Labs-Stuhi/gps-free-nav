@@ -1,0 +1,15 @@
+{
+ "part": "Livox Avia scanning lidar, pointing straight down",
+ "rate_hz": 10,
+ "max_range_m": 190,
+ "_max_range_m": "Retailer datasheet copies: 190 m at 10% reflectivity.",
+ "noise_m": 0.02,
+ "noise_frac": 0.002,
+ "_noise": "ASSUMPTION from the datasheet class: about 2 cm range precision (1 sigma).",
+ "dropout": 0.05,
+ "pattern": {"azimuths": 16, "elevations_deg": [-55, -65, -78], "down": true},
+ "_pattern": "Non-repetitive 70.4 x 77.2 deg field of view around nadir: rings 12-35 deg from straight down plus nadir, 49 beams per frame.",
+ "_source": "https://openelab.io/blogs/learn/livox-avia-for-drone-mapping-and-slam-solid-state-lidar-explained",
+ "price_usd": 1599.0,
+ "_price": "ASSUMPTION: Livox list price for the Avia; no current official quote found in 2026-10."
+}

@@ -1,0 +1,30 @@
+{
+ "id": "carpathians",
+ "name": "Forested mountains",
+ "world": "carpathians",
+ "platform": "drone",
+ "description": "Steep forested mountains with a coarse global elevation map and strong wind.",
+ "route": {
+  "speed_mps": 10,
+  "length_m": 3000,
+  "agl_m": [
+   60,
+   120
+  ]
+ },
+ "map": {
+  "terrain_error_m": 3.0,
+  "terrain_error_corr_m": 300
+ },
+ "wind": {
+  "mean_mps": [
+   9,
+   13
+  ],
+  "gust_mps": 3.0
+ },
+ "start_offset_m": [
+  0,
+  0
+ ]
+}

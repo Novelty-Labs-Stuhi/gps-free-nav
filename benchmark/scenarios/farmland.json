@@ -1,0 +1,30 @@
+{
+ "id": "farmland",
+ "name": "Farmland and villages",
+ "world": "vinnytsia",
+ "platform": "drone",
+ "description": "Flat farmland, villages and tree lines; free global elevation map.",
+ "route": {
+  "speed_mps": 10,
+  "length_m": 3000,
+  "agl_m": [
+   40,
+   100
+  ]
+ },
+ "map": {
+  "terrain_error_m": 2.0,
+  "terrain_error_corr_m": 300
+ },
+ "wind": {
+  "mean_mps": [
+   0,
+   2
+  ],
+  "gust_mps": 0.5
+ },
+ "start_offset_m": [
+  0,
+  0
+ ]
+}

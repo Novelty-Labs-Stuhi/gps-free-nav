@@ -1,19 +1,57 @@
 {
-  "seeds": [0, 1],
-  "score_rate_hz": 10,
-  "worlds": ["yosemite"],
-  "platforms": ["drone"],
-  "score_from_m": 100,
-  "error_floor_m": 1,
-  "mae_bands_m": [0, 250, 500, 1000, 2000],
-  "lost_threshold_m": 50,
-  "sensors": {
-    "imu":  {"rate_hz": 100, "acc_noise": 0.05, "acc_bias_init": 0.03, "acc_bias_walk": 0.0005,
-             "gyro_noise": 0.003, "gyro_bias_init": 0.002, "gyro_bias_walk": 0.0001},
-    "mag":  {"rate_hz": 50, "noise_ut": 0.5, "hard_iron_ut": 2.0, "field_enu_ut": [0.0, 20.0, -45.0]},
-    "baro": {"rate_hz": 25, "noise_m": 0.3, "drift_m_per_sqrt_s": 0.02},
-    "echo": {"rate_hz": 10, "max_range_m": 200, "noise_m": 0.05, "noise_frac": 0.01, "dropout": 0.02,
-             "pattern": {"azimuths": 16, "elevations_deg": [-60, -30, 0, 30], "down": true}},
-    "step": {"stride_m": 0.72, "stride_noise_frac": 0.05}
+ "scenarios": [
+  "alpine",
+  "fells",
+  "boreal",
+  "archipelago",
+  "tampere",
+  "bordertown",
+  "kyiv",
+  "steppe",
+  "farmland",
+  "carpathians",
+  "rotterdam",
+  "desert"
+ ],
+ "runs_per_scenario": 20,
+ "default_ranger": "tf03",
+ "score_rate_hz": 10,
+ "score_from_m": 100,
+ "error_floor_m": 1,
+ "mae_bands_m": [
+  0,
+  250,
+  500,
+  1000,
+  2000
+ ],
+ "lost_threshold_m": 50,
+ "sensors": {
+  "imu": {
+   "rate_hz": 100,
+   "acc_noise": 0.05,
+   "acc_bias_init": 0.03,
+   "acc_bias_walk": 0.0005,
+   "gyro_noise": 0.003,
+   "gyro_bias_init": 0.002,
+   "gyro_bias_walk": 0.0001
+  },
+  "mag": {
+   "rate_hz": 50,
+   "noise_ut": 0.5,
+   "hard_iron_ut": 2.0,
+   "field_enu_ut": [
+    0.0,
+    20.0,
+    -45.0
+   ]
+  },
+  "baro": {
+   "rate_hz": 25,
+   "noise_m": 0.3,
+   "drift_m_per_sqrt_s": 0.02,
+   "airspeed_coeff": 0.02
   }
+ },
+ "error_cap_m": 100000
 }

@@ -18,7 +18,8 @@ class Pose:
 
 
 class MapView:
-    """The prior map an algorithm may use (geometry only, no ground truth)."""
+    """The prior map an algorithm may use: the scenario's map, which can differ from the true world
+    (terrain height errors, missing or wrong buildings, no trees). Geometry only, no ground truth."""
 
     def __init__(self, world):
         self._world = world
@@ -40,11 +41,14 @@ class Context:
     map: MapView
     start: Pose            # true start pose (known initial condition)
     sensors: dict          # rates, noise levels, echo beam directions (body frame)
+    start_sigma_m: float = 0.0  # how far off the start position may be (1 sigma, horizontal); 0 = exact
+    scenario: str = ""
 
 
 class Algorithm:
     platforms = ("drone", "walker")  # override to restrict which benchmark runs apply
     hardware = None  # name of a benchmark/hardware/<name>.json real-part imu+mag profile; None = suite sensors
+    ranger = None    # name of a benchmark/rangers/<name>.json echo sensor; None = the suite's default ranger
 
     def __init__(self, ctx: Context):
         self.ctx = ctx
@@ -67,3 +71,10 @@ class Algorithm:
     def estimate(self) -> np.ndarray:
         """Current position estimate (3,) ENU. Called at the scoring rate."""
         raise NotImplementedError
+
+    def uncertainty(self) -> float | None:
+        """How far off the estimate may be: a horizontal radius (m) the true position should lie inside
+        95% of the time. Called right after estimate(). Return np.inf for "I don't know where I am".
+        None (the default) makes no integrity claim: the leaderboard then cannot say whether the method
+        knows when it is wrong."""
+        return None

@@ -28,18 +28,19 @@ jobs:
       - uses: actions/cache@v4
         if: steps.changed.outputs.list != ''
         with:
-          path: data/worlds
-          key: worlds-${{ hashFiles('gpsfree/worlds/**', 'benchmark/suite.json') }}
+          path: |
+            data/worlds
+            data/routes
+          key: worlds-${{ hashFiles('gpsfree/worlds/**', 'benchmark/worlds/**', 'benchmark/scenarios/**', 'gpsfree/routes.py') }}
           restore-keys: worlds-
-      - name: Fetch suite worlds
+      - name: Bake suite worlds and routes (cached; a cold cache takes a few minutes once)
         if: steps.changed.outputs.list != ''
         run: |
-          for w in $(jq -r '.worlds[]' benchmark/suite.json); do
-            test -f "data/worlds/$w/meta.json" || uv run gpsfree fetch "$w"
-          done
-      - name: Re-run changed experiments
+          uv run gpsfree fetch --suite --missing --jobs 4
+          uv run gpsfree routes --jobs 4
+      - name: Re-run changed experiments (12 scenarios x 20 runs each, budget 7 min per experiment)
         if: steps.changed.outputs.list != ''
-        run: uv run gpsfree verify ${{ steps.changed.outputs.list }}
+        run: uv run gpsfree verify ${{ steps.changed.outputs.list }} --max-seconds 420
 
   leaderboard:
     if: github.event_name == 'push'

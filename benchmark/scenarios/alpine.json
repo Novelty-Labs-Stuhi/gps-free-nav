@@ -1,0 +1,30 @@
+{
+ "id": "alpine",
+ "name": "Alpine valley",
+ "world": "yosemite",
+ "platform": "drone",
+ "description": "Steep bare mountains; the classic terrain-matching case.",
+ "route": {
+  "speed_mps": 10,
+  "length_m": 3000,
+  "agl_m": [
+   40,
+   100
+  ]
+ },
+ "map": {
+  "terrain_error_m": 0.5,
+  "terrain_error_corr_m": 150
+ },
+ "wind": {
+  "mean_mps": [
+   0,
+   2
+  ],
+  "gust_mps": 0.5
+ },
+ "start_offset_m": [
+  0,
+  0
+ ]
+}
