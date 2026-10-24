@@ -36,7 +36,7 @@ def cmd_routes(args):
     from gpsfree.world import World
 
     for wid in args.worlds or json.loads((WORLDS / "index.json").read_text()):
-        for p in generate_all(World(wid), args.per_platform):
+        for p in generate_all(World(wid), args.per_platform, args.platform):
             print(p.relative_to(ROOT))
 
 
@@ -114,6 +114,7 @@ def main():
     p = sub.add_parser("routes", help="(re)generate procedural benchmark routes")
     p.add_argument("worlds", nargs="*")
     p.add_argument("--per-platform", type=int, default=3)
+    p.add_argument("--platform", action="append", choices=["drone", "walker"])
     p.set_defaults(func=cmd_routes)
 
     p = sub.add_parser("eval", help="run an experiment on the benchmark, write results.json")
