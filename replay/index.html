@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>gpsfree replay</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header>
+      <b>gpsfree replay</b>
+      <select id="picker" title="Replays in data/replays"></select>
+      <span id="info"></span>
+      <span id="status">loading…</span>
+    </header>
+    <main>
+      <section class="panel" id="left">
+        <div class="label">
+          <b>Drone's world</b> · prior map, estimated pose
+          <div class="legend">
+            <span><i style="background:#2ecc71"></i>agrees</span>
+            <span><i style="background:#ff5a36"></i>shorter than map</span>
+            <span><i style="background:#3b8cff"></i>longer than map</span>
+            <span><i style="background:#e040fb"></i>map predicts no hit</span>
+            <span><i style="background:#bbb"></i>no echo</span>
+          </div>
+        </div>
+        <div class="hint">drag orbit · scroll zoom · camera follows the estimate</div>
+      </section>
+      <section class="panel" id="right">
+        <div class="label">
+          <b>Real world</b> · true mesh and pose
+          <div class="legend">
+            <span><i style="background:#ffffff"></i>truth</span>
+            <span><i style="background:#ffd23f"></i>planned</span>
+            <span><i style="background:#ff4d6d"></i>estimate</span>
+            <label><input type="checkbox" id="trueBeams" /> beams from true pose</label>
+            <label><input type="checkbox" id="followTruth" checked /> follow</label>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div id="controls">
+        <button id="play" title="Space">▶</button>
+        <select id="speed" title="Playback speed">
+          <option>0.25</option><option>0.5</option><option selected>1</option><option>2</option>
+          <option>4</option><option>8</option><option>16</option><option>32</option>
+        </select>
+        <input id="scrub" type="range" min="0" max="1" step="0.01" value="0" />
+        <span id="clock">0.0 s</span>
+        <label><input type="checkbox" id="logScale" checked /> log</label>
+      </div>
+      <div id="readout"></div>
+      <canvas id="chart"></canvas>
+    </footer>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
