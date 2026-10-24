@@ -1,5 +1,7 @@
 # ins_bmi088: dead reckoning on a real IMU
 
+**Summary.** Dead reckoning on the real $5 Bosch BMI088 IMU with datasheet noise; no outside reference.
+
 **Author:** Arsenii Chistiakov.
 
 **Idea.** `imu_deadreckoning` with the IMU replaced by a real part: Bosch BMI088, $5 consumer IMU (PX4/ArduPilot). Noise and bias come from its datasheet

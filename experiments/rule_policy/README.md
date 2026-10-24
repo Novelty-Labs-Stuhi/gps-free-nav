@@ -1,5 +1,7 @@
 # X6 rule_policy: a hand-written decision baseline (closed loop)
 
+**Summary.** Hand-written closed-loop decisions: land when lost or near the border, detour when unsure, otherwise continue.
+
 **Hypothesis.** Even a simple rule on the belief beats flying blind.
 
 **Rule** (`gpsfree/closedloop.py:rule_policy`): land when P(lost) > 0.8 or the estimated margin to the no-fly

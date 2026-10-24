@@ -1,5 +1,7 @@
 # X2 terrain_pf_offset: track the map's local height error
 
+**Summary.** terrain_pf plus one shared map-height offset so beams match terrain shape; rejected, it absorbs real position error.
+
 **Hypothesis.** Free elevation maps are off by metres but smoothly, so estimating one shared local height offset
 lets the beams match the terrain's shape and ignore its absolute height.
 

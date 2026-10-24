@@ -1,5 +1,7 @@
 # ins_compass_hg4930: dead reckoning plus a compass
 
+**Summary.** Dead reckoning on the $9,433 Honeywell HG4930 plus a magnetometer for heading.
+
 **Author:** Arsenii Chistiakov.
 
 **Idea.** `ins_hg4930` plus a magnetometer (PNI RM3100, $17): a complementary filter pulls the heading towards the

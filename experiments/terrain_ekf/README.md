@@ -1,5 +1,7 @@
 # terrain_ekf: matching the ground with a lidar (Kalman filter)
 
+**Summary.** Kalman filter on an $8 IMU corrected 10x/s by 49 lidar ranges matched against the drone's 3D map, with a beam-disagreement monitor that says 'lost'.
+
 **Author:** Artem.
 
 **Idea.** An error-state Kalman filter tracks 16 numbers: position, velocity, orientation error, accelerometer and

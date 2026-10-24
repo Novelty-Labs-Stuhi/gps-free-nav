@@ -1,5 +1,7 @@
 # ins_compass_adis16470: dead reckoning plus a compass
 
+**Summary.** Dead reckoning on the $408 ADIS16470 plus a magnetometer for heading.
+
 **Author:** Arsenii Chistiakov.
 
 **Idea.** `ins_adis16470` plus a magnetometer (PNI RM3100, $17): a complementary filter pulls the heading towards the

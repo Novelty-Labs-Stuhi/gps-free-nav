@@ -1,5 +1,7 @@
 # pdr_compass: step counting for a walker (baseline)
 
+**Summary.** Walker step counting: each step moves one stride along the compass heading.
+
 **Author:** Arsenii Chistiakov.
 
 **Idea.** Pedestrian dead reckoning: each detected step moves the position by the reported stride length along the

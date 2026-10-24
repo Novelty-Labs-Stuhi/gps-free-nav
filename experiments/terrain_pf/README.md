@@ -1,5 +1,7 @@
 # X1 terrain_pf: many guesses instead of one
 
+**Summary.** Arsenii's particle filter (500 weighted position guesses scored by how lidar points lie on the map), ported with spoofed-start spread and a calibrated radius.
+
 **Author:** Arsenii Chistiakov (particle filter, `ins_echo` on branch `echo-lidar`), ported to the 12-scenario suite.
 
 **Hypothesis.** Keeping hundreds of position guesses, with tempered sensor updates, avoids locking onto the wrong

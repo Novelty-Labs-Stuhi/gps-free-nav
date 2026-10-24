@@ -1,5 +1,7 @@
 # ins_compass_icm42688p: dead reckoning plus a compass
 
+**Summary.** Dead reckoning on the $8 TDK ICM-42688-P plus a magnetometer for heading.
+
 **Author:** Arsenii Chistiakov.
 
 **Idea.** `ins_icm42688p` plus a magnetometer (PNI RM3100, $17): a complementary filter pulls the heading towards the

@@ -1,5 +1,7 @@
 # imu_deadreckoning: inertial dead reckoning (baseline)
 
+**Summary.** Integrates the IMU alone (rotation into attitude, acceleration twice into position), baro for height; we fixed its start attitude for drones that start tilted.
+
 **Author:** Arsenii Chistiakov.
 
 **Idea.** Integrate the inertial unit and nothing else: rotation rates into orientation, acceleration (minus gravity)

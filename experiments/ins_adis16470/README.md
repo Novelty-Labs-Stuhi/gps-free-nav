@@ -1,5 +1,7 @@
 # ins_adis16470: dead reckoning on a real IMU
 
+**Summary.** Dead reckoning on the real $408 ADIS16470 IMU with datasheet noise; no outside reference.
+
 **Author:** Arsenii Chistiakov.
 
 **Idea.** `imu_deadreckoning` with the IMU replaced by a real part: Analog Devices ADIS16470, $408 industrial IMU. Noise and bias come from its datasheet

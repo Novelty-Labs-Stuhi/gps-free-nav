@@ -1,6 +1,6 @@
 {
  "experiment": "terrain_pf_beams",
- "author": "Artevil131",
+ "author": "Arsenii Chistiakov + Artevil131",
  "hardware": "adis16470",
  "ranger": "avia",
  "suite": "7cdbd00f445f",

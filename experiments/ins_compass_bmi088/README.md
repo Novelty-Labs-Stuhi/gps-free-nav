@@ -1,5 +1,7 @@
 # ins_compass_bmi088: dead reckoning plus a compass
 
+**Summary.** Dead reckoning on the $5 Bosch BMI088 plus a magnetometer for heading.
+
 **Author:** Arsenii Chistiakov.
 
 **Idea.** `ins_bmi088` plus a magnetometer (PNI RM3100, $17): a complementary filter pulls the heading towards the

@@ -1,5 +1,7 @@
 # ins_icm42688p: dead reckoning on a real IMU
 
+**Summary.** Dead reckoning on the real $8 TDK ICM-42688-P IMU with datasheet noise; no outside reference.
+
 **Author:** Arsenii Chistiakov.
 
 **Idea.** `imu_deadreckoning` with the IMU replaced by a real part: TDK ICM-42688-P, $8 consumer IMU. Noise and bias come from its datasheet

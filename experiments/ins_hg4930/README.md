@@ -1,5 +1,7 @@
 # ins_hg4930: dead reckoning on a real IMU
 
+**Summary.** Dead reckoning on the real $9,433 Honeywell HG4930 IMU with datasheet noise; no outside reference.
+
 **Author:** Arsenii Chistiakov.
 
 **Idea.** `imu_deadreckoning` with the IMU replaced by a real part: Honeywell HG4930, $9,433 tactical IMU (over the $3,000 cap). Noise and bias come from its datasheet

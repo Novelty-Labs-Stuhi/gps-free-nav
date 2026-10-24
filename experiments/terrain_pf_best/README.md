@@ -1,5 +1,7 @@
 # X7 terrain_pf_best: learned beams + learned lost detector
 
+**Summary.** terrain_pf_beams' learned beams plus terrain_pf_guarded's lost detector retrained on them: the most trustworthy method so far.
+
 **What it is.** X3's particle filter (learned beam model) with X4's lost detector, retrained on X3's own statistics
 (`train.py`, runs 20-39 only). Particle filter by Arsenii Chistiakov (ported in X1).
 

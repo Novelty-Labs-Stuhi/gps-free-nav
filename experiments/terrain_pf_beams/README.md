@@ -1,5 +1,7 @@
 # X3 terrain_pf_beams: a beam model learned from data
 
+**Summary.** terrain_pf with a beam likelihood learned from 3.4M training beams (noise plus a tail for trees and roofs the map lacks).
+
 **Hypothesis.** Trees and roofs the map lacks make beams stop early in a predictable way. A likelihood learned from
 data beats the hand-set Gaussian clipped at 3 sigma.
 

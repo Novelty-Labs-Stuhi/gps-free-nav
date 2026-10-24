@@ -1,17 +1,17 @@
 {
  "experiment": "terrain_pf",
- "author": "Artevil131",
+ "author": "Arsenii Chistiakov + Artevil131",
  "hardware": "adis16470",
  "ranger": "avia",
  "suite": "7cdbd00f445f",
  "partial": false,
- "elapsed_s": 172.7,
+ "elapsed_s": 168.1,
  "summary": {
   "alpine": {
    "runs": 20,
    "score_log10": 0.651,
    "score_m": 4.48,
-   "p90_score_m": 49.91,
+   "p90_score_m": 49.82,
    "lost_frac": 0.5,
    "mae_m": {
     "0-250": 1.32,
@@ -22,10 +22,11 @@
    },
    "lost_at_m": 2681.3,
    "growth_k": 0.46,
-   "min_realtime_factor": 58.2,
+   "min_realtime_factor": 86.5,
    "misleading_frac": 0.0304,
    "silent_failure_frac": 0.3,
-   "warned_frac": 0.95
+   "warned_frac": 0.95,
+   "false_alarm_frac": 0.2812
   },
   "fells": {
    "runs": 20,
@@ -42,10 +43,11 @@
    },
    "lost_at_m": 2891.8,
    "growth_k": 0.24,
-   "min_realtime_factor": 57.2,
+   "min_realtime_factor": 86.7,
    "misleading_frac": 0.0199,
    "silent_failure_frac": 0.1,
-   "warned_frac": 1.0
+   "warned_frac": 1.0,
+   "false_alarm_frac": 0.3142
   },
   "boreal": {
    "runs": 20,
@@ -62,10 +64,11 @@
    },
    "lost_at_m": 2884.2,
    "growth_k": 0.12,
-   "min_realtime_factor": 56.3,
+   "min_realtime_factor": 84.4,
    "misleading_frac": 0.0897,
    "silent_failure_frac": 0.25,
-   "warned_frac": 0.95
+   "warned_frac": 0.95,
+   "false_alarm_frac": 0.0261
   },
   "archipelago": {
    "runs": 20,
@@ -82,16 +85,17 @@
    },
    "lost_at_m": 0.0,
    "growth_k": 0.74,
-   "min_realtime_factor": 57.4,
+   "min_realtime_factor": 83.5,
    "misleading_frac": 0.4695,
    "silent_failure_frac": 0.3,
-   "warned_frac": 1.0
+   "warned_frac": 1.0,
+   "false_alarm_frac": 0.0052
   },
   "tampere": {
    "runs": 20,
    "score_log10": 1.006,
    "score_m": 10.15,
-   "p90_score_m": 56.2,
+   "p90_score_m": 56.18,
    "lost_frac": 0.75,
    "mae_m": {
     "0-250": 3.14,
@@ -102,10 +106,11 @@
    },
    "lost_at_m": 2135.9,
    "growth_k": 1.58,
-   "min_realtime_factor": 53.9,
+   "min_realtime_factor": 82.3,
    "misleading_frac": 0.1641,
    "silent_failure_frac": 0.5,
-   "warned_frac": 0.9
+   "warned_frac": 0.9,
+   "false_alarm_frac": 0.061
   },
   "bordertown": {
    "runs": 20,
@@ -122,16 +127,17 @@
    },
    "lost_at_m": 2096.4,
    "growth_k": 1.29,
-   "min_realtime_factor": 39.9,
+   "min_realtime_factor": 83.1,
    "misleading_frac": 0.2183,
    "silent_failure_frac": 0.55,
-   "warned_frac": 1.0
+   "warned_frac": 1.0,
+   "false_alarm_frac": 0.0524
   },
   "kyiv": {
    "runs": 20,
    "score_log10": 1.616,
    "score_m": 41.3,
-   "p90_score_m": 376.01,
+   "p90_score_m": 375.84,
    "lost_frac": 0.8,
    "mae_m": {
     "0-250": 6.86,
@@ -142,16 +148,17 @@
    },
    "lost_at_m": 752.0,
    "growth_k": 1.44,
-   "min_realtime_factor": 41.9,
+   "min_realtime_factor": 83.1,
    "misleading_frac": 0.364,
    "silent_failure_frac": 0.75,
-   "warned_frac": 1.0
+   "warned_frac": 1.0,
+   "false_alarm_frac": 0.0399
   },
   "steppe": {
    "runs": 20,
    "score_log10": 2.611,
    "score_m": 408.79,
-   "p90_score_m": 995.18,
+   "p90_score_m": 869.76,
    "lost_frac": 0.95,
    "mae_m": {
     "0-250": 73.64,
@@ -162,10 +169,11 @@
    },
    "lost_at_m": 0.0,
    "growth_k": 0.89,
-   "min_realtime_factor": 39.0,
+   "min_realtime_factor": 82.5,
    "misleading_frac": 0.7132,
    "silent_failure_frac": 0.9,
-   "warned_frac": 1.0
+   "warned_frac": 1.0,
+   "false_alarm_frac": 0.0196
   },
   "farmland": {
    "runs": 20,
@@ -182,10 +190,11 @@
    },
    "lost_at_m": 978.5,
    "growth_k": 0.65,
-   "min_realtime_factor": 39.5,
+   "min_realtime_factor": 82.4,
    "misleading_frac": 0.433,
    "silent_failure_frac": 0.8,
-   "warned_frac": 1.0
+   "warned_frac": 1.0,
+   "false_alarm_frac": 0.2134
   },
   "carpathians": {
    "runs": 20,
@@ -202,10 +211,11 @@
    },
    "lost_at_m": 2211.8,
    "growth_k": 0.37,
-   "min_realtime_factor": 35.7,
+   "min_realtime_factor": 77.3,
    "misleading_frac": 0.2835,
    "silent_failure_frac": 0.55,
-   "warned_frac": 1.0
+   "warned_frac": 1.0,
+   "false_alarm_frac": 0.0272
   },
   "rotterdam": {
    "runs": 20,
@@ -222,10 +232,11 @@
    },
    "lost_at_m": 2876.4,
    "growth_k": 0.44,
-   "min_realtime_factor": 52.5,
+   "min_realtime_factor": 79.9,
    "misleading_frac": 0.1573,
    "silent_failure_frac": 0.4,
-   "warned_frac": 0.8
+   "warned_frac": 0.8,
+   "false_alarm_frac": 0.0816
   },
   "desert": {
    "runs": 20,
@@ -242,10 +253,11 @@
    },
    "lost_at_m": 2881.6,
    "growth_k": 0.29,
-   "min_realtime_factor": 37.9,
+   "min_realtime_factor": 79.3,
    "misleading_frac": 0.1898,
    "silent_failure_frac": 0.45,
-   "warned_frac": 0.65
+   "warned_frac": 0.65,
+   "false_alarm_frac": 0.0053
   },
   "overall": {
    "scenarios": 12,
@@ -256,7 +268,8 @@
    "worst_score_m": 603.25,
    "lost_frac": 0.608,
    "misleading_frac": 0.2611,
-   "silent_failure_frac": 0.487
+   "silent_failure_frac": 0.487,
+   "false_alarm_frac": 0.0939
   }
  },
  "runs": [
@@ -278,6 +291,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 130.2,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.265,
    "silent_failure": false,
    "median_radius_m": 22.47,
    "xy_rmse_m": 26.64,
@@ -288,7 +302,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.4,
-   "realtime_factor": 64.9
+   "realtime_factor": 98.3
   },
   {
    "distance_m": 3141.2,
@@ -308,6 +322,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 1037.5,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.4437,
    "silent_failure": false,
    "median_radius_m": 33.72,
    "xy_rmse_m": 16.86,
@@ -318,7 +333,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.7,
-   "realtime_factor": 74.4
+   "realtime_factor": 111.7
   },
   {
    "distance_m": 2897.0,
@@ -338,6 +353,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 132.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.6019,
    "silent_failure": false,
    "median_radius_m": 61.09,
    "xy_rmse_m": 11.11,
@@ -348,29 +364,30 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.0,
-   "realtime_factor": 59.9
+   "realtime_factor": 86.5
   },
   {
    "distance_m": 3206.6,
-   "score_log10": 1.943,
+   "score_log10": 1.935,
    "mae_m": {
     "0-250": 0.81,
     "250-500": 1.16,
     "500-1000": 1.13,
     "1000-2000": 217.29,
-    "2000+": 1486.43
+    "2000+": 1378.93
    },
    "lost_at_m": 1216.5,
    "lost": true,
-   "growth_k": 3.49,
-   "max_error_m": 2840.1,
+   "growth_k": 3.46,
+   "max_error_m": 2136.5,
    "integrity": true,
    "misleading_frac": 0.1612,
    "warned_at_m": 431.0,
    "hmi_frac": 0.0335,
+   "false_alarm_frac": 0.1201,
    "silent_failure": true,
    "median_radius_m": 69.39,
-   "xy_rmse_m": 1005.31,
+   "xy_rmse_m": 911.05,
    "z_rmse_m": 0.72,
    "scenario": "alpine",
    "run": 3,
@@ -378,7 +395,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.8,
-   "realtime_factor": 78.3
+   "realtime_factor": 117.3
   },
   {
    "distance_m": 3210.4,
@@ -398,6 +415,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 151.4,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.1204,
    "silent_failure": false,
    "median_radius_m": 22.55,
    "xy_rmse_m": 4.68,
@@ -408,7 +426,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.0,
-   "realtime_factor": 83.2
+   "realtime_factor": 130.2
   },
   {
    "distance_m": 2997.1,
@@ -428,6 +446,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 1557.4,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0174,
    "silent_failure": false,
    "median_radius_m": 26.74,
    "xy_rmse_m": 2.89,
@@ -438,7 +457,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 290.5,
-   "realtime_factor": 70.2
+   "realtime_factor": 104.7
   },
   {
    "distance_m": 3201.5,
@@ -458,6 +477,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 281.4,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0451,
    "silent_failure": false,
    "median_radius_m": 24.65,
    "xy_rmse_m": 2.66,
@@ -468,7 +488,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.5,
-   "realtime_factor": 71.1
+   "realtime_factor": 107.6
   },
   {
    "distance_m": 2895.0,
@@ -488,6 +508,7 @@
    "misleading_frac": 0.059,
    "warned_at_m": 135.0,
    "hmi_frac": 0.0072,
+   "false_alarm_frac": 0.5188,
    "silent_failure": true,
    "median_radius_m": 86.33,
    "xy_rmse_m": 36.67,
@@ -498,7 +519,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.4,
-   "realtime_factor": 58.3
+   "realtime_factor": 89.9
   },
   {
    "distance_m": 3201.4,
@@ -518,6 +539,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 132.2,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.2421,
    "silent_failure": false,
    "median_radius_m": 26.52,
    "xy_rmse_m": 5.19,
@@ -528,7 +550,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.3,
-   "realtime_factor": 75.6
+   "realtime_factor": 116.6
   },
   {
    "distance_m": 3124.1,
@@ -548,6 +570,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 123.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.3596,
    "silent_failure": false,
    "median_radius_m": 25.74,
    "xy_rmse_m": 4.93,
@@ -558,7 +581,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.9,
-   "realtime_factor": 82.7
+   "realtime_factor": 123.2
   },
   {
    "distance_m": 3157.5,
@@ -578,6 +601,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 1153.5,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0151,
    "silent_failure": false,
    "median_radius_m": 14.86,
    "xy_rmse_m": 0.92,
@@ -588,7 +612,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.6,
-   "realtime_factor": 86.4
+   "realtime_factor": 132.3
   },
   {
    "distance_m": 3488.5,
@@ -608,6 +632,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 126.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.3721,
    "silent_failure": false,
    "median_radius_m": 62.92,
    "xy_rmse_m": 35.54,
@@ -618,7 +643,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.1,
-   "realtime_factor": 88.1
+   "realtime_factor": 128.5
   },
   {
    "distance_m": 2916.1,
@@ -638,6 +663,7 @@
    "misleading_frac": 0.2009,
    "warned_at_m": 123.9,
    "hmi_frac": 0.0615,
+   "false_alarm_frac": 0.372,
    "silent_failure": true,
    "median_radius_m": 133.41,
    "xy_rmse_m": 911.83,
@@ -648,7 +674,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.2,
-   "realtime_factor": 64.5
+   "realtime_factor": 94.8
   },
   {
    "distance_m": 3114.5,
@@ -668,6 +694,7 @@
    "misleading_frac": 0.0148,
    "warned_at_m": 127.1,
    "hmi_frac": 0.0076,
+   "false_alarm_frac": 0.5589,
    "silent_failure": true,
    "median_radius_m": 138.95,
    "xy_rmse_m": 257.11,
@@ -678,7 +705,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.6,
-   "realtime_factor": 78.9
+   "realtime_factor": 112.8
   },
   {
    "distance_m": 3301.4,
@@ -698,6 +725,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 191.6,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.1264,
    "silent_failure": false,
    "median_radius_m": 18.91,
    "xy_rmse_m": 2.91,
@@ -708,7 +736,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.5,
-   "realtime_factor": 83.6
+   "realtime_factor": 124.9
   },
   {
    "distance_m": 3129.1,
@@ -728,6 +756,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": null,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 12.73,
    "xy_rmse_m": 2.01,
@@ -738,7 +767,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.7,
-   "realtime_factor": 81.1
+   "realtime_factor": 123.7
   },
   {
    "distance_m": 2891.6,
@@ -758,6 +787,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 392.7,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.5609,
    "silent_failure": false,
    "median_radius_m": 170.12,
    "xy_rmse_m": 35.76,
@@ -768,7 +798,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.2,
-   "realtime_factor": 58.2
+   "realtime_factor": 88.7
   },
   {
    "distance_m": 3213.2,
@@ -788,6 +818,7 @@
    "misleading_frac": 0.0799,
    "warned_at_m": 1313.8,
    "hmi_frac": 0.0756,
+   "false_alarm_frac": 0.2136,
    "silent_failure": true,
    "median_radius_m": 30.07,
    "xy_rmse_m": 203.8,
@@ -798,7 +829,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.8,
-   "realtime_factor": 73.8
+   "realtime_factor": 107.7
   },
   {
    "distance_m": 3117.1,
@@ -818,6 +849,7 @@
    "misleading_frac": 0.0926,
    "warned_at_m": 128.0,
    "hmi_frac": 0.0162,
+   "false_alarm_frac": 0.3647,
    "silent_failure": true,
    "median_radius_m": 123.13,
    "xy_rmse_m": 75.21,
@@ -828,7 +860,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.5,
-   "realtime_factor": 70.9
+   "realtime_factor": 102.9
   },
   {
    "distance_m": 3185.6,
@@ -848,6 +880,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 123.1,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.3071,
    "silent_failure": false,
    "median_radius_m": 35.36,
    "xy_rmse_m": 8.34,
@@ -858,7 +891,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.0,
-   "realtime_factor": 73.2
+   "realtime_factor": 108.6
   },
   {
    "distance_m": 2910.4,
@@ -878,6 +911,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 379.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.447,
    "silent_failure": false,
    "median_radius_m": 48.8,
    "xy_rmse_m": 6.87,
@@ -888,7 +922,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.4,
-   "realtime_factor": 58.9
+   "realtime_factor": 91.1
   },
   {
    "distance_m": 2903.3,
@@ -908,6 +942,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 1211.2,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0604,
    "silent_failure": false,
    "median_radius_m": 38.28,
    "xy_rmse_m": 4.91,
@@ -918,7 +953,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.0,
-   "realtime_factor": 62.9
+   "realtime_factor": 93.3
   },
   {
    "distance_m": 2890.7,
@@ -938,6 +973,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 210.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.4826,
    "silent_failure": false,
    "median_radius_m": 49.25,
    "xy_rmse_m": 12.59,
@@ -948,7 +984,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.9,
-   "realtime_factor": 60.7
+   "realtime_factor": 89.9
   },
   {
    "distance_m": 2874.2,
@@ -968,6 +1004,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 438.1,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.2467,
    "silent_failure": false,
    "median_radius_m": 34.3,
    "xy_rmse_m": 4.86,
@@ -978,7 +1015,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 286.9,
-   "realtime_factor": 58.8
+   "realtime_factor": 88.6
   },
   {
    "distance_m": 2895.6,
@@ -998,6 +1035,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 149.3,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.5113,
    "silent_failure": false,
    "median_radius_m": 50.34,
    "xy_rmse_m": 7.73,
@@ -1008,7 +1046,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.0,
-   "realtime_factor": 59.4
+   "realtime_factor": 89.0
   },
   {
    "distance_m": 2885.1,
@@ -1028,6 +1066,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 129.6,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.4272,
    "silent_failure": false,
    "median_radius_m": 44.75,
    "xy_rmse_m": 7.02,
@@ -1038,7 +1077,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.6,
-   "realtime_factor": 61.5
+   "realtime_factor": 93.2
   },
   {
    "distance_m": 2883.4,
@@ -1058,6 +1097,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 894.1,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.6002,
    "silent_failure": false,
    "median_radius_m": 55.26,
    "xy_rmse_m": 7.74,
@@ -1068,7 +1108,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.9,
-   "realtime_factor": 61.4
+   "realtime_factor": 91.4
   },
   {
    "distance_m": 2883.7,
@@ -1088,6 +1128,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 1712.5,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.2081,
    "silent_failure": false,
    "median_radius_m": 40.51,
    "xy_rmse_m": 11.33,
@@ -1098,7 +1139,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.2,
-   "realtime_factor": 61.5
+   "realtime_factor": 92.4
   },
   {
    "distance_m": 2917.7,
@@ -1118,6 +1159,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 314.4,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.1565,
    "silent_failure": false,
    "median_radius_m": 41.23,
    "xy_rmse_m": 4.74,
@@ -1128,7 +1170,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.3,
-   "realtime_factor": 67.8
+   "realtime_factor": 101.5
   },
   {
    "distance_m": 2889.0,
@@ -1148,6 +1190,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 430.9,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.2955,
    "silent_failure": false,
    "median_radius_m": 42.23,
    "xy_rmse_m": 8.34,
@@ -1158,7 +1201,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.8,
-   "realtime_factor": 57.2
+   "realtime_factor": 87.4
   },
   {
    "distance_m": 2904.1,
@@ -1178,6 +1221,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 544.5,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.2955,
    "silent_failure": false,
    "median_radius_m": 42.71,
    "xy_rmse_m": 4.09,
@@ -1188,29 +1232,30 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.8,
-   "realtime_factor": 65.7
+   "realtime_factor": 95.4
   },
   {
    "distance_m": 2882.8,
-   "score_log10": 1.62,
+   "score_log10": 1.614,
    "mae_m": {
     "0-250": 2.72,
     "250-500": 3.27,
     "500-1000": 3.29,
     "1000-2000": 58.9,
-    "2000+": 966.68
+    "2000+": 900.76
    },
    "lost_at_m": 1563.3,
    "lost": true,
-   "growth_k": 2.65,
-   "max_error_m": 2008.2,
+   "growth_k": 2.63,
+   "max_error_m": 1457.6,
    "integrity": true,
    "misleading_frac": 0.3492,
    "warned_at_m": 454.3,
    "hmi_frac": 0.3233,
+   "false_alarm_frac": 0.0677,
    "silent_failure": true,
    "median_radius_m": 35.28,
-   "xy_rmse_m": 610.87,
+   "xy_rmse_m": 554.85,
    "z_rmse_m": 0.37,
    "scenario": "fells",
    "run": 11,
@@ -1218,7 +1263,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.8,
-   "realtime_factor": 60.5
+   "realtime_factor": 87.4
   },
   {
    "distance_m": 2887.2,
@@ -1238,6 +1283,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 849.3,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.113,
    "silent_failure": false,
    "median_radius_m": 39.87,
    "xy_rmse_m": 8.66,
@@ -1248,7 +1294,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.7,
-   "realtime_factor": 59.8
+   "realtime_factor": 88.3
   },
   {
    "distance_m": 2922.6,
@@ -1268,6 +1314,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 144.9,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.4948,
    "silent_failure": false,
    "median_radius_m": 49.46,
    "xy_rmse_m": 3.97,
@@ -1278,7 +1325,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.6,
-   "realtime_factor": 61.3
+   "realtime_factor": 89.1
   },
   {
    "distance_m": 2911.7,
@@ -1298,6 +1345,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 581.9,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.5758,
    "silent_failure": false,
    "median_radius_m": 53.44,
    "xy_rmse_m": 10.8,
@@ -1308,7 +1356,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.6,
-   "realtime_factor": 58.5
+   "realtime_factor": 88.7
   },
   {
    "distance_m": 2892.9,
@@ -1328,6 +1376,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 381.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.38,
    "silent_failure": false,
    "median_radius_m": 45.87,
    "xy_rmse_m": 13.34,
@@ -1338,7 +1387,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.3,
-   "realtime_factor": 58.9
+   "realtime_factor": 86.8
   },
   {
    "distance_m": 2894.0,
@@ -1358,6 +1407,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 1351.9,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.1896,
    "silent_failure": false,
    "median_radius_m": 37.81,
    "xy_rmse_m": 5.42,
@@ -1368,7 +1418,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.4,
-   "realtime_factor": 60.2
+   "realtime_factor": 87.1
   },
   {
    "distance_m": 2895.7,
@@ -1388,6 +1438,7 @@
    "misleading_frac": 0.0492,
    "warned_at_m": 149.0,
    "hmi_frac": 0.0266,
+   "false_alarm_frac": 0.2462,
    "silent_failure": true,
    "median_radius_m": 41.21,
    "xy_rmse_m": 19.12,
@@ -1398,7 +1449,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.2,
-   "realtime_factor": 59.1
+   "realtime_factor": 87.1
   },
   {
    "distance_m": 2923.3,
@@ -1418,6 +1469,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 454.1,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.198,
    "silent_failure": false,
    "median_radius_m": 41.36,
    "xy_rmse_m": 4.45,
@@ -1428,7 +1480,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.2,
-   "realtime_factor": 60.1
+   "realtime_factor": 88.2
   },
   {
    "distance_m": 2882.0,
@@ -1448,6 +1500,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 1519.7,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.2875,
    "silent_failure": false,
    "median_radius_m": 40.63,
    "xy_rmse_m": 5.02,
@@ -1458,7 +1511,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.2,
-   "realtime_factor": 58.5
+   "realtime_factor": 86.7
   },
   {
    "distance_m": 2872.1,
@@ -1478,6 +1531,7 @@
    "misleading_frac": 0.009,
    "warned_at_m": 1734.8,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0029,
    "silent_failure": false,
    "median_radius_m": 26.26,
    "xy_rmse_m": 7.31,
@@ -1488,7 +1542,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.1,
-   "realtime_factor": 60.0
+   "realtime_factor": 87.0
   },
   {
    "distance_m": 2882.1,
@@ -1508,6 +1562,7 @@
    "misleading_frac": 0.2273,
    "warned_at_m": 183.8,
    "hmi_frac": 0.0424,
+   "false_alarm_frac": 0.0755,
    "silent_failure": true,
    "median_radius_m": 28.44,
    "xy_rmse_m": 25.8,
@@ -1518,7 +1573,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.0,
-   "realtime_factor": 60.5
+   "realtime_factor": 88.2
   },
   {
    "distance_m": 2882.3,
@@ -1538,6 +1593,7 @@
    "misleading_frac": 0.2629,
    "warned_at_m": 158.1,
    "hmi_frac": 0.009,
+   "false_alarm_frac": 0.0316,
    "silent_failure": true,
    "median_radius_m": 24.85,
    "xy_rmse_m": 20.71,
@@ -1548,7 +1604,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.0,
-   "realtime_factor": 61.6
+   "realtime_factor": 88.2
   },
   {
    "distance_m": 2883.4,
@@ -1568,6 +1624,7 @@
    "misleading_frac": 0.0183,
    "warned_at_m": 1870.7,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.064,
    "silent_failure": false,
    "median_radius_m": 23.95,
    "xy_rmse_m": 14.1,
@@ -1578,7 +1635,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.3,
-   "realtime_factor": 59.1
+   "realtime_factor": 85.6
   },
   {
    "distance_m": 2902.7,
@@ -1598,6 +1655,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 2364.9,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0157,
    "silent_failure": false,
    "median_radius_m": 24.02,
    "xy_rmse_m": 7.81,
@@ -1608,7 +1666,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.7,
-   "realtime_factor": 57.0
+   "realtime_factor": 85.0
   },
   {
    "distance_m": 2896.1,
@@ -1628,6 +1686,7 @@
    "misleading_frac": 0.2529,
    "warned_at_m": 474.2,
    "hmi_frac": 0.1402,
+   "false_alarm_frac": 0.0318,
    "silent_failure": true,
    "median_radius_m": 26.4,
    "xy_rmse_m": 36.45,
@@ -1638,7 +1697,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.5,
-   "realtime_factor": 59.3
+   "realtime_factor": 84.4
   },
   {
    "distance_m": 2871.6,
@@ -1658,6 +1717,7 @@
    "misleading_frac": 0.1962,
    "warned_at_m": 354.1,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0534,
    "silent_failure": false,
    "median_radius_m": 27.74,
    "xy_rmse_m": 19.74,
@@ -1668,7 +1728,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.1,
-   "realtime_factor": 58.6
+   "realtime_factor": 87.2
   },
   {
    "distance_m": 2901.2,
@@ -1688,6 +1748,7 @@
    "misleading_frac": 0.0186,
    "warned_at_m": 725.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0286,
    "silent_failure": false,
    "median_radius_m": 23.78,
    "xy_rmse_m": 7.74,
@@ -1698,7 +1759,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.6,
-   "realtime_factor": 58.0
+   "realtime_factor": 87.7
   },
   {
    "distance_m": 2880.6,
@@ -1718,6 +1779,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 151.2,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0079,
    "silent_failure": false,
    "median_radius_m": 28.6,
    "xy_rmse_m": 6.62,
@@ -1728,7 +1790,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.8,
-   "realtime_factor": 60.2
+   "realtime_factor": 85.5
   },
   {
    "distance_m": 2891.7,
@@ -1748,6 +1810,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 407.6,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.057,
    "silent_failure": false,
    "median_radius_m": 29.03,
    "xy_rmse_m": 9.5,
@@ -1758,7 +1821,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.7,
-   "realtime_factor": 57.3
+   "realtime_factor": 86.4
   },
   {
    "distance_m": 2886.7,
@@ -1778,6 +1841,7 @@
    "misleading_frac": 0.0897,
    "warned_at_m": 1840.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0022,
    "silent_failure": false,
    "median_radius_m": 25.22,
    "xy_rmse_m": 12.97,
@@ -1788,7 +1852,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.5,
-   "realtime_factor": 57.8
+   "realtime_factor": 87.1
   },
   {
    "distance_m": 2900.6,
@@ -1808,6 +1872,7 @@
    "misleading_frac": 0.0936,
    "warned_at_m": null,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 27.27,
    "xy_rmse_m": 11.5,
@@ -1818,7 +1883,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.8,
-   "realtime_factor": 56.3
+   "realtime_factor": 88.0
   },
   {
    "distance_m": 2888.9,
@@ -1838,6 +1903,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 1433.9,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0104,
    "silent_failure": false,
    "median_radius_m": 24.91,
    "xy_rmse_m": 8.46,
@@ -1848,7 +1914,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.6,
-   "realtime_factor": 60.0
+   "realtime_factor": 86.9
   },
   {
    "distance_m": 2877.5,
@@ -1868,6 +1934,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 803.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0277,
    "silent_failure": false,
    "median_radius_m": 28.64,
    "xy_rmse_m": 12.48,
@@ -1878,7 +1945,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.6,
-   "realtime_factor": 60.5
+   "realtime_factor": 88.0
   },
   {
    "distance_m": 2904.0,
@@ -1898,6 +1965,7 @@
    "misleading_frac": 0.1759,
    "warned_at_m": 2004.2,
    "hmi_frac": 0.1274,
+   "false_alarm_frac": 0.0043,
    "silent_failure": true,
    "median_radius_m": 25.85,
    "xy_rmse_m": 25.38,
@@ -1908,7 +1976,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 290.2,
-   "realtime_factor": 59.6
+   "realtime_factor": 85.6
   },
   {
    "distance_m": 2893.1,
@@ -1928,6 +1996,7 @@
    "misleading_frac": 0.0004,
    "warned_at_m": 1065.2,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.048,
    "silent_failure": false,
    "median_radius_m": 27.72,
    "xy_rmse_m": 11.9,
@@ -1938,7 +2007,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.2,
-   "realtime_factor": 57.8
+   "realtime_factor": 90.6
   },
   {
    "distance_m": 2884.9,
@@ -1958,6 +2027,7 @@
    "misleading_frac": 0.0478,
    "warned_at_m": 315.2,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0589,
    "silent_failure": false,
    "median_radius_m": 26.68,
    "xy_rmse_m": 15.24,
@@ -1968,7 +2038,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.4,
-   "realtime_factor": 58.3
+   "realtime_factor": 87.9
   },
   {
    "distance_m": 2895.2,
@@ -1988,6 +2058,7 @@
    "misleading_frac": 0.4007,
    "warned_at_m": 851.4,
    "hmi_frac": 0.2966,
+   "false_alarm_frac": 0.0004,
    "silent_failure": true,
    "median_radius_m": 23.31,
    "xy_rmse_m": 937.51,
@@ -1998,7 +2069,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.4,
-   "realtime_factor": 60.0
+   "realtime_factor": 84.9
   },
   {
    "distance_m": 2886.8,
@@ -2018,6 +2089,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 2437.1,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0004,
    "silent_failure": false,
    "median_radius_m": 28.57,
    "xy_rmse_m": 8.05,
@@ -2028,7 +2100,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.5,
-   "realtime_factor": 61.7
+   "realtime_factor": 86.2
   },
   {
    "distance_m": 2895.8,
@@ -2048,6 +2120,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 1902.1,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0011,
    "silent_failure": false,
    "median_radius_m": 24.26,
    "xy_rmse_m": 6.6,
@@ -2058,7 +2131,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.3,
-   "realtime_factor": 59.6
+   "realtime_factor": 85.7
   },
   {
    "distance_m": 2885.8,
@@ -2078,6 +2151,7 @@
    "misleading_frac": 0.7149,
    "warned_at_m": 0.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 442.0,
    "xy_rmse_m": 780.54,
@@ -2088,7 +2162,7 @@
    "platform": "drone",
    "start_offset_m": 293.5,
    "duration_s": 288.5,
-   "realtime_factor": 58.7
+   "realtime_factor": 84.0
   },
   {
    "distance_m": 2883.3,
@@ -2108,6 +2182,7 @@
    "misleading_frac": 0.4427,
    "warned_at_m": 0.0,
    "hmi_frac": 0.1046,
+   "false_alarm_frac": 0.0287,
    "silent_failure": true,
    "median_radius_m": 583.05,
    "xy_rmse_m": 647.83,
@@ -2118,7 +2193,7 @@
    "platform": "drone",
    "start_offset_m": 138.3,
    "duration_s": 288.2,
-   "realtime_factor": 60.1
+   "realtime_factor": 84.8
   },
   {
    "distance_m": 2878.7,
@@ -2138,6 +2213,7 @@
    "misleading_frac": 0.3903,
    "warned_at_m": 0.0,
    "hmi_frac": 0.0133,
+   "false_alarm_frac": 0.0,
    "silent_failure": true,
    "median_radius_m": 601.03,
    "xy_rmse_m": 756.54,
@@ -2148,7 +2224,7 @@
    "platform": "drone",
    "start_offset_m": 117.6,
    "duration_s": 287.6,
-   "realtime_factor": 57.8
+   "realtime_factor": 86.4
   },
   {
    "distance_m": 2885.4,
@@ -2168,6 +2244,7 @@
    "misleading_frac": 0.7488,
    "warned_at_m": 0.0,
    "hmi_frac": 0.0187,
+   "false_alarm_frac": 0.0,
    "silent_failure": true,
    "median_radius_m": 285.04,
    "xy_rmse_m": 838.02,
@@ -2178,7 +2255,7 @@
    "platform": "drone",
    "start_offset_m": 283.6,
    "duration_s": 288.3,
-   "realtime_factor": 58.7
+   "realtime_factor": 85.6
   },
   {
    "distance_m": 2885.5,
@@ -2198,6 +2275,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 0.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0004,
    "silent_failure": false,
    "median_radius_m": 1321.85,
    "xy_rmse_m": 875.29,
@@ -2208,7 +2286,7 @@
    "platform": "drone",
    "start_offset_m": 168.2,
    "duration_s": 288.5,
-   "realtime_factor": 58.1
+   "realtime_factor": 85.9
   },
   {
    "distance_m": 2887.4,
@@ -2228,6 +2306,7 @@
    "misleading_frac": 0.8519,
    "warned_at_m": 0.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 285.49,
    "xy_rmse_m": 1527.22,
@@ -2238,7 +2317,7 @@
    "platform": "drone",
    "start_offset_m": 291.9,
    "duration_s": 288.7,
-   "realtime_factor": 58.3
+   "realtime_factor": 84.7
   },
   {
    "distance_m": 2886.9,
@@ -2258,6 +2337,7 @@
    "misleading_frac": 0.1768,
    "warned_at_m": 0.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 1511.14,
    "xy_rmse_m": 769.67,
@@ -2268,7 +2348,7 @@
    "platform": "drone",
    "start_offset_m": 167.7,
    "duration_s": 288.7,
-   "realtime_factor": 57.4
+   "realtime_factor": 86.0
   },
   {
    "distance_m": 2876.6,
@@ -2288,6 +2368,7 @@
    "misleading_frac": 0.4762,
    "warned_at_m": 0.0,
    "hmi_frac": 0.0295,
+   "false_alarm_frac": 0.0151,
    "silent_failure": true,
    "median_radius_m": 361.07,
    "xy_rmse_m": 828.71,
@@ -2298,7 +2379,7 @@
    "platform": "drone",
    "start_offset_m": 236.1,
    "duration_s": 287.7,
-   "realtime_factor": 58.3
+   "realtime_factor": 85.4
   },
   {
    "distance_m": 2900.2,
@@ -2318,6 +2399,7 @@
    "misleading_frac": 0.98,
    "warned_at_m": 0.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 176.46,
    "xy_rmse_m": 1784.54,
@@ -2328,7 +2410,7 @@
    "platform": "drone",
    "start_offset_m": 230.4,
    "duration_s": 289.9,
-   "realtime_factor": 60.2
+   "realtime_factor": 87.5
   },
   {
    "distance_m": 2876.3,
@@ -2348,6 +2430,7 @@
    "misleading_frac": 0.8768,
    "warned_at_m": 0.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 522.39,
    "xy_rmse_m": 2122.86,
@@ -2358,7 +2441,7 @@
    "platform": "drone",
    "start_offset_m": 267.4,
    "duration_s": 287.5,
-   "realtime_factor": 59.0
+   "realtime_factor": 84.2
   },
   {
    "distance_m": 2887.3,
@@ -2378,6 +2461,7 @@
    "misleading_frac": 0.85,
    "warned_at_m": 0.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 252.27,
    "xy_rmse_m": 1408.41,
@@ -2388,7 +2472,7 @@
    "platform": "drone",
    "start_offset_m": 278.8,
    "duration_s": 288.5,
-   "realtime_factor": 60.4
+   "realtime_factor": 85.5
   },
   {
    "distance_m": 2899.4,
@@ -2408,6 +2492,7 @@
    "misleading_frac": 0.0254,
    "warned_at_m": 0.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 1391.59,
    "xy_rmse_m": 439.18,
@@ -2418,7 +2503,7 @@
    "platform": "drone",
    "start_offset_m": 287.6,
    "duration_s": 289.7,
-   "realtime_factor": 59.1
+   "realtime_factor": 85.3
   },
   {
    "distance_m": 2889.0,
@@ -2438,6 +2523,7 @@
    "misleading_frac": 0.2825,
    "warned_at_m": 0.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 1699.28,
    "xy_rmse_m": 858.06,
@@ -2448,29 +2534,30 @@
    "platform": "drone",
    "start_offset_m": 240.6,
    "duration_s": 288.9,
-   "realtime_factor": 59.6
+   "realtime_factor": 85.6
   },
   {
    "distance_m": 2894.1,
-   "score_log10": 2.443,
+   "score_log10": 2.441,
    "mae_m": {
     "0-250": 81.81,
     "250-500": 218.28,
     "500-1000": 394.26,
     "1000-2000": 150.04,
-    "2000+": 890.68
+    "2000+": 875.01
    },
    "lost_at_m": 0.0,
    "lost": true,
    "growth_k": 0.73,
-   "max_error_m": 1512.6,
+   "max_error_m": 1315.4,
    "integrity": true,
    "misleading_frac": 0.1997,
    "warned_at_m": 0.0,
-   "hmi_frac": 0.0054,
+   "hmi_frac": 0.0079,
+   "false_alarm_frac": 0.0361,
    "silent_failure": true,
    "median_radius_m": 743.56,
-   "xy_rmse_m": 566.39,
+   "xy_rmse_m": 554.67,
    "z_rmse_m": 0.37,
    "scenario": "archipelago",
    "run": 13,
@@ -2478,7 +2565,7 @@
    "platform": "drone",
    "start_offset_m": 206.8,
    "duration_s": 289.3,
-   "realtime_factor": 59.9
+   "realtime_factor": 87.4
   },
   {
    "distance_m": 2873.8,
@@ -2498,6 +2585,7 @@
    "misleading_frac": 0.4544,
    "warned_at_m": 0.0,
    "hmi_frac": 0.2135,
+   "false_alarm_frac": 0.0101,
    "silent_failure": true,
    "median_radius_m": 292.27,
    "xy_rmse_m": 561.86,
@@ -2508,7 +2596,7 @@
    "platform": "drone",
    "start_offset_m": 289.0,
    "duration_s": 287.3,
-   "realtime_factor": 59.7
+   "realtime_factor": 90.7
   },
   {
    "distance_m": 2878.6,
@@ -2528,6 +2616,7 @@
    "misleading_frac": 0.3748,
    "warned_at_m": 0.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 502.35,
    "xy_rmse_m": 293.09,
@@ -2538,7 +2627,7 @@
    "platform": "drone",
    "start_offset_m": 277.0,
    "duration_s": 287.9,
-   "realtime_factor": 59.3
+   "realtime_factor": 83.5
   },
   {
    "distance_m": 2885.0,
@@ -2558,6 +2647,7 @@
    "misleading_frac": 0.0948,
    "warned_at_m": 0.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 764.95,
    "xy_rmse_m": 362.33,
@@ -2568,7 +2658,7 @@
    "platform": "drone",
    "start_offset_m": 185.1,
    "duration_s": 288.4,
-   "realtime_factor": 59.9
+   "realtime_factor": 83.5
   },
   {
    "distance_m": 2876.6,
@@ -2588,6 +2678,7 @@
    "misleading_frac": 0.7398,
    "warned_at_m": 0.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 590.66,
    "xy_rmse_m": 1257.82,
@@ -2598,7 +2689,7 @@
    "platform": "drone",
    "start_offset_m": 225.8,
    "duration_s": 287.5,
-   "realtime_factor": 60.2
+   "realtime_factor": 85.2
   },
   {
    "distance_m": 2885.7,
@@ -2618,6 +2709,7 @@
    "misleading_frac": 0.5483,
    "warned_at_m": 0.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 911.53,
    "xy_rmse_m": 1649.36,
@@ -2628,7 +2720,7 @@
    "platform": "drone",
    "start_offset_m": 167.4,
    "duration_s": 288.3,
-   "realtime_factor": 59.5
+   "realtime_factor": 85.4
   },
   {
    "distance_m": 2898.9,
@@ -2648,6 +2740,7 @@
    "misleading_frac": 0.1615,
    "warned_at_m": 0.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0139,
    "silent_failure": false,
    "median_radius_m": 1271.78,
    "xy_rmse_m": 708.57,
@@ -2658,7 +2751,7 @@
    "platform": "drone",
    "start_offset_m": 122.6,
    "duration_s": 289.8,
-   "realtime_factor": 57.6
+   "realtime_factor": 86.2
   },
   {
    "distance_m": 2882.8,
@@ -2678,6 +2771,7 @@
    "misleading_frac": 0.1373,
    "warned_at_m": 1981.5,
    "hmi_frac": 0.0624,
+   "false_alarm_frac": 0.0809,
    "silent_failure": true,
    "median_radius_m": 15.54,
    "xy_rmse_m": 196.93,
@@ -2688,7 +2782,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.0,
-   "realtime_factor": 58.9
+   "realtime_factor": 83.5
   },
   {
    "distance_m": 2890.9,
@@ -2708,6 +2802,7 @@
    "misleading_frac": 0.4006,
    "warned_at_m": 776.0,
    "hmi_frac": 0.0138,
+   "false_alarm_frac": 0.1204,
    "silent_failure": true,
    "median_radius_m": 113.09,
    "xy_rmse_m": 470.72,
@@ -2718,29 +2813,30 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 361.2,
-   "realtime_factor": 60.2
+   "realtime_factor": 85.6
   },
   {
    "distance_m": 2892.9,
-   "score_log10": 1.661,
+   "score_log10": 1.645,
    "mae_m": {
     "0-250": 13.75,
     "250-500": 8.32,
     "500-1000": 3.47,
     "1000-2000": 87.53,
-    "2000+": 1555.57
+    "2000+": 1314.09
    },
    "lost_at_m": 1603.3,
    "lost": true,
-   "growth_k": 2.55,
-   "max_error_m": 2978.0,
+   "growth_k": 2.5,
+   "max_error_m": 1864.6,
    "integrity": true,
    "misleading_frac": 0.2172,
    "warned_at_m": 77.8,
    "hmi_frac": 0.0812,
+   "false_alarm_frac": 0.0766,
    "silent_failure": true,
    "median_radius_m": 19.53,
-   "xy_rmse_m": 962.45,
+   "xy_rmse_m": 779.81,
    "z_rmse_m": 0.49,
    "scenario": "tampere",
    "run": 2,
@@ -2748,7 +2844,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 361.0,
-   "realtime_factor": 59.3
+   "realtime_factor": 85.0
   },
   {
    "distance_m": 2903.4,
@@ -2768,6 +2864,7 @@
    "misleading_frac": 0.0309,
    "warned_at_m": 1738.1,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0335,
    "silent_failure": false,
    "median_radius_m": 13.35,
    "xy_rmse_m": 7.11,
@@ -2778,7 +2875,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 361.8,
-   "realtime_factor": 55.6
+   "realtime_factor": 82.9
   },
   {
    "distance_m": 2884.1,
@@ -2798,6 +2895,7 @@
    "misleading_frac": 0.1344,
    "warned_at_m": 138.7,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0412,
    "silent_failure": false,
    "median_radius_m": 16.73,
    "xy_rmse_m": 230.44,
@@ -2808,7 +2906,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 359.8,
-   "realtime_factor": 55.4
+   "realtime_factor": 85.4
   },
   {
    "distance_m": 2878.7,
@@ -2828,6 +2926,7 @@
    "misleading_frac": 0.0871,
    "warned_at_m": 1482.2,
    "hmi_frac": 0.0865,
+   "false_alarm_frac": 0.2225,
    "silent_failure": true,
    "median_radius_m": 15.55,
    "xy_rmse_m": 85.99,
@@ -2838,7 +2937,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 359.3,
-   "realtime_factor": 58.8
+   "realtime_factor": 85.2
   },
   {
    "distance_m": 2881.3,
@@ -2858,6 +2957,7 @@
    "misleading_frac": 0.0184,
    "warned_at_m": 2298.5,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0437,
    "silent_failure": false,
    "median_radius_m": 12.38,
    "xy_rmse_m": 131.8,
@@ -2868,7 +2968,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.0,
-   "realtime_factor": 57.6
+   "realtime_factor": 85.0
   },
   {
    "distance_m": 2899.5,
@@ -2888,6 +2988,7 @@
    "misleading_frac": 0.493,
    "warned_at_m": 1319.5,
    "hmi_frac": 0.3377,
+   "false_alarm_frac": 0.0083,
    "silent_failure": true,
    "median_radius_m": 16.05,
    "xy_rmse_m": 246.21,
@@ -2898,7 +2999,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 361.6,
-   "realtime_factor": 56.9
+   "realtime_factor": 85.7
   },
   {
    "distance_m": 2883.5,
@@ -2918,6 +3019,7 @@
    "misleading_frac": 0.3663,
    "warned_at_m": 901.6,
    "hmi_frac": 0.1302,
+   "false_alarm_frac": 0.0966,
    "silent_failure": true,
    "median_radius_m": 57.9,
    "xy_rmse_m": 426.56,
@@ -2928,7 +3030,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.3,
-   "realtime_factor": 54.1
+   "realtime_factor": 82.3
   },
   {
    "distance_m": 2892.8,
@@ -2948,6 +3050,7 @@
    "misleading_frac": 0.0413,
    "warned_at_m": 767.2,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0972,
    "silent_failure": false,
    "median_radius_m": 16.63,
    "xy_rmse_m": 128.16,
@@ -2958,7 +3061,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 361.2,
-   "realtime_factor": 56.8
+   "realtime_factor": 84.2
   },
   {
    "distance_m": 2893.2,
@@ -2978,6 +3081,7 @@
    "misleading_frac": 0.0095,
    "warned_at_m": null,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 11.91,
    "xy_rmse_m": 3.52,
@@ -2988,7 +3092,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 361.6,
-   "realtime_factor": 59.4
+   "realtime_factor": 83.1
   },
   {
    "distance_m": 2903.2,
@@ -3008,6 +3112,7 @@
    "misleading_frac": 0.5163,
    "warned_at_m": 189.8,
    "hmi_frac": 0.2849,
+   "false_alarm_frac": 0.0329,
    "silent_failure": true,
    "median_radius_m": 28.9,
    "xy_rmse_m": 155.48,
@@ -3018,7 +3123,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 362.0,
-   "realtime_factor": 60.4
+   "realtime_factor": 86.1
   },
   {
    "distance_m": 2898.6,
@@ -3038,6 +3143,7 @@
    "misleading_frac": 0.2475,
    "warned_at_m": 673.5,
    "hmi_frac": 0.1608,
+   "false_alarm_frac": 0.0203,
    "silent_failure": true,
    "median_radius_m": 16.98,
    "xy_rmse_m": 808.69,
@@ -3048,7 +3154,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 362.0,
-   "realtime_factor": 58.6
+   "realtime_factor": 84.1
   },
   {
    "distance_m": 2881.9,
@@ -3068,6 +3174,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 1871.7,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.1093,
    "silent_failure": false,
    "median_radius_m": 16.03,
    "xy_rmse_m": 95.31,
@@ -3078,7 +3185,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.0,
-   "realtime_factor": 54.9
+   "realtime_factor": 85.2
   },
   {
    "distance_m": 2893.1,
@@ -3098,6 +3205,7 @@
    "misleading_frac": 0.0241,
    "warned_at_m": 1398.3,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0973,
    "silent_failure": false,
    "median_radius_m": 12.49,
    "xy_rmse_m": 8.01,
@@ -3108,29 +3216,30 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.7,
-   "realtime_factor": 55.4
+   "realtime_factor": 84.0
   },
   {
    "distance_m": 2868.6,
-   "score_log10": 1.756,
+   "score_log10": 1.755,
    "mae_m": {
     "0-250": 2.14,
     "250-500": 3.04,
     "500-1000": 2.48,
     "1000-2000": 178.16,
-    "2000+": 1452.7
+    "2000+": 1446.02
    },
    "lost_at_m": 1390.9,
    "lost": true,
    "growth_k": 3.12,
-   "max_error_m": 2450.4,
+   "max_error_m": 2289.2,
    "integrity": true,
    "misleading_frac": 0.1683,
    "warned_at_m": 1410.2,
    "hmi_frac": 0.0593,
+   "false_alarm_frac": 0.0,
    "silent_failure": true,
    "median_radius_m": 24.7,
-   "xy_rmse_m": 876.2,
+   "xy_rmse_m": 870.79,
    "z_rmse_m": 0.38,
    "scenario": "tampere",
    "run": 15,
@@ -3138,7 +3247,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 358.3,
-   "realtime_factor": 58.7
+   "realtime_factor": 85.4
   },
   {
    "distance_m": 2881.5,
@@ -3158,6 +3267,7 @@
    "misleading_frac": 0.0017,
    "warned_at_m": null,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 12.46,
    "xy_rmse_m": 5.52,
@@ -3168,7 +3278,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.0,
-   "realtime_factor": 59.7
+   "realtime_factor": 82.5
   },
   {
    "distance_m": 2882.6,
@@ -3188,6 +3298,7 @@
    "misleading_frac": 0.3838,
    "warned_at_m": 1064.2,
    "hmi_frac": 0.0923,
+   "false_alarm_frac": 0.0109,
    "silent_failure": true,
    "median_radius_m": 62.51,
    "xy_rmse_m": 219.34,
@@ -3198,7 +3309,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.1,
-   "realtime_factor": 58.6
+   "realtime_factor": 86.7
   },
   {
    "distance_m": 2870.7,
@@ -3218,6 +3329,7 @@
    "misleading_frac": 0.0046,
    "warned_at_m": 1671.1,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0309,
    "silent_failure": false,
    "median_radius_m": 14.1,
    "xy_rmse_m": 6.8,
@@ -3228,7 +3340,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 358.4,
-   "realtime_factor": 53.9
+   "realtime_factor": 84.0
   },
   {
    "distance_m": 2888.2,
@@ -3248,6 +3360,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 2004.3,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0968,
    "silent_failure": false,
    "median_radius_m": 15.99,
    "xy_rmse_m": 156.17,
@@ -3258,7 +3371,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.5,
-   "realtime_factor": 56.7
+   "realtime_factor": 85.0
   },
   {
    "distance_m": 2881.4,
@@ -3278,6 +3391,7 @@
    "misleading_frac": 0.1234,
    "warned_at_m": 1291.2,
    "hmi_frac": 0.067,
+   "false_alarm_frac": 0.0101,
    "silent_failure": true,
    "median_radius_m": 17.82,
    "xy_rmse_m": 144.46,
@@ -3288,7 +3402,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.0,
-   "realtime_factor": 53.1
+   "realtime_factor": 83.9
   },
   {
    "distance_m": 2905.0,
@@ -3308,6 +3422,7 @@
    "misleading_frac": 0.0023,
    "warned_at_m": 239.9,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0657,
    "silent_failure": false,
    "median_radius_m": 17.22,
    "xy_rmse_m": 40.53,
@@ -3318,7 +3433,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 362.8,
-   "realtime_factor": 51.5
+   "realtime_factor": 83.1
   },
   {
    "distance_m": 2882.6,
@@ -3338,6 +3453,7 @@
    "misleading_frac": 0.0633,
    "warned_at_m": 1854.7,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0089,
    "silent_failure": false,
    "median_radius_m": 16.11,
    "xy_rmse_m": 8.47,
@@ -3348,7 +3464,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.2,
-   "realtime_factor": 39.9
+   "realtime_factor": 84.0
   },
   {
    "distance_m": 2895.2,
@@ -3368,6 +3484,7 @@
    "misleading_frac": 0.2222,
    "warned_at_m": 1248.9,
    "hmi_frac": 0.2222,
+   "false_alarm_frac": 0.17,
    "silent_failure": true,
    "median_radius_m": 25.57,
    "xy_rmse_m": 436.18,
@@ -3378,7 +3495,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 361.3,
-   "realtime_factor": 48.2
+   "realtime_factor": 86.2
   },
   {
    "distance_m": 2890.7,
@@ -3398,6 +3515,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 100.6,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0023,
    "silent_failure": false,
    "median_radius_m": 17.54,
    "xy_rmse_m": 4.88,
@@ -3408,7 +3526,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 361.1,
-   "realtime_factor": 53.0
+   "realtime_factor": 85.1
   },
   {
    "distance_m": 2898.1,
@@ -3428,6 +3546,7 @@
    "misleading_frac": 0.2599,
    "warned_at_m": 168.0,
    "hmi_frac": 0.1584,
+   "false_alarm_frac": 0.0349,
    "silent_failure": true,
    "median_radius_m": 16.83,
    "xy_rmse_m": 158.14,
@@ -3438,7 +3557,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 362.1,
-   "realtime_factor": 54.2
+   "realtime_factor": 83.7
   },
   {
    "distance_m": 2877.3,
@@ -3458,6 +3577,7 @@
    "misleading_frac": 0.1249,
    "warned_at_m": 545.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0859,
    "silent_failure": false,
    "median_radius_m": 21.99,
    "xy_rmse_m": 17.62,
@@ -3468,7 +3588,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 359.3,
-   "realtime_factor": 40.2
+   "realtime_factor": 83.1
   },
   {
    "distance_m": 2906.6,
@@ -3488,6 +3608,7 @@
    "misleading_frac": 0.5989,
    "warned_at_m": 343.0,
    "hmi_frac": 0.5624,
+   "false_alarm_frac": 0.0,
    "silent_failure": true,
    "median_radius_m": 19.83,
    "xy_rmse_m": 1086.51,
@@ -3498,7 +3619,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 363.2,
-   "realtime_factor": 42.4
+   "realtime_factor": 86.7
   },
   {
    "distance_m": 2885.8,
@@ -3518,6 +3639,7 @@
    "misleading_frac": 0.1694,
    "warned_at_m": 1144.5,
    "hmi_frac": 0.1671,
+   "false_alarm_frac": 0.0925,
    "silent_failure": true,
    "median_radius_m": 16.97,
    "xy_rmse_m": 209.04,
@@ -3528,7 +3650,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.6,
-   "realtime_factor": 51.5
+   "realtime_factor": 86.7
   },
   {
    "distance_m": 2887.2,
@@ -3548,6 +3670,7 @@
    "misleading_frac": 0.5188,
    "warned_at_m": 570.2,
    "hmi_frac": 0.3528,
+   "false_alarm_frac": 0.0911,
    "silent_failure": true,
    "median_radius_m": 20.24,
    "xy_rmse_m": 354.99,
@@ -3558,7 +3681,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.6,
-   "realtime_factor": 57.4
+   "realtime_factor": 84.9
   },
   {
    "distance_m": 2886.6,
@@ -3578,6 +3701,7 @@
    "misleading_frac": 0.0276,
    "warned_at_m": 586.8,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0698,
    "silent_failure": false,
    "median_radius_m": 20.31,
    "xy_rmse_m": 7.69,
@@ -3588,7 +3712,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.7,
-   "realtime_factor": 54.1
+   "realtime_factor": 86.8
   },
   {
    "distance_m": 2889.9,
@@ -3608,6 +3732,7 @@
    "misleading_frac": 0.3571,
    "warned_at_m": 222.5,
    "hmi_frac": 0.3154,
+   "false_alarm_frac": 0.1251,
    "silent_failure": true,
    "median_radius_m": 21.88,
    "xy_rmse_m": 95.22,
@@ -3618,7 +3743,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.8,
-   "realtime_factor": 41.4
+   "realtime_factor": 86.0
   },
   {
    "distance_m": 2880.5,
@@ -3638,6 +3763,7 @@
    "misleading_frac": 0.5203,
    "warned_at_m": 542.2,
    "hmi_frac": 0.4745,
+   "false_alarm_frac": 0.0127,
    "silent_failure": true,
    "median_radius_m": 21.72,
    "xy_rmse_m": 1142.49,
@@ -3648,7 +3774,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 359.9,
-   "realtime_factor": 43.1
+   "realtime_factor": 86.4
   },
   {
    "distance_m": 2876.7,
@@ -3668,6 +3794,7 @@
    "misleading_frac": 0.1456,
    "warned_at_m": 142.6,
    "hmi_frac": 0.1159,
+   "false_alarm_frac": 0.013,
    "silent_failure": true,
    "median_radius_m": 19.08,
    "xy_rmse_m": 79.27,
@@ -3678,7 +3805,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 359.3,
-   "realtime_factor": 50.8
+   "realtime_factor": 85.2
   },
   {
    "distance_m": 2903.0,
@@ -3698,6 +3825,7 @@
    "misleading_frac": 0.7878,
    "warned_at_m": 708.0,
    "hmi_frac": 0.7336,
+   "false_alarm_frac": 0.0,
    "silent_failure": true,
    "median_radius_m": 16.26,
    "xy_rmse_m": 1146.66,
@@ -3708,7 +3836,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 362.7,
-   "realtime_factor": 56.4
+   "realtime_factor": 85.8
   },
   {
    "distance_m": 2877.4,
@@ -3728,6 +3856,7 @@
    "misleading_frac": 0.0063,
    "warned_at_m": 1831.9,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0936,
    "silent_failure": false,
    "median_radius_m": 17.29,
    "xy_rmse_m": 6.08,
@@ -3738,7 +3867,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 359.6,
-   "realtime_factor": 54.5
+   "realtime_factor": 85.0
   },
   {
    "distance_m": 2893.9,
@@ -3758,6 +3887,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 1971.2,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0404,
    "silent_failure": false,
    "median_radius_m": 20.19,
    "xy_rmse_m": 5.91,
@@ -3768,7 +3898,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 361.7,
-   "realtime_factor": 41.3
+   "realtime_factor": 85.8
   },
   {
    "distance_m": 2895.8,
@@ -3788,6 +3918,7 @@
    "misleading_frac": 0.0003,
    "warned_at_m": 1673.4,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0054,
    "silent_failure": false,
    "median_radius_m": 17.45,
    "xy_rmse_m": 6.33,
@@ -3798,7 +3929,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 361.8,
-   "realtime_factor": 41.8
+   "realtime_factor": 85.0
   },
   {
    "distance_m": 2889.0,
@@ -3818,6 +3949,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 706.8,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0935,
    "silent_failure": false,
    "median_radius_m": 17.5,
    "xy_rmse_m": 9.7,
@@ -3828,7 +3960,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.2,
-   "realtime_factor": 51.5
+   "realtime_factor": 84.0
   },
   {
    "distance_m": 2905.9,
@@ -3848,6 +3980,7 @@
    "misleading_frac": 0.4378,
    "warned_at_m": 100.1,
    "hmi_frac": 0.413,
+   "false_alarm_frac": 0.0325,
    "silent_failure": true,
    "median_radius_m": 20.74,
    "xy_rmse_m": 1050.42,
@@ -3858,7 +3991,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 362.9,
-   "realtime_factor": 55.5
+   "realtime_factor": 86.2
   },
   {
    "distance_m": 2887.1,
@@ -3878,6 +4011,7 @@
    "misleading_frac": 0.2604,
    "warned_at_m": 0.0,
    "hmi_frac": 0.2014,
+   "false_alarm_frac": 0.0006,
    "silent_failure": true,
    "median_radius_m": 12.69,
    "xy_rmse_m": 158.74,
@@ -3888,7 +4022,7 @@
    "platform": "drone",
    "start_offset_m": 57.2,
    "duration_s": 360.0,
-   "realtime_factor": 48.8
+   "realtime_factor": 85.9
   },
   {
    "distance_m": 2880.0,
@@ -3908,6 +4042,7 @@
    "misleading_frac": 0.3885,
    "warned_at_m": 0.0,
    "hmi_frac": 0.2834,
+   "false_alarm_frac": 0.0256,
    "silent_failure": true,
    "median_radius_m": 15.28,
    "xy_rmse_m": 365.48,
@@ -3918,7 +4053,7 @@
    "platform": "drone",
    "start_offset_m": 142.5,
    "duration_s": 359.6,
-   "realtime_factor": 42.1
+   "realtime_factor": 84.9
   },
   {
    "distance_m": 2891.9,
@@ -3938,6 +4073,7 @@
    "misleading_frac": 0.3483,
    "warned_at_m": 0.0,
    "hmi_frac": 0.3017,
+   "false_alarm_frac": 0.1201,
    "silent_failure": true,
    "median_radius_m": 19.95,
    "xy_rmse_m": 277.46,
@@ -3948,7 +4084,7 @@
    "platform": "drone",
    "start_offset_m": 116.2,
    "duration_s": 360.5,
-   "realtime_factor": 50.1
+   "realtime_factor": 84.2
   },
   {
    "distance_m": 2898.1,
@@ -3968,6 +4104,7 @@
    "misleading_frac": 0.7052,
    "warned_at_m": 0.0,
    "hmi_frac": 0.3915,
+   "false_alarm_frac": 0.0342,
    "silent_failure": true,
    "median_radius_m": 24.54,
    "xy_rmse_m": 248.79,
@@ -3978,7 +4115,7 @@
    "platform": "drone",
    "start_offset_m": 111.3,
    "duration_s": 360.9,
-   "realtime_factor": 54.5
+   "realtime_factor": 86.9
   },
   {
    "distance_m": 2904.1,
@@ -3998,6 +4135,7 @@
    "misleading_frac": 0.6283,
    "warned_at_m": 0.0,
    "hmi_frac": 0.426,
+   "false_alarm_frac": 0.0893,
    "silent_failure": true,
    "median_radius_m": 26.16,
    "xy_rmse_m": 705.6,
@@ -4008,7 +4146,7 @@
    "platform": "drone",
    "start_offset_m": 76.7,
    "duration_s": 361.9,
-   "realtime_factor": 54.0
+   "realtime_factor": 84.1
   },
   {
    "distance_m": 2885.1,
@@ -4028,6 +4166,7 @@
    "misleading_frac": 0.6069,
    "warned_at_m": 0.0,
    "hmi_frac": 0.5302,
+   "false_alarm_frac": 0.1397,
    "silent_failure": true,
    "median_radius_m": 26.23,
    "xy_rmse_m": 720.43,
@@ -4038,7 +4177,7 @@
    "platform": "drone",
    "start_offset_m": 116.8,
    "duration_s": 359.6,
-   "realtime_factor": 46.4
+   "realtime_factor": 85.1
   },
   {
    "distance_m": 2922.8,
@@ -4058,6 +4197,7 @@
    "misleading_frac": 0.6055,
    "warned_at_m": 0.0,
    "hmi_frac": 0.6038,
+   "false_alarm_frac": 0.0,
    "silent_failure": true,
    "median_radius_m": 14.26,
    "xy_rmse_m": 517.4,
@@ -4068,29 +4208,30 @@
    "platform": "drone",
    "start_offset_m": 149.5,
    "duration_s": 363.8,
-   "realtime_factor": 43.6
+   "realtime_factor": 84.4
   },
   {
    "distance_m": 2906.2,
-   "score_log10": 2.869,
+   "score_log10": 2.85,
    "mae_m": {
     "0-250": 164.66,
     "250-500": 170.6,
     "500-1000": 212.34,
     "1000-2000": 848.94,
-    "2000+": 2889.8
+    "2000+": 2444.41
    },
    "lost_at_m": 0.0,
    "lost": true,
-   "growth_k": 1.33,
-   "max_error_m": 4376.0,
+   "growth_k": 1.27,
+   "max_error_m": 2750.1,
    "integrity": true,
    "misleading_frac": 0.3132,
    "warned_at_m": 0.0,
    "hmi_frac": 0.3106,
+   "false_alarm_frac": 0.0,
    "silent_failure": true,
    "median_radius_m": 13.59,
-   "xy_rmse_m": 1765.7,
+   "xy_rmse_m": 1488.26,
    "z_rmse_m": 0.32,
    "scenario": "kyiv",
    "run": 7,
@@ -4098,7 +4239,7 @@
    "platform": "drone",
    "start_offset_m": 136.4,
    "duration_s": 363.0,
-   "realtime_factor": 50.0
+   "realtime_factor": 85.5
   },
   {
    "distance_m": 2887.3,
@@ -4118,6 +4259,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 0.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 12.69,
    "xy_rmse_m": 2.63,
@@ -4128,7 +4270,7 @@
    "platform": "drone",
    "start_offset_m": 50.8,
    "duration_s": 360.7,
-   "realtime_factor": 53.6
+   "realtime_factor": 83.8
   },
   {
    "distance_m": 2904.1,
@@ -4148,6 +4290,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 0.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 12.51,
    "xy_rmse_m": 2.94,
@@ -4158,7 +4301,7 @@
    "platform": "drone",
    "start_offset_m": 131.5,
    "duration_s": 362.6,
-   "realtime_factor": 55.8
+   "realtime_factor": 83.1
   },
   {
    "distance_m": 2918.2,
@@ -4178,6 +4321,7 @@
    "misleading_frac": 0.3168,
    "warned_at_m": 0.0,
    "hmi_frac": 0.225,
+   "false_alarm_frac": 0.0017,
    "silent_failure": true,
    "median_radius_m": 14.04,
    "xy_rmse_m": 38.53,
@@ -4188,7 +4332,7 @@
    "platform": "drone",
    "start_offset_m": 110.9,
    "duration_s": 364.5,
-   "realtime_factor": 43.7
+   "realtime_factor": 85.1
   },
   {
    "distance_m": 2901.5,
@@ -4208,6 +4352,7 @@
    "misleading_frac": 0.2398,
    "warned_at_m": 1163.3,
    "hmi_frac": 0.2203,
+   "false_alarm_frac": 0.1364,
    "silent_failure": true,
    "median_radius_m": 19.16,
    "xy_rmse_m": 164.31,
@@ -4218,7 +4363,7 @@
    "platform": "drone",
    "start_offset_m": 109.3,
    "duration_s": 361.5,
-   "realtime_factor": 51.9
+   "realtime_factor": 84.9
   },
   {
    "distance_m": 2891.4,
@@ -4238,6 +4383,7 @@
    "misleading_frac": 0.7098,
    "warned_at_m": 0.0,
    "hmi_frac": 0.5156,
+   "false_alarm_frac": 0.0146,
    "silent_failure": true,
    "median_radius_m": 16.96,
    "xy_rmse_m": 249.68,
@@ -4248,7 +4394,7 @@
    "platform": "drone",
    "start_offset_m": 109.7,
    "duration_s": 361.2,
-   "realtime_factor": 58.2
+   "realtime_factor": 85.7
   },
   {
    "distance_m": 2895.4,
@@ -4268,6 +4414,7 @@
    "misleading_frac": 0.0017,
    "warned_at_m": 853.7,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0014,
    "silent_failure": false,
    "median_radius_m": 12.43,
    "xy_rmse_m": 6.02,
@@ -4278,7 +4425,7 @@
    "platform": "drone",
    "start_offset_m": 114.6,
    "duration_s": 361.3,
-   "realtime_factor": 55.7
+   "realtime_factor": 86.3
   },
   {
    "distance_m": 2893.3,
@@ -4298,6 +4445,7 @@
    "misleading_frac": 0.5905,
    "warned_at_m": 0.0,
    "hmi_frac": 0.4236,
+   "false_alarm_frac": 0.0807,
    "silent_failure": true,
    "median_radius_m": 24.18,
    "xy_rmse_m": 340.69,
@@ -4308,29 +4456,30 @@
    "platform": "drone",
    "start_offset_m": 66.5,
    "duration_s": 360.6,
-   "realtime_factor": 56.1
+   "realtime_factor": 84.4
   },
   {
    "distance_m": 2900.0,
-   "score_log10": 2.811,
+   "score_log10": 2.809,
    "mae_m": {
     "0-250": 10.53,
     "250-500": 58.08,
     "500-1000": 299.44,
     "1000-2000": 1020.65,
-    "2000+": 2785.91
+    "2000+": 2718.1
    },
    "lost_at_m": 281.7,
    "lost": true,
-   "growth_k": 2.05,
-   "max_error_m": 4366.2,
+   "growth_k": 2.04,
+   "max_error_m": 3823.1,
    "integrity": true,
    "misleading_frac": 0.2949,
    "warned_at_m": 0.0,
    "hmi_frac": 0.2539,
+   "false_alarm_frac": 0.0779,
    "silent_failure": true,
    "median_radius_m": 31.02,
-   "xy_rmse_m": 1738.2,
+   "xy_rmse_m": 1689.91,
    "z_rmse_m": 0.42,
    "scenario": "kyiv",
    "run": 15,
@@ -4338,7 +4487,7 @@
    "platform": "drone",
    "start_offset_m": 75.1,
    "duration_s": 361.8,
-   "realtime_factor": 41.9
+   "realtime_factor": 85.7
   },
   {
    "distance_m": 2887.5,
@@ -4353,11 +4502,12 @@
    "lost_at_m": 725.5,
    "lost": true,
    "growth_k": 2.79,
-   "max_error_m": 3538.8,
+   "max_error_m": 3538.4,
    "integrity": true,
    "misleading_frac": 0.4503,
    "warned_at_m": 0.0,
    "hmi_frac": 0.3914,
+   "false_alarm_frac": 0.0741,
    "silent_failure": true,
    "median_radius_m": 26.27,
    "xy_rmse_m": 1572.94,
@@ -4368,7 +4518,7 @@
    "platform": "drone",
    "start_offset_m": 75.1,
    "duration_s": 360.6,
-   "realtime_factor": 52.6
+   "realtime_factor": 83.6
   },
   {
    "distance_m": 2901.1,
@@ -4388,6 +4538,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 0.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 11.89,
    "xy_rmse_m": 3.0,
@@ -4398,7 +4549,7 @@
    "platform": "drone",
    "start_offset_m": 143.3,
    "duration_s": 361.8,
-   "realtime_factor": 57.9
+   "realtime_factor": 85.5
   },
   {
    "distance_m": 2892.0,
@@ -4418,6 +4569,7 @@
    "misleading_frac": 0.0909,
    "warned_at_m": 0.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.002,
    "silent_failure": false,
    "median_radius_m": 12.98,
    "xy_rmse_m": 12.97,
@@ -4428,7 +4580,7 @@
    "platform": "drone",
    "start_offset_m": 124.1,
    "duration_s": 360.1,
-   "realtime_factor": 52.9
+   "realtime_factor": 85.0
   },
   {
    "distance_m": 2894.6,
@@ -4448,6 +4600,7 @@
    "misleading_frac": 0.7289,
    "warned_at_m": 0.0,
    "hmi_frac": 0.6659,
+   "false_alarm_frac": 0.0,
    "silent_failure": true,
    "median_radius_m": 21.3,
    "xy_rmse_m": 554.64,
@@ -4458,7 +4611,7 @@
    "platform": "drone",
    "start_offset_m": 87.1,
    "duration_s": 361.5,
-   "realtime_factor": 53.9
+   "realtime_factor": 83.1
   },
   {
    "distance_m": 2893.8,
@@ -4478,6 +4631,7 @@
    "misleading_frac": 1.0,
    "warned_at_m": 0.0,
    "hmi_frac": 0.7981,
+   "false_alarm_frac": 0.0,
    "silent_failure": true,
    "median_radius_m": 32.39,
    "xy_rmse_m": 1297.78,
@@ -4488,7 +4642,7 @@
    "platform": "drone",
    "start_offset_m": 67.6,
    "duration_s": 289.3,
-   "realtime_factor": 39.0
+   "realtime_factor": 85.0
   },
   {
    "distance_m": 2897.1,
@@ -4508,6 +4662,7 @@
    "misleading_frac": 0.8547,
    "warned_at_m": 0.0,
    "hmi_frac": 0.5535,
+   "false_alarm_frac": 0.0064,
    "silent_failure": true,
    "median_radius_m": 23.03,
    "xy_rmse_m": 175.38,
@@ -4518,7 +4673,7 @@
    "platform": "drone",
    "start_offset_m": 115.3,
    "duration_s": 289.5,
-   "realtime_factor": 47.9
+   "realtime_factor": 85.9
   },
   {
    "distance_m": 2903.8,
@@ -4538,6 +4693,7 @@
    "misleading_frac": 0.4023,
    "warned_at_m": 0.0,
    "hmi_frac": 0.1302,
+   "false_alarm_frac": 0.1623,
    "silent_failure": true,
    "median_radius_m": 29.51,
    "xy_rmse_m": 44.23,
@@ -4548,7 +4704,7 @@
    "platform": "drone",
    "start_offset_m": 156.5,
    "duration_s": 290.3,
-   "realtime_factor": 50.7
+   "realtime_factor": 85.1
   },
   {
    "distance_m": 2882.3,
@@ -4568,6 +4724,7 @@
    "misleading_frac": 0.9529,
    "warned_at_m": 0.0,
    "hmi_frac": 0.7413,
+   "false_alarm_frac": 0.0,
    "silent_failure": true,
    "median_radius_m": 31.14,
    "xy_rmse_m": 804.16,
@@ -4578,7 +4735,7 @@
    "platform": "drone",
    "start_offset_m": 61.6,
    "duration_s": 288.2,
-   "realtime_factor": 56.8
+   "realtime_factor": 84.1
   },
   {
    "distance_m": 2881.3,
@@ -4598,6 +4755,7 @@
    "misleading_frac": 0.9464,
    "warned_at_m": 0.0,
    "hmi_frac": 0.8799,
+   "false_alarm_frac": 0.0093,
    "silent_failure": true,
    "median_radius_m": 24.32,
    "xy_rmse_m": 793.19,
@@ -4608,7 +4766,7 @@
    "platform": "drone",
    "start_offset_m": 65.9,
    "duration_s": 288.1,
-   "realtime_factor": 55.4
+   "realtime_factor": 82.5
   },
   {
    "distance_m": 2886.5,
@@ -4628,6 +4786,7 @@
    "misleading_frac": 0.4307,
    "warned_at_m": 0.0,
    "hmi_frac": 0.3582,
+   "false_alarm_frac": 0.0176,
    "silent_failure": true,
    "median_radius_m": 19.32,
    "xy_rmse_m": 71.82,
@@ -4638,7 +4797,7 @@
    "platform": "drone",
    "start_offset_m": 57.3,
    "duration_s": 288.6,
-   "realtime_factor": 40.9
+   "realtime_factor": 85.1
   },
   {
    "distance_m": 2892.4,
@@ -4658,6 +4817,7 @@
    "misleading_frac": 0.6204,
    "warned_at_m": 0.0,
    "hmi_frac": 0.4387,
+   "false_alarm_frac": 0.0222,
    "silent_failure": true,
    "median_radius_m": 23.84,
    "xy_rmse_m": 688.69,
@@ -4668,7 +4828,7 @@
    "platform": "drone",
    "start_offset_m": 82.8,
    "duration_s": 288.9,
-   "realtime_factor": 47.7
+   "realtime_factor": 85.8
   },
   {
    "distance_m": 2888.7,
@@ -4688,6 +4848,7 @@
    "misleading_frac": 0.8236,
    "warned_at_m": 0.0,
    "hmi_frac": 0.6752,
+   "false_alarm_frac": 0.0,
    "silent_failure": true,
    "median_radius_m": 26.47,
    "xy_rmse_m": 1011.43,
@@ -4698,7 +4859,7 @@
    "platform": "drone",
    "start_offset_m": 178.9,
    "duration_s": 288.9,
-   "realtime_factor": 53.6
+   "realtime_factor": 85.7
   },
   {
    "distance_m": 2871.1,
@@ -4718,6 +4879,7 @@
    "misleading_frac": 0.9993,
    "warned_at_m": 0.0,
    "hmi_frac": 0.8856,
+   "false_alarm_frac": 0.0,
    "silent_failure": true,
    "median_radius_m": 24.51,
    "xy_rmse_m": 1674.94,
@@ -4728,7 +4890,7 @@
    "platform": "drone",
    "start_offset_m": 92.2,
    "duration_s": 287.1,
-   "realtime_factor": 57.4
+   "realtime_factor": 84.4
   },
   {
    "distance_m": 2871.8,
@@ -4748,6 +4910,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 0.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0054,
    "silent_failure": false,
    "median_radius_m": 19.32,
    "xy_rmse_m": 3.24,
@@ -4758,7 +4921,7 @@
    "platform": "drone",
    "start_offset_m": 69.2,
    "duration_s": 287.2,
-   "realtime_factor": 57.7
+   "realtime_factor": 83.2
   },
   {
    "distance_m": 2894.5,
@@ -4778,6 +4941,7 @@
    "misleading_frac": 0.6784,
    "warned_at_m": 0.0,
    "hmi_frac": 0.4107,
+   "false_alarm_frac": 0.0068,
    "silent_failure": true,
    "median_radius_m": 22.15,
    "xy_rmse_m": 124.18,
@@ -4788,7 +4952,7 @@
    "platform": "drone",
    "start_offset_m": 116.4,
    "duration_s": 289.4,
-   "realtime_factor": 54.2
+   "realtime_factor": 84.8
   },
   {
    "distance_m": 2879.7,
@@ -4808,6 +4972,7 @@
    "misleading_frac": 0.8449,
    "warned_at_m": 0.0,
    "hmi_frac": 0.4732,
+   "false_alarm_frac": 0.0497,
    "silent_failure": true,
    "median_radius_m": 46.75,
    "xy_rmse_m": 175.69,
@@ -4818,7 +4983,7 @@
    "platform": "drone",
    "start_offset_m": 172.4,
    "duration_s": 287.8,
-   "realtime_factor": 54.3
+   "realtime_factor": 84.1
   },
   {
    "distance_m": 2885.2,
@@ -4838,6 +5003,7 @@
    "misleading_frac": 0.9303,
    "warned_at_m": 0.0,
    "hmi_frac": 0.7648,
+   "false_alarm_frac": 0.0011,
    "silent_failure": true,
    "median_radius_m": 23.39,
    "xy_rmse_m": 1060.31,
@@ -4848,7 +5014,7 @@
    "platform": "drone",
    "start_offset_m": 131.2,
    "duration_s": 288.4,
-   "realtime_factor": 54.8
+   "realtime_factor": 85.2
   },
   {
    "distance_m": 2876.3,
@@ -4868,6 +5034,7 @@
    "misleading_frac": 0.8394,
    "warned_at_m": 0.0,
    "hmi_frac": 0.8099,
+   "false_alarm_frac": 0.0,
    "silent_failure": true,
    "median_radius_m": 23.36,
    "xy_rmse_m": 1065.16,
@@ -4878,7 +5045,7 @@
    "platform": "drone",
    "start_offset_m": 185.9,
    "duration_s": 287.6,
-   "realtime_factor": 42.4
+   "realtime_factor": 86.1
   },
   {
    "distance_m": 2878.3,
@@ -4898,6 +5065,7 @@
    "misleading_frac": 0.6904,
    "warned_at_m": 0.0,
    "hmi_frac": 0.6303,
+   "false_alarm_frac": 0.0,
    "silent_failure": true,
    "median_radius_m": 22.68,
    "xy_rmse_m": 1727.66,
@@ -4908,7 +5076,7 @@
    "platform": "drone",
    "start_offset_m": 113.7,
    "duration_s": 287.8,
-   "realtime_factor": 48.8
+   "realtime_factor": 86.8
   },
   {
    "distance_m": 2878.6,
@@ -4928,6 +5096,7 @@
    "misleading_frac": 0.9424,
    "warned_at_m": 0.0,
    "hmi_frac": 0.636,
+   "false_alarm_frac": 0.0,
    "silent_failure": true,
    "median_radius_m": 35.29,
    "xy_rmse_m": 819.34,
@@ -4938,29 +5107,30 @@
    "platform": "drone",
    "start_offset_m": 174.4,
    "duration_s": 287.9,
-   "realtime_factor": 55.1
+   "realtime_factor": 83.7
   },
   {
    "distance_m": 2897.7,
-   "score_log10": 2.994,
+   "score_log10": 2.888,
    "mae_m": {
     "0-250": 222.49,
     "250-500": 164.84,
     "500-1000": 354.54,
-    "1000-2000": 1149.54,
-    "2000+": 3595.97
+    "1000-2000": 1109.1,
+    "2000+": 1657.11
    },
    "lost_at_m": 1.0,
    "lost": true,
-   "growth_k": 1.34,
-   "max_error_m": 5505.7,
+   "growth_k": 1.03,
+   "max_error_m": 1981.1,
    "integrity": true,
    "misleading_frac": 0.2186,
    "warned_at_m": 0.0,
    "hmi_frac": 0.2186,
+   "false_alarm_frac": 0.0,
    "silent_failure": true,
    "median_radius_m": 17.96,
-   "xy_rmse_m": 2206.78,
+   "xy_rmse_m": 1166.32,
    "z_rmse_m": 0.5,
    "scenario": "steppe",
    "run": 16,
@@ -4968,7 +5138,7 @@
    "platform": "drone",
    "start_offset_m": 103.8,
    "duration_s": 289.5,
-   "realtime_factor": 55.9
+   "realtime_factor": 86.7
   },
   {
    "distance_m": 2898.2,
@@ -4988,6 +5158,7 @@
    "misleading_frac": 0.9925,
    "warned_at_m": 0.0,
    "hmi_frac": 0.7498,
+   "false_alarm_frac": 0.0,
    "silent_failure": true,
    "median_radius_m": 29.92,
    "xy_rmse_m": 682.94,
@@ -4998,7 +5169,7 @@
    "platform": "drone",
    "start_offset_m": 163.5,
    "duration_s": 289.8,
-   "realtime_factor": 48.1
+   "realtime_factor": 85.8
   },
   {
    "distance_m": 2896.4,
@@ -5018,6 +5189,7 @@
    "misleading_frac": 0.9936,
    "warned_at_m": 0.0,
    "hmi_frac": 0.6694,
+   "false_alarm_frac": 0.0,
    "silent_failure": true,
    "median_radius_m": 34.86,
    "xy_rmse_m": 694.6,
@@ -5028,7 +5200,7 @@
    "platform": "drone",
    "start_offset_m": 61.1,
    "duration_s": 289.5,
-   "realtime_factor": 45.4
+   "realtime_factor": 85.1
   },
   {
    "distance_m": 2903.4,
@@ -5048,6 +5220,7 @@
    "misleading_frac": 0.1024,
    "warned_at_m": 0.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.111,
    "silent_failure": false,
    "median_radius_m": 26.15,
    "xy_rmse_m": 16.03,
@@ -5058,7 +5231,7 @@
    "platform": "drone",
    "start_offset_m": 150.2,
    "duration_s": 290.3,
-   "realtime_factor": 46.3
+   "realtime_factor": 84.6
   },
   {
    "distance_m": 2877.0,
@@ -5078,6 +5251,7 @@
    "misleading_frac": 0.8725,
    "warned_at_m": 227.0,
    "hmi_frac": 0.714,
+   "false_alarm_frac": 0.0403,
    "silent_failure": true,
    "median_radius_m": 31.2,
    "xy_rmse_m": 430.03,
@@ -5088,7 +5262,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.6,
-   "realtime_factor": 55.9
+   "realtime_factor": 83.0
   },
   {
    "distance_m": 2881.2,
@@ -5108,6 +5282,7 @@
    "misleading_frac": 0.7579,
    "warned_at_m": 360.0,
    "hmi_frac": 0.6906,
+   "false_alarm_frac": 0.0,
    "silent_failure": true,
    "median_radius_m": 20.04,
    "xy_rmse_m": 1630.65,
@@ -5118,7 +5293,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.0,
-   "realtime_factor": 56.3
+   "realtime_factor": 84.7
   },
   {
    "distance_m": 2896.8,
@@ -5138,6 +5313,7 @@
    "misleading_frac": 0.0694,
    "warned_at_m": 273.1,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.1813,
    "silent_failure": false,
    "median_radius_m": 36.0,
    "xy_rmse_m": 18.57,
@@ -5148,7 +5324,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.6,
-   "realtime_factor": 51.7
+   "realtime_factor": 86.4
   },
   {
    "distance_m": 2898.1,
@@ -5168,6 +5344,7 @@
    "misleading_frac": 0.3231,
    "warned_at_m": 113.0,
    "hmi_frac": 0.2026,
+   "false_alarm_frac": 0.2959,
    "silent_failure": true,
    "median_radius_m": 42.71,
    "xy_rmse_m": 48.01,
@@ -5178,7 +5355,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.7,
-   "realtime_factor": 47.7
+   "realtime_factor": 85.9
   },
   {
    "distance_m": 2886.5,
@@ -5198,6 +5375,7 @@
    "misleading_frac": 0.5004,
    "warned_at_m": 271.1,
    "hmi_frac": 0.346,
+   "false_alarm_frac": 0.0413,
    "silent_failure": true,
    "median_radius_m": 27.05,
    "xy_rmse_m": 393.31,
@@ -5208,7 +5386,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.5,
-   "realtime_factor": 48.8
+   "realtime_factor": 83.7
   },
   {
    "distance_m": 2881.0,
@@ -5228,6 +5406,7 @@
    "misleading_frac": 0.3489,
    "warned_at_m": 198.0,
    "hmi_frac": 0.1342,
+   "false_alarm_frac": 0.2694,
    "silent_failure": true,
    "median_radius_m": 39.82,
    "xy_rmse_m": 71.98,
@@ -5238,7 +5417,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.0,
-   "realtime_factor": 52.7
+   "realtime_factor": 82.4
   },
   {
    "distance_m": 2874.9,
@@ -5258,6 +5437,7 @@
    "misleading_frac": 0.3517,
    "warned_at_m": 131.1,
    "hmi_frac": 0.1157,
+   "false_alarm_frac": 0.2162,
    "silent_failure": true,
    "median_radius_m": 38.75,
    "xy_rmse_m": 39.52,
@@ -5268,7 +5448,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.4,
-   "realtime_factor": 57.3
+   "realtime_factor": 87.5
   },
   {
    "distance_m": 2907.7,
@@ -5288,6 +5468,7 @@
    "misleading_frac": 0.7639,
    "warned_at_m": 166.2,
    "hmi_frac": 0.4256,
+   "false_alarm_frac": 0.0819,
    "silent_failure": true,
    "median_radius_m": 40.95,
    "xy_rmse_m": 583.24,
@@ -5298,7 +5479,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 290.7,
-   "realtime_factor": 51.7
+   "realtime_factor": 86.4
   },
   {
    "distance_m": 2885.3,
@@ -5318,6 +5499,7 @@
    "misleading_frac": 0.6489,
    "warned_at_m": 195.0,
    "hmi_frac": 0.4014,
+   "false_alarm_frac": 0.0535,
    "silent_failure": true,
    "median_radius_m": 31.34,
    "xy_rmse_m": 68.89,
@@ -5328,7 +5510,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.3,
-   "realtime_factor": 47.6
+   "realtime_factor": 86.4
   },
   {
    "distance_m": 2878.7,
@@ -5348,6 +5530,7 @@
    "misleading_frac": 0.2303,
    "warned_at_m": 511.1,
    "hmi_frac": 0.1742,
+   "false_alarm_frac": 0.4631,
    "silent_failure": true,
    "median_radius_m": 48.07,
    "xy_rmse_m": 43.44,
@@ -5358,7 +5541,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.8,
-   "realtime_factor": 46.9
+   "realtime_factor": 85.6
   },
   {
    "distance_m": 2888.2,
@@ -5378,6 +5561,7 @@
    "misleading_frac": 0.3131,
    "warned_at_m": 154.1,
    "hmi_frac": 0.1417,
+   "false_alarm_frac": 0.5438,
    "silent_failure": true,
    "median_radius_m": 57.48,
    "xy_rmse_m": 78.31,
@@ -5388,7 +5572,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.7,
-   "realtime_factor": 55.2
+   "realtime_factor": 87.3
   },
   {
    "distance_m": 2873.7,
@@ -5408,6 +5592,7 @@
    "misleading_frac": 0.6619,
    "warned_at_m": 384.0,
    "hmi_frac": 0.5559,
+   "false_alarm_frac": 0.0187,
    "silent_failure": true,
    "median_radius_m": 27.24,
    "xy_rmse_m": 942.87,
@@ -5418,7 +5603,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.3,
-   "realtime_factor": 51.4
+   "realtime_factor": 86.8
   },
   {
    "distance_m": 2877.9,
@@ -5438,6 +5623,7 @@
    "misleading_frac": 0.4017,
    "warned_at_m": 349.1,
    "hmi_frac": 0.185,
+   "false_alarm_frac": 0.1749,
    "silent_failure": true,
    "median_radius_m": 33.77,
    "xy_rmse_m": 127.51,
@@ -5448,7 +5634,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.7,
-   "realtime_factor": 45.6
+   "realtime_factor": 86.7
   },
   {
    "distance_m": 2893.8,
@@ -5468,6 +5654,7 @@
    "misleading_frac": 0.0806,
    "warned_at_m": 265.2,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.5174,
    "silent_failure": false,
    "median_radius_m": 52.06,
    "xy_rmse_m": 20.12,
@@ -5478,7 +5665,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.2,
-   "realtime_factor": 48.8
+   "realtime_factor": 86.8
   },
   {
    "distance_m": 2887.1,
@@ -5498,6 +5685,7 @@
    "misleading_frac": 0.4891,
    "warned_at_m": 129.0,
    "hmi_frac": 0.4187,
+   "false_alarm_frac": 0.1841,
    "silent_failure": true,
    "median_radius_m": 37.89,
    "xy_rmse_m": 1113.68,
@@ -5508,7 +5696,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.7,
-   "realtime_factor": 40.4
+   "realtime_factor": 83.7
   },
   {
    "distance_m": 2877.8,
@@ -5528,6 +5716,7 @@
    "misleading_frac": 0.4404,
    "warned_at_m": 274.0,
    "hmi_frac": 0.076,
+   "false_alarm_frac": 0.2668,
    "silent_failure": true,
    "median_radius_m": 57.59,
    "xy_rmse_m": 292.18,
@@ -5538,7 +5727,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.7,
-   "realtime_factor": 56.0
+   "realtime_factor": 85.6
   },
   {
    "distance_m": 2867.7,
@@ -5558,6 +5747,7 @@
    "misleading_frac": 0.5947,
    "warned_at_m": 382.1,
    "hmi_frac": 0.41,
+   "false_alarm_frac": 0.1287,
    "silent_failure": true,
    "median_radius_m": 34.12,
    "xy_rmse_m": 116.58,
@@ -5568,7 +5758,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 286.5,
-   "realtime_factor": 53.0
+   "realtime_factor": 87.2
   },
   {
    "distance_m": 2897.2,
@@ -5588,6 +5778,7 @@
    "misleading_frac": 0.0622,
    "warned_at_m": 358.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.4376,
    "silent_failure": false,
    "median_radius_m": 47.08,
    "xy_rmse_m": 16.62,
@@ -5598,7 +5789,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.6,
-   "realtime_factor": 44.7
+   "realtime_factor": 86.8
   },
   {
    "distance_m": 2887.7,
@@ -5618,6 +5809,7 @@
    "misleading_frac": 0.0065,
    "warned_at_m": 131.9,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.1725,
    "silent_failure": false,
    "median_radius_m": 33.87,
    "xy_rmse_m": 16.68,
@@ -5628,7 +5820,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.7,
-   "realtime_factor": 49.6
+   "realtime_factor": 85.7
   },
   {
    "distance_m": 2878.4,
@@ -5648,6 +5840,7 @@
    "misleading_frac": 0.7427,
    "warned_at_m": 165.0,
    "hmi_frac": 0.5534,
+   "false_alarm_frac": 0.181,
    "silent_failure": true,
    "median_radius_m": 35.38,
    "xy_rmse_m": 134.01,
@@ -5658,7 +5851,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.8,
-   "realtime_factor": 39.5
+   "realtime_factor": 82.9
   },
   {
    "distance_m": 2887.8,
@@ -5678,6 +5871,7 @@
    "misleading_frac": 0.4555,
    "warned_at_m": 342.3,
    "hmi_frac": 0.1318,
+   "false_alarm_frac": 0.0342,
    "silent_failure": true,
    "median_radius_m": 21.42,
    "xy_rmse_m": 30.39,
@@ -5688,7 +5882,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.6,
-   "realtime_factor": 63.0
+   "realtime_factor": 92.4
   },
   {
    "distance_m": 2892.0,
@@ -5708,6 +5902,7 @@
    "misleading_frac": 0.0384,
    "warned_at_m": 230.6,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0592,
    "silent_failure": false,
    "median_radius_m": 32.53,
    "xy_rmse_m": 12.28,
@@ -5718,7 +5913,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.7,
-   "realtime_factor": 62.7
+   "realtime_factor": 94.3
   },
   {
    "distance_m": 2903.0,
@@ -5738,6 +5933,7 @@
    "misleading_frac": 0.4663,
    "warned_at_m": 1635.8,
    "hmi_frac": 0.1587,
+   "false_alarm_frac": 0.042,
    "silent_failure": true,
    "median_radius_m": 24.17,
    "xy_rmse_m": 62.58,
@@ -5748,7 +5944,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.5,
-   "realtime_factor": 55.2
+   "realtime_factor": 99.4
   },
   {
    "distance_m": 2897.0,
@@ -5768,6 +5964,7 @@
    "misleading_frac": 0.3573,
    "warned_at_m": 577.9,
    "hmi_frac": 0.1558,
+   "false_alarm_frac": 0.0212,
    "silent_failure": true,
    "median_radius_m": 23.3,
    "xy_rmse_m": 37.72,
@@ -5778,7 +5975,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.4,
-   "realtime_factor": 48.4
+   "realtime_factor": 82.7
   },
   {
    "distance_m": 2895.3,
@@ -5798,6 +5995,7 @@
    "misleading_frac": 0.4962,
    "warned_at_m": 1202.6,
    "hmi_frac": 0.3259,
+   "false_alarm_frac": 0.0,
    "silent_failure": true,
    "median_radius_m": 21.84,
    "xy_rmse_m": 43.28,
@@ -5808,7 +6006,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.8,
-   "realtime_factor": 40.9
+   "realtime_factor": 91.8
   },
   {
    "distance_m": 2891.5,
@@ -5828,6 +6026,7 @@
    "misleading_frac": 0.4917,
    "warned_at_m": 386.3,
    "hmi_frac": 0.0334,
+   "false_alarm_frac": 0.0291,
    "silent_failure": true,
    "median_radius_m": 23.83,
    "xy_rmse_m": 28.0,
@@ -5838,7 +6037,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.3,
-   "realtime_factor": 58.9
+   "realtime_factor": 82.9
   },
   {
    "distance_m": 2891.6,
@@ -5858,6 +6057,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 2438.8,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0018,
    "silent_failure": false,
    "median_radius_m": 30.52,
    "xy_rmse_m": 8.47,
@@ -5868,7 +6068,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.0,
-   "realtime_factor": 49.5
+   "realtime_factor": 77.3
   },
   {
    "distance_m": 2910.9,
@@ -5888,6 +6088,7 @@
    "misleading_frac": 0.0924,
    "warned_at_m": 275.5,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0378,
    "silent_failure": false,
    "median_radius_m": 28.54,
    "xy_rmse_m": 13.56,
@@ -5898,7 +6099,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 290.4,
-   "realtime_factor": 47.4
+   "realtime_factor": 81.7
   },
   {
    "distance_m": 2883.5,
@@ -5918,6 +6119,7 @@
    "misleading_frac": 0.1338,
    "warned_at_m": 179.2,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0662,
    "silent_failure": false,
    "median_radius_m": 28.74,
    "xy_rmse_m": 15.61,
@@ -5928,7 +6130,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.9,
-   "realtime_factor": 48.1
+   "realtime_factor": 89.9
   },
   {
    "distance_m": 2892.3,
@@ -5948,6 +6150,7 @@
    "misleading_frac": 0.3876,
    "warned_at_m": 1036.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0072,
    "silent_failure": false,
    "median_radius_m": 20.19,
    "xy_rmse_m": 22.33,
@@ -5958,7 +6161,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.3,
-   "realtime_factor": 36.2
+   "realtime_factor": 85.3
   },
   {
    "distance_m": 2899.0,
@@ -5978,6 +6181,7 @@
    "misleading_frac": 0.5312,
    "warned_at_m": 265.3,
    "hmi_frac": 0.1211,
+   "false_alarm_frac": 0.0108,
    "silent_failure": true,
    "median_radius_m": 21.97,
    "xy_rmse_m": 48.88,
@@ -5988,7 +6192,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.0,
-   "realtime_factor": 46.2
+   "realtime_factor": 84.5
   },
   {
    "distance_m": 2900.8,
@@ -6008,6 +6212,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 1175.4,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0411,
    "silent_failure": false,
    "median_radius_m": 29.25,
    "xy_rmse_m": 8.44,
@@ -6018,7 +6223,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.7,
-   "realtime_factor": 50.0
+   "realtime_factor": 82.8
   },
   {
    "distance_m": 2900.7,
@@ -6038,6 +6243,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 1728.6,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0104,
    "silent_failure": false,
    "median_radius_m": 29.65,
    "xy_rmse_m": 7.34,
@@ -6048,7 +6254,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.8,
-   "realtime_factor": 43.4
+   "realtime_factor": 82.2
   },
   {
    "distance_m": 2897.7,
@@ -6068,6 +6274,7 @@
    "misleading_frac": 0.534,
    "warned_at_m": 1771.6,
    "hmi_frac": 0.3657,
+   "false_alarm_frac": 0.0,
    "silent_failure": true,
    "median_radius_m": 23.24,
    "xy_rmse_m": 59.84,
@@ -6078,7 +6285,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.2,
-   "realtime_factor": 35.7
+   "realtime_factor": 85.7
   },
   {
    "distance_m": 2893.6,
@@ -6098,6 +6305,7 @@
    "misleading_frac": 0.2049,
    "warned_at_m": 665.6,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0366,
    "silent_failure": false,
    "median_radius_m": 28.8,
    "xy_rmse_m": 19.95,
@@ -6108,7 +6316,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.7,
-   "realtime_factor": 47.1
+   "realtime_factor": 85.0
   },
   {
    "distance_m": 2930.9,
@@ -6128,6 +6336,7 @@
    "misleading_frac": 0.2619,
    "warned_at_m": 384.7,
    "hmi_frac": 0.156,
+   "false_alarm_frac": 0.0505,
    "silent_failure": true,
    "median_radius_m": 27.96,
    "xy_rmse_m": 447.55,
@@ -6138,7 +6347,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 291.3,
-   "realtime_factor": 53.9
+   "realtime_factor": 98.3
   },
   {
    "distance_m": 2910.3,
@@ -6158,6 +6367,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 640.1,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0164,
    "silent_failure": false,
    "median_radius_m": 26.0,
    "xy_rmse_m": 8.81,
@@ -6168,7 +6378,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.8,
-   "realtime_factor": 49.8
+   "realtime_factor": 82.2
   },
   {
    "distance_m": 2906.8,
@@ -6188,6 +6398,7 @@
    "misleading_frac": 0.4619,
    "warned_at_m": 1769.9,
    "hmi_frac": 0.2852,
+   "false_alarm_frac": 0.0397,
    "silent_failure": true,
    "median_radius_m": 20.98,
    "xy_rmse_m": 48.66,
@@ -6198,7 +6409,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.5,
-   "realtime_factor": 41.5
+   "realtime_factor": 81.8
   },
   {
    "distance_m": 2897.8,
@@ -6218,6 +6429,7 @@
    "misleading_frac": 0.4794,
    "warned_at_m": 394.8,
    "hmi_frac": 0.347,
+   "false_alarm_frac": 0.02,
    "silent_failure": true,
    "median_radius_m": 24.07,
    "xy_rmse_m": 231.05,
@@ -6228,7 +6440,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.4,
-   "realtime_factor": 36.8
+   "realtime_factor": 86.6
   },
   {
    "distance_m": 2896.4,
@@ -6248,6 +6460,7 @@
    "misleading_frac": 0.2777,
    "warned_at_m": 231.0,
    "hmi_frac": 0.1157,
+   "false_alarm_frac": 0.019,
    "silent_failure": true,
    "median_radius_m": 27.37,
    "xy_rmse_m": 305.49,
@@ -6258,7 +6471,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.0,
-   "realtime_factor": 46.1
+   "realtime_factor": 82.8
   },
   {
    "distance_m": 2894.2,
@@ -6278,6 +6491,7 @@
    "misleading_frac": 0.4261,
    "warned_at_m": 1209.1,
    "hmi_frac": 0.3448,
+   "false_alarm_frac": 0.0316,
    "silent_failure": true,
    "median_radius_m": 13.98,
    "xy_rmse_m": 428.31,
@@ -6288,7 +6502,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.5,
-   "realtime_factor": 52.5
+   "realtime_factor": 83.3
   },
   {
    "distance_m": 2894.8,
@@ -6308,6 +6522,7 @@
    "misleading_frac": 0.0089,
    "warned_at_m": 103.1,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0147,
    "silent_failure": false,
    "median_radius_m": 12.7,
    "xy_rmse_m": 3.95,
@@ -6318,7 +6533,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 359.6,
-   "realtime_factor": 58.8
+   "realtime_factor": 83.1
   },
   {
    "distance_m": 2871.8,
@@ -6338,6 +6553,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": null,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 11.97,
    "xy_rmse_m": 2.46,
@@ -6348,7 +6564,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 358.9,
-   "realtime_factor": 58.5
+   "realtime_factor": 81.3
   },
   {
    "distance_m": 2889.9,
@@ -6368,6 +6584,7 @@
    "misleading_frac": 0.0224,
    "warned_at_m": 1600.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0362,
    "silent_failure": false,
    "median_radius_m": 12.83,
    "xy_rmse_m": 5.54,
@@ -6378,7 +6595,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.3,
-   "realtime_factor": 85.1
+   "realtime_factor": 79.9
   },
   {
    "distance_m": 2873.4,
@@ -6398,6 +6615,7 @@
    "misleading_frac": 0.2582,
    "warned_at_m": 91.9,
    "hmi_frac": 0.1266,
+   "false_alarm_frac": 0.0931,
    "silent_failure": true,
    "median_radius_m": 12.79,
    "xy_rmse_m": 117.8,
@@ -6408,7 +6626,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 358.4,
-   "realtime_factor": 92.5
+   "realtime_factor": 85.4
   },
   {
    "distance_m": 2883.8,
@@ -6428,6 +6646,7 @@
    "misleading_frac": 0.0437,
    "warned_at_m": 583.8,
    "hmi_frac": 0.0357,
+   "false_alarm_frac": 0.1366,
    "silent_failure": true,
    "median_radius_m": 15.22,
    "xy_rmse_m": 17.13,
@@ -6438,7 +6657,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.2,
-   "realtime_factor": 53.8
+   "realtime_factor": 86.0
   },
   {
    "distance_m": 2921.6,
@@ -6458,6 +6677,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 190.4,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.2383,
    "silent_failure": false,
    "median_radius_m": 15.93,
    "xy_rmse_m": 21.57,
@@ -6468,29 +6688,30 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 361.7,
-   "realtime_factor": 59.4
+   "realtime_factor": 83.3
   },
   {
    "distance_m": 2960.1,
-   "score_log10": 2.365,
+   "score_log10": 2.342,
    "mae_m": {
     "0-250": 2.72,
     "250-500": 13.81,
     "500-1000": 43.64,
     "1000-2000": 460.6,
-    "2000+": 5037.74
+    "2000+": 4056.68
    },
    "lost_at_m": 893.7,
    "lost": true,
-   "growth_k": 3.03,
-   "max_error_m": 9238.4,
+   "growth_k": 2.96,
+   "max_error_m": 5063.6,
    "integrity": true,
    "misleading_frac": 0.3648,
    "warned_at_m": 409.6,
    "hmi_frac": 0.2463,
+   "false_alarm_frac": 0.1774,
    "silent_failure": true,
    "median_radius_m": 26.94,
-   "xy_rmse_m": 3185.7,
+   "xy_rmse_m": 2453.14,
    "z_rmse_m": 0.51,
    "scenario": "rotterdam",
    "run": 7,
@@ -6498,7 +6719,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.8,
-   "realtime_factor": 64.4
+   "realtime_factor": 82.1
   },
   {
    "distance_m": 2908.1,
@@ -6518,6 +6739,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": null,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 11.86,
    "xy_rmse_m": 2.93,
@@ -6528,7 +6750,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 363.4,
-   "realtime_factor": 89.5
+   "realtime_factor": 82.5
   },
   {
    "distance_m": 2888.7,
@@ -6548,6 +6770,7 @@
    "misleading_frac": 0.0006,
    "warned_at_m": 1674.7,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.1243,
    "silent_failure": false,
    "median_radius_m": 12.67,
    "xy_rmse_m": 5.74,
@@ -6558,7 +6781,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.9,
-   "realtime_factor": 93.7
+   "realtime_factor": 86.2
   },
   {
    "distance_m": 2939.6,
@@ -6578,6 +6801,7 @@
    "misleading_frac": 0.6481,
    "warned_at_m": 116.6,
    "hmi_frac": 0.4971,
+   "false_alarm_frac": 0.1841,
    "silent_failure": true,
    "median_radius_m": 39.08,
    "xy_rmse_m": 279.84,
@@ -6588,7 +6812,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 362.9,
-   "realtime_factor": 57.6
+   "realtime_factor": 83.4
   },
   {
    "distance_m": 2891.3,
@@ -6608,6 +6832,7 @@
    "misleading_frac": 0.3689,
    "warned_at_m": 892.9,
    "hmi_frac": 0.1691,
+   "false_alarm_frac": 0.1466,
    "silent_failure": true,
    "median_radius_m": 62.41,
    "xy_rmse_m": 681.99,
@@ -6618,7 +6843,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.2,
-   "realtime_factor": 60.3
+   "realtime_factor": 86.1
   },
   {
    "distance_m": 2889.3,
@@ -6638,6 +6863,7 @@
    "misleading_frac": 0.4342,
    "warned_at_m": 608.7,
    "hmi_frac": 0.2021,
+   "false_alarm_frac": 0.1862,
    "silent_failure": true,
    "median_radius_m": 102.9,
    "xy_rmse_m": 556.63,
@@ -6648,7 +6874,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 358.8,
-   "realtime_factor": 61.9
+   "realtime_factor": 85.9
   },
   {
    "distance_m": 2886.7,
@@ -6668,6 +6894,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 1241.6,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0003,
    "silent_failure": false,
    "median_radius_m": 12.26,
    "xy_rmse_m": 2.87,
@@ -6678,7 +6905,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.7,
-   "realtime_factor": 90.0
+   "realtime_factor": 99.1
   },
   {
    "distance_m": 2901.7,
@@ -6698,6 +6925,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 96.7,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.1065,
    "silent_failure": false,
    "median_radius_m": 12.12,
    "xy_rmse_m": 3.36,
@@ -6708,7 +6936,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 361.9,
-   "realtime_factor": 95.3
+   "realtime_factor": 102.5
   },
   {
    "distance_m": 2881.0,
@@ -6728,6 +6956,7 @@
    "misleading_frac": 0.0003,
    "warned_at_m": 2193.0,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.1152,
    "silent_failure": false,
    "median_radius_m": 13.2,
    "xy_rmse_m": 5.05,
@@ -6738,7 +6967,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 359.5,
-   "realtime_factor": 56.7
+   "realtime_factor": 86.1
   },
   {
    "distance_m": 2901.5,
@@ -6758,6 +6987,7 @@
    "misleading_frac": 0.0046,
    "warned_at_m": null,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 12.26,
    "xy_rmse_m": 3.13,
@@ -6768,7 +6998,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.7,
-   "realtime_factor": 59.8
+   "realtime_factor": 85.0
   },
   {
    "distance_m": 2882.2,
@@ -6788,6 +7018,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": null,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 11.9,
    "xy_rmse_m": 2.83,
@@ -6798,7 +7029,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 360.2,
-   "realtime_factor": 62.1
+   "realtime_factor": 94.0
   },
   {
    "distance_m": 2868.2,
@@ -6818,6 +7049,7 @@
    "misleading_frac": 0.5661,
    "warned_at_m": 305.3,
    "hmi_frac": 0.4848,
+   "false_alarm_frac": 0.033,
    "silent_failure": true,
    "median_radius_m": 18.83,
    "xy_rmse_m": 1085.68,
@@ -6828,7 +7060,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 358.4,
-   "realtime_factor": 92.5
+   "realtime_factor": 104.2
   },
   {
    "distance_m": 2892.3,
@@ -6848,6 +7080,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": 135.3,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.008,
    "silent_failure": false,
    "median_radius_m": 11.92,
    "xy_rmse_m": 5.13,
@@ -6858,7 +7091,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 361.4,
-   "realtime_factor": 97.6
+   "realtime_factor": 107.4
   },
   {
    "distance_m": 2901.5,
@@ -6878,6 +7111,7 @@
    "misleading_frac": 0.191,
    "warned_at_m": 2713.4,
    "hmi_frac": 0.1692,
+   "false_alarm_frac": 0.0,
    "silent_failure": true,
    "median_radius_m": 20.31,
    "xy_rmse_m": 82.78,
@@ -6888,7 +7122,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.5,
-   "realtime_factor": 37.9
+   "realtime_factor": 79.3
   },
   {
    "distance_m": 2880.3,
@@ -6908,6 +7142,7 @@
    "misleading_frac": 0.6423,
    "warned_at_m": 324.9,
    "hmi_frac": 0.6117,
+   "false_alarm_frac": 0.0,
    "silent_failure": true,
    "median_radius_m": 17.24,
    "xy_rmse_m": 1223.11,
@@ -6918,7 +7153,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.9,
-   "realtime_factor": 49.5
+   "realtime_factor": 82.1
   },
   {
    "distance_m": 2912.0,
@@ -6938,6 +7173,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": null,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 26.98,
    "xy_rmse_m": 5.37,
@@ -6948,7 +7184,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.5,
-   "realtime_factor": 60.8
+   "realtime_factor": 90.1
   },
   {
    "distance_m": 2900.2,
@@ -6968,6 +7204,7 @@
    "misleading_frac": 0.2125,
    "warned_at_m": 980.2,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0154,
    "silent_failure": false,
    "median_radius_m": 30.31,
    "xy_rmse_m": 20.23,
@@ -6978,7 +7215,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.9,
-   "realtime_factor": 61.7
+   "realtime_factor": 86.2
   },
   {
    "distance_m": 2871.1,
@@ -6998,6 +7235,7 @@
    "misleading_frac": 0.1101,
    "warned_at_m": 948.6,
    "hmi_frac": 0.0072,
+   "false_alarm_frac": 0.0051,
    "silent_failure": true,
    "median_radius_m": 23.88,
    "xy_rmse_m": 15.63,
@@ -7008,7 +7246,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 286.9,
-   "realtime_factor": 59.0
+   "realtime_factor": 86.2
   },
   {
    "distance_m": 2898.7,
@@ -7028,6 +7266,7 @@
    "misleading_frac": 0.0101,
    "warned_at_m": null,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 22.03,
    "xy_rmse_m": 7.61,
@@ -7038,7 +7277,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 286.5,
-   "realtime_factor": 42.2
+   "realtime_factor": 84.4
   },
   {
    "distance_m": 2882.5,
@@ -7058,6 +7297,7 @@
    "misleading_frac": 0.2009,
    "warned_at_m": 2523.5,
    "hmi_frac": 0.1335,
+   "false_alarm_frac": 0.0,
    "silent_failure": true,
    "median_radius_m": 19.5,
    "xy_rmse_m": 115.69,
@@ -7068,7 +7308,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.7,
-   "realtime_factor": 54.3
+   "realtime_factor": 81.4
   },
   {
    "distance_m": 2884.3,
@@ -7088,6 +7328,7 @@
    "misleading_frac": 0.0867,
    "warned_at_m": 176.8,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0219,
    "silent_failure": false,
    "median_radius_m": 19.57,
    "xy_rmse_m": 10.64,
@@ -7098,7 +7339,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.0,
-   "realtime_factor": 62.8
+   "realtime_factor": 91.4
   },
   {
    "distance_m": 2908.7,
@@ -7118,6 +7359,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": null,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 25.36,
    "xy_rmse_m": 5.81,
@@ -7128,7 +7370,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.7,
-   "realtime_factor": 62.7
+   "realtime_factor": 88.1
   },
   {
    "distance_m": 2901.2,
@@ -7148,6 +7390,7 @@
    "misleading_frac": 0.1679,
    "warned_at_m": 417.9,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.004,
    "silent_failure": false,
    "median_radius_m": 19.19,
    "xy_rmse_m": 13.95,
@@ -7158,7 +7401,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.6,
-   "realtime_factor": 62.4
+   "realtime_factor": 87.2
   },
   {
    "distance_m": 2896.7,
@@ -7178,6 +7421,7 @@
    "misleading_frac": 0.0612,
    "warned_at_m": 2802.9,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.004,
    "silent_failure": false,
    "median_radius_m": 22.9,
    "xy_rmse_m": 11.1,
@@ -7188,7 +7432,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.7,
-   "realtime_factor": 39.3
+   "realtime_factor": 86.1
   },
   {
    "distance_m": 2890.2,
@@ -7208,6 +7452,7 @@
    "misleading_frac": 0.0004,
    "warned_at_m": null,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 21.97,
    "xy_rmse_m": 7.76,
@@ -7218,7 +7463,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.2,
-   "realtime_factor": 56.1
+   "realtime_factor": 95.6
   },
   {
    "distance_m": 2878.8,
@@ -7238,6 +7483,7 @@
    "misleading_frac": 0.1162,
    "warned_at_m": null,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 24.43,
    "xy_rmse_m": 14.85,
@@ -7248,7 +7494,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.2,
-   "realtime_factor": 60.6
+   "realtime_factor": 107.1
   },
   {
    "distance_m": 2942.1,
@@ -7268,6 +7514,7 @@
    "misleading_frac": 0.1022,
    "warned_at_m": null,
    "hmi_frac": 0.0312,
+   "false_alarm_frac": 0.0,
    "silent_failure": true,
    "median_radius_m": 20.05,
    "xy_rmse_m": 18.93,
@@ -7278,7 +7525,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.0,
-   "realtime_factor": 63.6
+   "realtime_factor": 110.4
   },
   {
    "distance_m": 2934.3,
@@ -7298,6 +7545,7 @@
    "misleading_frac": 0.4359,
    "warned_at_m": 2361.9,
    "hmi_frac": 0.1442,
+   "false_alarm_frac": 0.0057,
    "silent_failure": true,
    "median_radius_m": 20.22,
    "xy_rmse_m": 53.1,
@@ -7308,7 +7556,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 289.3,
-   "realtime_factor": 70.0
+   "realtime_factor": 130.2
   },
   {
    "distance_m": 2881.2,
@@ -7328,6 +7576,7 @@
    "misleading_frac": 0.5119,
    "warned_at_m": 187.6,
    "hmi_frac": 0.1418,
+   "false_alarm_frac": 0.0123,
    "silent_failure": true,
    "median_radius_m": 20.15,
    "xy_rmse_m": 32.96,
@@ -7338,7 +7587,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.2,
-   "realtime_factor": 42.5
+   "realtime_factor": 90.0
   },
   {
    "distance_m": 2886.8,
@@ -7358,6 +7607,7 @@
    "misleading_frac": 0.717,
    "warned_at_m": 1287.3,
    "hmi_frac": 0.5384,
+   "false_alarm_frac": 0.0,
    "silent_failure": true,
    "median_radius_m": 24.96,
    "xy_rmse_m": 443.53,
@@ -7368,7 +7618,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.4,
-   "realtime_factor": 57.2
+   "realtime_factor": 96.6
   },
   {
    "distance_m": 2909.8,
@@ -7388,6 +7638,7 @@
    "misleading_frac": 0.0499,
    "warned_at_m": 894.9,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0234,
    "silent_failure": false,
    "median_radius_m": 20.54,
    "xy_rmse_m": 8.54,
@@ -7398,7 +7649,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 288.2,
-   "realtime_factor": 59.4
+   "realtime_factor": 104.3
   },
   {
    "distance_m": 2899.0,
@@ -7418,6 +7669,7 @@
    "misleading_frac": 0.0,
    "warned_at_m": null,
    "hmi_frac": 0.0,
+   "false_alarm_frac": 0.0,
    "silent_failure": false,
    "median_radius_m": 22.68,
    "xy_rmse_m": 6.09,
@@ -7428,7 +7680,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 287.5,
-   "realtime_factor": 63.2
+   "realtime_factor": 111.6
   },
   {
    "distance_m": 2953.3,
@@ -7448,6 +7700,7 @@
    "misleading_frac": 0.1799,
    "warned_at_m": 223.1,
    "hmi_frac": 0.0753,
+   "false_alarm_frac": 0.0139,
    "silent_failure": true,
    "median_radius_m": 22.22,
    "xy_rmse_m": 20.58,
@@ -7458,7 +7711,7 @@
    "platform": "drone",
    "start_offset_m": 0.0,
    "duration_s": 290.0,
-   "realtime_factor": 73.9
+   "realtime_factor": 125.9
   }
  ]
 }

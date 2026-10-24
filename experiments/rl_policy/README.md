@@ -1,5 +1,7 @@
 # X5 rl_policy: learning what to do with the belief (in progress)
 
+**Summary.** Linear policy trained by cross-entropy search to choose continue/climb/detour/slow/land from the belief.
+
 **Hypothesis.** A policy that reads how sure the navigator is can fly a mission more safely than one that always
 continues. It can detour to informative terrain, slow down, climb or land early.
 

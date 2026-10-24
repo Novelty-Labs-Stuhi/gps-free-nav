@@ -1,5 +1,7 @@
 # X4 terrain_pf_guarded: a learned lost detector
 
+**Summary.** terrain_pf plus a logistic-regression lost detector trained on the filter's own statistics; says 'I don't know' instead of lying.
+
 **Hypothesis.** Lost and healthy moments look different in the filter's own statistics, so a simple trained model
 can tell the drone it is lost before it acts on a wrong position.
 

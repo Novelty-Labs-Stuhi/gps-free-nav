@@ -1,5 +1,7 @@
 # ins_compass: dead reckoning plus a compass (suite default sensors)
 
+**Summary.** Dead reckoning plus a magnetometer pulling the heading via a complementary filter, on the suite's default IMU.
+
 **Author:** Arsenii Chistiakov.
 
 **Idea.** `imu_deadreckoning` plus a magnetometer heading through a complementary filter, on the suite's default, unpriced IMU.
