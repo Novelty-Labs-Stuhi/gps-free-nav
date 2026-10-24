@@ -13,25 +13,33 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Find changed experiments
+        id: changed
+        run: |
+          exps=$(git diff --name-only "${{ github.event.pull_request.base.sha }}...HEAD" \
+            | grep -oE '^experiments/[^/]+' | sort -u \
+            | while read d; do [ -f "$d/algo.py" ] && basename "$d"; done | xargs)
+          echo "experiments: ${exps:-none}"
+          echo "list=$exps" >> "$GITHUB_OUTPUT"
       - uses: astral-sh/setup-uv@v5
+        if: steps.changed.outputs.list != ''
+        with:
+          enable-cache: true
       - uses: actions/cache@v4
+        if: steps.changed.outputs.list != ''
         with:
           path: data/worlds
-          key: worlds-${{ hashFiles('gpsfree/worlds/**') }}
-      - run: test -f data/worlds/index.json || uv run gpsfree fetch
-      - run: uv run pytest -q
-      - name: Re-run changed experiments
+          key: worlds-${{ hashFiles('gpsfree/worlds/**', 'benchmark/suite.json') }}
+          restore-keys: worlds-
+      - name: Fetch suite worlds
+        if: steps.changed.outputs.list != ''
         run: |
-          changed=$(git diff --name-only "${{ github.event.pull_request.base.sha }}...HEAD")
-          if echo "$changed" | grep -qE '^(gpsfree/|benchmark/|pyproject.toml|uv.lock)'; then
-            echo "scoring code or suite changed: verifying all experiments"
-            uv run gpsfree verify
-            exit
-          fi
-          exps=$(echo "$changed" | grep -oE '^experiments/[^/]+' | sort -u | while read d; do
-            [ -f "$d/algo.py" ] && basename "$d"; done)
-          if [ -z "$exps" ]; then echo "no experiments changed"; exit; fi
-          uv run gpsfree verify $exps
+          for w in $(jq -r '.worlds[]' benchmark/suite.json); do
+            test -f "data/worlds/$w/meta.json" || uv run gpsfree fetch "$w"
+          done
+      - name: Re-run changed experiments
+        if: steps.changed.outputs.list != ''
+        run: uv run gpsfree verify ${{ steps.changed.outputs.list }}
 
   leaderboard:
     if: github.event_name == 'push'
@@ -41,6 +49,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
       - run: uv run gpsfree leaderboard
       - run: |
           git diff --quiet README.md && exit

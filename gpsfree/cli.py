@@ -93,8 +93,9 @@ def list_experiments():
 def print_summary(res):
     print(f"\n{res['experiment']}  (suite {res['suite']}, {len(res['runs'])} runs, {res['elapsed_s']}s)")
     for key, s in res["summary"].items():
-        errs = "  ".join(f"@{k.split('_')[-1]}={v}" for k, v in s.items() if k.startswith("median_err"))
-        print(f"  {key:22s} median err {errs}  fail {s['fail_rate']:.0%}  drift {s['median_drift_pct']}%  rtf≥{s['min_realtime_factor']}")
+        mae = "  ".join(f"{band}={v}" for band, v in s["mae_m"].items())
+        print(f"  {key:18s} score {s['score_m']} m (10^{s['score_log10']})  lost@{s['lost_at_m']} m  k={s['growth_k']}  "
+              f"rtf≥{s['min_realtime_factor']}\n  {'':18s} MAE {mae}")
 
 
 def main():

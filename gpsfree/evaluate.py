@@ -25,6 +25,9 @@ def load_suite():
 
 
 def route_paths(worlds=None, platforms=None):
+    """Routes in the suite; explicit worlds/platforms override the suite's selection."""
+    suite = load_suite()
+    worlds, platforms = worlds or suite.get("worlds"), platforms or suite.get("platforms")
     paths = sorted(ROUTES.glob("*/*.json"))
     return [p for p in paths
             if (not worlds or p.parent.name in worlds)
@@ -112,40 +115,42 @@ def run_one(experiment: str, route_path: str, seed: int, suite: dict, save_traje
 
 
 def score(t, truth, est, suite):
-    """Error is 3D Euclidean distance to truth; distance travelled is 3D arc length of the true path."""
+    """Error is 3D distance to truth; distance travelled d is the 3D arc length of the true path.
+    Score: mean of log10(error) over d >= score_from_m, i.e. the geometric-mean error along the route."""
     diff = est - truth
     err = np.linalg.norm(diff, axis=1)
     err[~np.isfinite(err)] = np.inf
-    dist = path_length(truth)
-    out = {"distance_m": round(float(dist[-1]), 1), "error_at_m": {}}
-    for d in suite["checkpoints_m"]:
-        i = np.searchsorted(dist, d)
-        out["error_at_m"][str(d)] = round(float(err[i]), 2) if i < len(err) else None
-    out["final_error_m"] = round(float(err[-1]), 2)
-    out["drift_pct"] = round(float(100 * err[-1] / max(dist[-1], 1)), 2)
+    d = path_length(truth)
+    m = d >= suite["score_from_m"]
+    loge = np.log10(np.maximum(err[m], suite["error_floor_m"]))
+    out = {"distance_m": round(float(d[-1]), 1), "score_log10": round(float(np.mean(loge)), 3), "mae_m": {}}
+    edges = suite["mae_bands_m"] + [np.inf]
+    for lo, hi in zip(edges[:-1], edges[1:]):
+        band = err[(d >= lo) & (d < hi)]
+        out["mae_m"][f"{lo}+" if hi == np.inf else f"{lo}-{hi}"] = round(float(band.mean()), 2) if len(band) else None
+    lost = np.flatnonzero(err > suite["lost_threshold_m"])
+    out["lost_at_m"] = round(float(d[lost[0]] if len(lost) else d[-1]), 1)
+    out["growth_k"] = round(float(np.polyfit(np.log10(d[m]), loge, 1)[0]), 2) if np.all(np.isfinite(loge)) else None
     out["xy_rmse_m"] = round(float(np.sqrt(np.nanmean(np.sum(diff[:, :2] ** 2, axis=1)))), 2)
     out["z_rmse_m"] = round(float(np.sqrt(np.nanmean(diff[:, 2] ** 2))), 2)
     return out
 
 
-def fail_threshold_m(suite):
-    return suite["fail_pct"] / 100 * suite["headline_m"]
-
-
 def summarize(runs, suite):
+    """Medians over routes x seeds per world/platform group."""
     groups = {}
     for r in runs:
         groups.setdefault(f"{r['world']}/{r['platform']}", []).append(r)
     summary = {}
     for key, rs in sorted(groups.items()):
-        s = {"runs": len(rs)}
-        for d in suite["checkpoints_m"]:
-            vals = [r["error_at_m"][str(d)] for r in rs if r["error_at_m"][str(d)] is not None]
-            s[f"median_err_{d}m"] = round(float(np.median(vals)), 2) if vals else None
-        head = [r["error_at_m"][str(suite["headline_m"])] for r in rs]
-        head = [np.inf if v is None else v for v in head]
-        s["fail_rate"] = round(float(np.mean([v > fail_threshold_m(suite) for v in head])), 2)
-        s["median_drift_pct"] = round(float(np.median([r["drift_pct"] for r in rs])), 2)
+        score = float(np.median([r["score_log10"] for r in rs]))
+        s = {"runs": len(rs), "score_log10": round(score, 3), "score_m": round(10 ** score, 1), "mae_m": {}}
+        for band in rs[0]["mae_m"]:
+            vals = [r["mae_m"][band] for r in rs if r["mae_m"].get(band) is not None]
+            s["mae_m"][band] = round(float(np.median(vals)), 2) if vals else None
+        s["lost_at_m"] = round(float(np.median([r["lost_at_m"] for r in rs])), 1)
+        ks = [r["growth_k"] for r in rs if r["growth_k"] is not None]
+        s["growth_k"] = round(float(np.median(ks)), 2) if ks else None
         s["min_realtime_factor"] = min(r["realtime_factor"] for r in rs)
         summary[key] = s
     return summary
@@ -177,8 +182,8 @@ def results_path(experiment: str) -> Path:
     return EXPERIMENTS / experiment / "results.json"
 
 
-def compare(old: dict, new: dict, abs_tol=0.5, rel_tol=0.02):
-    """Headline numbers that differ beyond tolerance (used by CI to verify committed results)."""
+def compare(old: dict, new: dict, tol_log10=0.01):
+    """Ranked score that differs beyond tolerance (used by CI to verify committed results)."""
     problems = []
     if old.get("suite") != new.get("suite"):
         problems.append(f"suite changed: committed {old.get('suite')} vs current {new.get('suite')}")
@@ -186,16 +191,9 @@ def compare(old: dict, new: dict, abs_tol=0.5, rel_tol=0.02):
         o = old.get("summary", {}).get(key)
         if o is None:
             problems.append(f"{key}: missing from committed results")
-            continue
-        for metric, v in s.items():
-            if metric.startswith("min_realtime"):
-                continue
-            ov = o.get(metric)
-            if v is None or ov is None:
-                if v != ov:
-                    problems.append(f"{key} {metric}: {ov} vs {v}")
-            elif abs(v - ov) > max(abs_tol, rel_tol * abs(ov)):
-                problems.append(f"{key} {metric}: committed {ov} vs reproduced {v}")
+        elif o.get("runs") != s["runs"] or abs(o.get("score_log10", np.inf) - s["score_log10"]) > tol_log10:
+            problems.append(f"{key}: committed {o.get('score_log10')} ({o.get('runs')} runs) "
+                            f"vs reproduced {s['score_log10']} ({s['runs']} runs)")
     return problems
 
 

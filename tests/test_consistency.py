@@ -21,13 +21,13 @@ def noiseless_suite():
 def test_imu_integration_is_consistent(platform):
     path = route_paths(["yosemite"], [platform])[0]
     m = run_one("imu_deadreckoning", str(path), 0, noiseless_suite(), save_trajectory=False)
-    assert m["error_at_m"]["500"] < 5.0, m
+    assert m["mae_m"]["250-500"] < 5.0, m
 
 
 def test_pdr_is_consistent():
     path = route_paths(["rotterdam"], ["walker"])[0]
     m = run_one("pdr_compass", str(path), 0, noiseless_suite(), save_trajectory=False)
-    assert m["error_at_m"]["1000"] < 5.0, m
+    assert m["mae_m"]["500-1000"] < 5.0, m
 
 
 def test_echo_ranges_hit_ground():
