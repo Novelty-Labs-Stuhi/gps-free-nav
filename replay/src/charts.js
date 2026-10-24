@@ -9,6 +9,8 @@ const PAD = { l: 50, r: 10, t: 6, b: 18 };
 const INK = {
   text: "#6b7280", grid: "#eef0f3", zero: "#c4c9d1", playhead: "#111827", hover: "rgba(17,24,39,0.35)",
   future: "rgba(255,255,255,0.55)", threshold: "#e11d48", noEcho: [232, 235, 240, 255], sep: "#ffffff",
+  band: "rgba(2,132,199,0.16)", bandEdge: "rgba(2,132,199,0.75)", lost: "rgba(245,158,11,0.16)", lostText: "#b45309",
+  hazard: "rgba(220,38,38,0.14)", hazardLine: "#dc2626",
 };
 const FONT = "11px ui-sans-serif, system-ui, -apple-system, sans-serif";
 
@@ -159,10 +161,25 @@ export class TimeChart extends TimelineCanvas {
     this.hidden = new Set();
   }
 
-  setData(t, metrics) {
-    Object.assign(this, { t, metrics });
+  // extra.band: the method's reported radius per sample (number, Infinity = lost, null = no claim);
+  // extra.hazard: booleans, true where the error is over the alert limit but the radius says it isn't.
+  setData(t, metrics, extra = {}) {
+    Object.assign(this, { t, metrics, band: extra.band ?? null, hazard: extra.hazard ?? null });
     this.setRange(t[0], t.at(-1));
     this.invalidate();
+  }
+
+  // Index ranges [i, j) where pred(i) holds, as pixel spans.
+  spans(pred) {
+    const out = [], n = this.t.length;
+    for (let i = 0; i < n;) {
+      if (!pred(i)) { i++; continue; }
+      let j = i;
+      while (j < n && pred(j)) j++;
+      out.push([this.X(this.t[i]), this.X(this.t[Math.min(j, n - 1)])]);
+      i = j;
+    }
+    return out;
   }
 
   setLog(log) { this.log = log; this.invalidate(); }
@@ -184,6 +201,9 @@ export class TimeChart extends TimelineCanvas {
         lo = Math.min(lo, v);
         hi = Math.max(hi, v);
       }
+    }
+    if (this.band && !this.hidden.has("band")) {
+      for (const u of this.band) if (u != null && isFinite(u) && u > 0) { lo = Math.min(lo, u); hi = Math.max(hi, u); }
     }
     if (!isFinite(lo)) return [0.1, 1];
     if (this.threshold && hi > this.threshold * 0.5) hi = Math.max(hi, this.threshold * 1.2);
@@ -221,7 +241,39 @@ export class TimeChart extends TimelineCanvas {
     c.beginPath();
     c.rect(PAD.l, PAD.t, w - PAD.l - PAD.r, span);
     c.clip();
-    // The "lost" threshold, when it is inside the axis range.
+    // Behind everything: where the method declared itself lost, where it was hazardously misleading,
+    // and the band of its reported radius.
+    const top = PAD.t, bottom = PAD.t + span;
+    if (this.band && !this.hidden.has("band")) {
+      c.fillStyle = INK.lost;
+      const lost = this.spans((i) => this.band[i] === Infinity);
+      for (const [a, b] of lost) c.fillRect(a, top, Math.max(1, b - a), span);
+      if (lost.length) {
+        c.fillStyle = INK.lostText;
+        c.textAlign = "left";
+        c.fillText("declared lost", Math.max(PAD.l + 3, lost[0][0] + 4), top + 11);
+      }
+      c.fillStyle = INK.band;
+      c.strokeStyle = INK.bandEdge;
+      const finite = (i) => this.band[i] != null && isFinite(this.band[i]);
+      for (let i = 0; i < this.t.length;) {
+        if (!finite(i)) { i++; continue; }
+        const pts = [];
+        for (; i < this.t.length && finite(i); i++) pts.push([this.X(this.t[i]), Math.max(top, Math.min(bottom, Y(Math.max(this.band[i], lo))))]);
+        c.beginPath();
+        c.moveTo(pts[0][0], bottom);
+        for (const [x, y] of pts) c.lineTo(x, y);
+        c.lineTo(pts.at(-1)[0], bottom);
+        c.fill();
+        c.beginPath();
+        pts.forEach(([x, y], k) => (k ? c.lineTo(x, y) : c.moveTo(x, y)));
+        c.stroke();
+      }
+    }
+    const hazard = this.hazard ? this.spans((i) => this.hazard[i]) : [];
+    c.fillStyle = INK.hazard;
+    for (const [a, b] of hazard) c.fillRect(a, top, Math.max(2, b - a), span);
+    // The alert limit, when it is inside the axis range.
     const th = this.threshold;
     if (th && th > lo && th < hi) {
       const y = Math.round(Y(th)) + 0.5;
@@ -232,7 +284,7 @@ export class TimeChart extends TimelineCanvas {
       c.setLineDash([]);
       c.globalAlpha = 1;
       // Right-aligned with a white halo so it stays legible where series cross it.
-      const label = `lost > ${fmtM(th)}`, lx = w - PAD.r - 4, ly = y > PAD.t + 14 ? y - 4 : y + 12;
+      const label = `alert limit ${fmtM(th)}`, lx = w - PAD.r - 4, ly = y > PAD.t + 14 ? y - 4 : y + 12;
       c.textAlign = "right";
       c.lineWidth = 3;
       c.strokeStyle = "#ffffff";
@@ -258,13 +310,37 @@ export class TimeChart extends TimelineCanvas {
       }
       c.stroke();
     }
+    // Re-draw the error line in red where it is hazardously misleading.
+    const err = this.metrics.err;
+    if (hazard.length && err && !this.hidden.has("err")) {
+      c.strokeStyle = INK.hazardLine;
+      c.lineWidth = 2.5;
+      for (let i = 0; i < this.t.length;) {
+        if (!this.hazard[i]) { i++; continue; }
+        c.beginPath();
+        let pen = false;
+        for (; i < this.t.length && this.hazard[i]; i++) {
+          if (err[i] == null) continue;
+          const x = this.X(this.t[i]), y = Y(err[i]);
+          pen ? c.lineTo(x, y) : c.moveTo(x, y);
+          pen = true;
+        }
+        c.stroke();
+      }
+    }
     c.restore();
   }
 
   tipHtml(t) {
     const i = bisect(this.t, t);
-    return `<b>${(t - this.t0).toFixed(1)} s</b>` + this.series.filter((s) => !this.hidden.has(s.key))
+    let html = `<b>${(t - this.t0).toFixed(1)} s</b>` + this.series.filter((s) => !this.hidden.has(s.key))
       .map((s) => `<div><i style="background:${s.color}"></i>${s.label}<span>${fmtM(this.metrics[s.key]?.[i], s.signed)}</span></div>`).join("");
+    if (this.band) {
+      const u = this.band[i];
+      html += `<div><i style="background:${INK.bandEdge}"></i>reported 95% radius<span>${u === Infinity ? "lost" : u == null ? "no claim" : fmtM(u)}</span></div>`;
+    }
+    if (this.hazard?.[i]) html += `<div class="hazard">hazardously misleading</div>`;
+    return html;
   }
 }
 

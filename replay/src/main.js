@@ -1,9 +1,10 @@
 import * as THREE from "three";
 import { BeamHeatmap, TimeChart, bisect, fmtM } from "./charts.js";
 import {
-  Beams, CAMERA_MODES, COLORS, MAP_RAMP, TRUTH_RAMP, View, beamLabel, beamLayer, disposeTree, enu, enuQuat,
-  loadMesh, makeDrone, makeLine, scaleToCamera, vectors,
+  Beams, CAMERA_MODES, COLORS, MAP_RAMP, RADIUS_COLORS, TRUTH_RAMP, View, beamLabel, beamLayer, disposeTree, enu, enuQuat,
+  loadMesh, makeDrone, makeLine, makeRadius, scaleToCamera, vectors,
 } from "./scene.js";
+import { ALERT_M, TIME_TO_ALERT_S, integrity, uncertaintyOf } from "./summary.js";
 import { LOST_M, RunBrowser, fmtPct, fmtS, grade, normalizeEntry } from "./sidebar.js";
 
 const $ = (id) => document.getElementById(id);
@@ -52,7 +53,7 @@ function viewState(kind, title = "", body = "") {
 
 // ---------- run summary ----------
 
-function summarize(R) {
+function summarize(R, integ) {
   const err = R.metrics.err, t = R.t, n = t.length, dt = (t.at(-1) - t[0]) / Math.max(1, n - 1);
   let worst = -1, worstI = 0, over = 0, firstLost = -1;
   err.forEach((e, i) => {
@@ -73,9 +74,9 @@ function summarize(R) {
   const ranked = seen.map((s, b) => ({ b, bad: bad[b], frac: s ? bad[b] / s : 0 })).filter((x) => x.bad > 0)
     .sort((a, b) => b.bad - a.bad).slice(0, 3);
   return {
-    geo: R.metrics.geo_mean_err.findLast((v) => v != null), final: err.findLast((v) => v != null),
+    geo: R.score_m ?? R.metrics.geo_mean_err.findLast((v) => v != null), final: err.findLast((v) => v != null),
     worst: worst < 0 ? null : worst, worstT: t[worstI], over: over * dt, firstLostT: firstLost >= 0 ? t[firstLost] : null,
-    agree: total ? hits / total : null, ranked,
+    agree: total ? hits / total : null, ranked, integ,
   };
 }
 
@@ -110,6 +111,7 @@ function renderSummary(S, R, { seek, focusBeam }) {
   const g = (m) => (m == null ? "" : grade(m));
   $("summary").replaceChildren(
     stat("score", fmtM(S.geo), `hero ${g(S.geo)}`),
+    ...integrityStats(S.integ, t0, stat, seek),
     stat("final error", fmtM(S.final), g(S.final)),
     stat("worst", fmtM(S.worst), g(S.worst), S.worst != null ? `<em>at ${(S.worstT - t0).toFixed(0)} s</em>` : "", S.worst != null ? () => seek(S.worstT) : null),
     stat(`over ${LOST_M} m`, fmtS(S.over), S.over > 0 ? "bad" : "good",
@@ -119,11 +121,30 @@ function renderSummary(S, R, { seek, focusBeam }) {
   );
 }
 
+// "Misleading %" and "silent failure" for runs whose replay carries the method's reported radius.
+function integrityStats(I, t0, stat, seek) {
+  if (!I) return [];
+  if (!I.claimed) return [stat("integrity", "no claim", "", `<em title="The method never reports a radius">no radius reported</em>`)];
+  const at = (t) => `${(t - t0).toFixed(0)} s`;
+  // A 95 % radius should contain the truth about 95 % of the time.
+  const mis = stat("misleading", fmtPct(I.misleading), I.misleading <= 0.05 ? "good" : I.misleading <= 0.2 ? "warn" : "bad",
+    `<em>of ${fmtS(I.claimS)} with a radius</em>`);
+  mis.title = "Share of the time a radius was claimed in which the true error was outside it";
+  const silent = {
+    yes: () => stat("silent failure", "yes", "bad", `<em>${fmtS(I.hmiS)} misleading from ${at(I.firstHmiT)}</em>`, () => seek(I.firstHmiT)),
+    late: () => stat("silent failure", "late alarm", "warn", `<em>alarm at ${at(I.alarmT)}</em>`, () => seek(I.alarmT)),
+    no: () => stat("silent failure", "no", "good", I.alarmT != null ? `<em>alarm at ${at(I.alarmT)}</em>` : "", I.alarmT != null ? () => seek(I.alarmT) : null),
+  }[I.silent]();
+  silent.title = `Error over ${ALERT_M} m while the reported radius stayed under ${ALERT_M} m for longer than the ${TIME_TO_ALERT_S} s time-to-alert`
+    + " without the method raising an alarm (declaring itself lost or growing its radius past the limit)";
+  return [mis, silent];
+}
+
 function renderCrumbs(e, R) {
   const dur = R ? `${(R.t.at(-1) - R.t[0]).toFixed(0)} s · ${R.echo.dirs_body.length} beams` : "";
   $("crumbs").innerHTML = `<span class="exp">${esc(e.experiment)}</span><span class="sep">/</span>
     <span class="run-name" title="${esc(e.id)}">${esc(e.route)}</span>${e.seed != null ? `<span class="seed">seed ${esc(e.seed)}</span>` : ""}
-    ${[R?.scenario ?? e.scenario, R?.world ?? e.world].filter((x) => x && x !== "–").map((x) => `<span class="tag">${esc(x)}</span>`).join("")}${dur ? `<span class="tag dim">${dur}</span>` : ""}`;
+    ${[R?.scenario_name ?? R?.scenario ?? e.scenario_name ?? e.scenario, R?.world ?? e.world].filter((x) => x && x !== "–").map((x) => `<span class="tag">${esc(x)}</span>`).join("")}${dur ? `<span class="tag dim">${dur}</span>` : ""}`;
 }
 
 // ---------- sampling ----------
@@ -169,8 +190,10 @@ async function main() {
   // Off the map there is nothing to draw: show a ground grid under the estimate and say so.
   const offGrid = new THREE.GridHelper(4000, 40, 0x8d98a8, 0xc9d0da);
   offGrid.visible = false;
-  left.scene.add(estDroneL, offGrid);
-  right.scene.add(truthDrone, estDroneR, link);
+  // The method's reported 95 % radius around the estimate, in both worlds.
+  const radiusL = makeRadius(), radiusR = makeRadius();
+  left.scene.add(estDroneL, offGrid, radiusL);
+  right.scene.add(truthDrone, estDroneR, link, radiusR);
 
   let run = null, loadSeq = 0;
   let time = 0, hoverTime = null, playing = false, lastFrame = performance.now();
@@ -223,6 +246,15 @@ async function main() {
       $(holder).append(b);
     }
   }
+  // The radius band on the error chart has its own legend toggle; hidden for runs without one.
+  const bandChip = document.createElement("button");
+  bandChip.id = "radiusChip";
+  bandChip.className = "chip small on";
+  bandChip.hidden = true;
+  bandChip.title = "The method's reported 95% radius; red spans are hazardously misleading";
+  bandChip.innerHTML = `<i class="sw-radius"></i>95% radius`;
+  bandChip.onclick = () => { errChart.toggle("band"); bandChip.classList.toggle("on"); };
+  $("errChips").append(bandChip);
   const logBtns = [...document.querySelectorAll("[data-log]")];
   const chartFor = (b) => (b.dataset.log === "err" ? errChart : devChart);
   const syncLog = () => logBtns.forEach((b) => b.classList.toggle("on", chartFor(b).log));
@@ -429,9 +461,13 @@ async function main() {
     run?.dispose();
     focused = -1;
     run = buildRun(id, R, ...meshes);
+    run.unc = uncertaintyOf(R);
+    run.integ = run.unc ? integrity(R.t, R.metrics.err, run.unc) : null;
     time = Math.min(run.t1, Math.max(run.t0, run.t0 + rel));
     hoverTime = null;
-    for (const c of [errChart, devChart]) c.setData(R.t, R.metrics);
+    errChart.setData(R.t, R.metrics, { band: run.unc, hazard: run.integ?.hmi });
+    devChart.setData(R.t, R.metrics);
+    $("radiusChip").hidden = !run.unc;
     heat.highlight = -1;
     heat.setData(R.t, R.echo);
     Object.assign(scrub, { min: run.t0, max: run.t1, step: (run.t1 - run.t0) / 5000 });
@@ -455,7 +491,7 @@ async function main() {
     }
 
     renderCrumbs(entry, R);
-    renderSummary(summarize(R), R, { seek, focusBeam });
+    renderSummary(summarize(R, run.integ), R, { seek, focusBeam });
     document.title = `${R.experiment} · ${R.run_id} · gpsfree replay`;
     viewState(null);
     syncUrl(push && !first);
@@ -502,6 +538,7 @@ async function main() {
       link.geometry.attributes.position.needsUpdate = true;
     }
     for (const l of run.trails) l.geometry.setDrawRange(0, i + 1);
+    renderIntegrity(i, hasEst);
 
     for (const c of charts) c.draw(time);
     scrub.value = time;
@@ -509,6 +546,29 @@ async function main() {
     clock.classList.toggle("preview", at !== time);
     clock.title = at !== time ? "Previewing the hovered moment; click the chart to jump there" : "";
     clock.innerHTML = `${(at - t0).toFixed(1)} <span class="total">/ ${(run.t1 - t0).toFixed(0)} s</span>`;
+  }
+
+  // Radius rings, the LOST banner and the hazard banner for pose sample i.
+  function renderIntegrity(i, hasEst) {
+    const u = run.unc?.[i], hmi = !!run.integ?.hmi[i];
+    const claim = hasEst && u != null && isFinite(u);
+    const color = u >= ALERT_M ? RADIUS_COLORS.over : RADIUS_COLORS.ok;
+    for (const [ring, at, vis] of [[radiusL, pE, claim], [radiusR, pE, claim && show.estimate]]) {
+      ring.visible = vis;
+      if (!vis) continue;
+      ring.position.copy(at);
+      ring.scale.set(u, 1, u);
+      // In the real world the ring turns red when the truth is outside it and that is hazardous.
+      ring.setColor(ring === radiusR && hmi ? RADIUS_COLORS.hmi : color);
+    }
+    $("lostBanner").hidden = !(hasEst && u === Infinity);
+    const tag = $("radiusTag");
+    tag.hidden = !run.unc || !hasEst || u === Infinity;
+    tag.className = u == null ? "none" : u >= ALERT_M ? "over" : "";
+    tag.innerHTML = u == null ? "no position claim" : `reported 95% radius <b>${fmtM(u)}</b>`;
+    const hb = $("hmiBanner");
+    hb.hidden = !hmi;
+    if (hmi) hb.innerHTML = `<b>HAZARDOUSLY MISLEADING</b><span>${fmtM(run.R.metrics.err[i])} off while claiming ${fmtM(u)}</span>`;
   }
 
   function frame(now) {

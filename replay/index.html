@@ -69,8 +69,11 @@
               <span><i class="sw-short"></i>shorter than map</span>
               <span><i class="sw-long"></i>longer than map</span>
               <span><i class="sw-nohit"></i>map predicts no hit</span>
+              <span><i class="sw-radius"></i>reported 95% radius</span>
             </div>
           </div>
+          <div id="lostBanner" class="banner lost" hidden><b>LOST</b><span>I don't know where I am</span></div>
+          <div id="radiusTag" hidden></div>
           <div id="offmap" hidden></div>
           <div id="beamFocus" hidden></div>
         </section>
@@ -84,6 +87,7 @@
               <button class="chip" data-show="beams" title="Measured beams from the true pose (B)"><i class="sw-agree"></i>beams</button>
             </div>
           </div>
+          <div id="hmiBanner" class="banner hmi" hidden></div>
         </section>
         <div id="viewState" hidden></div>
       </main>

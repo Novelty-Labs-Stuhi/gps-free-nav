@@ -66,6 +66,28 @@ Summaries are cached by replay.json mtime and size (`stamp`). Rebuild it after a
 `uv run python -c "import sys; sys.path.insert(0,'replay'); import export_sample as e; e.update_index()"`. The viewer
 also accepts entries without the summary, or plain `"<experiment>/<run_id>"` strings.
 
+## Integrity: the method's own uncertainty
+
+When `replay.json` carries `uncertainty[n]` (the method's 95 % horizontal radius per pose; `"inf"` = "I don't know
+where I am", `null` = no claim), the viewer shows whether the method can be trusted about itself:
+
+- **Drone's world:** a disc of that radius around the estimate, blue under the 50 m alert limit and amber above it,
+  with the value in the corner. `"inf"` shows a **LOST: I don't know where I am** banner instead.
+- **Real world:** the same disc around the estimate; it turns red, with a **HAZARDOUSLY MISLEADING** banner, when the
+  error is over 50 m while the radius claims under 50 m.
+- **Error chart:** the radius as a blue band under the error line, amber spans where the method declared itself
+  lost, and red spans (with the error line in red) where it was hazardously misleading.
+- **Summary and run list:**
+  - *Misleading* is the share of the time a radius was claimed in which the error was outside it. A calibrated
+    95 % radius should be near 5 %.
+  - *Silent failure* is **yes** when a hazardously misleading episode lasts longer than the 6 s time-to-alert
+    (ICAO LPV-200) without an alarm, **late alarm** when the alarm (lost, or a radius past 50 m) came after it,
+    and **no** otherwise.
+  - The run list badges these runs.
+
+The dev server builds `/replays/index.json` itself from `data/replays/*/*/replay.json` (cached by file mtime), so
+runs from any exporter show up with their summaries; the logic is in `src/summary.js`.
+
 ## Format
 
 `data/replays/<experiment>/<run_id>/`

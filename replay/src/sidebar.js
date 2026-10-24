@@ -10,6 +10,14 @@ export const fmtPct = (f) => (f == null ? "–" : `${(f * 100).toFixed(f > 0.995
 
 // Index entries are objects; very old indexes were "<experiment>/<run_id>" strings. Summary fields are
 // optional, so an index written before they existed still lists every run.
+// The run's integrity verdict at a glance: did it ever believe a wrong position without saying so?
+function integrityBadge(e) {
+  if (e.silent_failure === "yes") return `<b class="badge bad" title="Error over ${LOST_M} m while claiming to be within it, for ${fmtS(e.hmi_s)}">silent failure</b>`;
+  if (e.silent_failure === "late") return `<b class="badge warn" title="Declared itself lost, but only after the time-to-alert">late alarm</b>`;
+  if (e.declared_lost_s != null) return `<b class="badge muted" title="Declared itself lost at ${fmtS(e.declared_lost_s)}">declares lost</b>`;
+  return "";
+}
+
 export function normalizeEntry(e) {
   if (typeof e === "string") e = { id: e };
   const [experiment = "?", run_id = e.id] = e.id.split("/");
@@ -21,7 +29,7 @@ export function normalizeEntry(e) {
   e.seed = parts.length > 1 && /^s\d+$/.test(parts.at(-1)) ? parts.pop().slice(1) : null;
   const rest = parts.filter((p) => p !== e.world && p !== e.scenario);
   e.route = (rest.length ? rest : parts).join(" · ");
-  e.haystack = [e.experiment, e.scenario, e.world, e.run_id].join(" ").toLowerCase();
+  e.haystack = [e.experiment, e.scenario, e.scenario_name, e.world, e.run_id].filter(Boolean).join(" ").toLowerCase();
   return e;
 }
 
@@ -210,7 +218,8 @@ export class RunBrowser {
         const h = document.createElement("div");
         h.className = "subgroup";
         const worlds = uniq(g.runs.filter((x) => x.scenario === scen).map((x) => x.world));
-        h.innerHTML = `${esc(scen)}${multiWorld ? `<span>${esc(worlds.join(", "))}</span>` : ""}`;
+        const name = g.runs.find((x) => x.scenario === scen)?.scenario_name;
+        h.innerHTML = `${esc(name || scen)}${multiWorld ? `<span>${esc(worlds.join(", "))}</span>` : ""}`;
         sec.append(h);
       }
       sec.append(this.renderRow(e));
@@ -232,7 +241,7 @@ export class RunBrowser {
          <span title="Returned echoes that agree with the map">echo <b>${fmtPct(e.echo_agree)}</b></span>`
       : `<span title="This index entry predates run summaries; re-run update_index() in replay/export_sample.py">${esc(e.scenario)} · ${esc(e.world)} · no summary yet</span>`;
     b.innerHTML = `
-      <span class="name">${esc(e.route)}${e.seed != null ? `<small>s${esc(e.seed)}</small>` : ""}</span>
+      <span class="name">${esc(e.route)}${e.seed != null ? `<small>s${esc(e.seed)}</small>` : ""}${integrityBadge(e)}</span>
       ${sparkline(e.err)}
       <span class="score" title="Score: geometric-mean error">${has ? fmtM(e.score_m) : ""}</span>
       <span class="meta">${meta}</span>`;

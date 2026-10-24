@@ -3,6 +3,7 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import { agreeBand } from "./summary.js";
 
 // Replay JSON is ENU (x east, y north, z up); three.js is Y-up: (x, y, z) -> (x, z, -y).
 export const enu = (p, out = new THREE.Vector3()) => out.set(p[0], p[2], -p[1]);
@@ -190,6 +191,24 @@ export function scaleToCamera(obj, camera, frac = 0.025) {
   obj.scale.setScalar(Math.max(1, obj.position.distanceTo(camera.position) * frac));
 }
 
+export const RADIUS_COLORS = { ok: "#0284c7", over: "#f59e0b", hmi: "#dc2626" };
+
+// The method's reported 95 % horizontal radius: a flat disc with a rim at unit radius, scaled to metres
+// per frame. Drawn over the terrain so it never hides inside a hill.
+export function makeRadius() {
+  const g = new THREE.Group();
+  const flat = (geo) => geo.rotateX(-Math.PI / 2);
+  const disc = new THREE.Mesh(flat(new THREE.CircleGeometry(1, 96)),
+    new THREE.MeshBasicMaterial({ transparent: true, opacity: 0.14, depthWrite: false, depthTest: false, side: THREE.DoubleSide }));
+  const rim = new THREE.Mesh(flat(new THREE.RingGeometry(0.97, 1, 128)),
+    new THREE.MeshBasicMaterial({ transparent: true, opacity: 0.95, depthWrite: false, depthTest: false, side: THREE.DoubleSide }));
+  disc.renderOrder = rim.renderOrder = 5;
+  g.add(disc, rim);
+  g.visible = false;
+  g.setColor = (c) => { disc.material.color.set(c); rim.material.color.set(c); };
+  return g;
+}
+
 export function makeLine(points, color, opts = {}) {
   const geo = new THREE.BufferGeometry().setFromPoints(points);
   const mat = opts.dashed
@@ -217,10 +236,10 @@ export function vectors(arr) {
 export const BEAM_COLORS = { agree: "#16a34a", short: "#ea2a1f", long: "#2563eb", nohit: "#c026d3", miss: "#5b6472" };
 const C = Object.fromEntries(Object.entries(BEAM_COLORS).map(([k, v]) => [k, new THREE.Color(v)]));
 
-// "Agrees" means within 3 sigma of the suite's echo noise (0.05 m + 1 % of range); colours saturate
-// FULL_M beyond that.
+// "Agrees" means within 3 sigma of the suite's echo noise (agreeBand, in summary.js); colours
+// saturate FULL_M beyond that.
 export const FULL_M = 10;
-export const agreeBand = (range) => 3 * (0.05 + 0.01 * range);
+export { agreeBand };
 
 // Layer of one beam reading: "hit" (agrees with the map), "disagree" or "miss" (no echo).
 export function beamLayer(measured, predicted) {
