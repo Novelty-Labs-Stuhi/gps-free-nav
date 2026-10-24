@@ -8,6 +8,7 @@ documented in replay/README.md; write_replay() is the part another evaluator can
 import argparse
 import importlib.util
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -99,9 +100,16 @@ def write_replay(out: Path, *, experiment, scenario, world, run_id, t, truth_p, 
     update_index()
 
 
+def _labels(path):
+    """experiment/scenario/world/run_id from the head of a replay.json, without parsing the whole file."""
+    with open(path) as f:
+        head = f.read(2048)
+    return {k: (re.search(rf'"{k}"\s*:\s*"([^"]*)"', head) or [None, None])[1] for k in ("experiment", "scenario", "world", "run_id")}
+
+
 def update_index():
-    """data/replays/index.json lists every replay folder so the viewer can offer a picker."""
-    runs = sorted(p.parent.relative_to(REPLAYS).as_posix() for p in REPLAYS.glob("*/*/replay.json"))
+    """data/replays/index.json lists every replay so the viewer can offer experiment/scenario/run pickers."""
+    runs = [{"id": p.parent.relative_to(REPLAYS).as_posix(), **_labels(p)} for p in sorted(REPLAYS.glob("*/*/replay.json"))]
     (REPLAYS / "index.json").write_text(json.dumps(runs, indent=1))
 
 

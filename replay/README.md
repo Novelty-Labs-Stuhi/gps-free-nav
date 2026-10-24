@@ -1,20 +1,28 @@
 # Replay viewer
 
-Watch one benchmark run play back in 3D:
+One window for one benchmark run: what the drone believed next to what really happened, with every chart
+on the same clock.
 
-- **Left, the drone's world:** the prior map mesh, the drone at its *estimated* pose, and every echo beam it fires.
-  Each beam is coloured by measured range minus the range the map predicts from the estimated pose:
-  green agrees (within 3σ of the echo noise, 0.05 m + 1 % of range), red is shorter than the map
-  (something the map lacks), blue is longer (the map has something that isn't there, or the estimate is off),
-  magenta means the map predicts no hit. Saturation is reached 10 m past the agreement band.
-  Beams with no return are faint grey lines at full range. The camera follows the estimate; when it leaves
-  the map, a grid and a notice show how far past the edge it is.
-- **Right, the real world:** the true mesh, the true trajectory (white), the planned route (yellow dashes),
-  the estimated trajectory (red), the true and estimated drones, and a red line joining them.
-  Tick *beams from true pose* to draw the measured beams from where the drone really was.
-- **Bottom:** error, running geometric-mean error, and deviations (estimate vs truth horizontally and vertically,
-  truth vs planned) over time, on a log or linear axis. Play/pause (Space), speed, the scrub bar, ←/→ (±1 s)
-  and clicking the chart all move the same clock.
+- **Header:** experiment, scenario and run pickers (from `data/replays/index.json`).
+- **Left 3D view, the drone's world:** the prior map mesh, the drone at its *estimated* pose, and every echo beam
+  it fires. Each beam is coloured by measured range minus the range the map predicts from the estimated pose:
+  green agrees (within 3σ of the echo noise, 0.05 m + 1 % of range), red is shorter than the map (something the
+  map lacks), blue is longer (the map has something that isn't there, or the estimate is off), magenta means the
+  map predicts no hit. Colours saturate 10 m past the agreement band. Beams with no return are faint grey.
+  Chips toggle the layers: hits, disagree, misses. Off the map edge, a grid and a notice say how far out it is.
+- **Right 3D view, the real world:** the true mesh, true trajectory (white), planned route (yellow dashes),
+  estimated trajectory (red), both drones and the line joining them. Chips toggle each layer, plus the measured
+  beams from the true pose.
+- **Summary strip:** score (geometric-mean error), final and worst error, time over 50 m, share of echoes that
+  agree with the map, and the three beams with the most disagreeing echoes. Click worst error or time over 50 m
+  to jump there; click a beam to focus it in both views and the heatmap.
+- **Transport:** play/pause, ±1 s, speed, scrubber, and camera presets: follow, top-down, chase, overview.
+- **Charts:** position error and running geo-mean (log), deviations (estimate vs truth horizontally and
+  vertically, truth vs planned), and a beam × time heatmap of echo residuals. Hovering any chart previews that
+  moment in both 3D views while paused; click or drag to seek. Legend chips toggle series.
+- **Keys:** Space play/pause · ←/→ 1 s (Shift 10 s) · , . one sample · Home/End · −/+ speed · 1–4 camera ·
+  H/D/M beam layers · B true-pose beams · L log scale · Esc clear focus · ? help.
+  The dock is resizable from its top edge; camera, speed, layers and dock height are remembered per browser.
 
 ```bash
 cd replay && npm install && npm run dev     # http://localhost:5174

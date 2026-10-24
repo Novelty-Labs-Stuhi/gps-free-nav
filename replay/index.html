@@ -8,53 +8,109 @@
   </head>
   <body>
     <header>
-      <b>gpsfree replay</b>
-      <select id="picker" title="Replays in data/replays"></select>
-      <span id="info"></span>
+      <div class="brand"><span class="dot"></span>gpsfree <em>replay</em></div>
+      <label class="pick">Experiment <select id="pickExperiment"></select></label>
+      <label class="pick">Scenario <select id="pickScenario"></select></label>
+      <label class="pick">Run <select id="pickRun"></select></label>
       <span id="status">loading…</span>
+      <button id="helpBtn" class="icon" title="Keyboard shortcuts (?)">?</button>
     </header>
+
     <main>
       <section class="panel" id="left">
-        <div class="label">
-          <b>Drone's world</b> · prior map, estimated pose
-          <div class="legend">
-            <span><i style="background:#2ecc71"></i>agrees</span>
+        <div class="panel-head">
+          <div class="title"><b>Drone's world</b><span>prior map · estimated pose</span></div>
+          <div class="chips" id="beamChips">
+            <button class="chip on" data-layer="hit" title="Beams that agree with the map (H)"><i style="background:#2ecc71"></i>hits</button>
+            <button class="chip on" data-layer="disagree" title="Beams that disagree with the map (D)"><i class="grad"></i>disagree</button>
+            <button class="chip on" data-layer="miss" title="Beams with no echo (M)"><i style="background:#9aa3ad"></i>misses</button>
+          </div>
+          <div class="key">
             <span><i style="background:#ff5a36"></i>shorter than map</span>
             <span><i style="background:#3b8cff"></i>longer than map</span>
             <span><i style="background:#e040fb"></i>map predicts no hit</span>
-            <span><i style="background:#bbb"></i>no echo</span>
           </div>
         </div>
         <div id="offmap" hidden></div>
-        <div class="hint">drag orbit · scroll zoom · camera follows the estimate</div>
+        <div id="beamFocus" hidden></div>
       </section>
       <section class="panel" id="right">
-        <div class="label">
-          <b>Real world</b> · true mesh and pose
-          <div class="legend">
-            <span><i style="background:#ffffff"></i>truth</span>
-            <span><i style="background:#ffd23f"></i>planned</span>
-            <span><i style="background:#ff4d6d"></i>estimate</span>
-            <label><input type="checkbox" id="trueBeams" /> beams from true pose</label>
-            <label><input type="checkbox" id="followTruth" checked /> follow</label>
+        <div class="panel-head">
+          <div class="title"><b>Real world</b><span>true mesh · true pose</span></div>
+          <div class="chips" id="worldChips">
+            <button class="chip on" data-show="truth"><i style="background:#ffffff"></i>truth</button>
+            <button class="chip on" data-show="planned"><i style="background:#ffd23f"></i>planned</button>
+            <button class="chip on" data-show="estimate"><i style="background:#ff4d6d"></i>estimate</button>
+            <button class="chip" data-show="beams" title="Measured beams from the true pose (B)"><i style="background:#2ecc71"></i>beams</button>
           </div>
         </div>
       </section>
     </main>
-    <footer>
-      <div id="controls">
-        <button id="play" title="Space">▶</button>
-        <select id="speed" title="Playback speed">
-          <option>0.25</option><option>0.5</option><option selected>1</option><option>2</option>
-          <option>4</option><option>8</option><option>16</option><option>32</option>
-        </select>
-        <input id="scrub" type="range" min="0" max="1" step="0.01" value="0" />
+
+    <div id="dock">
+      <div id="grip" title="Drag to resize"></div>
+      <div id="summary"></div>
+      <div id="transport">
+        <button id="play" class="icon play" title="Play / pause (Space)">▶</button>
+        <button id="back" class="icon" title="Back 1 s (←)">⏮</button>
+        <button id="fwd" class="icon" title="Forward 1 s (→)">⏭</button>
+        <select id="speed" title="Playback speed (− / +)"></select>
+        <div class="scrub-wrap"><input id="scrub" type="range" min="0" max="1" step="0.01" value="0" /></div>
         <span id="clock">0.0 s</span>
-        <label><input type="checkbox" id="logScale" checked /> log</label>
+        <div class="seg" id="camModes" title="Camera (1–4)">
+          <button data-mode="follow">Follow</button>
+          <button data-mode="top">Top-down</button>
+          <button data-mode="chase">Chase</button>
+          <button data-mode="overview">Overview</button>
+        </div>
       </div>
-      <div id="readout"></div>
-      <canvas id="chart"></canvas>
-    </footer>
+      <div id="charts">
+        <figure class="card">
+          <figcaption>
+            <b>Position error</b>
+            <span class="chips small" id="errChips"></span>
+            <button class="chip small on" data-log="err" title="Log scale (L)">log</button>
+          </figcaption>
+          <canvas id="chartErr"></canvas>
+        </figure>
+        <figure class="card">
+          <figcaption>
+            <b>Deviations</b>
+            <span class="chips small" id="devChips"></span>
+            <button class="chip small" data-log="dev">log</button>
+          </figcaption>
+          <canvas id="chartDev"></canvas>
+        </figure>
+        <figure class="card">
+          <figcaption>
+            <b>Echo residual by beam</b>
+            <span class="muted">measured − map · rows grouped by elevation · shift-click a row to focus it</span>
+          </figcaption>
+          <canvas id="chartBeams"></canvas>
+        </figure>
+      </div>
+    </div>
+
+    <div id="tip" hidden></div>
+    <div id="help" hidden>
+      <div class="sheet">
+        <h2>Keyboard shortcuts</h2>
+        <dl>
+          <dt>Space</dt><dd>play / pause</dd>
+          <dt>← →</dt><dd>step 1 s (Shift: 10 s)</dd>
+          <dt>, .</dt><dd>step one sample (0.1 s)</dd>
+          <dt>Home End</dt><dd>jump to start / end</dd>
+          <dt>− +</dt><dd>slower / faster</dd>
+          <dt>1 2 3 4</dt><dd>camera: follow · top-down · chase · overview</dd>
+          <dt>H D M</dt><dd>toggle beam layers: hits · disagree · misses</dd>
+          <dt>B</dt><dd>beams from the true pose (real world)</dd>
+          <dt>L</dt><dd>log scale on the error chart</dd>
+          <dt>Esc</dt><dd>clear beam focus / close this</dd>
+          <dt>?</dt><dd>this help</dd>
+        </dl>
+        <p>Hover a chart to preview that moment in both 3D views (while paused); click or drag to seek.</p>
+      </div>
+    </div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
