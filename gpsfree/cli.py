@@ -71,18 +71,11 @@ def cmd_verify(args):
 
 
 def cmd_leaderboard(args):
-    from gpsfree.leaderboard import render
+    from gpsfree.leaderboard import render, update_readme
 
-    text = render()
-    path = ROOT / "LEADERBOARD.md"
-    if args.check:
-        if not path.exists() or path.read_text() != text:
-            print("LEADERBOARD.md is stale: run `uv run gpsfree leaderboard` and commit it")
-            sys.exit(1)
-        print("LEADERBOARD.md up to date")
-    else:
-        path.write_text(text)
-        print(text)
+    path = ROOT / "README.md"
+    path.write_text(update_readme(path.read_text() if path.exists() else "", render()))
+    print(f"updated {path.relative_to(ROOT)}")
 
 
 def cmd_new(args):
@@ -129,8 +122,7 @@ def main():
     p.add_argument("--jobs", type=int)
     p.set_defaults(func=cmd_verify)
 
-    p = sub.add_parser("leaderboard", help="regenerate LEADERBOARD.md from experiments/*/results.json")
-    p.add_argument("--check", action="store_true")
+    p = sub.add_parser("leaderboard", help="regenerate the README leaderboard from experiments/*/results.json")
     p.set_defaults(func=cmd_leaderboard)
 
     p = sub.add_parser("new", help="start a new experiment from a template")

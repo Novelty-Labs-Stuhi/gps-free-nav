@@ -1,0 +1,50 @@
+name: benchmark
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  verify:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: astral-sh/setup-uv@v5
+      - uses: actions/cache@v4
+        with:
+          path: data/worlds
+          key: worlds-${{ hashFiles('gpsfree/worlds/**') }}
+      - run: test -f data/worlds/index.json || uv run gpsfree fetch
+      - run: uv run pytest -q
+      - name: Re-run changed experiments
+        run: |
+          changed=$(git diff --name-only "${{ github.event.pull_request.base.sha }}...HEAD")
+          if echo "$changed" | grep -qE '^(gpsfree/|benchmark/|pyproject.toml|uv.lock)'; then
+            echo "scoring code or suite changed: verifying all experiments"
+            uv run gpsfree verify
+            exit
+          fi
+          exps=$(echo "$changed" | grep -oE '^experiments/[^/]+' | sort -u | while read d; do
+            [ -f "$d/algo.py" ] && basename "$d"; done)
+          if [ -z "$exps" ]; then echo "no experiments changed"; exit; fi
+          uv run gpsfree verify $exps
+
+  leaderboard:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - run: uv run gpsfree leaderboard
+      - run: |
+          git diff --quiet README.md && exit
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update leaderboard" README.md
+          git push

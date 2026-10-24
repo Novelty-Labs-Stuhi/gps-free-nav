@@ -1,0 +1,373 @@
+{
+ "experiment": "pdr_compass",
+ "author": "Arsenii Chistiakov",
+ "suite": "137d08890708",
+ "partial": false,
+ "elapsed_s": 36.7,
+ "summary": {
+  "rotterdam/walker": {
+   "runs": 9,
+   "median_err_100m": 2.11,
+   "median_err_250m": 7.8,
+   "median_err_500m": 25.34,
+   "median_err_1000m": 52.68,
+   "fail_rate": 0.11,
+   "median_drift_pct": 4.99,
+   "min_realtime_factor": 2105.9
+  },
+  "yosemite/walker": {
+   "runs": 9,
+   "median_err_100m": 5.5,
+   "median_err_250m": 14.21,
+   "median_err_500m": 39.87,
+   "median_err_1000m": 53.36,
+   "fail_rate": 0.22,
+   "median_drift_pct": 3.95,
+   "min_realtime_factor": 4633.5
+  }
+ },
+ "runs": [
+  {
+   "distance_m": 1212.9,
+   "error_at_m": {
+    "100": 2.11,
+    "250": 6.87,
+    "500": 3.27,
+    "1000": 15.99
+   },
+   "final_error_m": 21.95,
+   "drift_pct": 1.81,
+   "xy_rmse_m": 10.01,
+   "z_rmse_m": 0.51,
+   "route": "walker-gen0",
+   "world": "rotterdam",
+   "platform": "walker",
+   "seed": 0,
+   "duration_s": 866.3,
+   "realtime_factor": 2105.9
+  },
+  {
+   "distance_m": 1212.9,
+   "error_at_m": {
+    "100": 11.11,
+    "250": 22.32,
+    "500": 42.89,
+    "1000": 95.25
+   },
+   "final_error_m": 111.86,
+   "drift_pct": 9.22,
+   "xy_rmse_m": 64.61,
+   "z_rmse_m": 0.4,
+   "route": "walker-gen0",
+   "world": "rotterdam",
+   "platform": "walker",
+   "seed": 1,
+   "duration_s": 866.3,
+   "realtime_factor": 3764.7
+  },
+  {
+   "distance_m": 1212.9,
+   "error_at_m": {
+    "100": 1.07,
+    "250": 3.09,
+    "500": 15.56,
+    "1000": 8.69
+   },
+   "final_error_m": 4.83,
+   "drift_pct": 0.4,
+   "xy_rmse_m": 10.89,
+   "z_rmse_m": 0.52,
+   "route": "walker-gen0",
+   "world": "rotterdam",
+   "platform": "walker",
+   "seed": 2,
+   "duration_s": 866.3,
+   "realtime_factor": 2422.7
+  },
+  {
+   "distance_m": 1217.1,
+   "error_at_m": {
+    "100": 3.76,
+    "250": 8.93,
+    "500": 28.18,
+    "1000": 76.74
+   },
+   "final_error_m": 90.75,
+   "drift_pct": 7.46,
+   "xy_rmse_m": 46.03,
+   "z_rmse_m": 0.58,
+   "route": "walker-gen1",
+   "world": "rotterdam",
+   "platform": "walker",
+   "seed": 0,
+   "duration_s": 869.4,
+   "realtime_factor": 2917.2
+  },
+  {
+   "distance_m": 1217.1,
+   "error_at_m": {
+    "100": 1.14,
+    "250": 1.76,
+    "500": 4.5,
+    "1000": 10.29
+   },
+   "final_error_m": 11.38,
+   "drift_pct": 0.94,
+   "xy_rmse_m": 6.53,
+   "z_rmse_m": 0.42,
+   "route": "walker-gen1",
+   "world": "rotterdam",
+   "platform": "walker",
+   "seed": 1,
+   "duration_s": 869.4,
+   "realtime_factor": 2672.0
+  },
+  {
+   "distance_m": 1217.1,
+   "error_at_m": {
+    "100": 15.47,
+    "250": 53.68,
+    "500": 90.54,
+    "1000": 172.52
+   },
+   "final_error_m": 200.32,
+   "drift_pct": 16.46,
+   "xy_rmse_m": 122.99,
+   "z_rmse_m": 0.64,
+   "route": "walker-gen1",
+   "world": "rotterdam",
+   "platform": "walker",
+   "seed": 2,
+   "duration_s": 869.4,
+   "realtime_factor": 4369.8
+  },
+  {
+   "distance_m": 1218.6,
+   "error_at_m": {
+    "100": 1.72,
+    "250": 7.8,
+    "500": 25.34,
+    "1000": 52.68
+   },
+   "final_error_m": 60.75,
+   "drift_pct": 4.99,
+   "xy_rmse_m": 37.32,
+   "z_rmse_m": 0.42,
+   "route": "walker-gen2",
+   "world": "rotterdam",
+   "platform": "walker",
+   "seed": 0,
+   "duration_s": 870.8,
+   "realtime_factor": 4569.2
+  },
+  {
+   "distance_m": 1218.6,
+   "error_at_m": {
+    "100": 0.67,
+    "250": 3.8,
+    "500": 13.93,
+    "1000": 25.92
+   },
+   "final_error_m": 28.9,
+   "drift_pct": 2.37,
+   "xy_rmse_m": 18.97,
+   "z_rmse_m": 0.37,
+   "route": "walker-gen2",
+   "world": "rotterdam",
+   "platform": "walker",
+   "seed": 1,
+   "duration_s": 870.8,
+   "realtime_factor": 3235.3
+  },
+  {
+   "distance_m": 1218.6,
+   "error_at_m": {
+    "100": 6.17,
+    "250": 12.06,
+    "500": 37.89,
+    "1000": 87.61
+   },
+   "final_error_m": 98.17,
+   "drift_pct": 8.06,
+   "xy_rmse_m": 60.99,
+   "z_rmse_m": 0.34,
+   "route": "walker-gen2",
+   "world": "rotterdam",
+   "platform": "walker",
+   "seed": 2,
+   "duration_s": 870.8,
+   "realtime_factor": 5003.8
+  },
+  {
+   "distance_m": 1209.6,
+   "error_at_m": {
+    "100": 4.62,
+    "250": 16.57,
+    "500": 57.59,
+    "1000": 64.23
+   },
+   "final_error_m": 63.42,
+   "drift_pct": 5.24,
+   "xy_rmse_m": 51.94,
+   "z_rmse_m": 0.5,
+   "route": "walker-gen0",
+   "world": "yosemite",
+   "platform": "walker",
+   "seed": 0,
+   "duration_s": 863.8,
+   "realtime_factor": 6872.9
+  },
+  {
+   "distance_m": 1209.6,
+   "error_at_m": {
+    "100": 8.44,
+    "250": 13.8,
+    "500": 41.46,
+    "1000": 50.57
+   },
+   "final_error_m": 42.84,
+   "drift_pct": 3.54,
+   "xy_rmse_m": 40.62,
+   "z_rmse_m": 0.37,
+   "route": "walker-gen0",
+   "world": "yosemite",
+   "platform": "walker",
+   "seed": 1,
+   "duration_s": 863.8,
+   "realtime_factor": 4633.5
+  },
+  {
+   "distance_m": 1209.6,
+   "error_at_m": {
+    "100": 5.5,
+    "250": 14.21,
+    "500": 52.66,
+    "1000": 53.36
+   },
+   "final_error_m": 47.54,
+   "drift_pct": 3.93,
+   "xy_rmse_m": 45.48,
+   "z_rmse_m": 0.4,
+   "route": "walker-gen0",
+   "world": "yosemite",
+   "platform": "walker",
+   "seed": 2,
+   "duration_s": 863.8,
+   "realtime_factor": 7908.6
+  },
+  {
+   "distance_m": 1207.1,
+   "error_at_m": {
+    "100": 7.43,
+    "250": 17.41,
+    "500": 41.77,
+    "1000": 124.24
+   },
+   "final_error_m": 155.26,
+   "drift_pct": 12.86,
+   "xy_rmse_m": 83.95,
+   "z_rmse_m": 0.73,
+   "route": "walker-gen1",
+   "world": "yosemite",
+   "platform": "walker",
+   "seed": 0,
+   "duration_s": 861.7,
+   "realtime_factor": 9032.8
+  },
+  {
+   "distance_m": 1207.1,
+   "error_at_m": {
+    "100": 8.01,
+    "250": 20.61,
+    "500": 39.87,
+    "1000": 64.94
+   },
+   "final_error_m": 75.15,
+   "drift_pct": 6.23,
+   "xy_rmse_m": 48.19,
+   "z_rmse_m": 0.5,
+   "route": "walker-gen1",
+   "world": "yosemite",
+   "platform": "walker",
+   "seed": 1,
+   "duration_s": 861.7,
+   "realtime_factor": 5423.8
+  },
+  {
+   "distance_m": 1207.1,
+   "error_at_m": {
+    "100": 1.21,
+    "250": 1.34,
+    "500": 16.35,
+    "1000": 42.51
+   },
+   "final_error_m": 47.63,
+   "drift_pct": 3.95,
+   "xy_rmse_m": 29.23,
+   "z_rmse_m": 1.32,
+   "route": "walker-gen1",
+   "world": "yosemite",
+   "platform": "walker",
+   "seed": 2,
+   "duration_s": 861.7,
+   "realtime_factor": 10903.7
+  },
+  {
+   "distance_m": 1207.3,
+   "error_at_m": {
+    "100": 2.9,
+    "250": 7.79,
+    "500": 21.54,
+    "1000": 36.13
+   },
+   "final_error_m": 44.04,
+   "drift_pct": 3.65,
+   "xy_rmse_m": 27.7,
+   "z_rmse_m": 0.6,
+   "route": "walker-gen2",
+   "world": "yosemite",
+   "platform": "walker",
+   "seed": 0,
+   "duration_s": 862.1,
+   "realtime_factor": 6858.8
+  },
+  {
+   "distance_m": 1207.3,
+   "error_at_m": {
+    "100": 16.5,
+    "250": 32.67,
+    "500": 16.63,
+    "1000": 76.25
+   },
+   "final_error_m": 89.19,
+   "drift_pct": 7.39,
+   "xy_rmse_m": 45.57,
+   "z_rmse_m": 0.5,
+   "route": "walker-gen2",
+   "world": "yosemite",
+   "platform": "walker",
+   "seed": 1,
+   "duration_s": 862.1,
+   "realtime_factor": 9270.0
+  },
+  {
+   "distance_m": 1207.3,
+   "error_at_m": {
+    "100": 1.26,
+    "250": 2.59,
+    "500": 12.9,
+    "1000": 22.01
+   },
+   "final_error_m": 26.88,
+   "drift_pct": 2.23,
+   "xy_rmse_m": 16.42,
+   "z_rmse_m": 1.09,
+   "route": "walker-gen2",
+   "world": "yosemite",
+   "platform": "walker",
+   "seed": 2,
+   "duration_s": 862.1,
+   "realtime_factor": 10590.9
+  }
+ ]
+}

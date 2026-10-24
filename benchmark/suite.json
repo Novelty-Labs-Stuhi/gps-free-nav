@@ -3,7 +3,7 @@
   "score_rate_hz": 10,
   "checkpoints_m": [100, 250, 500, 1000],
   "headline_m": 500,
-  "fail_threshold_m": 50,
+  "fail_pct": 10,
   "sensors": {
     "imu":  {"rate_hz": 100, "acc_noise": 0.05, "acc_bias_init": 0.03, "acc_bias_walk": 0.0005,
              "gyro_noise": 0.003, "gyro_bias_init": 0.002, "gyro_bias_walk": 0.0001},

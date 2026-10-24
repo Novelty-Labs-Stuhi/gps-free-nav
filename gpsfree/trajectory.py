@@ -74,3 +74,8 @@ def _multirotor_attitude(a, yaw):
 
 def horizontal_distance(p):
     return np.r_[0, np.cumsum(np.linalg.norm(np.diff(p[:, :2], axis=0), axis=1))]
+
+
+def path_length(p):
+    """Cumulative 3D arc length: climbs and descents count as distance travelled."""
+    return np.r_[0, np.cumsum(np.linalg.norm(np.diff(p, axis=0), axis=1))]

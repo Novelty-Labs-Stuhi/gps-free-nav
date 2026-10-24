@@ -14,7 +14,7 @@ from gpsfree.algorithm import Algorithm, Context, MapView, Pose
 from gpsfree.paths import BENCHMARK, EXPERIMENTS, ROUTES, RUNS
 from gpsfree.routes import stable_seed
 from gpsfree.sensors import generate, sensor_spec
-from gpsfree.trajectory import Route, Trajectory, horizontal_distance
+from gpsfree.trajectory import Route, Trajectory, path_length
 from gpsfree.world import World
 
 EVENT_ORDER = ["imu", "mag", "baro", "echo", "step"]
@@ -112,17 +112,24 @@ def run_one(experiment: str, route_path: str, seed: int, suite: dict, save_traje
 
 
 def score(t, truth, est, suite):
-    err = np.linalg.norm(est[:, :2] - truth[:, :2], axis=1)
+    """Error is 3D Euclidean distance to truth; distance travelled is 3D arc length of the true path."""
+    diff = est - truth
+    err = np.linalg.norm(diff, axis=1)
     err[~np.isfinite(err)] = np.inf
-    dist = horizontal_distance(truth)
+    dist = path_length(truth)
     out = {"distance_m": round(float(dist[-1]), 1), "error_at_m": {}}
     for d in suite["checkpoints_m"]:
         i = np.searchsorted(dist, d)
         out["error_at_m"][str(d)] = round(float(err[i]), 2) if i < len(err) else None
     out["final_error_m"] = round(float(err[-1]), 2)
     out["drift_pct"] = round(float(100 * err[-1] / max(dist[-1], 1)), 2)
-    out["z_rmse_m"] = round(float(np.sqrt(np.nanmean((est[:, 2] - truth[:, 2]) ** 2))), 2)
+    out["xy_rmse_m"] = round(float(np.sqrt(np.nanmean(np.sum(diff[:, :2] ** 2, axis=1)))), 2)
+    out["z_rmse_m"] = round(float(np.sqrt(np.nanmean(diff[:, 2] ** 2))), 2)
     return out
+
+
+def fail_threshold_m(suite):
+    return suite["fail_pct"] / 100 * suite["headline_m"]
 
 
 def summarize(runs, suite):
@@ -137,7 +144,7 @@ def summarize(runs, suite):
             s[f"median_err_{d}m"] = round(float(np.median(vals)), 2) if vals else None
         head = [r["error_at_m"][str(suite["headline_m"])] for r in rs]
         head = [np.inf if v is None else v for v in head]
-        s["fail_rate"] = round(float(np.mean([v > suite["fail_threshold_m"] for v in head])), 2)
+        s["fail_rate"] = round(float(np.mean([v > fail_threshold_m(suite) for v in head])), 2)
         s["median_drift_pct"] = round(float(np.median([r["drift_pct"] for r in rs])), 2)
         s["min_realtime_factor"] = min(r["realtime_factor"] for r in rs)
         summary[key] = s
