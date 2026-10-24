@@ -1,0 +1,216 @@
+{
+ "experiment": "ins_compass",
+ "author": "Arsenii Chistiakov",
+ "hardware": null,
+ "suite": "6992acb806ae",
+ "partial": false,
+ "elapsed_s": 4.3,
+ "summary": {
+  "yosemite/drone": {
+   "runs": 9,
+   "score_log10": 3.743,
+   "score_m": 5533.5,
+   "mae_m": {
+    "0-250": 14.05,
+    "250-500": 191.09,
+    "500-1000": 1373.41,
+    "1000-2000": 9794.73,
+    "2000+": 44260.58
+   },
+   "lost_at_m": 244.1,
+   "growth_k": 2.87,
+   "min_realtime_factor": 470.5
+  }
+ },
+ "runs": [
+  {
+   "distance_m": 3114.4,
+   "score_log10": 3.743,
+   "mae_m": {
+    "0-250": 14.54,
+    "250-500": 191.09,
+    "500-1000": 1464.62,
+    "1000-2000": 9834.24,
+    "2000+": 44260.58
+   },
+   "lost_at_m": 244.1,
+   "growth_k": 2.83,
+   "xy_rmse_m": 29035.07,
+   "z_rmse_m": 0.84,
+   "route": "drone-gen0",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 0,
+   "duration_s": 287.9,
+   "realtime_factor": 470.5
+  },
+  {
+   "distance_m": 3114.4,
+   "score_log10": 3.471,
+   "mae_m": {
+    "0-250": 2.32,
+    "250-500": 39.73,
+    "500-1000": 673.02,
+    "1000-2000": 6617.17,
+    "2000+": 36834.07
+   },
+   "lost_at_m": 416.3,
+   "growth_k": 3.48,
+   "xy_rmse_m": 24397.44,
+   "z_rmse_m": 1.13,
+   "route": "drone-gen0",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 1,
+   "duration_s": 287.9,
+   "realtime_factor": 602.4
+  },
+  {
+   "distance_m": 3114.4,
+   "score_log10": 3.838,
+   "mae_m": {
+    "0-250": 14.05,
+    "250-500": 257.11,
+    "500-1000": 2117.06,
+    "1000-2000": 13182.96,
+    "2000+": 48846.48
+   },
+   "lost_at_m": 234.1,
+   "growth_k": 2.83,
+   "xy_rmse_m": 32004.68,
+   "z_rmse_m": 1.61,
+   "route": "drone-gen0",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 2,
+   "duration_s": 287.9,
+   "realtime_factor": 685.8
+  },
+  {
+   "distance_m": 3349.2,
+   "score_log10": 3.775,
+   "mae_m": {
+    "0-250": 10.21,
+    "250-500": 166.37,
+    "500-1000": 1155.96,
+    "1000-2000": 9555.66,
+    "2000+": 44924.36
+   },
+   "lost_at_m": 276.5,
+   "growth_k": 2.87,
+   "xy_rmse_m": 30059.36,
+   "z_rmse_m": 0.73,
+   "route": "drone-gen1",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 0,
+   "duration_s": 288.0,
+   "realtime_factor": 700.3
+  },
+  {
+   "distance_m": 3349.2,
+   "score_log10": 3.001,
+   "mae_m": {
+    "0-250": 13.48,
+    "250-500": 59.01,
+    "500-1000": 257.1,
+    "1000-2000": 1258.45,
+    "2000+": 4989.31
+   },
+   "lost_at_m": 340.1,
+   "growth_k": 2.09,
+   "xy_rmse_m": 3479.42,
+   "z_rmse_m": 0.47,
+   "route": "drone-gen1",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 1,
+   "duration_s": 288.0,
+   "realtime_factor": 545.0
+  },
+  {
+   "distance_m": 3349.2,
+   "score_log10": 3.614,
+   "mae_m": {
+    "0-250": 4.03,
+    "250-500": 73.73,
+    "500-1000": 652.48,
+    "1000-2000": 6881.42,
+    "2000+": 40936.89
+   },
+   "lost_at_m": 344.5,
+   "growth_k": 3.2,
+   "xy_rmse_m": 27785.82,
+   "z_rmse_m": 0.86,
+   "route": "drone-gen1",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 2,
+   "duration_s": 288.0,
+   "realtime_factor": 660.0
+  },
+  {
+   "distance_m": 2918.3,
+   "score_log10": 4.004,
+   "mae_m": {
+    "0-250": 16.74,
+    "250-500": 299.24,
+    "500-1000": 2566.09,
+    "1000-2000": 21376.12,
+    "2000+": 90267.27
+   },
+   "lost_at_m": 224.3,
+   "growth_k": 3.11,
+   "xy_rmse_m": 55289.21,
+   "z_rmse_m": 3.01,
+   "route": "drone-gen2",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 0,
+   "duration_s": 287.8,
+   "realtime_factor": 560.5
+  },
+  {
+   "distance_m": 2918.3,
+   "score_log10": 4.113,
+   "mae_m": {
+    "0-250": 29.99,
+    "250-500": 467.78,
+    "500-1000": 3648.7,
+    "1000-2000": 25885.79,
+    "2000+": 99684.35
+   },
+   "lost_at_m": 186.2,
+   "growth_k": 2.91,
+   "xy_rmse_m": 61088.06,
+   "z_rmse_m": 3.21,
+   "route": "drone-gen2",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 1,
+   "duration_s": 287.8,
+   "realtime_factor": 548.1
+  },
+  {
+   "distance_m": 2918.3,
+   "score_log10": 3.708,
+   "mae_m": {
+    "0-250": 18.35,
+    "250-500": 204.93,
+    "500-1000": 1373.41,
+    "1000-2000": 9794.73,
+    "2000+": 37375.81
+   },
+   "lost_at_m": 226.4,
+   "growth_k": 2.77,
+   "xy_rmse_m": 22907.88,
+   "z_rmse_m": 0.47,
+   "route": "drone-gen2",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 2,
+   "duration_s": 287.8,
+   "realtime_factor": 672.6
+  }
+ ]
+}

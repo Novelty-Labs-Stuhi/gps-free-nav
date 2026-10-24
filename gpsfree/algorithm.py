@@ -44,6 +44,7 @@ class Context:
 
 class Algorithm:
     platforms = ("drone", "walker")  # override to restrict which benchmark runs apply
+    hardware = None  # name of a benchmark/hardware/<name>.json real-part imu+mag profile; None = suite sensors
 
     def __init__(self, ctx: Context):
         self.ctx = ctx

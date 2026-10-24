@@ -1,0 +1,24 @@
+{
+ "imu": {
+  "part": "Honeywell HG4930 CA",
+  "grade": "tactical",
+  "rate_hz": 100,
+  "acc_vrw_mps_rth": 0.03,
+  "gyro_arw_deg_rth": 0.04,
+  "acc_bias_ug": 25,
+  "gyro_bias_dph": 0.25,
+  "_source": "Honeywell N61-3380-000-000 (12/25) p.2, CA grade factory-fresh: in-run bias 0.25 deg/h & 0.025 mg, turn-on repeatability 7 deg/h & 1.7 mg, ARW 0.04 deg/rth, VRW 0.03 m/s/rth. https://prod-edam.honeywellaerospace.com/content/dam/honeywell-edam/aero/en-us/products/navigation-and-sensors/inertial-measurement-units/hg4930-mems-inertial-measurement-unit/documents/hon-aero-n61-3380-000-000-hguide-4930-mems-imu-datasheet-en.pdf",
+  "price_usd": 9433.0,
+  "_price": "Chief Enterprises HG4930 CA51 (68904930-CA51) list price, qty 1, 2026-10: https://www.chiefenterprises.com/honeywell-68904930-ca51-hg4930-6-axis-imu"
+ },
+ "mag": {
+  "part": "PNI RM3100",
+  "rate_hz": 50,
+  "noise_ut": 0.015,
+  "residual_hard_iron_ut": 0.4,
+  "_source": "PNI RM3100 manual 1017252 R07, Table 3-1 p.6: 15 nT @ 200 cycle counts (max ~147 Hz 3-axis). Mirror: https://xcopter.com/download/RM3100-Sensor.pdf",
+  "_residual_hard_iron_ut": "ASSUMPTION, not a datasheet number: per-axis 1-sigma hard-iron residual after in-field calibration, ~1.2 deg heading sigma in a ~19 uT horizontal field; matches Wu, Wang & Liang 2011 (heading sigma < 1.2 deg after UAV in-field calibration) https://hkxb.buaa.edu.cn/EN/abstract/article/1000-6893/12683",
+  "price_usd": 17.22,
+  "_price": "LCSC RM3100 bare sensor set, qty 1, 2026-10: https://lcsc.com/product-detail/Magnetic-Sensors_PNI-C464558_C464558.html"
+ }
+}

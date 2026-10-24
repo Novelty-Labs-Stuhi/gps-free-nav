@@ -1,0 +1,24 @@
+{
+ "imu": {
+  "part": "Analog Devices ADIS16470",
+  "grade": "industrial",
+  "rate_hz": 100,
+  "acc_vrw_mps_rth": 0.037,
+  "gyro_arw_deg_rth": 0.34,
+  "acc_bias_ug": 13,
+  "gyro_bias_dph": 8,
+  "_source": "Analog Devices ADIS16470 Rev C (4/2019), Table 1 pp.2-3: in-run bias stability 8 deg/h & 13 ug, ARW 0.34 deg/rth, VRW 0.037 m/s/rth. 'turnon' = bias error over temperature (0.2 dps, 4 mg, 1 sigma) since turn-on repeatability is not published. Mirror: https://docs.rs-online.com/ac83/A700000008454000.pdf",
+  "price_usd": 408.19,
+  "_price": "Richardson RFPD ADIS16470AMLZ, qty 1, 2026-10 (LCSC $253.60, DigiKey ES EUR 321.83): https://shop.richardsonrfpd.com/Products/Product/ADIS16470AMLZ"
+ },
+ "mag": {
+  "part": "PNI RM3100",
+  "rate_hz": 50,
+  "noise_ut": 0.015,
+  "residual_hard_iron_ut": 0.4,
+  "_source": "PNI RM3100 manual 1017252 R07, Table 3-1 p.6: 15 nT @ 200 cycle counts (max ~147 Hz 3-axis). Mirror: https://xcopter.com/download/RM3100-Sensor.pdf",
+  "_residual_hard_iron_ut": "ASSUMPTION, not a datasheet number: per-axis 1-sigma hard-iron residual after in-field calibration, ~1.2 deg heading sigma in a ~19 uT horizontal field; matches Wu, Wang & Liang 2011 (heading sigma < 1.2 deg after UAV in-field calibration) https://hkxb.buaa.edu.cn/EN/abstract/article/1000-6893/12683",
+  "price_usd": 17.22,
+  "_price": "LCSC RM3100 bare sensor set, qty 1, 2026-10: https://lcsc.com/product-detail/Magnetic-Sensors_PNI-C464558_C464558.html"
+ }
+}

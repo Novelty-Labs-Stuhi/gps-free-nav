@@ -1,8 +1,9 @@
 import json
 import re
 
-from gpsfree.evaluate import load_suite, suite_fingerprint
-from gpsfree.paths import EXPERIMENTS
+from gpsfree.algorithm import Algorithm
+from gpsfree.evaluate import load_algorithm, load_suite, suite_fingerprint
+from gpsfree.paths import EXPERIMENTS, HARDWARE
 
 START, END = "<!-- leaderboard:start -->", "<!-- leaderboard:end -->"
 
@@ -23,16 +24,27 @@ def render() -> str:
         rows = sorted((r for r in results if g in r["summary"]),
                       key=lambda r: (r["suite"] != current, r["summary"][g]["score_log10"]))
         lines += ["", f"### {g}", "",
-                  f"| # | method | author | score (m) | log₁₀ | lost at (m) | growth k | "
+                  f"| # | method | hardware | cost (USD) | author | score (m) | log₁₀ | lost at (m) | growth k | "
                   + " | ".join(f"MAE {b} m" for b in bands) + " |",
-                  "|---|---|---|---|---|---|---|" + "---|" * len(bands)]
+                  "|---|---|---|---|---|---|---|---|---|" + "---|" * len(bands)]
         for rank, r in enumerate(rows, 1):
             s = r["summary"][g]
             name = f"[{r['experiment']}](experiments/{r['experiment']})" + (" ⚠ stale" if r["suite"] != current else "")
             mae = [_fmt(s["mae_m"].get(b)) for b in bands]
-            lines.append(f"| {rank} | {name} | {r.get('author') or ''} | {_fmt(s['score_m'])} | {s['score_log10']:.2f} | "
+            lines.append(f"| {rank} | {name} | {r.get('hardware') or 'suite default'} | {hardware_cost(r['experiment'])} | {r.get('author') or ''} | {_fmt(s['score_m'])} | {s['score_log10']:.2f} | "
                          f"{s['lost_at_m']:.0f} | {_fmt(s['growth_k'])} | " + " | ".join(mae) + " |")
     return "\n".join(lines) + "\n"
+
+
+def hardware_cost(experiment: str) -> str:
+    """Price of the profile parts the method uses: the IMU, plus the magnetometer if it implements on_mag.
+    Suite-default sensors (and baro/echo) have no price."""
+    algo = load_algorithm(experiment)
+    if algo.hardware is None:
+        return "—"
+    hw = json.loads((HARDWARE / f"{algo.hardware}.json").read_text())
+    parts = [hw["imu"]] + ([hw["mag"]] if algo.on_mag is not Algorithm.on_mag else [])
+    return f"{sum(p['price_usd'] for p in parts):,.0f}"
 
 
 def _fmt(v):

@@ -1,0 +1,26 @@
+{
+ "imu": {
+  "part": "TDK InvenSense ICM-42688-P",
+  "grade": "consumer",
+  "rate_hz": 100,
+  "acc_nd_ug_rthz": 65,
+  "gyro_nd_dps_rthz": 0.0028,
+  "acc_tempco_ug_per_c": 150,
+  "gyro_tempco_dph_per_c": 18,
+  "delta_temp_c": 5.0,
+  "_delta_temp_c": "ASSUMPTION: IMU temperature change after the pre-flight bias calibration; residual bias = datasheet tempco x this, for parts that publish no in-run bias stability",
+  "_source": "TDK DS-000347 Rev 1.6, Table 1 p.11 (gyro ND 0.0028 dps/rtHz, ZRO +-0.5 dps, ZRO tempco +-0.005 dps/C) and Table 2 p.12 (accel ND 65 ug/rtHz X/Y, zero-g +-20 mg, tempco +-0.15 mg/C). No bias instability published. Mirror: https://pcbsync.com/wp-content/uploads/2026/07/ICM-42688-P-Datasheet-TDK.pdf",
+  "price_usd": 7.83,
+  "_price": "DigiKey cut tape, qty 1, via aggregator snapshot 2026-10 (LCSC $3.39 qty 1): https://zenode.ai/parts/den0safmp6"
+ },
+ "mag": {
+  "part": "PNI RM3100",
+  "rate_hz": 50,
+  "noise_ut": 0.015,
+  "residual_hard_iron_ut": 0.4,
+  "_source": "PNI RM3100 manual 1017252 R07, Table 3-1 p.6: 15 nT @ 200 cycle counts (max ~147 Hz 3-axis). Mirror: https://xcopter.com/download/RM3100-Sensor.pdf",
+  "_residual_hard_iron_ut": "ASSUMPTION, not a datasheet number: per-axis 1-sigma hard-iron residual after in-field calibration, ~1.2 deg heading sigma in a ~19 uT horizontal field; matches Wu, Wang & Liang 2011 (heading sigma < 1.2 deg after UAV in-field calibration) https://hkxb.buaa.edu.cn/EN/abstract/article/1000-6893/12683",
+  "price_usd": 17.22,
+  "_price": "LCSC RM3100 bare sensor set, qty 1, 2026-10: https://lcsc.com/product-detail/Magnetic-Sensors_PNI-C464558_C464558.html"
+ }
+}

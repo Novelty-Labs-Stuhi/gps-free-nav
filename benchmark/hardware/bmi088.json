@@ -1,0 +1,26 @@
+{
+ "imu": {
+  "part": "Bosch BMI088",
+  "grade": "consumer (PX4/ArduPilot FCs)",
+  "rate_hz": 100,
+  "acc_nd_ug_rthz": 160,
+  "gyro_nd_dps_rthz": 0.014,
+  "acc_tempco_ug_per_c": 200,
+  "gyro_tempco_dph_per_c": 54,
+  "delta_temp_c": 5.0,
+  "_delta_temp_c": "ASSUMPTION: IMU temperature change after the pre-flight bias calibration; residual bias = datasheet tempco x this, for parts that publish no in-run bias stability",
+  "_source": "Bosch BST-BMI088-DS000-19 Rev 1.9 (Jan 2024), Table 4 p.9 (accel ND 160 ug/rtHz X/Y @+-3g, zero-g 20 mg, offset drift <0.2 mg/K) and Table 5 p.10 (gyro 0.014 dps/rtHz, ZRO +-1 dps, +-0.015 dps/K). No bias instability published. https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmi088-ds001.pdf",
+  "price_usd": 4.9,
+  "_price": "DigiKey FR EUR 4.52 qty 1 cut tape (~$4.90), 2026-10; Mouser ~$4.58-5.23 via aggregators: https://www.digikey.fr/en/products/detail/bosch-sensortec/BMI088/8634942"
+ },
+ "mag": {
+  "part": "PNI RM3100",
+  "rate_hz": 50,
+  "noise_ut": 0.015,
+  "residual_hard_iron_ut": 0.4,
+  "_source": "PNI RM3100 manual 1017252 R07, Table 3-1 p.6: 15 nT @ 200 cycle counts (max ~147 Hz 3-axis). Mirror: https://xcopter.com/download/RM3100-Sensor.pdf",
+  "_residual_hard_iron_ut": "ASSUMPTION, not a datasheet number: per-axis 1-sigma hard-iron residual after in-field calibration, ~1.2 deg heading sigma in a ~19 uT horizontal field; matches Wu, Wang & Liang 2011 (heading sigma < 1.2 deg after UAV in-field calibration) https://hkxb.buaa.edu.cn/EN/abstract/article/1000-6893/12683",
+  "price_usd": 17.22,
+  "_price": "LCSC RM3100 bare sensor set, qty 1, 2026-10: https://lcsc.com/product-detail/Magnetic-Sensors_PNI-C464558_C464558.html"
+ }
+}

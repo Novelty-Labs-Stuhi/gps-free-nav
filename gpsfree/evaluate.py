@@ -11,9 +11,9 @@ from pathlib import Path
 import numpy as np
 
 from gpsfree.algorithm import Algorithm, Context, MapView, Pose
-from gpsfree.paths import BENCHMARK, EXPERIMENTS, ROUTES, RUNS
+from gpsfree.paths import BENCHMARK, EXPERIMENTS, HARDWARE, ROUTES, RUNS
 from gpsfree.routes import stable_seed
-from gpsfree.sensors import generate, sensor_spec
+from gpsfree.sensors import generate, hardware_sensors, sensor_spec
 from gpsfree.trajectory import Route, Trajectory, path_length
 from gpsfree.world import World
 
@@ -38,6 +38,9 @@ def suite_fingerprint():
     h = hashlib.sha256((BENCHMARK / "suite.json").read_bytes())
     for p in route_paths():
         h.update(p.relative_to(ROUTES).as_posix().encode())
+        h.update(p.read_bytes())
+    for p in sorted(HARDWARE.glob("*.json")):
+        h.update(p.name.encode())
         h.update(p.read_bytes())
     return h.hexdigest()[:12]
 
@@ -67,11 +70,12 @@ def run_one(experiment: str, route_path: str, seed: int, suite: dict, save_traje
     world = _world(route.world)
     traj = Trajectory(route)
     rng = np.random.default_rng([seed, stable_seed(route.world, route.name)])
-    data = generate(traj, world, suite["sensors"], rng)
+    sensors = hardware_sensors(suite["sensors"], algo_cls.hardware)
+    data = generate(traj, world, sensors, rng)
 
     s0 = traj.sample(np.array([traj.t0]))
     start = Pose(traj.t0, s0["p"][0], float(s0["yaw"][0]), s0["v"][0])
-    algo = algo_cls(Context(route.platform, route.world, MapView(world), start, sensor_spec(suite["sensors"])))
+    algo = algo_cls(Context(route.platform, route.world, MapView(world), start, sensor_spec(sensors)))
     handlers = {
         "imu": lambda d, i: algo.on_imu(d["t"][i], d["acc"][i], d["gyro"][i]),
         "mag": lambda d, i: algo.on_mag(d["t"][i], d["field"][i]),
@@ -170,6 +174,7 @@ def evaluate(experiment: str, worlds=None, platforms=None, jobs=None):
     return {
         "experiment": experiment,
         "author": _git_user(),
+        "hardware": load_algorithm(experiment).hardware,
         "suite": suite_fingerprint(),
         "partial": bool(worlds or platforms),
         "elapsed_s": round(time.time() - t0, 1),

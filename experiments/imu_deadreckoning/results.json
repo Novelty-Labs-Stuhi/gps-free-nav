@@ -1,9 +1,10 @@
 {
  "experiment": "imu_deadreckoning",
  "author": "Arsenii Chistiakov",
- "suite": "dc5da247d2d7",
+ "hardware": null,
+ "suite": "6992acb806ae",
  "partial": false,
- "elapsed_s": 4.2,
+ "elapsed_s": 4.6,
  "summary": {
   "yosemite/drone": {
    "runs": 9,
@@ -18,7 +19,7 @@
    },
    "lost_at_m": 247.1,
    "growth_k": 2.87,
-   "min_realtime_factor": 656.5
+   "min_realtime_factor": 438.4
   }
  },
  "runs": [
@@ -41,7 +42,7 @@
    "platform": "drone",
    "seed": 0,
    "duration_s": 287.9,
-   "realtime_factor": 739.5
+   "realtime_factor": 921.5
   },
   {
    "distance_m": 3114.4,
@@ -62,7 +63,7 @@
    "platform": "drone",
    "seed": 1,
    "duration_s": 287.9,
-   "realtime_factor": 656.6
+   "realtime_factor": 754.3
   },
   {
    "distance_m": 3114.4,
@@ -83,7 +84,7 @@
    "platform": "drone",
    "seed": 2,
    "duration_s": 287.9,
-   "realtime_factor": 656.5
+   "realtime_factor": 815.1
   },
   {
    "distance_m": 3349.2,
@@ -104,7 +105,7 @@
    "platform": "drone",
    "seed": 0,
    "duration_s": 288.0,
-   "realtime_factor": 906.3
+   "realtime_factor": 732.1
   },
   {
    "distance_m": 3349.2,
@@ -125,7 +126,7 @@
    "platform": "drone",
    "seed": 1,
    "duration_s": 288.0,
-   "realtime_factor": 810.7
+   "realtime_factor": 746.1
   },
   {
    "distance_m": 3349.2,
@@ -146,7 +147,7 @@
    "platform": "drone",
    "seed": 2,
    "duration_s": 288.0,
-   "realtime_factor": 697.6
+   "realtime_factor": 865.1
   },
   {
    "distance_m": 2918.3,
@@ -167,7 +168,7 @@
    "platform": "drone",
    "seed": 0,
    "duration_s": 287.8,
-   "realtime_factor": 885.2
+   "realtime_factor": 863.2
   },
   {
    "distance_m": 2918.3,
@@ -188,7 +189,7 @@
    "platform": "drone",
    "seed": 1,
    "duration_s": 287.8,
-   "realtime_factor": 871.8
+   "realtime_factor": 704.0
   },
   {
    "distance_m": 2918.3,
@@ -209,7 +210,7 @@
    "platform": "drone",
    "seed": 2,
    "duration_s": 287.8,
-   "realtime_factor": 794.0
+   "realtime_factor": 438.4
   }
  ]
 }
