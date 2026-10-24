@@ -9,14 +9,21 @@ from gpsfree.trajectory import G, Trajectory, horizontal_distance
 
 
 def echo_directions(pattern: dict) -> np.ndarray:
-    """Beam unit vectors in the body frame (FLU)."""
+    """Beam unit vectors in the body frame (FLU): a fan (azimuths x elevations), a straight-down beam,
+    and/or a downward-looking grid of beams spanning a rectangular field of view (fov_deg, grid)."""
     dirs = []
-    for el in np.radians(pattern["elevations_deg"]):
-        for az in np.linspace(0, 2 * np.pi, pattern["azimuths"], endpoint=False):
+    for el in np.radians(pattern.get("elevations_deg", [])):
+        for az in np.linspace(0, 2 * np.pi, pattern.get("azimuths", 0), endpoint=False):
             dirs.append([np.cos(el) * np.cos(az), np.cos(el) * np.sin(az), np.sin(el)])
     if pattern.get("down"):
         dirs.append([0, 0, -1])
-    return np.array(dirs)
+    if "fov_deg" in pattern:
+        (h, v), (nh, nv) = np.radians(pattern["fov_deg"]), pattern["grid"]
+        for a in np.linspace(-h / 2, h / 2, nh):
+            for b in np.linspace(-v / 2, v / 2, nv):
+                d = np.array([np.tan(b), np.tan(a), -1.0])
+                dirs.append(d / np.linalg.norm(d))
+    return np.array(dirs).reshape(-1, 3)
 
 
 def generate(traj: Trajectory, world, cfg: dict, rng: np.random.Generator) -> dict:
@@ -81,26 +88,43 @@ def generate(traj: Trajectory, world, cfg: dict, rng: np.random.Generator) -> di
     return out
 
 
-def hardware_sensors(base: dict, name: str | None) -> dict:
-    """Suite sensor config with imu/mag replaced by a real-part profile (benchmark/hardware/<name>.json).
+def hardware_profiles(names) -> dict:
+    """Merge benchmark/hardware/<name>.json profiles (a name or a list of names) into {"imu", "mag", "echo"} parts;
+    a later profile's part replaces an earlier one's."""
+    if names is None:
+        return {}
+    parts = {}
+    for name in [names] if isinstance(names, str) else names:
+        hw = json.loads((HARDWARE / f"{name}.json").read_text())
+        parts |= {k: hw[k] for k in ("imu", "mag", "echo") if k in hw}
+    return parts
+
+
+def hardware_sensors(base: dict, names) -> dict:
+    """Suite sensor config with imu/mag/echo replaced by real-part profiles (benchmark/hardware/<name>.json).
     Profiles hold datasheet numbers in datasheet units: white noise sigma = noise density * sqrt(rate),
-    constant per-run bias ~ N(0, in-run bias stability, else tempco * delta_temp_c), no bias walk."""
-    if name is None:
-        return base
-    hw = json.loads((HARDWARE / f"{name}.json").read_text())
-    i, m = hw["imu"], hw["mag"]
-    ug, dph = 1e-6 * G, np.radians(1) / 3600
-    acc_nd = i["acc_nd_ug_rthz"] * ug if "acc_nd_ug_rthz" in i else i["acc_vrw_mps_rth"] / 60
-    gyro_nd = np.radians(i["gyro_nd_dps_rthz"] if "gyro_nd_dps_rthz" in i else i["gyro_arw_deg_rth"] / 60)
-    acc_b = i.get("acc_bias_ug", i.get("acc_tempco_ug_per_c", 0) * i.get("delta_temp_c", 0))
-    gyro_b = i.get("gyro_bias_dph", i.get("gyro_tempco_dph_per_c", 0) * i.get("delta_temp_c", 0))
-    root = np.sqrt(i["rate_hz"])
-    return base | {
-        "imu": {"rate_hz": i["rate_hz"], "acc_noise": acc_nd * root, "acc_bias_init": acc_b * ug, "acc_bias_walk": 0.0,
-                "gyro_noise": gyro_nd * root, "gyro_bias_init": gyro_b * dph, "gyro_bias_walk": 0.0},
-        "mag": {"rate_hz": m["rate_hz"], "noise_ut": m["noise_ut"], "hard_iron_ut": m["residual_hard_iron_ut"],
-                "field_enu_ut": base["mag"]["field_enu_ut"]},
-    }
+    constant per-run bias ~ N(0, in-run bias stability, else tempco * delta_temp_c), no bias walk.
+    Echo parts give rate_hz, max_range_m, noise_m, noise_frac, dropout and a beam pattern directly."""
+    hw = hardware_profiles(names)
+    out = dict(base)
+    if "imu" in hw:
+        i = hw["imu"]
+        ug, dph = 1e-6 * G, np.radians(1) / 3600
+        acc_nd = i["acc_nd_ug_rthz"] * ug if "acc_nd_ug_rthz" in i else i["acc_vrw_mps_rth"] / 60
+        gyro_nd = np.radians(i["gyro_nd_dps_rthz"] if "gyro_nd_dps_rthz" in i else i["gyro_arw_deg_rth"] / 60)
+        acc_b = i.get("acc_bias_ug", i.get("acc_tempco_ug_per_c", 0) * i.get("delta_temp_c", 0))
+        gyro_b = i.get("gyro_bias_dph", i.get("gyro_tempco_dph_per_c", 0) * i.get("delta_temp_c", 0))
+        root = np.sqrt(i["rate_hz"])
+        out["imu"] = {"rate_hz": i["rate_hz"], "acc_noise": acc_nd * root, "acc_bias_init": acc_b * ug, "acc_bias_walk": 0.0,
+                      "gyro_noise": gyro_nd * root, "gyro_bias_init": gyro_b * dph, "gyro_bias_walk": 0.0}
+    if "mag" in hw:
+        m = hw["mag"]
+        out["mag"] = {"rate_hz": m["rate_hz"], "noise_ut": m["noise_ut"], "hard_iron_ut": m["residual_hard_iron_ut"],
+                      "field_enu_ut": base["mag"]["field_enu_ut"]}
+    if "echo" in hw:
+        e = hw["echo"]
+        out["echo"] = {k: e[k] for k in ("rate_hz", "max_range_m", "noise_m", "noise_frac", "dropout", "pattern")}
+    return out
 
 
 def sensor_spec(cfg: dict) -> dict:

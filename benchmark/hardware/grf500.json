@@ -1,0 +1,16 @@
+{
+ "echo": {
+  "part": "LightWare GRF-500 laser rangefinder (single beam, mounted looking straight down)",
+  "rate_hz": 5,
+  "max_range_m": 350,
+  "noise_m": 0.5,
+  "noise_frac": 0.0,
+  "dropout": 0.01,
+  "pattern": {"down": true},
+  "_source": "LightWare GRF-500 preliminary specifications, key technical specifications table p.2: range 0.2-500 m (at 5 Hz, 40% albedo, 23 km visibility, 4x4 m target), accuracy +-50 cm (1 sigma), 0.5-10 readings/s, false alarm rate <1%, beam divergence <0.5 deg: https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/7153/LightWareGRF500PreliminarySpecifications.pdf",
+  "_max_range_m": "ASSUMPTION: 500 m at 40% albedo scaled by sqrt(20%/40%) for granite and forest",
+  "_dropout": "ASSUMPTION: the <1% false alarm rate modelled as 1% missing readings",
+  "price_usd": 399.0,
+  "_price": "LightWare webstore launch price via LiDAR Magazine 2025: https://lidarmag.com/?p=15760"
+ }
+}

@@ -2,9 +2,9 @@
  "experiment": "imu_deadreckoning",
  "author": "Arsenii Chistiakov",
  "hardware": null,
- "suite": "43ba6c5737b5",
+ "suite": "5991a6bcbe8d",
  "partial": false,
- "elapsed_s": 16.7,
+ "elapsed_s": 17.6,
  "summary": {
   "yosemite/drone": {
    "runs": 40,
@@ -19,7 +19,7 @@
    },
    "lost_at_m": 232.4,
    "growth_k": 2.83,
-   "min_realtime_factor": 537.8
+   "min_realtime_factor": 546.6
   }
  },
  "runs": [
@@ -42,7 +42,7 @@
    "platform": "drone",
    "seed": 0,
    "duration_s": 340.4,
-   "realtime_factor": 537.8
+   "realtime_factor": 703.0
   },
   {
    "distance_m": 2906.4,
@@ -63,7 +63,7 @@
    "platform": "drone",
    "seed": 1,
    "duration_s": 340.4,
-   "realtime_factor": 639.7
+   "realtime_factor": 710.2
   },
   {
    "distance_m": 2941.0,
@@ -84,7 +84,7 @@
    "platform": "drone",
    "seed": 0,
    "duration_s": 214.9,
-   "realtime_factor": 885.3
+   "realtime_factor": 684.0
   },
   {
    "distance_m": 2941.0,
@@ -105,7 +105,7 @@
    "platform": "drone",
    "seed": 1,
    "duration_s": 214.9,
-   "realtime_factor": 722.7
+   "realtime_factor": 670.4
   },
   {
    "distance_m": 3253.3,
@@ -126,7 +126,7 @@
    "platform": "drone",
    "seed": 0,
    "duration_s": 438.8,
-   "realtime_factor": 633.5
+   "realtime_factor": 604.7
   },
   {
    "distance_m": 3253.3,
@@ -147,7 +147,7 @@
    "platform": "drone",
    "seed": 1,
    "duration_s": 438.8,
-   "realtime_factor": 762.9
+   "realtime_factor": 661.6
   },
   {
    "distance_m": 3368.4,
@@ -168,7 +168,7 @@
    "platform": "drone",
    "seed": 0,
    "duration_s": 444.0,
-   "realtime_factor": 719.1
+   "realtime_factor": 668.9
   },
   {
    "distance_m": 3368.4,
@@ -189,7 +189,7 @@
    "platform": "drone",
    "seed": 1,
    "duration_s": 444.0,
-   "realtime_factor": 647.9
+   "realtime_factor": 546.6
   },
   {
    "distance_m": 3202.0,
@@ -210,7 +210,7 @@
    "platform": "drone",
    "seed": 0,
    "duration_s": 501.8,
-   "realtime_factor": 735.3
+   "realtime_factor": 704.4
   },
   {
    "distance_m": 3202.0,
@@ -231,7 +231,7 @@
    "platform": "drone",
    "seed": 1,
    "duration_s": 501.8,
-   "realtime_factor": 710.6
+   "realtime_factor": 719.8
   },
   {
    "distance_m": 3349.7,
@@ -252,7 +252,7 @@
    "platform": "drone",
    "seed": 0,
    "duration_s": 382.5,
-   "realtime_factor": 744.5
+   "realtime_factor": 641.8
   },
   {
    "distance_m": 3349.7,
@@ -273,7 +273,7 @@
    "platform": "drone",
    "seed": 1,
    "duration_s": 382.5,
-   "realtime_factor": 729.7
+   "realtime_factor": 666.7
   },
   {
    "distance_m": 3260.1,
@@ -294,7 +294,7 @@
    "platform": "drone",
    "seed": 0,
    "duration_s": 211.5,
-   "realtime_factor": 718.9
+   "realtime_factor": 668.2
   },
   {
    "distance_m": 3260.1,
@@ -315,7 +315,7 @@
    "platform": "drone",
    "seed": 1,
    "duration_s": 211.5,
-   "realtime_factor": 699.0
+   "realtime_factor": 625.9
   },
   {
    "distance_m": 3076.6,
@@ -336,7 +336,7 @@
    "platform": "drone",
    "seed": 0,
    "duration_s": 401.1,
-   "realtime_factor": 742.3
+   "realtime_factor": 707.3
   },
   {
    "distance_m": 3076.6,
@@ -357,7 +357,7 @@
    "platform": "drone",
    "seed": 1,
    "duration_s": 401.1,
-   "realtime_factor": 914.8
+   "realtime_factor": 663.9
   },
   {
    "distance_m": 3117.3,
@@ -378,7 +378,7 @@
    "platform": "drone",
    "seed": 0,
    "duration_s": 334.6,
-   "realtime_factor": 714.8
+   "realtime_factor": 641.2
   },
   {
    "distance_m": 3117.3,
@@ -399,7 +399,7 @@
    "platform": "drone",
    "seed": 1,
    "duration_s": 334.6,
-   "realtime_factor": 721.2
+   "realtime_factor": 607.4
   },
   {
    "distance_m": 3311.8,
@@ -420,7 +420,7 @@
    "platform": "drone",
    "seed": 0,
    "duration_s": 274.4,
-   "realtime_factor": 563.2
+   "realtime_factor": 783.6
   },
   {
    "distance_m": 3311.8,
@@ -441,7 +441,7 @@
    "platform": "drone",
    "seed": 1,
    "duration_s": 274.4,
-   "realtime_factor": 750.5
+   "realtime_factor": 658.5
   },
   {
    "distance_m": 3358.8,
@@ -462,7 +462,7 @@
    "platform": "drone",
    "seed": 0,
    "duration_s": 410.6,
-   "realtime_factor": 763.5
+   "realtime_factor": 632.6
   },
   {
    "distance_m": 3358.8,
@@ -483,7 +483,7 @@
    "platform": "drone",
    "seed": 1,
    "duration_s": 410.6,
-   "realtime_factor": 759.6
+   "realtime_factor": 664.6
   },
   {
    "distance_m": 3381.9,
@@ -504,7 +504,7 @@
    "platform": "drone",
    "seed": 0,
    "duration_s": 201.9,
-   "realtime_factor": 651.9
+   "realtime_factor": 656.0
   },
   {
    "distance_m": 3381.9,
@@ -525,7 +525,7 @@
    "platform": "drone",
    "seed": 1,
    "duration_s": 201.9,
-   "realtime_factor": 702.0
+   "realtime_factor": 776.2
   },
   {
    "distance_m": 2966.9,
@@ -546,7 +546,7 @@
    "platform": "drone",
    "seed": 0,
    "duration_s": 275.9,
-   "realtime_factor": 754.5
+   "realtime_factor": 696.5
   },
   {
    "distance_m": 2966.9,
@@ -567,7 +567,7 @@
    "platform": "drone",
    "seed": 1,
    "duration_s": 275.9,
-   "realtime_factor": 735.0
+   "realtime_factor": 704.3
   },
   {
    "distance_m": 2922.8,
@@ -588,7 +588,7 @@
    "platform": "drone",
    "seed": 0,
    "duration_s": 285.7,
-   "realtime_factor": 628.8
+   "realtime_factor": 690.4
   },
   {
    "distance_m": 2922.8,
@@ -609,7 +609,7 @@
    "platform": "drone",
    "seed": 1,
    "duration_s": 285.7,
-   "realtime_factor": 709.4
+   "realtime_factor": 671.6
   },
   {
    "distance_m": 3004.9,
@@ -630,7 +630,7 @@
    "platform": "drone",
    "seed": 0,
    "duration_s": 276.9,
-   "realtime_factor": 692.6
+   "realtime_factor": 651.2
   },
   {
    "distance_m": 3004.9,
@@ -651,7 +651,7 @@
    "platform": "drone",
    "seed": 1,
    "duration_s": 276.9,
-   "realtime_factor": 681.1
+   "realtime_factor": 678.5
   },
   {
    "distance_m": 3114.0,
@@ -672,7 +672,7 @@
    "platform": "drone",
    "seed": 0,
    "duration_s": 344.3,
-   "realtime_factor": 779.4
+   "realtime_factor": 668.2
   },
   {
    "distance_m": 3114.0,
@@ -693,7 +693,7 @@
    "platform": "drone",
    "seed": 1,
    "duration_s": 344.3,
-   "realtime_factor": 728.2
+   "realtime_factor": 743.2
   },
   {
    "distance_m": 3278.2,
@@ -714,7 +714,7 @@
    "platform": "drone",
    "seed": 0,
    "duration_s": 257.2,
-   "realtime_factor": 782.3
+   "realtime_factor": 731.4
   },
   {
    "distance_m": 3278.2,
@@ -735,7 +735,7 @@
    "platform": "drone",
    "seed": 1,
    "duration_s": 257.2,
-   "realtime_factor": 772.6
+   "realtime_factor": 764.3
   },
   {
    "distance_m": 3204.5,
@@ -756,7 +756,7 @@
    "platform": "drone",
    "seed": 0,
    "duration_s": 418.5,
-   "realtime_factor": 1121.4
+   "realtime_factor": 1125.0
   },
   {
    "distance_m": 3204.5,
@@ -777,7 +777,7 @@
    "platform": "drone",
    "seed": 1,
    "duration_s": 418.5,
-   "realtime_factor": 1161.3
+   "realtime_factor": 1129.3
   },
   {
    "distance_m": 2998.6,
@@ -798,7 +798,7 @@
    "platform": "drone",
    "seed": 0,
    "duration_s": 269.2,
-   "realtime_factor": 609.9
+   "realtime_factor": 851.9
   },
   {
    "distance_m": 2998.6,
@@ -819,7 +819,7 @@
    "platform": "drone",
    "seed": 1,
    "duration_s": 269.2,
-   "realtime_factor": 639.8
+   "realtime_factor": 877.6
   },
   {
    "distance_m": 3136.8,
@@ -840,7 +840,7 @@
    "platform": "drone",
    "seed": 0,
    "duration_s": 433.9,
-   "realtime_factor": 1189.4
+   "realtime_factor": 1151.5
   },
   {
    "distance_m": 3136.8,
@@ -861,7 +861,7 @@
    "platform": "drone",
    "seed": 1,
    "duration_s": 433.9,
-   "realtime_factor": 1198.7
+   "realtime_factor": 1129.0
   }
  ]
 }

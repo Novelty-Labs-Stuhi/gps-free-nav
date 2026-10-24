@@ -3,7 +3,8 @@ import re
 
 from gpsfree.algorithm import Algorithm
 from gpsfree.evaluate import load_algorithm, load_suite, suite_fingerprint
-from gpsfree.paths import EXPERIMENTS, HARDWARE
+from gpsfree.paths import EXPERIMENTS
+from gpsfree.sensors import hardware_profiles
 
 START, END = "<!-- leaderboard:start -->", "<!-- leaderboard:end -->"
 MAX_COST_USD = 3000  # hardware must cost less than this to be verified and ranked
@@ -33,20 +34,24 @@ def render() -> str:
             s = r["summary"][g]
             name = f"[{r['experiment']}](experiments/{r['experiment']})" + (" ⚠ stale" if r["suite"] != current else "")
             mae = [_fmt(s["mae_m"].get(b)) for b in bands]
-            lines.append(f"| {rank} | {name} | {r.get('hardware') or 'suite default'} | {_cost(hardware_cost(r['experiment']))} | {r.get('author') or ''} | {_fmt(s['score_m'])} | {s['score_log10']:.2f} | "
+            lines.append(f"| {rank} | {name} | {hardware_name(r.get('hardware'))} | {_cost(hardware_cost(r['experiment']))} | {r.get('author') or ''} | {_fmt(s['score_m'])} | {s['score_log10']:.2f} | "
                          f"{s['lost_at_m']:.0f} | {_fmt(s['growth_k'])} | " + " | ".join(mae) + " |")
     return "\n".join(lines) + "\n"
 
 
 def hardware_cost(experiment: str) -> float | None:
-    """Price of the profile parts the method uses: the IMU, plus the magnetometer if it implements on_mag.
-    Suite-default sensors (and baro/echo) have no price."""
+    """Price of the profile parts the method uses: the IMU, plus the magnetometer if it implements on_mag and
+    the echo sensor if it implements on_echo. Suite-default sensors (and baro) have no price."""
     algo = load_algorithm(experiment)
     if algo.hardware is None:
         return None
-    hw = json.loads((HARDWARE / f"{algo.hardware}.json").read_text())
-    parts = [hw["imu"]] + ([hw["mag"]] if algo.on_mag is not Algorithm.on_mag else [])
-    return sum(p["price_usd"] for p in parts)
+    hw = hardware_profiles(algo.hardware)
+    used = {"imu": True, "mag": algo.on_mag is not Algorithm.on_mag, "echo": algo.on_echo is not Algorithm.on_echo}
+    return sum(part["price_usd"] for k, part in hw.items() if used[k])
+
+
+def hardware_name(hardware) -> str:
+    return "suite default" if hardware is None else hardware if isinstance(hardware, str) else " + ".join(hardware)
 
 
 def within_budget(experiment: str) -> bool:
