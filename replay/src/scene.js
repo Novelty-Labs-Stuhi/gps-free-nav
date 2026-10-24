@@ -10,8 +10,15 @@ export const enuQuat = (q, out = new THREE.Quaternion()) => out.set(q[0], q[2], 
 
 // ---------- terrain ----------
 
-export const MAP_RAMP = ["#33496b", "#557aa6", "#93afd3", "#e2ebf7"];
-export const TRUTH_RAMP = ["#3f5a2c", "#6b7d43", "#8a7556", "#a9a397", "#f2f2f2"];
+// Tuned for a light page: mid-tone lows so white-ish UI and pale highs never merge with the sky, and
+// enough value range that the coloured beams and the dark truth trail read on top. The map is a cool
+// slate (a belief), the truth an earthy ramp (reality).
+export const MAP_RAMP = ["#6b809d", "#8fa2bb", "#b6c4d6", "#d5dee9"];
+export const TRUTH_RAMP = ["#6f835f", "#909b6b", "#b3a685", "#cfc9ba", "#ebe7de"];
+export const SKY = 0xeef1f5;
+
+// Trajectory colours, shared with the chart legends and layer chips.
+export const COLORS = { truth: "#1f2937", planned: "#d97706", estimate: "#e11d48" };
 
 export async function loadMesh(url, ramp) {
   const gltf = await new GLTFLoader().loadAsync(url);
@@ -54,8 +61,11 @@ function contourMaterial() {
       .replace("#include <common>", "#include <common>\nvarying float vHeight;")
       .replace("#include <dithering_fragment>", `#include <dithering_fragment>
         float h = vHeight / ${CONTOUR_M.toFixed(1)};
-        float line = 1.0 - smoothstep(0.0, 1.2, abs(fract(h - 0.5) - 0.5) / fwidth(h));
-        gl_FragColor.rgb *= 1.0 - 0.35 * line;`);
+        float fw = fwidth(h);
+        float line = 1.0 - smoothstep(0.0, 1.2, abs(fract(h - 0.5) - 0.5) / fw);
+        // Fade lines out where they'd pack tighter than a few pixels, so far slopes don't go dark.
+        line *= 1.0 - smoothstep(0.15, 0.45, fw);
+        gl_FragColor.rgb *= 1.0 - 0.22 * line;`);
   };
   return m;
 }
@@ -71,9 +81,9 @@ export class View {
     this.renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
     container.prepend(this.renderer.domElement);
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0x0b0e13);
-    this.scene.add(new THREE.HemisphereLight(0xdde8ff, 0x404040, 0.9));
-    const sun = new THREE.DirectionalLight(0xffffff, 2.4);
+    this.scene.background = new THREE.Color(SKY);
+    this.scene.add(new THREE.HemisphereLight(0xf2f6ff, 0x6b6458, 1.1));
+    const sun = new THREE.DirectionalLight(0xffffff, 2.0);
     sun.position.set(-0.5, 1, 0.3);
     this.scene.add(sun);
     this.camera = new THREE.PerspectiveCamera(55, 1, 0.5, 400000);
@@ -92,6 +102,14 @@ export class View {
     this.renderer.setSize(w, h, false);
     this.camera.aspect = w / h;
     this.camera.updateProjectionMatrix();
+  }
+
+  // Move camera and orbit target together so the view keeps its framing around a new point.
+  retarget(target) {
+    const d = target.clone().sub(this.controls.target);
+    this.controls.target.add(d);
+    this.camera.position.add(d);
+    this.last = target.clone();
   }
 
   place(target, offset) {
@@ -194,7 +212,9 @@ export function vectors(arr) {
 
 // ---------- echo beams ----------
 
-export const BEAM_COLORS = { agree: "#2ecc71", short: "#ff5a36", long: "#3b8cff", nohit: "#e040fb", miss: "#9aa3ad" };
+// Saturated mid-value hues so all five stay apart on light terrain and on the white heatmap; the
+// grey for "no echo" is dark enough to show at low alpha.
+export const BEAM_COLORS = { agree: "#16a34a", short: "#ea2a1f", long: "#2563eb", nohit: "#c026d3", miss: "#5b6472" };
 const C = Object.fromEntries(Object.entries(BEAM_COLORS).map(([k, v]) => [k, new THREE.Color(v)]));
 
 // "Agrees" means within 3 sigma of the suite's echo noise (0.05 m + 1 % of range); colours saturate
@@ -213,7 +233,7 @@ export function beamLayer(measured, predicted) {
 // blue longer (the map has something that is not there, or the estimate is off), magenta when the
 // map predicts no hit. Returns the colour into `out` and an alpha.
 export function beamColor(measured, predicted, out) {
-  if (measured == null) return [out.copy(C.miss), 0.16];
+  if (measured == null) return [out.copy(C.miss), 0.28];
   if (predicted == null) return [out.copy(C.nohit), 0.95];
   const r = measured - predicted;
   const a = Math.min(1, Math.max(0, (Math.abs(r) - agreeBand(predicted)) / FULL_M));
@@ -259,6 +279,14 @@ export class Beams {
       g.attributes.color.needsUpdate = true;
     }
   }
+}
+
+// Free GPU memory for everything under obj (used when switching runs in place).
+export function disposeTree(obj) {
+  obj.traverse((o) => {
+    o.geometry?.dispose();
+    for (const m of [o.material].flat()) m?.dispose();
+  });
 }
 
 // Human label for a body-frame beam: elevation and azimuth (0 = forward, 90 = left).

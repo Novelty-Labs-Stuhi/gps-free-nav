@@ -5,6 +5,13 @@ import { beamColor, beamLabel } from "./scene.js";
 
 const PAD = { l: 50, r: 10, t: 6, b: 18 };
 
+// Light-theme ink for every canvas; keep in step with the CSS tokens in style.css.
+const INK = {
+  text: "#6b7280", grid: "#eef0f3", zero: "#c4c9d1", playhead: "#111827", hover: "rgba(17,24,39,0.35)",
+  future: "rgba(255,255,255,0.55)", threshold: "#e11d48", noEcho: [232, 235, 240, 255], sep: "#ffffff",
+};
+const FONT = "11px ui-sans-serif, system-ui, -apple-system, sans-serif";
+
 export function fmtM(v, signed = false) {
   if (v == null || !isFinite(v)) return "–";
   const a = Math.abs(v), s = signed && v > 0 ? "+" : "";
@@ -31,20 +38,25 @@ export function bisect(ts, t) {
   return lo;
 }
 
+// Charts are created once and fed a new run with setData(), so switching runs never re-binds listeners.
 class TimelineCanvas {
-  constructor(canvas, t0, t1, { onHover, onSeek, tip }) {
-    Object.assign(this, { canvas, t0, t1, onHover, onSeek, tip });
+  constructor(canvas, { onHover, onSeek, tip }) {
+    Object.assign(this, { canvas, onHover, onSeek, tip });
     this.ctx = canvas.getContext("2d");
-    this.time = t0;
+    this.t0 = 0;
+    this.t1 = 1;
+    this.time = 0;
     this.hover = null;
     let dragging = false;
     canvas.addEventListener("pointerdown", (e) => {
+      if (!this.ready) return;
       dragging = true;
       canvas.setPointerCapture(e.pointerId);
       this.click?.(e);
       onSeek(this.tAt(e));
     });
     canvas.addEventListener("pointermove", (e) => {
+      if (!this.ready) return;
       const t = this.tAt(e);
       if (dragging) onSeek(t);
       this.hover = { t, y: e.clientY - canvas.getBoundingClientRect().top };
@@ -66,6 +78,13 @@ class TimelineCanvas {
   tAt(e) {
     const f = (e.clientX - this.canvas.getBoundingClientRect().left - PAD.l) / (this.w - PAD.l - PAD.r);
     return this.t0 + Math.min(1, Math.max(0, f)) * (this.t1 - this.t0);
+  }
+
+  setRange(t0, t1) {
+    this.t0 = t0;
+    this.t1 = t1 > t0 ? t1 : t0 + 1;
+    this.ready = true;
+    this.hover = null;
   }
 
   resize() {
@@ -93,7 +112,7 @@ class TimelineCanvas {
   }
 
   timeAxis(c) {
-    c.fillStyle = "#7d8796";
+    c.fillStyle = INK.text;
     c.textAlign = "center";
     const step = niceStep((this.t1 - this.t0) / Math.max(2, this.w / 70));
     for (let t = Math.ceil(this.t0 / step) * step; t <= this.t1; t += step) c.fillText(`${t.toFixed(0)} s`, this.X(t), this.h - 4);
@@ -102,12 +121,12 @@ class TimelineCanvas {
   // Static content is rendered once to an offscreen bitmap and blitted with the playhead on top.
   draw(time) {
     this.time = time;
-    if (!this.canvas.width || !this.w) return;
+    if (!this.canvas.width || !this.w || !this.ready) return;
     if (!this.background) {
       const off = new OffscreenCanvas(this.canvas.width, this.canvas.height);
       const c = off.getContext("2d");
       c.setTransform(this.canvas.width / this.w, 0, 0, this.canvas.height / this.h, 0, 0);
-      c.font = "11px system-ui";
+      c.font = FONT;
       this.renderBackground(c);
       this.background = off;
     }
@@ -116,14 +135,15 @@ class TimelineCanvas {
     c.drawImage(this.background, 0, 0, w, h);
     this.overlay?.(c);
     const x = this.X(time);
-    c.fillStyle = "rgba(11,14,19,0.42)";
+    // Wash out the future so the played part reads first.
+    c.fillStyle = INK.future;
     c.fillRect(x, PAD.t, w - PAD.r - x, h - PAD.t - PAD.b);
-    c.strokeStyle = "#f0f3f6";
+    c.strokeStyle = INK.playhead;
     c.lineWidth = 1.5;
     c.beginPath(); c.moveTo(x, PAD.t); c.lineTo(x, h - PAD.b); c.stroke();
     if (this.hover) {
       const hx = this.X(this.hover.t);
-      c.strokeStyle = "rgba(240,243,246,0.35)";
+      c.strokeStyle = INK.hover;
       c.setLineDash([3, 3]);
       c.beginPath(); c.moveTo(hx, PAD.t); c.lineTo(hx, h - PAD.b); c.stroke();
       c.setLineDash([]);
@@ -133,10 +153,16 @@ class TimelineCanvas {
 
 // Line chart of metric series against time; signed series plot their magnitude on a log axis.
 export class TimeChart extends TimelineCanvas {
-  constructor(canvas, t, metrics, series, opts) {
-    super(canvas, t[0], t.at(-1), opts);
-    Object.assign(this, { t, metrics, series, log: opts.log ?? true });
+  constructor(canvas, series, opts) {
+    super(canvas, opts);
+    Object.assign(this, { series, log: opts.log ?? true, threshold: opts.threshold });
     this.hidden = new Set();
+  }
+
+  setData(t, metrics) {
+    Object.assign(this, { t, metrics });
+    this.setRange(t[0], t.at(-1));
+    this.invalidate();
   }
 
   setLog(log) { this.log = log; this.invalidate(); }
@@ -160,6 +186,7 @@ export class TimeChart extends TimelineCanvas {
       }
     }
     if (!isFinite(lo)) return [0.1, 1];
+    if (this.threshold && hi > this.threshold * 0.5) hi = Math.max(hi, this.threshold * 1.2);
     if (this.log) return [Math.pow(10, Math.floor(Math.log10(Math.max(lo, 0.01)))), Math.pow(10, Math.ceil(Math.log10(hi)))];
     const pad = (hi - lo) * 0.06 || 1;
     return [Math.min(0, lo - pad), hi + pad];
@@ -180,13 +207,12 @@ export class TimeChart extends TimelineCanvas {
       const step = niceStep((hi - lo) / Math.max(2, span / 28));
       for (let v = Math.ceil(lo / step) * step; v <= hi; v += step) ticks.push(v);
     }
-    c.strokeStyle = "#1e2530";
     c.lineWidth = 1;
-    c.fillStyle = "#7d8796";
+    c.fillStyle = INK.text;
     c.textAlign = "right";
     for (const v of ticks) {
       const y = Y(v);
-      c.strokeStyle = !this.log && Math.abs(v) < 1e-9 ? "#3a4555" : "#1e2530";
+      c.strokeStyle = !this.log && Math.abs(v) < 1e-9 ? INK.zero : INK.grid;
       c.beginPath(); c.moveTo(PAD.l, y); c.lineTo(w - PAD.r, y); c.stroke();
       c.fillText(fmtM(v), PAD.l - 5, y + 4);
     }
@@ -195,6 +221,27 @@ export class TimeChart extends TimelineCanvas {
     c.beginPath();
     c.rect(PAD.l, PAD.t, w - PAD.l - PAD.r, span);
     c.clip();
+    // The "lost" threshold, when it is inside the axis range.
+    const th = this.threshold;
+    if (th && th > lo && th < hi) {
+      const y = Math.round(Y(th)) + 0.5;
+      c.strokeStyle = INK.threshold;
+      c.globalAlpha = 0.5;
+      c.setLineDash([4, 4]);
+      c.beginPath(); c.moveTo(PAD.l, y); c.lineTo(w - PAD.r, y); c.stroke();
+      c.setLineDash([]);
+      c.globalAlpha = 1;
+      // Right-aligned with a white halo so it stays legible where series cross it.
+      const label = `lost > ${fmtM(th)}`, lx = w - PAD.r - 4, ly = y > PAD.t + 14 ? y - 4 : y + 12;
+      c.textAlign = "right";
+      c.lineWidth = 3;
+      c.strokeStyle = "#ffffff";
+      c.strokeText(label, lx, ly);
+      c.fillStyle = INK.threshold;
+      c.fillText(label, lx, ly);
+      c.lineWidth = 1;
+    }
+    c.lineJoin = "round";
     for (const s of this.series) {
       const vals = this.metrics[s.key];
       if (!vals || this.hidden.has(s.key)) continue;
@@ -223,11 +270,14 @@ export class TimeChart extends TimelineCanvas {
 
 // Every beam's residual (measured - map) over time: one row per beam, grouped by elevation.
 export class BeamHeatmap extends TimelineCanvas {
-  constructor(canvas, t, echo, opts) {
-    super(canvas, t[0], t.at(-1), opts);
-    this.echo = echo;
+  constructor(canvas, opts) {
+    super(canvas, opts);
     this.onBeam = opts.onBeam;
     this.highlight = -1;
+  }
+
+  setData(t, echo) {
+    this.echo = echo;
     const dirs = echo.dirs_body;
     const elev = (d) => Math.asin(Math.max(-1, Math.min(1, d[2])));
     const az = (d) => (Math.atan2(d[1], d[0]) + 2 * Math.PI) % (2 * Math.PI);
@@ -235,16 +285,19 @@ export class BeamHeatmap extends TimelineCanvas {
     this.row = new Array(dirs.length);
     this.order.forEach((b, r) => (this.row[b] = r));
     this.image = this.buildImage();
+    this.setRange(t[0], t.at(-1));
+    this.invalidate();
   }
 
   buildImage() {
     const { measured, predicted } = this.echo, k = measured.length, n = this.order.length;
+    if (!k || !n) return null;
     const img = new ImageData(k, n), c = new THREE.Color();
     for (let j = 0; j < k; j++) {
       for (let r = 0; r < n; r++) {
         const b = this.order[r], m = measured[j][b], p = predicted[j][b];
         const o = (r * k + j) * 4;
-        if (m == null) { img.data.set([24, 29, 37, 255], o); continue; }
+        if (m == null) { img.data.set(INK.noEcho, o); continue; }
         beamColor(m, p, c);
         img.data.set([c.r * 255, c.g * 255, c.b * 255, 255], o);
       }
@@ -261,13 +314,14 @@ export class BeamHeatmap extends TimelineCanvas {
   }
 
   renderBackground(c) {
+    if (!this.image) return this.timeAxis(c);
     const et = this.echo.t, x0 = this.X(et[0]), x1 = this.X(et.at(-1) + (et[1] - et[0] || 0.1));
     c.imageSmoothingEnabled = false;
     c.drawImage(this.image, x0, PAD.t, x1 - x0, this.h - PAD.t - PAD.b);
     // Elevation group labels and separators.
-    c.fillStyle = "#7d8796";
+    c.fillStyle = INK.text;
     c.textAlign = "right";
-    c.strokeStyle = "#0b0e13";
+    c.strokeStyle = INK.sep;
     const rh = this.rowHeight();
     let prev = null, start = 0;
     const groups = [];
@@ -286,7 +340,7 @@ export class BeamHeatmap extends TimelineCanvas {
   overlay(c) {
     if (this.highlight < 0) return;
     const rh = this.rowHeight(), y = PAD.t + this.row[this.highlight] * rh;
-    c.strokeStyle = "#ffffff";
+    c.strokeStyle = INK.playhead;
     c.lineWidth = 1;
     c.strokeRect(PAD.l + 0.5, y - 0.5, this.w - PAD.l - PAD.r - 1, Math.max(2, rh) + 1);
   }
@@ -298,7 +352,7 @@ export class BeamHeatmap extends TimelineCanvas {
 
   tipHtml(t, y) {
     const b = this.beamAt(y);
-    if (b < 0) return null;
+    if (b < 0 || !this.image) return null;
     const j = bisect(this.echo.t, t), m = this.echo.measured[j][b], p = this.echo.predicted[j][b];
     return `<b>${beamLabel(this.echo.dirs_body[b])}</b> · ${(t - this.t0).toFixed(1)} s
       <div>measured<span>${m == null ? "no echo" : fmtM(m)}</span></div>

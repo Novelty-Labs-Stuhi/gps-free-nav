@@ -107,10 +107,67 @@ def _labels(path):
     return {k: (re.search(rf'"{k}"\s*:\s*"([^"]*)"', head) or [None, None])[1] for k in ("experiment", "scenario", "world", "run_id")}
 
 
+LOST_M = 50          # suite lost_threshold_m, for time_over_50_s
+SPARK_POINTS = 60
+
+
+def _last(xs):
+    return next((x for x in reversed(xs) if x is not None), None)
+
+
+def summarize_replay(doc):
+    """Compact per-run numbers for the viewer's run browser, from a parsed replay.json."""
+    t, m, echo = doc["t"], doc["metrics"], doc["echo"]
+    err = m.get("err") or []
+    vals = [e for e in err if e is not None]
+    dt = (t[-1] - t[0]) / max(1, len(t) - 1) if len(t) > 1 else 0.0
+    agree = total = 0
+    for row_m, row_p in zip(echo.get("measured") or [], echo.get("predicted") or []):
+        for meas, pred in zip(row_m, row_p):
+            if meas is None:
+                continue
+            total += 1
+            agree += pred is not None and abs(meas - pred) <= 3 * (0.05 + 0.01 * pred)
+    # Sparkline: max error in each of ~SPARK_POINTS buckets, so short excursions still show.
+    k = max(1, -(-len(err) // SPARK_POINTS))
+    spark = [max((e for e in err[i:i + k] if e is not None), default=None) for i in range(0, len(err), k)]
+    rnd = lambda v, nd=2: None if v is None else round(float(v), nd)  # noqa: E731
+    return {
+        "score_m": rnd(_last(m.get("geo_mean_err") or [])),
+        "final_err_m": rnd(_last(err)),
+        "worst_err_m": rnd(max(vals, default=None)),
+        "time_over_50_s": rnd(sum(e > LOST_M for e in vals) * dt, 1),
+        "duration_s": rnd(t[-1] - t[0], 1) if t else None,
+        "echo_agree": rnd(agree / total, 3) if total else None,
+        "err": [rnd(v, 2 if v is not None and v < 10 else 0) for v in spark],
+    }
+
+
 def update_index():
-    """data/replays/index.json lists every replay so the viewer can offer experiment/scenario/run pickers."""
-    runs = [{"id": p.parent.relative_to(REPLAYS).as_posix(), **_labels(p)} for p in sorted(REPLAYS.glob("*/*/replay.json"))]
-    (REPLAYS / "index.json").write_text(json.dumps(runs, indent=1))
+    """data/replays/index.json lists every replay with a compact summary for the viewer's run browser.
+
+    Summaries are reused while a replay.json's mtime and size are unchanged, so re-indexing many runs stays cheap.
+    """
+    index = REPLAYS / "index.json"
+    try:
+        old = {e["id"]: e for e in json.loads(index.read_text()) if isinstance(e, dict) and "id" in e}
+    except (OSError, ValueError):
+        old = {}
+    runs = []
+    for p in sorted(REPLAYS.glob("*/*/replay.json")):
+        rid, st = p.parent.relative_to(REPLAYS).as_posix(), p.stat()
+        stamp = [int(st.st_mtime), st.st_size]
+        prev = old.get(rid)
+        if prev and prev.get("stamp") == stamp and "score_m" in prev:
+            runs.append(prev)
+            continue
+        entry = {"id": rid, **_labels(p)}
+        try:
+            entry.update(summarize_replay(json.loads(p.read_text())), stamp=stamp)
+        except (OSError, ValueError, KeyError, TypeError, IndexError) as e:
+            print(f"index: no summary for {rid}: {e}", file=sys.stderr)
+        runs.append(entry)
+    index.write_text(json.dumps(runs, separators=(",", ":")).replace("},{", "},\n{"))
 
 
 def load_navigator(experiment):
