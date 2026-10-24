@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>gpsfree replay</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <aside id="sidebar" aria-label="Runs">
+      <nav class="rail">
+        <button id="sideOpen" class="icon ghost" title="Show runs ([)" aria-label="Show runs">
+          <svg viewBox="0 0 16 16"><rect x="1.5" y="2.5" width="13" height="11" rx="2" /><path d="M6 2.5v11" /></svg>
+        </button>
+        <div id="railRuns"></div>
+      </nav>
+      <div class="side-panel">
+        <div class="side-head">
+          <div class="brand"><span class="logo"></span>gpsfree <em>replay</em></div>
+          <button id="sideClose" class="icon ghost" title="Hide runs ([)" aria-label="Hide runs">
+            <svg viewBox="0 0 16 16"><rect x="1.5" y="2.5" width="13" height="11" rx="2" /><path d="M6 2.5v11M11 6l-2 2 2 2" /></svg>
+          </button>
+        </div>
+        <div class="side-tools">
+          <label class="search">
+            <svg viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.5" /><path d="M10.5 10.5l3 3" /></svg>
+            <input id="search" type="search" placeholder="Search runs" autocomplete="off" spellcheck="false" />
+            <kbd>/</kbd>
+          </label>
+          <div id="filters"></div>
+          <div class="listbar">
+            <span id="runCount"></span>
+            <div class="seg small" title="Sort runs">
+              <button data-sort="name">Name</button>
+              <button data-sort="score">Score</button>
+            </div>
+          </div>
+        </div>
+        <div id="runList"></div>
+        <div class="side-foot"><kbd>↑</kbd><kbd>↓</kbd> or <kbd>J</kbd><kbd>K</kbd> switch run · <kbd>[</kbd> hide</div>
+      </div>
+    </aside>
+
+    <div id="app">
+      <header id="runbar">
+        <div class="crumbs" id="crumbs"><span class="muted">loading…</span></div>
+        <div class="runnav">
+          <button id="prevRun" class="icon ghost" title="Previous run (↑ / K)" aria-label="Previous run">
+            <svg viewBox="0 0 16 16"><path d="M4 10l4-4 4 4" /></svg>
+          </button>
+          <button id="nextRun" class="icon ghost" title="Next run (↓ / J)" aria-label="Next run">
+            <svg viewBox="0 0 16 16"><path d="M4 6l4 4 4-4" /></svg>
+          </button>
+          <button id="helpBtn" class="icon ghost" title="Keyboard shortcuts (?)" aria-label="Keyboard shortcuts">?</button>
+        </div>
+        <div id="summary"></div>
+      </header>
+
+      <main>
+        <section class="panel" id="left">
+          <div class="panel-head">
+            <div class="title"><b>Drone's world</b><span>prior map · estimated pose</span></div>
+            <div class="chips" id="beamChips">
+              <button class="chip on" data-layer="hit" title="Beams that agree with the map (H)"><i class="sw-agree"></i>hits</button>
+              <button class="chip on" data-layer="disagree" title="Beams that disagree with the map (D)"><i class="grad"></i>disagree</button>
+              <button class="chip on" data-layer="miss" title="Beams with no echo (M)"><i class="sw-miss"></i>misses</button>
+            </div>
+            <div class="key">
+              <span><i class="sw-short"></i>shorter than map</span>
+              <span><i class="sw-long"></i>longer than map</span>
+              <span><i class="sw-nohit"></i>map predicts no hit</span>
+              <span><i class="sw-radius"></i>reported 95% radius</span>
+            </div>
+          </div>
+          <div id="lostBanner" class="banner lost" hidden><b>LOST</b><span>I don't know where I am</span></div>
+          <div id="radiusTag" hidden></div>
+          <div id="offmap" hidden></div>
+          <div id="beamFocus" hidden></div>
+        </section>
+        <section class="panel" id="right">
+          <div class="panel-head">
+            <div class="title"><b>Real world</b><span>true mesh · true pose</span></div>
+            <div class="chips" id="worldChips">
+              <button class="chip on" data-show="truth"><i class="sw-truth"></i>truth</button>
+              <button class="chip on" data-show="planned"><i class="sw-planned"></i>planned</button>
+              <button class="chip on" data-show="estimate"><i class="sw-estimate"></i>estimate</button>
+              <button class="chip" data-show="beams" title="Measured beams from the true pose (B)"><i class="sw-agree"></i>beams</button>
+            </div>
+          </div>
+          <div id="hmiBanner" class="banner hmi" hidden></div>
+        </section>
+        <div id="viewState" hidden></div>
+      </main>
+
+      <div id="dock">
+        <div id="grip" title="Drag to resize"></div>
+        <div id="transport">
+          <button id="play" class="icon play" title="Play / pause (Space)" aria-label="Play">
+            <svg viewBox="0 0 16 16" class="i-play"><path d="M5 3.5v9l7.5-4.5z" /></svg>
+            <svg viewBox="0 0 16 16" class="i-pause"><path d="M4.5 3.5h2.5v9H4.5zM9 3.5h2.5v9H9z" /></svg>
+          </button>
+          <button id="back" class="icon ghost" title="Back 1 s (←)" aria-label="Back 1 second">
+            <svg viewBox="0 0 16 16"><path d="M8.5 4L4.5 8l4 4M12.5 4l-4 4 4 4" /></svg>
+          </button>
+          <button id="fwd" class="icon ghost" title="Forward 1 s (→)" aria-label="Forward 1 second">
+            <svg viewBox="0 0 16 16"><path d="M7.5 4l4 4-4 4M3.5 4l4 4-4 4" /></svg>
+          </button>
+          <div class="scrub-wrap"><input id="scrub" type="range" min="0" max="1" step="0.01" value="0" aria-label="Playhead" /></div>
+          <span id="clock">0.0 s</span>
+          <select id="speed" title="Playback speed (− / +)" aria-label="Playback speed"></select>
+          <div class="seg" id="camModes" title="Camera (1–4)">
+            <button data-mode="follow">Follow</button>
+            <button data-mode="top">Top</button>
+            <button data-mode="chase">Chase</button>
+            <button data-mode="overview">Overview</button>
+          </div>
+        </div>
+        <div id="charts">
+          <figure class="card">
+            <figcaption>
+              <b>Position error</b>
+              <span class="chips small" id="errChips"></span>
+              <button class="chip small on" data-log="err" title="Log scale (L)">log</button>
+            </figcaption>
+            <canvas id="chartErr"></canvas>
+          </figure>
+          <figure class="card">
+            <figcaption>
+              <b>Deviations</b>
+              <span class="chips small" id="devChips"></span>
+              <button class="chip small" data-log="dev">log</button>
+            </figcaption>
+            <canvas id="chartDev"></canvas>
+          </figure>
+          <figure class="card wide">
+            <figcaption>
+              <b>Echo residual by beam</b>
+              <span class="key small" title="Rows are beams grouped by elevation; colour is measured − map range. Shift-click a row to focus that beam.">
+                <span><i class="sw-agree"></i>agree</span><span><i class="sw-short"></i>shorter</span><span><i class="sw-long"></i>longer</span><span><i class="sw-nohit"></i>no hit</span><span><i class="sw-noecho"></i>no echo</span>
+              </span>
+            </figcaption>
+            <canvas id="chartBeams"></canvas>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <div id="tip" hidden></div>
+    <div id="help" hidden>
+      <div class="sheet" role="dialog" aria-label="Keyboard shortcuts">
+        <h2>Keyboard shortcuts</h2>
+        <dl>
+          <dt>Space</dt><dd>play / pause</dd>
+          <dt>← →</dt><dd>step 1 s (Shift: 10 s)</dd>
+          <dt>, .</dt><dd>step one sample (0.1 s)</dd>
+          <dt>Home End</dt><dd>jump to start / end</dd>
+          <dt>− +</dt><dd>slower / faster</dd>
+          <dt>↑ ↓ · J K</dt><dd>previous / next run (keeps the time and camera)</dd>
+          <dt>[</dt><dd>show / hide the run list</dd>
+          <dt>/</dt><dd>search runs</dd>
+          <dt>1 2 3 4</dt><dd>camera: follow · top-down · chase · overview</dd>
+          <dt>H D M</dt><dd>toggle beam layers: hits · disagree · misses</dd>
+          <dt>B</dt><dd>beams from the true pose (real world)</dd>
+          <dt>L</dt><dd>log scale on the error chart</dd>
+          <dt>Esc</dt><dd>clear beam focus / close this</dd>
+          <dt>?</dt><dd>this help</dd>
+        </dl>
+        <p>Hover a chart to preview that moment in both 3D views (while paused); click or drag to seek.
+          Shift-click a heatmap row to focus that beam.</p>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
