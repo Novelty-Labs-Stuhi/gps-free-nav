@@ -75,6 +75,8 @@ def _world(wid):
     if wid not in _worlds:
         while len(_worlds) >= 2:
             _worlds.pop(next(iter(_worlds)))
+            import gc
+            gc.collect()
         _worlds[wid] = World(wid)
     return _worlds[wid]
 

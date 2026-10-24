@@ -20,18 +20,16 @@ import numpy as np
 from gpsfree.evaluate import load_algorithm
 
 GRID_M = 10.0
-_grids = {}
-
-
 def height_grid(m):
-    key = (m.id, id(m))
-    if key not in _grids:
+    """Height grid of the drone's map, cached on the map object itself so it is freed with the map."""
+    surface = getattr(m, "_world", m)
+    if getattr(surface, "_pf_grid", None) is None:
         (x0, y0, _), (x1, y1, _) = m.bounds
         X, Y = np.meshgrid(np.arange(x0, x1, GRID_M), np.arange(y0, y1, GRID_M))
         H = m.height(np.c_[X.ravel(), Y.ravel()]).reshape(X.shape)
         H[~np.isfinite(H)] = np.nanmin(np.where(np.isfinite(H), H, np.nan))  # map edges: no surface hit
-        _grids[key] = (x0, y0, H)
-    return _grids[key]
+        surface._pf_grid = (x0, y0, H)
+    return surface._pf_grid
 
 
 class Navigator(load_algorithm("imu_deadreckoning")):

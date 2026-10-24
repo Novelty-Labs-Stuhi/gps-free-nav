@@ -194,7 +194,9 @@ class Mission:
         start = Pose(0.0, self.p + off, self.yaw, self.v.copy())
         ctx = Context("drone", sc["world"], MapView(self.map), start, sensor_spec(self.sensors_cfg), sigma, sc["id"])
         self.nav = navigator_cls(ctx)
-        self.info = info_grid(self.map)
+        if getattr(self.map, "_info_grid", None) is None:
+            self.map._info_grid = info_grid(self.map)
+        self.info = self.map._info_grid
         self.trace = {"t": [], "truth": [], "est": [], "unc": [], "action": []} if record else None
 
     # --- what the policy sees (no ground truth)
@@ -351,11 +353,28 @@ class MLPPolicy:
         return int(np.argmax(np.tanh(obs @ self.W1 + self.b1) @ self.W2 + self.b2))
 
 
+class LinearPolicy:
+    """action = argmax(obs @ W): 8 belief features x 5 actions = 40 weights, readable on a slide."""
+
+    def __init__(self, params):
+        self.W = np.asarray(params, float).reshape(8, 5)
+
+    @staticmethod
+    def size():
+        return 40
+
+    def __call__(self, obs):
+        return int(np.argmax(obs @ self.W))
+
+
 def episode(args):
     """(scenario, seed, navigator experiment, policy spec) -> Outcome as dict. Picklable for process pools."""
     sid, seed, experiment, spec = args
     from gpsfree.evaluate import load_algorithm
     nav_cls = load_algorithm(experiment)
-    policy = {"continue": continue_policy, "rule": rule_policy}.get(spec) if isinstance(spec, str) else MLPPolicy(spec)
+    if isinstance(spec, str):
+        policy = {"continue": continue_policy, "rule": rule_policy}[spec]
+    else:
+        policy = LinearPolicy(spec) if len(spec) == LinearPolicy.size() else MLPPolicy(spec)
     out = Mission(sid, seed, nav_cls).run(policy)
     return {"scenario": sid, "seed": seed, **out.__dict__}

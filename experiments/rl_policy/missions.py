@@ -17,8 +17,8 @@ EVAL_SEEDS = range(1000, 1005)
 
 def run(policy_spec, seeds=EVAL_SEEDS, scenarios=None, jobs=None):
     tasks = [(sid, s, NAVIGATOR, policy_spec) for sid in (scenarios or suite_scenarios()) for s in seeds]
-    with ProcessPoolExecutor(jobs) as pool:
-        return list(pool.map(episode, tasks, chunksize=2))
+    with ProcessPoolExecutor(jobs or 4, max_tasks_per_child=30) as pool:
+        return list(pool.map(episode, tasks, chunksize=len(seeds)))
 
 
 def summarize(res):
