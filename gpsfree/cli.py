@@ -52,14 +52,19 @@ def cmd_eval(args):
 
 
 def cmd_verify(args):
-    """Re-run committed experiments and fail if their results.json can't be reproduced."""
+    """Re-run committed experiments and fail if their results.json can't be reproduced or their hardware is over budget."""
     from gpsfree.evaluate import compare, evaluate, results_path
+    from gpsfree.leaderboard import MAX_COST_USD, hardware_cost, within_budget
 
     failed = False
     for exp in args.experiments or list_experiments():
         path = results_path(exp)
         if not path.exists():
             print(f"✗ {exp}: no results.json (run `uv run gpsfree eval {exp}` and commit it)")
+            failed = True
+            continue
+        if not within_budget(exp):
+            print(f"✗ {exp}: hardware costs ${hardware_cost(exp):,.0f}, must be under ${MAX_COST_USD:,}")
             failed = True
             continue
         problems = compare(json.loads(path.read_text()), evaluate(exp, jobs=args.jobs))
