@@ -96,7 +96,7 @@ def list_experiments():
 
 
 def print_summary(res):
-    print(f"\n{res['experiment']}  (suite {res['suite']}, {len(res['runs'])} runs, {res['elapsed_s']}s)")
+    print(f"\n{res['experiment']}  ({len(res['runs'])} runs, {res['elapsed_s']}s)")
     for key, s in res["summary"].items():
         mae = "  ".join(f"{band}={v}" for band, v in s["mae_m"].items())
         print(f"  {key:18s} score {s['score_m']} m (10^{s['score_log10']})  lost@{s['lost_at_m']} m  k={s['growth_k']}  "

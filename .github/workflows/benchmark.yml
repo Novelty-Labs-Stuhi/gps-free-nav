@@ -6,48 +6,75 @@ on:
     branches: [main]
 
 jobs:
-  verify:
+  changed:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
+    outputs:
+      experiments: ${{ steps.diff.outputs.experiments }}
+      worlds: ${{ steps.diff.outputs.worlds }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Find changed experiments
-        id: changed
+      - id: diff
         run: |
           exps=$(git diff --name-only "${{ github.event.pull_request.base.sha }}...HEAD" \
             | grep -oE '^experiments/[^/]+' | sort -u \
-            | while read d; do [ -f "$d/algo.py" ] && basename "$d"; done | xargs)
-          echo "experiments: ${exps:-none}"
-          echo "list=$exps" >> "$GITHUB_OUTPUT"
-      - uses: astral-sh/setup-uv@v5
-        if: steps.changed.outputs.list != ''
-        with:
-          enable-cache: true
+            | while read d; do [ -f "$d/algo.py" ] && basename "$d"; done | jq -R . | jq -sc .)
+          echo "experiments: $exps"
+          echo "experiments=$exps" >> "$GITHUB_OUTPUT"
+          echo "worlds=$(jq -r '.worlds | join(" ")' benchmark/suite.json)" >> "$GITHUB_OUTPUT"
+
+  worlds:
+    needs: changed
+    if: needs.changed.outputs.experiments != '[]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
       - uses: actions/cache@v4
-        if: steps.changed.outputs.list != ''
+        id: cache
         with:
           path: data/worlds
-          key: worlds-${{ hashFiles('gpsfree/worlds/**', 'benchmark/suite.json') }}
-          restore-keys: worlds-
-      - name: Fetch suite worlds
-        if: steps.changed.outputs.list != ''
-        run: |
-          for w in $(jq -r '.worlds[]' benchmark/suite.json); do
-            test -f "data/worlds/$w/meta.json" || uv run gpsfree fetch "$w"
-          done
-      - name: Re-run changed experiments
-        if: steps.changed.outputs.list != ''
-        run: uv run gpsfree verify ${{ steps.changed.outputs.list }}
+          key: worlds-${{ needs.changed.outputs.worlds }}-${{ hashFiles('gpsfree/worlds/**') }}
+      - uses: astral-sh/setup-uv@v5
+        if: steps.cache.outputs.cache-hit != 'true'
+        with:
+          enable-cache: true
+      - if: steps.cache.outputs.cache-hit != 'true'
+        run: uv run gpsfree fetch ${{ needs.changed.outputs.worlds }}
+
+  verify:
+    needs: [changed, worlds]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        experiment: ${{ fromJSON(needs.changed.outputs.experiments) }}
+    name: verify ${{ matrix.experiment }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache/restore@v4
+        with:
+          path: data/worlds
+          key: worlds-${{ needs.changed.outputs.worlds }}-${{ hashFiles('gpsfree/worlds/**') }}
+          fail-on-cache-miss: true
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - run: uv run gpsfree verify ${{ matrix.experiment }}
 
   leaderboard:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
+    concurrency:
+      group: leaderboard
+      cancel-in-progress: false
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - uses: astral-sh/setup-uv@v5
         with:
           enable-cache: true
@@ -57,4 +84,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
           git commit -m "Update leaderboard" README.md
+          git pull --rebase origin main
           git push

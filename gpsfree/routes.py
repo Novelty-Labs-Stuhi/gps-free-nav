@@ -80,7 +80,7 @@ def generate_route(world, platform: str, name: str, seed: int) -> Route:
 
 def generate_all(world, per_platform: int = 3, platforms=None, oversample: int = 4):
     """Draw oversample x per_platform candidates per platform and keep per_platform of them spread evenly over
-    terrain ruggedness (mean ground slope under the path), so flat and rugged ground are both covered."""
+    ruggedness of the surface below (terrain and buildings), so flat and rugged ground are both covered."""
     paths = []
     for platform in platforms or PLATFORMS:
         for old in (ROUTES / world.id).glob(f"{platform}-gen*.json"):
@@ -100,8 +100,8 @@ def generate_all(world, per_platform: int = 3, platforms=None, oversample: int =
 
 def ruggedness(world, route) -> float:
     xy = route.position[::10, :2]
-    ground = world.height(xy, ground_only=True)
-    return float(np.mean(np.abs(np.diff(ground)) / np.maximum(np.linalg.norm(np.diff(xy, axis=0), axis=1), 1e-6)))
+    surface = world.height(xy)  # top of terrain or buildings: what a drone's downward sensors see
+    return float(np.mean(np.abs(np.diff(surface)) / np.maximum(np.linalg.norm(np.diff(xy, axis=0), axis=1), 1e-6)))
 
 
 def stable_seed(*parts) -> int:

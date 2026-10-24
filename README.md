@@ -1,7 +1,8 @@
 # gpsfree
 
 GPS-free localisation benchmark. Algorithms get IMU, magnetometer, barometer and echo ranges plus a prior 3D map,
-and must estimate their position without ever seeing ground truth. Currently scored on **drones over Yosemite**.
+and must estimate their position without ever seeing ground truth. Currently scored on **drones** over every world
+in `benchmark/suite.json` (Yosemite terrain, Amsterdam city), with one leaderboard table per world.
 
 ## Leaderboard
 
@@ -32,8 +33,14 @@ Score = geometric-mean 3D error along the route (lower is better). Top 5 methods
   - *Lost at*: distance travelled when error first exceeds 50 m (route length if never).
   - *Growth k*: slope of log error vs log distance — ≈3 raw IMU drift, ≈1 linear drift, ≈0 bounded.
   - `xy_rmse_m` / `z_rmse_m` in `results.json`.
-- The rules live in `benchmark/suite.json`, `benchmark/hardware/` and `gpsfree/evaluate.py`. Changing any of them
-  (or any route) changes the suite fingerprint and marks every existing result ⚠ stale until it is re-run.
+- **Worlds are one engine.** Terrain (elevation tiles) and cities (3DBAG buildings) bake into the same mesh and
+  `MapView`; each world gets 20 drone routes flown 30–150 m above the surface (terrain or rooftops), picked from 80
+  candidates to spread evenly over how rugged the surface below is. Adding a world = one entry in
+  `gpsfree/worlds/__init__.py`, `gpsfree fetch <id>`, `gpsfree routes <id> --platform drone --per-platform 20`, and
+  listing it in `suite.json`.
+- Each world/platform result carries a fingerprint of the scoring rules, that world's routes and the hardware
+  profiles the method uses. Changing any of those marks just the affected results ⚠ stale; adding a world or a new
+  hardware profile leaves existing results alone.
 
 ## Rules for experiments
 
@@ -70,7 +77,7 @@ The leaderboard's cost column counts the IMU, plus the magnetometer only if the 
 ## Submitting
 
 ```sh
-uv run gpsfree fetch yosemite         # download + bake the world into data/worlds
+uv run gpsfree fetch yosemite amsterdam   # download + bake the suite's worlds into data/worlds
 uv run gpsfree new my_method          # copy a template into experiments/my_method
 uv run gpsfree eval my_method         # run the suite, writes experiments/my_method/results.json
 ```
@@ -78,4 +85,5 @@ uv run gpsfree eval my_method         # run the suite, writes experiments/my_met
 1. Commit `experiments/<name>/algo.py` and `results.json`, open a PR.
 2. CI re-runs only the experiments the PR touches and fails if the committed `results.json` doesn't reproduce or
    the hardware costs $3,000 or more. Scoring worse never blocks a merge.
-3. After merge, CI regenerates the leaderboard above (top 5 methods) and commits it to `main`. Don't edit it by hand.
+3. After merge, CI regenerates the leaderboard above (top 5 per world) and commits it to `main`. Don't edit it by
+   hand or commit a regenerated table in a PR; that only causes merge conflicts between PRs.

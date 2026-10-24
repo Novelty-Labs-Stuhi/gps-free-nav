@@ -1,7 +1,7 @@
 {
   "seeds": [0, 1],
   "score_rate_hz": 10,
-  "worlds": ["yosemite"],
+  "worlds": ["yosemite", "amsterdam"],
   "platforms": ["drone"],
   "score_from_m": 100,
   "error_floor_m": 1,
