@@ -33,6 +33,7 @@ def main():
     ap.add_argument("--episodes", type=int, default=4)
     ap.add_argument("--elite", type=float, default=0.25)
     ap.add_argument("--jobs", type=int, default=4)
+    ap.add_argument("--chunk", type=int, help="tasks per worker chunk (default: one episode's candidates)")
     args = ap.parse_args()
     rng = np.random.default_rng(0)
     mu, sigma = init_mean(rng), np.full(LinearPolicy.size(), 0.3)
@@ -45,7 +46,7 @@ def main():
             cands = [mu] + [mu + sigma * rng.normal(size=mu.shape) for _ in range(args.pop - 1)]
             # ordered by episode, one episode's candidates per chunk: each worker keeps one world loaded
             tasks = [(sid, seed, NAVIGATOR, c.tolist()) for sid, seed in eps for c in cands]
-            res = list(pool.map(episode, tasks, chunksize=args.pop))
+            res = list(pool.map(episode, tasks, chunksize=args.chunk or args.pop))
             R = np.array([r["reward"] for r in res]).reshape(args.episodes, args.pop).T.mean(1)
             S = np.array([r["success"] for r in res]).reshape(args.episodes, args.pop).T.mean(1)
             V = np.array([r["violation"] for r in res]).reshape(args.episodes, args.pop).T.mean(1)
