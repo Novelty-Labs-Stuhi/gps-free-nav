@@ -1,0 +1,60 @@
+name: benchmark
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  verify:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Find changed experiments
+        id: changed
+        run: |
+          exps=$(git diff --name-only "${{ github.event.pull_request.base.sha }}...HEAD" \
+            | grep -oE '^experiments/[^/]+' | sort -u \
+            | while read d; do [ -f "$d/algo.py" ] && basename "$d"; done | xargs)
+          echo "experiments: ${exps:-none}"
+          echo "list=$exps" >> "$GITHUB_OUTPUT"
+      - uses: astral-sh/setup-uv@v5
+        if: steps.changed.outputs.list != ''
+        with:
+          enable-cache: true
+      - uses: actions/cache@v4
+        if: steps.changed.outputs.list != ''
+        with:
+          path: data/worlds
+          key: worlds-${{ hashFiles('gpsfree/worlds/**', 'benchmark/suite.json') }}
+          restore-keys: worlds-
+      - name: Fetch suite worlds
+        if: steps.changed.outputs.list != ''
+        run: |
+          for w in $(jq -r '.worlds[]' benchmark/suite.json); do
+            test -f "data/worlds/$w/meta.json" || uv run gpsfree fetch "$w"
+          done
+      - name: Re-run changed experiments
+        if: steps.changed.outputs.list != ''
+        run: uv run gpsfree verify ${{ steps.changed.outputs.list }}
+
+  leaderboard:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - run: uv run gpsfree leaderboard
+      - run: |
+          git diff --quiet README.md && exit
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update leaderboard" README.md
+          git push

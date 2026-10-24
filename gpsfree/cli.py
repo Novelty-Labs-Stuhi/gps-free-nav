@@ -71,18 +71,11 @@ def cmd_verify(args):
 
 
 def cmd_leaderboard(args):
-    from gpsfree.leaderboard import render
+    from gpsfree.leaderboard import render, update_readme
 
-    text = render()
-    path = ROOT / "LEADERBOARD.md"
-    if args.check:
-        if not path.exists() or path.read_text() != text:
-            print("LEADERBOARD.md is stale: run `uv run gpsfree leaderboard` and commit it")
-            sys.exit(1)
-        print("LEADERBOARD.md up to date")
-    else:
-        path.write_text(text)
-        print(text)
+    path = ROOT / "README.md"
+    path.write_text(update_readme(path.read_text() if path.exists() else "", render()))
+    print(f"updated {path.relative_to(ROOT)}")
 
 
 def cmd_new(args):
@@ -100,8 +93,9 @@ def list_experiments():
 def print_summary(res):
     print(f"\n{res['experiment']}  (suite {res['suite']}, {len(res['runs'])} runs, {res['elapsed_s']}s)")
     for key, s in res["summary"].items():
-        errs = "  ".join(f"@{k.split('_')[-1]}={v}" for k, v in s.items() if k.startswith("median_err"))
-        print(f"  {key:22s} median err {errs}  fail {s['fail_rate']:.0%}  drift {s['median_drift_pct']}%  rtf≥{s['min_realtime_factor']}")
+        mae = "  ".join(f"{band}={v}" for band, v in s["mae_m"].items())
+        print(f"  {key:18s} score {s['score_m']} m (10^{s['score_log10']})  lost@{s['lost_at_m']} m  k={s['growth_k']}  "
+              f"rtf≥{s['min_realtime_factor']}\n  {'':18s} MAE {mae}")
 
 
 def main():
@@ -129,8 +123,7 @@ def main():
     p.add_argument("--jobs", type=int)
     p.set_defaults(func=cmd_verify)
 
-    p = sub.add_parser("leaderboard", help="regenerate LEADERBOARD.md from experiments/*/results.json")
-    p.add_argument("--check", action="store_true")
+    p = sub.add_parser("leaderboard", help="regenerate the README leaderboard from experiments/*/results.json")
     p.set_defaults(func=cmd_leaderboard)
 
     p = sub.add_parser("new", help="start a new experiment from a template")
