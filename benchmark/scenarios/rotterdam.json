@@ -1,0 +1,27 @@
+{
+ "id": "rotterdam",
+ "name": "Flat port city",
+ "world": "rotterdam",
+ "platform": "drone",
+ "description": "Flat city with an exact 3D building map (3DBAG), no terrain relief.",
+ "route": {
+  "speed_mps": 8,
+  "length_m": 3000,
+  "agl_m": [
+   35,
+   70
+  ]
+ },
+ "map": {},
+ "wind": {
+  "mean_mps": [
+   4,
+   7
+  ],
+  "gust_mps": 1.5
+ },
+ "start_offset_m": [
+  0,
+  0
+ ]
+}

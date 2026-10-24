@@ -1,0 +1,30 @@
+{
+ "id": "boreal",
+ "name": "Boreal forest hills",
+ "world": "repovesi",
+ "platform": "drone",
+ "description": "Low rocky hills under dense forest the map does not contain.",
+ "route": {
+  "speed_mps": 10,
+  "length_m": 3000,
+  "agl_m": [
+   40,
+   100
+  ]
+ },
+ "map": {
+  "terrain_error_m": 0.5,
+  "terrain_error_corr_m": 150
+ },
+ "wind": {
+  "mean_mps": [
+   4,
+   7
+  ],
+  "gust_mps": 1.5
+ },
+ "start_offset_m": [
+  0,
+  0
+ ]
+}

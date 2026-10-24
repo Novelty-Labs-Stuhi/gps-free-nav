@@ -9,6 +9,9 @@ dependencies = [
   "embreex>=2.17",
   "pillow>=11",
   "meshoptimizer>=0.2",
+  "shapely>=2.0",
+  "mapbox-earcut>=1.0",
+  "overturemaps>=1.0.2",
 ]
 
 [project.scripts]

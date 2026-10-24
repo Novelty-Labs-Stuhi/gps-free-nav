@@ -3,7 +3,7 @@ import json
 
 import numpy as np
 
-from gpsfree.paths import HARDWARE
+from gpsfree.paths import HARDWARE, RANGERS
 
 from gpsfree.trajectory import G, Trajectory, horizontal_distance
 
@@ -56,7 +56,9 @@ def generate(traj: Trajectory, world, cfg: dict, rng: np.random.Generator) -> di
     t = np.arange(traj.t0, traj.t1, bdt)
     z = traj.sample(t)["p"][:, 2]
     drift = np.cumsum(rng.normal(0, c["drift_m_per_sqrt_s"] * np.sqrt(bdt), len(t)))
-    out["baro"] = {"t": t, "altitude": z + drift + rng.normal(0, c["noise_m"], len(t))}
+    # wind and prop wash: dynamic pressure on the static port reads as altitude, ~ coeff * airspeed^2 / 2g
+    air = traj.sample(t)["airspeed"]
+    out["baro"] = {"t": t, "altitude": z + drift + rng.normal(0, c["noise_m"], len(t)) - c.get("airspeed_coeff", 0.0) * air ** 2 / (2 * G)}
 
     # Echo: ranges along a fixed fan of body-frame beams, raycast against the world.
     c = cfg["echo"]
@@ -81,12 +83,17 @@ def generate(traj: Trajectory, world, cfg: dict, rng: np.random.Generator) -> di
     return out
 
 
-def hardware_sensors(base: dict, name: str | None) -> dict:
-    """Suite sensor config with imu/mag replaced by a real-part profile (benchmark/hardware/<name>.json).
+def hardware_sensors(base: dict, name: str | None, ranger: str | None = None) -> dict:
+    """Suite sensor config with imu/mag replaced by a real-part profile (benchmark/hardware/<name>.json)
+    and the echo sensor by a real ranger (benchmark/rangers/<ranger>.json).
     Profiles hold datasheet numbers in datasheet units: white noise sigma = noise density * sqrt(rate),
     constant per-run bias ~ N(0, in-run bias stability, else tempco * delta_temp_c), no bias walk."""
+    out = dict(base)
+    if ranger:
+        r = json.loads((RANGERS / f"{ranger}.json").read_text())
+        out["echo"] = {k: r[k] for k in ("rate_hz", "max_range_m", "noise_m", "noise_frac", "dropout", "pattern")} | {"part": ranger}
     if name is None:
-        return base
+        return out
     hw = json.loads((HARDWARE / f"{name}.json").read_text())
     i, m = hw["imu"], hw["mag"]
     ug, dph = 1e-6 * G, np.radians(1) / 3600
@@ -95,7 +102,7 @@ def hardware_sensors(base: dict, name: str | None) -> dict:
     acc_b = i.get("acc_bias_ug", i.get("acc_tempco_ug_per_c", 0) * i.get("delta_temp_c", 0))
     gyro_b = i.get("gyro_bias_dph", i.get("gyro_tempco_dph_per_c", 0) * i.get("delta_temp_c", 0))
     root = np.sqrt(i["rate_hz"])
-    return base | {
+    return out | {
         "imu": {"rate_hz": i["rate_hz"], "acc_noise": acc_nd * root, "acc_bias_init": acc_b * ug, "acc_bias_walk": 0.0,
                 "gyro_noise": gyro_nd * root, "gyro_bias_init": gyro_b * dph, "gyro_bias_walk": 0.0},
         "mag": {"rate_hz": m["rate_hz"], "noise_ut": m["noise_ut"], "hard_iron_ut": m["residual_hard_iron_ut"],
