@@ -280,6 +280,23 @@ async function main() {
   const estTrailL = makeLine(estV, 0xff4d6d);
   left.scene.add(estDroneL, beamsL.group, estTrailL);
 
+  // Off the map there is nothing to draw: show a ground grid under the estimate and say so.
+  const mapBox = new THREE.Box3().setFromObject(mapMesh);
+  const offGrid = new THREE.GridHelper(4000, 40, 0x5a6b85, 0x2c3646);
+  offGrid.position.y = mapBox.min.y;
+  left.scene.add(offGrid);
+  const offmap = $("offmap");
+  const updateOffMap = (p) => {
+    const dx = Math.max(mapBox.min.x - p.x, 0, p.x - mapBox.max.x);
+    const dz = Math.max(mapBox.min.z - p.z, 0, p.z - mapBox.max.z);
+    const out = dx > 0 || dz > 0;
+    offGrid.visible = out;
+    offGrid.position.x = Math.round(p.x / 100) * 100;
+    offGrid.position.z = Math.round(p.z / 100) * 100;
+    offmap.hidden = !out;
+    if (out) offmap.textContent = `Estimate is ${fmtM(Math.hypot(dx, dz))} past the edge of the map: nothing for the beams to hit`;
+  };
+
   // Right: what actually happened.
   const truthDrone = makeDrone(0xffffff), estDroneR = makeDrone(0xff4d6d);
   const truthAll = makeLine(truthV, 0xffffff, { opacity: 0.25 });
@@ -356,6 +373,7 @@ async function main() {
       estDroneR.position.copy(pE);
       estDroneR.quaternion.copy(q);
       left.track(pE);
+      updateOffMap(pE);
     }
     if (hasTruth) {
       truthDrone.position.copy(pT);

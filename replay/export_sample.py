@@ -26,7 +26,7 @@ from gpsfree.worlds.bake import _write_glb  # noqa: E402
 
 REPLAYS = DATA / "replays"
 RATE_HZ = 10
-CROP_MARGIN_M = 600     # keep this much terrain around the route
+CROP_MARGIN_M = 600     # keep this much terrain around the true route and the estimate
 MAX_TRIANGLES = 400_000
 
 
@@ -171,7 +171,10 @@ def run(experiment, route_path, seed):
     predicted = map_view.raycast(np.repeat(est_e, len(dirs_b), axis=0), dirs_w, max_range).reshape(len(echo_t), -1)
 
     metrics = deviation_metrics(t, truth, est, route.t, route.position, suite["score_from_m"], suite["error_floor_m"])
-    v, f = mesh_for_replay(world.mesh, np.r_[truth[:, :2], route.position[:, :2]])
+    # The estimate can wander far from the route; keep the map under it too, as far as the world goes.
+    lo, hi = np.array(world.meta["bounds"])[:, :2]
+    est_xy = np.clip(est[np.all(np.isfinite(est), axis=1), :2], lo, hi)
+    v, f = mesh_for_replay(world.mesh, np.r_[truth[:, :2], route.position[:, :2], est_xy])
     run_id = f"{route.world}__{route.name}__s{seed}"
     out = REPLAYS / experiment / run_id
     write_replay(
