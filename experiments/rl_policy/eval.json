@@ -1,0 +1,74 @@
+{
+ "navigator": "terrain_pf_guarded",
+ "eval_seeds": [
+  1000,
+  1004
+ ],
+ "scenarios": [
+  "alpine",
+  "fells",
+  "boreal",
+  "archipelago",
+  "tampere",
+  "bordertown",
+  "kyiv",
+  "steppe",
+  "farmland",
+  "carpathians",
+  "rotterdam",
+  "desert"
+ ],
+ "policies": {
+  "continue": {
+   "episodes": 60,
+   "success": 0.467,
+   "violation": 0.167,
+   "battery_out": 0.2,
+   "silent_wrong_landing": 0.033,
+   "median_landing_err_m": 71.8,
+   "mean_reward": -19.45,
+   "actions": {
+    "continue": 1724,
+    "climb": 0,
+    "detour": 0,
+    "slow": 0,
+    "land": 38
+   },
+   "wall_s": 76
+  },
+  "rule": {
+   "episodes": 60,
+   "success": 0.033,
+   "violation": 0.0,
+   "battery_out": 0.0,
+   "silent_wrong_landing": 0.0,
+   "median_landing_err_m": 2153.2,
+   "mean_reward": -38.84,
+   "actions": {
+    "continue": 286,
+    "climb": 0,
+    "detour": 25,
+    "slow": 0,
+    "land": 60
+   },
+   "wall_s": 23
+  },
+  "rl_policy": {
+   "episodes": 60,
+   "success": 0.667,
+   "violation": 0.1,
+   "battery_out": 0.117,
+   "silent_wrong_landing": 0.017,
+   "median_landing_err_m": 20.6,
+   "mean_reward": 22.44,
+   "actions": {
+    "continue": 1153,
+    "climb": 441,
+    "detour": 0,
+    "slow": 0,
+    "land": 47
+   },
+   "wall_s": 70
+  }
+ }
+}

@@ -30,6 +30,7 @@ test flights.
 | 18:58 | X4 learned lost detector | Artem |
 | 19:11 | Closed-loop mission harness, X6 rule baseline, X5 RL trainer | Artem |
 | ~20:00 | X5 RL training moved to a Google Cloud VM after two local runs ran out of memory | Artem |
+| ~23:00 | X5 RL evaluated on held-out missions; all experiments re-run on the merged suite; VM deleted | Artem |
 | 20:05 | X2 map offset (rejected) | Artem |
 | 20:11 | X3 learned beam model | Artem |
 | 20:19 | X7 = X3 + X4 | Artem |
@@ -42,15 +43,14 @@ test flights.
 | `ins_icm42688p` | $8 IMU | 1.7 km | 100% | no claim | no claim |
 | `ins_adis16470` | $408 IMU | 212 m | 100% | no claim | no claim |
 | `ins_hg4930` | $9,433 IMU, over the cost cap | 73 m | 99% | no claim | no claim |
-| `terrain_ekf` | $8 IMU + lidar | **11.3 m** | 35% | 25% | not measured |
-| X1 `terrain_pf` | $408 IMU + lidar | 19.1 m | 61% | 49% | not measured |
-| X2 `terrain_pf_offset` | $408 IMU + lidar | 30.3 m | 73% | 62% | 8% |
-| X3 `terrain_pf_beams` | $408 IMU + lidar | 13.9 m | 59% | 53% | 4% |
-| X4 `terrain_pf_guarded` | $408 IMU + lidar | 19.1 m | 61% | 28% | not measured |
-| X7 `terrain_pf_best` | $408 IMU + lidar | 13.9 m | 59% | **24%** | 28% |
+| `terrain_ekf` | $8 IMU + lidar | 11.3 m | 35% | 25% | 1% |
+| X1 `terrain_pf` | $408 IMU + lidar | 18.9 m | 62% | 49% | 9% |
+| X2 `terrain_pf_offset` | $408 IMU + lidar | 29.8 m | 73% | 61% | 8% |
+| X3 `terrain_pf_beams` | $408 IMU + lidar | 14.4 m | 60% | 54% | 4% |
+| X4 `terrain_pf_guarded` | $408 IMU + lidar | 18.9 m | 62% | 26% | 28% |
+| X7 `terrain_pf_best` | $408 IMU + lidar | 14.4 m | 60% | 25% | 28% |
 
-The lidar is a Livox Avia pointing down. A version of every row with the corrected Avia price, on equal code, comes
-with the final re-run.
+The lidar is a Livox Avia pointing down. Lidar methods use the Livox Avia at $2,079. All rows were re-run on the same code at the end of the day.
 
 ## The experiments
 
@@ -79,7 +79,7 @@ with the final re-run.
 - **Idea.** Arsenii's particle filter keeps 500 weighted guesses of the position instead of one bell curve, so it
   can hold "either this valley or that one" until the terrain decides. Particles start spread over the spoofed-start
   uncertainty.
-- **Result.** It fixes the spoofed start in a city: Kyiv 10 km → 41 m. It is worse elsewhere, at 19.1 m overall,
+- **Result.** It fixes the spoofed start in a city: Kyiv 10 km → 41 m. It is worse elsewhere, at 18.9 m overall,
   and a collapsed cloud of guesses looks certain even when it's in the wrong place: 49% silent failures. It needs
   the $408 IMU, because the $8 one drifts too far in tilt.
 
@@ -95,7 +95,7 @@ with the final re-run.
 - **Idea.** Learn from 3.4 million training beams how lidar ranges actually disagree with the map. 81% are ordinary
   noise with a spread of 2.4 m. 19% stop about 7 m too early on trees and roofs the map lacks. Score the particles
   with that learned model instead of a hand-set one.
-- **Result.** It is the best particle filter, at 13.9 m. The gains are exactly where unmapped clutter is: boreal
+- **Result.** It is the best particle filter, at 14.4 m. The gains are exactly where unmapped clutter is: boreal
   forest 8.7 → 2.9 m, the border town 9.6 → 2.9 m, Kyiv 41 → 10 m. Its trust numbers are unchanged, because it has
   no lost detector.
 
@@ -111,7 +111,7 @@ with the final re-run.
 ### X7 `terrain_pf_best`: learned beams plus the lost detector
 
 - **Idea.** X3 with X4's detector, retrained on X3's own statistics.
-- **Result.** The most trustworthy method so far. It scores 13.9 m, the truth lies outside its radius only 4% of
+- **Result.** The most trustworthy method so far. It scores 14.4 m, the truth lies outside its radius only 4% of
   the time, and it has the fewest silent failures, at 24%. The price is false alarms: it says "lost" 28% of the
   time while actually fine. It is slightly less accurate than `terrain_ekf` where both work.
 
@@ -130,9 +130,17 @@ which stands in for a border, and its battery lasts 1.5 times the direct flight.
   | rule | 3% | 0% | 0% |
 
   The rule is safe but gives up almost every time.
-- **X5 RL, in progress.** A 40-weight linear policy reads the belief and picks continue, climb, detour, slow down
-  or land every 10 s. It is trained by cross-entropy policy search on training missions, on a Google Cloud VM. Its
-  results, the training curve and its card land here when training finishes.
+- **X5 RL.** A 40-weight linear policy reads the belief and picks continue, climb, detour, slow down or land every
+  10 s, trained by cross-entropy policy search on training missions on a Google Cloud VM. On 60 held-out missions:
+
+  | policy | success | border crossed | battery out | median landing error |
+  |---|---|---|---|---|
+  | always continue | 47% | 17% | 20% | 72 m |
+  | rule | 3% | 0% | 0% | 2,153 m |
+  | learned policy | 67% | 10% | 12% | 21 m |
+
+  It learned to climb so the lidar sees more terrain. It still crosses the border in 10% of missions, so a hard
+  safety rule on top is the next step.
 
 ## What we learned
 
@@ -142,5 +150,7 @@ which stands in for a border, and its battery lasts 1.5 times the direct flight.
 - **Many guesses fix spoofed starts in distinctive terrain.** A single guess locks onto the wrong place.
 - **Trust can be learned, mostly.** A simple detector cuts the time spent confidently wrong several-fold. Being
   slowly and silently wrong over flat land is still the open problem.
+- **Deciding what to do helps as much as navigating.** A learned 40-number policy turned 47% successful missions
+  into 67% and cut border crossings from 17% to 10%, mostly by climbing to see more terrain.
 - **Not yet tested: the sky.** A star or sun fix needs no map and can't be spoofed, so it is the missing piece for
   sea, steppe and stale maps.

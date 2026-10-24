@@ -12,21 +12,21 @@ Score = geometric mean over 12 scenarios of each scenario's median geometric-mea
 
 | # | method | how it works | sensors | cost (USD) | author | score (m) | worst scenario (m) | runs lost | misleading | silent |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 1 | [terrain_ekf](experiments/terrain_ekf) ⚠ stale | Kalman filter on an $8 IMU corrected 10x/s by 49 lidar ranges matched against the drone's 3D map, with a beam-disagreement monitor that says 'lost'. | icm42688p + avia | 2,087 | Artevil131 | 11.3 | kyiv 10,162 | 35% | 17% | 25% |
-| 2 | [terrain_pf_beams](experiments/terrain_pf_beams) ⚠ stale | terrain_pf with a beam likelihood learned from 3.4M training beams (noise plus a tail for trees and roofs the map lacks). | adis16470 + avia | 2,487 | Arsenii Chistiakov + Artevil131 | 13.9 | archipelago 735 | 59% | 29% | 53% |
-| 3 | [terrain_pf_best](experiments/terrain_pf_best) ⚠ stale | terrain_pf_beams' learned beams plus terrain_pf_guarded's lost detector retrained on them: the most trustworthy method so far. | adis16470 + avia | 2,487 | Arsenii Chistiakov + Artevil131 | 13.9 | archipelago 735 | 59% | 4% | 24% |
-| 4 | [terrain_pf](experiments/terrain_pf) ⚠ stale | Arsenii's particle filter (500 weighted position guesses scored by how lidar points lie on the map), ported with spoofed-start spread and a calibrated radius. | adis16470 + avia | 2,487 | Arsenii Chistiakov + Artevil131 | 19.1 | archipelago 603 | 61% | 26% | 49% |
-| 5 | [terrain_pf_guarded](experiments/terrain_pf_guarded) ⚠ stale | terrain_pf plus a logistic-regression lost detector trained on the filter's own statistics; says 'I don't know' instead of lying. | adis16470 + avia | 2,487 | Arsenii Chistiakov + Artevil131 | 19.1 | archipelago 603 | 61% | 3% | 28% |
+| 1 | [terrain_ekf](experiments/terrain_ekf) | Kalman filter on an $8 IMU corrected 10x/s by 49 lidar ranges matched against the drone's 3D map, with a beam-disagreement monitor that says 'lost'. | icm42688p + avia | 2,087 | Artevil131 | 11.3 | kyiv 10,162 | 35% | 17% | 25% |
+| 2 | [terrain_pf_beams](experiments/terrain_pf_beams) | terrain_pf with a beam likelihood learned from 3.4M training beams (noise plus a tail for trees and roofs the map lacks). | adis16470 + avia | 2,487 | Arsenii Chistiakov + Artevil131 | 14.4 | archipelago 735 | 60% | 29% | 54% |
+| 3 | [terrain_pf_best](experiments/terrain_pf_best) | terrain_pf_beams' learned beams plus terrain_pf_guarded's lost detector retrained on them: the most trustworthy method so far. | adis16470 + avia | 2,487 | Arsenii Chistiakov + Artevil131 | 14.4 | archipelago 735 | 60% | 4% | 25% |
+| 4 | [ins_echo_avia_adis16470](experiments/ins_echo_avia_adis16470) | ins_echo on a $408 ADIS16470 IMU plus the Livox Avia scanning lidar looking down. | adis16470 + avia | 2,487 | Arsenii Chistiakov | 15.2 | archipelago 530 | 60% | no claim | no claim |
+| 5 | [terrain_pf](experiments/terrain_pf) | Arsenii's particle filter (500 weighted position guesses scored by how lidar points lie on the map), ported with spoofed-start spread and a calibrated radius. | adis16470 + avia | 2,487 | Arsenii Chistiakov + Artevil131 | 18.9 | archipelago 603 | 62% | 26% | 49% |
 
 **Per scenario** (median score in m; share of runs lost in brackets)
 
 | method | Alpine valley | Lapland fells | Boreal forest hills | Gulf of Finland archipelago | Mid-size city | Small border town | Big dense city | Steppe fields | Farmland and villages | Forested mountains | Flat port city | Desert dunes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | terrain_ekf | 2.3 (25%) | 1.7 (0%) | 1.1 (0%) | 300 (100%) | 2.4 (30%) | 1.3 (25%) | 10,162 (100%) | 2,388 (100%) | 4.1 (20%) | 3.7 (10%) | 1.0 (5%) | 2.7 (0%) |
-| terrain_pf_beams | 6.0 (60%) | 4.5 (5%) | 2.9 (5%) | 735 (100%) | 11.4 (80%) | 2.9 (50%) | 10.3 (75%) | 219 (100%) | 25.3 (95%) | 9.5 (40%) | 6.2 (55%) | 8.2 (45%) |
-| terrain_pf_best | 6.0 (60%) | 4.5 (5%) | 2.9 (5%) | 735 (100%) | 11.4 (80%) | 2.9 (50%) | 10.3 (75%) | 219 (100%) | 25.3 (95%) | 9.5 (40%) | 6.2 (55%) | 8.2 (45%) |
-| terrain_pf | 4.5 (50%) | 4.4 (10%) | 8.7 (25%) | 603 (100%) | 10.2 (75%) | 9.6 (65%) | 41.3 (80%) | 409 (95%) | 38.6 (85%) | 14.8 (55%) | 3.0 (45%) | 7.8 (45%) |
-| terrain_pf_guarded | 4.5 (50%) | 4.4 (10%) | 8.7 (25%) | 603 (100%) | 10.2 (75%) | 9.6 (65%) | 41.3 (80%) | 409 (95%) | 38.6 (85%) | 14.8 (55%) | 3.0 (45%) | 7.8 (45%) |
+| terrain_pf_beams | 6.0 (60%) | 4.7 (5%) | 2.9 (0%) | 735 (100%) | 12.8 (80%) | 3.1 (50%) | 10.3 (75%) | 245 (100%) | 25.3 (95%) | 9.5 (40%) | 6.2 (65%) | 8.8 (50%) |
+| terrain_pf_best | 6.0 (60%) | 4.7 (5%) | 2.9 (0%) | 735 (100%) | 12.8 (80%) | 3.1 (50%) | 10.3 (75%) | 245 (100%) | 25.3 (95%) | 9.5 (40%) | 6.2 (65%) | 8.8 (50%) |
+| ins_echo_avia_adis16470 | 4.3 (50%) | 4.6 (10%) | 7.9 (15%) | 530 (100%) | 10.2 (85%) | 6.2 (70%) | 5.5 (60%) | 397 (100%) | 40.3 (85%) | 14.4 (60%) | 2.9 (40%) | 7.5 (40%) |
+| terrain_pf | 4.5 (55%) | 4.4 (10%) | 8.7 (20%) | 603 (100%) | 10.1 (75%) | 9.8 (70%) | 36.6 (75%) | 410 (95%) | 38.6 (90%) | 14.8 (60%) | 3.0 (45%) | 7.8 (45%) |
 <!-- leaderboard:end -->
 
 ## Scenarios
