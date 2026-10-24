@@ -58,6 +58,8 @@ class Navigator(load_algorithm("imu_deadreckoning")):
         seed = zlib.crc32(f"{ctx.scenario}/{ctx.start.t:.3f}/{np.round(ctx.start.position, 1)}".encode())
         self.rng = np.random.default_rng(seed)
         self.grid = height_grid(ctx.map)
+        (bx0, by0, _), (bx1, by1, _) = ctx.map.bounds
+        self.bounds = (np.array([bx0, by0]), np.array([bx1, by1]))
         self.dirs = ctx.sensors["echo"]["directions"]
         self.temper = min(1.0, self.INFO_BEAMS / len(self.dirs))
         s, n = ctx.start, self.N
@@ -102,6 +104,11 @@ class Navigator(load_algorithm("imu_deadreckoning")):
         self.pv += rot(self.dv) + self.rng.normal(0, self.Q_V * np.sqrt(T), (self.N, 2))
         self.psi += self.rng.normal(0, self.Q_YAW * np.sqrt(T), self.N)
         self.t_prop, self.dv, self.dp = t, np.zeros(2), np.zeros(2)
+        lo, hi = self.bounds
+        out = np.any((self.pxy < lo) | (self.pxy > hi), axis=1)
+        if out.any():  # a position outside the map means nothing: put the particle back in, stopped
+            self.pxy[out] = np.clip(self.pxy[out], lo, hi)
+            self.pv[out] *= 0.0
 
     def _terrain(self, x, y):
         x0, y0, H = self.grid
