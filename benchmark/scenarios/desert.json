@@ -1,0 +1,30 @@
+{
+ "id": "desert",
+ "name": "Desert dunes",
+ "world": "namib",
+ "platform": "drone",
+ "description": "Featureless sand dunes with a coarse global map and strong wind.",
+ "route": {
+  "speed_mps": 10,
+  "length_m": 3000,
+  "agl_m": [
+   40,
+   100
+  ]
+ },
+ "map": {
+  "terrain_error_m": 3.0,
+  "terrain_error_corr_m": 300
+ },
+ "wind": {
+  "mean_mps": [
+   9,
+   13
+  ],
+  "gust_mps": 3.0
+ },
+ "start_offset_m": [
+  0,
+  0
+ ]
+}

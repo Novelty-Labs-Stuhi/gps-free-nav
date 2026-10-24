@@ -37,7 +37,7 @@ class Navigator(load_algorithm("imu_deadreckoning")):
         self.dirs = ctx.sensors["echo"]["directions"]
         self.temper = min(1.0, INFO_BEAMS / len(self.dirs))
         s = ctx.start
-        self.pxy = s.position[:2] + self.rng.normal(0, 1.0, (N, 2))
+        self.pxy = s.position[:2] + self.rng.normal(0, max(1.0, ctx.start_sigma_m), (N, 2))
         self.pv = np.tile(s.velocity[:2], (N, 1))
         self.psi = np.zeros(N)
         self.w = np.full(N, 1 / N)
@@ -95,6 +95,7 @@ class Navigator(load_algorithm("imu_deadreckoning")):
         x = self.pxy[:, :1] + c * rel[:, 0] - s * rel[:, 1]
         y = self.pxy[:, 1:] + s * rel[:, 0] + c * rel[:, 1]
         r = (self.p[2] + rel[:, 2]) - self._terrain(x, y)
+        r = np.nan_to_num(r, nan=CLIP * SIGMA_M)  # holes in the map count as outliers
         ll = -0.5 * np.minimum((r / SIGMA_M) ** 2, CLIP ** 2).sum(1) * self.temper
         logw = np.log(self.w + 1e-300) + ll
         w = np.exp(logw - logw.max())

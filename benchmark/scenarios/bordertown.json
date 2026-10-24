@@ -1,0 +1,32 @@
+{
+ "id": "bordertown",
+ "name": "Small border town",
+ "world": "imatra",
+ "platform": "drone",
+ "description": "Small town between lakes and forest near the eastern border.",
+ "route": {
+  "speed_mps": 8,
+  "length_m": 3000,
+  "agl_m": [
+   35,
+   70
+  ]
+ },
+ "map": {
+  "terrain_error_m": 0.5,
+  "terrain_error_corr_m": 150,
+  "building_height_error_m": 2.0,
+  "building_missing_frac": 0.05
+ },
+ "wind": {
+  "mean_mps": [
+   4,
+   7
+  ],
+  "gust_mps": 1.5
+ },
+ "start_offset_m": [
+  0,
+  0
+ ]
+}

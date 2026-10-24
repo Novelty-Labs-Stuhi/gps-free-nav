@@ -5,7 +5,8 @@ from gpsfree.evaluate import load_algorithm
 
 
 class Navigator(load_algorithm("ins_echo")):
-    hardware = "livox_avia"
+    hardware = "bmi088"  # the Avia's built-in IMU
+    ranger = "avia"
     USE_ACCEL = False
     TILT_TAU_S = 10.0
     Q_V = 1.0

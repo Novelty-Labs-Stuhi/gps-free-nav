@@ -7,6 +7,18 @@ from gpsfree import Algorithm
 G = np.array([0.0, 0.0, 9.80665])
 
 
+def level_attitude(acc, yaw):
+    """Body-to-world rotation from one accelerometer sample (gravity gives roll/pitch, valid when the
+    drone is not accelerating) and the known heading of the body's forward axis."""
+    up = acc / np.linalg.norm(acc)                      # world up, in body coordinates
+    f = np.array([1.0, 0, 0]) - up[0] * up              # body forward, levelled
+    f /= np.linalg.norm(f)
+    left = np.cross(up, f)
+    east = np.cos(yaw) * f - np.sin(yaw) * left
+    north = np.sin(yaw) * f + np.cos(yaw) * left
+    return np.vstack([east, north, up])
+
+
 def rodrigues(w):
     th = np.linalg.norm(w)
     if th < 1e-12:
@@ -29,12 +41,7 @@ class Navigator(Algorithm):
         self.baro0 = None
 
     def _init_attitude(self, acc):
-        # roll/pitch from gravity, yaw from the known start pose
-        z = acc / np.linalg.norm(acc)
-        x = np.array([np.cos(self.ctx.start.yaw), np.sin(self.ctx.start.yaw), 0.0])
-        y = np.cross(z, x)
-        y /= np.linalg.norm(y)
-        self.R = np.column_stack([np.cross(y, z), y, z])
+        self.R = level_attitude(acc, self.ctx.start.yaw)
 
     def on_imu(self, t, acc, gyro):
         if self.R is None:

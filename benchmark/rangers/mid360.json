@@ -1,0 +1,15 @@
+{
+ "part": "Livox Mid-360 scanning lidar, mounted upside down under the drone",
+ "rate_hz": 10,
+ "max_range_m": 40,
+ "_max_range_m": "Datasheet: 40 m at 10% reflectivity, 70 m at 80%. Terrain and vegetation are dark targets, so 40 m.",
+ "noise_m": 0.02,
+ "noise_frac": 0.002,
+ "_noise": "ASSUMPTION from the datasheet class: about 2 cm range precision (1 sigma).",
+ "dropout": 0.05,
+ "pattern": {"azimuths": 16, "elevations_deg": [-52, -40, -28, -16, -7], "down": false},
+ "_pattern": "360 deg horizontal, elevation -7..+52 deg upright, i.e. -52..+7 inverted; sampled as 80 beams per 10 Hz frame of the ~200k pts/s.",
+ "_source": "https://stemfinity.com/collections/robotic-parts-accessories/products/livox-mid360-lidar",
+ "price_usd": 749.0,
+ "_price": "ASSUMPTION: Livox store list price. Retailer quotes seen 2026-10 range from about GBP 530 (Alibaba sample) to EUR 773 incl. VAT (mybotshop.de)."
+}

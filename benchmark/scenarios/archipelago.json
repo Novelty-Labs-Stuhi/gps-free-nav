@@ -1,0 +1,30 @@
+{
+ "id": "archipelago",
+ "name": "Gulf of Finland archipelago",
+ "world": "kotka",
+ "platform": "drone",
+ "description": "Mostly open sea with forested islets; the start is wrong after a spoofed GNSS handover.",
+ "route": {
+  "speed_mps": 10,
+  "length_m": 3000,
+  "agl_m": [
+   40,
+   100
+  ]
+ },
+ "map": {
+  "terrain_error_m": 0.5,
+  "terrain_error_corr_m": 150
+ },
+ "wind": {
+  "mean_mps": [
+   9,
+   13
+  ],
+  "gust_mps": 3.0
+ },
+ "start_offset_m": [
+  100,
+  300
+ ]
+}
