@@ -1,0 +1,870 @@
+{
+ "experiment": "ins_echo_grf500_adis16470",
+ "author": "Arsenii Chistiakov",
+ "hardware": [
+  "adis16470",
+  "grf500"
+ ],
+ "suite": "5991a6bcbe8d",
+ "partial": false,
+ "elapsed_s": 20.7,
+ "summary": {
+  "yosemite/drone": {
+   "runs": 40,
+   "score_log10": 0.962,
+   "score_m": 9.2,
+   "mae_m": {
+    "0-250": 1.18,
+    "250-500": 4.56,
+    "500-1000": 7.27,
+    "1000-2000": 9.71,
+    "2000+": 29.53
+   },
+   "lost_at_m": 2391.3,
+   "growth_k": 0.93,
+   "min_realtime_factor": 300.6
+  }
+ },
+ "runs": [
+  {
+   "distance_m": 2906.4,
+   "score_log10": 1.721,
+   "mae_m": {
+    "0-250": 0.82,
+    "250-500": 5.52,
+    "500-1000": 25.13,
+    "1000-2000": 76.52,
+    "2000+": 399.26
+   },
+   "lost_at_m": 1576.8,
+   "growth_k": 2.19,
+   "xy_rmse_m": 258.39,
+   "z_rmse_m": 0.4,
+   "route": "drone-gen0",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 0,
+   "duration_s": 340.4,
+   "realtime_factor": 320.6
+  },
+  {
+   "distance_m": 2906.4,
+   "score_log10": 1.728,
+   "mae_m": {
+    "0-250": 2.25,
+    "250-500": 13.89,
+    "500-1000": 28.06,
+    "1000-2000": 41.04,
+    "2000+": 379.16
+   },
+   "lost_at_m": 801.1,
+   "growth_k": 1.63,
+   "xy_rmse_m": 261.97,
+   "z_rmse_m": 0.33,
+   "route": "drone-gen0",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 1,
+   "duration_s": 340.4,
+   "realtime_factor": 337.1
+  },
+  {
+   "distance_m": 2941.0,
+   "score_log10": 1.177,
+   "mae_m": {
+    "0-250": 0.59,
+    "250-500": 6.69,
+    "500-1000": 28.44,
+    "1000-2000": 9.66,
+    "2000+": 51.78
+   },
+   "lost_at_m": 875.8,
+   "growth_k": 1.09,
+   "xy_rmse_m": 33.51,
+   "z_rmse_m": 0.4,
+   "route": "drone-gen1",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 0,
+   "duration_s": 214.9,
+   "realtime_factor": 399.1
+  },
+  {
+   "distance_m": 2941.0,
+   "score_log10": 0.893,
+   "mae_m": {
+    "0-250": 0.64,
+    "250-500": 2.95,
+    "500-1000": 11.69,
+    "1000-2000": 4.3,
+    "2000+": 33.89
+   },
+   "lost_at_m": 2472.4,
+   "growth_k": 1.07,
+   "xy_rmse_m": 21.9,
+   "z_rmse_m": 0.37,
+   "route": "drone-gen1",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 1,
+   "duration_s": 214.9,
+   "realtime_factor": 371.4
+  },
+  {
+   "distance_m": 3253.3,
+   "score_log10": 1.715,
+   "mae_m": {
+    "0-250": 3.23,
+    "250-500": 12.57,
+    "500-1000": 16.66,
+    "1000-2000": 7.53,
+    "2000+": 879.51
+   },
+   "lost_at_m": 2032.0,
+   "growth_k": 2.01,
+   "xy_rmse_m": 751.22,
+   "z_rmse_m": 0.67,
+   "route": "drone-gen10",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 0,
+   "duration_s": 438.8,
+   "realtime_factor": 324.6
+  },
+  {
+   "distance_m": 3253.3,
+   "score_log10": 1.477,
+   "mae_m": {
+    "0-250": 2.16,
+    "250-500": 7.5,
+    "500-1000": 10.02,
+    "1000-2000": 9.77,
+    "2000+": 259.74
+   },
+   "lost_at_m": 2014.2,
+   "growth_k": 1.76,
+   "xy_rmse_m": 220.92,
+   "z_rmse_m": 0.52,
+   "route": "drone-gen10",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 1,
+   "duration_s": 438.8,
+   "realtime_factor": 330.8
+  },
+  {
+   "distance_m": 3368.4,
+   "score_log10": 2.102,
+   "mae_m": {
+    "0-250": 5.5,
+    "250-500": 12.81,
+    "500-1000": 10.56,
+    "1000-2000": 81.14,
+    "2000+": 1263.24
+   },
+   "lost_at_m": 1105.6,
+   "growth_k": 2.33,
+   "xy_rmse_m": 995.19,
+   "z_rmse_m": 0.56,
+   "route": "drone-gen11",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 0,
+   "duration_s": 444.0,
+   "realtime_factor": 320.1
+  },
+  {
+   "distance_m": 3368.4,
+   "score_log10": 1.988,
+   "mae_m": {
+    "0-250": 4.07,
+    "250-500": 9.71,
+    "500-1000": 10.6,
+    "1000-2000": 55.53,
+    "2000+": 954.57
+   },
+   "lost_at_m": 1662.8,
+   "growth_k": 2.32,
+   "xy_rmse_m": 790.54,
+   "z_rmse_m": 0.42,
+   "route": "drone-gen11",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 1,
+   "duration_s": 444.0,
+   "realtime_factor": 383.8
+  },
+  {
+   "distance_m": 3202.0,
+   "score_log10": 1.829,
+   "mae_m": {
+    "0-250": 1.92,
+    "250-500": 3.36,
+    "500-1000": 5.29,
+    "1000-2000": 37.48,
+    "2000+": 1450.46
+   },
+   "lost_at_m": 1644.6,
+   "growth_k": 2.74,
+   "xy_rmse_m": 1184.95,
+   "z_rmse_m": 0.38,
+   "route": "drone-gen12",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 0,
+   "duration_s": 501.8,
+   "realtime_factor": 349.5
+  },
+  {
+   "distance_m": 3202.0,
+   "score_log10": 0.888,
+   "mae_m": {
+    "0-250": 2.02,
+    "250-500": 2.77,
+    "500-1000": 2.77,
+    "1000-2000": 16.61,
+    "2000+": 20.27
+   },
+   "lost_at_m": 1686.4,
+   "growth_k": 0.92,
+   "xy_rmse_m": 20.31,
+   "z_rmse_m": 0.4,
+   "route": "drone-gen12",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 1,
+   "duration_s": 501.8,
+   "realtime_factor": 336.1
+  },
+  {
+   "distance_m": 3349.7,
+   "score_log10": 0.857,
+   "mae_m": {
+    "0-250": 0.94,
+    "250-500": 4.97,
+    "500-1000": 8.12,
+    "1000-2000": 3.5,
+    "2000+": 34.1
+   },
+   "lost_at_m": 2926.1,
+   "growth_k": 0.94,
+   "xy_rmse_m": 26.7,
+   "z_rmse_m": 0.34,
+   "route": "drone-gen13",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 0,
+   "duration_s": 382.5,
+   "realtime_factor": 375.5
+  },
+  {
+   "distance_m": 3349.7,
+   "score_log10": 1.483,
+   "mae_m": {
+    "0-250": 1.78,
+    "250-500": 11.19,
+    "500-1000": 15.12,
+    "1000-2000": 7.31,
+    "2000+": 556.85
+   },
+   "lost_at_m": 2112.9,
+   "growth_k": 1.8,
+   "xy_rmse_m": 458.79,
+   "z_rmse_m": 0.34,
+   "route": "drone-gen13",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 1,
+   "duration_s": 382.5,
+   "realtime_factor": 353.7
+  },
+  {
+   "distance_m": 3260.1,
+   "score_log10": 0.599,
+   "mae_m": {
+    "0-250": 1.15,
+    "250-500": 4.14,
+    "500-1000": 1.74,
+    "1000-2000": 4.76,
+    "2000+": 6.23
+   },
+   "lost_at_m": 3260.1,
+   "growth_k": 0.58,
+   "xy_rmse_m": 5.51,
+   "z_rmse_m": 0.93,
+   "route": "drone-gen14",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 0,
+   "duration_s": 211.5,
+   "realtime_factor": 369.3
+  },
+  {
+   "distance_m": 3260.1,
+   "score_log10": 0.281,
+   "mae_m": {
+    "0-250": 0.46,
+    "250-500": 1.23,
+    "500-1000": 1.74,
+    "1000-2000": 2.44,
+    "2000+": 2.51
+   },
+   "lost_at_m": 3260.1,
+   "growth_k": 0.3,
+   "xy_rmse_m": 2.73,
+   "z_rmse_m": 0.32,
+   "route": "drone-gen14",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 1,
+   "duration_s": 211.5,
+   "realtime_factor": 375.3
+  },
+  {
+   "distance_m": 3076.6,
+   "score_log10": 1.405,
+   "mae_m": {
+    "0-250": 2.28,
+    "250-500": 4.3,
+    "500-1000": 5.23,
+    "1000-2000": 11.0,
+    "2000+": 623.08
+   },
+   "lost_at_m": 2284.4,
+   "growth_k": 2.02,
+   "xy_rmse_m": 536.75,
+   "z_rmse_m": 0.44,
+   "route": "drone-gen15",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 0,
+   "duration_s": 401.1,
+   "realtime_factor": 341.3
+  },
+  {
+   "distance_m": 3076.6,
+   "score_log10": 0.712,
+   "mae_m": {
+    "0-250": 1.15,
+    "250-500": 1.93,
+    "500-1000": 2.11,
+    "1000-2000": 3.52,
+    "2000+": 25.17
+   },
+   "lost_at_m": 2829.7,
+   "growth_k": 1.16,
+   "xy_rmse_m": 17.65,
+   "z_rmse_m": 0.39,
+   "route": "drone-gen15",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 1,
+   "duration_s": 401.1,
+   "realtime_factor": 322.3
+  },
+  {
+   "distance_m": 3117.3,
+   "score_log10": 0.547,
+   "mae_m": {
+    "0-250": 1.27,
+    "250-500": 9.49,
+    "500-1000": 15.5,
+    "1000-2000": 2.43,
+    "2000+": 3.72
+   },
+   "lost_at_m": 3117.3,
+   "growth_k": -0.31,
+   "xy_rmse_m": 7.59,
+   "z_rmse_m": 0.45,
+   "route": "drone-gen16",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 0,
+   "duration_s": 334.6,
+   "realtime_factor": 331.9
+  },
+  {
+   "distance_m": 3117.3,
+   "score_log10": 0.801,
+   "mae_m": {
+    "0-250": 1.59,
+    "250-500": 17.11,
+    "500-1000": 10.46,
+    "1000-2000": 5.28,
+    "2000+": 8.19
+   },
+   "lost_at_m": 3117.3,
+   "growth_k": 0.03,
+   "xy_rmse_m": 9.81,
+   "z_rmse_m": 0.41,
+   "route": "drone-gen16",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 1,
+   "duration_s": 334.6,
+   "realtime_factor": 300.6
+  },
+  {
+   "distance_m": 3311.8,
+   "score_log10": 0.625,
+   "mae_m": {
+    "0-250": 0.98,
+    "250-500": 4.93,
+    "500-1000": 17.1,
+    "1000-2000": 7.97,
+    "2000+": 3.1
+   },
+   "lost_at_m": 3311.8,
+   "growth_k": -0.25,
+   "xy_rmse_m": 10.51,
+   "z_rmse_m": 0.51,
+   "route": "drone-gen17",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 0,
+   "duration_s": 274.4,
+   "realtime_factor": 360.6
+  },
+  {
+   "distance_m": 3311.8,
+   "score_log10": 0.803,
+   "mae_m": {
+    "0-250": 0.68,
+    "250-500": 4.71,
+    "500-1000": 32.62,
+    "1000-2000": 16.82,
+    "2000+": 4.29
+   },
+   "lost_at_m": 906.2,
+   "growth_k": -0.15,
+   "xy_rmse_m": 19.88,
+   "z_rmse_m": 0.5,
+   "route": "drone-gen17",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 1,
+   "duration_s": 274.4,
+   "realtime_factor": 377.4
+  },
+  {
+   "distance_m": 3358.8,
+   "score_log10": 1.03,
+   "mae_m": {
+    "0-250": 1.21,
+    "250-500": 3.85,
+    "500-1000": 2.02,
+    "1000-2000": 7.53,
+    "2000+": 83.29
+   },
+   "lost_at_m": 2022.7,
+   "growth_k": 1.65,
+   "xy_rmse_m": 58.01,
+   "z_rmse_m": 0.32,
+   "route": "drone-gen18",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 0,
+   "duration_s": 410.6,
+   "realtime_factor": 397.8
+  },
+  {
+   "distance_m": 3358.8,
+   "score_log10": 1.294,
+   "mae_m": {
+    "0-250": 0.5,
+    "250-500": 3.31,
+    "500-1000": 3.39,
+    "1000-2000": 9.15,
+    "2000+": 343.46
+   },
+   "lost_at_m": 1979.8,
+   "growth_k": 2.35,
+   "xy_rmse_m": 245.98,
+   "z_rmse_m": 0.33,
+   "route": "drone-gen18",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 1,
+   "duration_s": 410.6,
+   "realtime_factor": 393.6
+  },
+  {
+   "distance_m": 3381.9,
+   "score_log10": 0.353,
+   "mae_m": {
+    "0-250": 1.42,
+    "250-500": 2.42,
+    "500-1000": 2.55,
+    "1000-2000": 1.76,
+    "2000+": 3.51
+   },
+   "lost_at_m": 3381.9,
+   "growth_k": 0.22,
+   "xy_rmse_m": 3.27,
+   "z_rmse_m": 0.64,
+   "route": "drone-gen19",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 0,
+   "duration_s": 201.9,
+   "realtime_factor": 343.5
+  },
+  {
+   "distance_m": 3381.9,
+   "score_log10": 0.526,
+   "mae_m": {
+    "0-250": 0.67,
+    "250-500": 2.26,
+    "500-1000": 1.43,
+    "1000-2000": 3.32,
+    "2000+": 8.04
+   },
+   "lost_at_m": 3381.9,
+   "growth_k": 0.74,
+   "xy_rmse_m": 7.46,
+   "z_rmse_m": 0.35,
+   "route": "drone-gen19",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 1,
+   "duration_s": 201.9,
+   "realtime_factor": 376.7
+  },
+  {
+   "distance_m": 2966.9,
+   "score_log10": 1.394,
+   "mae_m": {
+    "0-250": 0.69,
+    "250-500": 0.8,
+    "500-1000": 4.54,
+    "1000-2000": 56.93,
+    "2000+": 110.13
+   },
+   "lost_at_m": 1365.1,
+   "growth_k": 2.11,
+   "xy_rmse_m": 78.44,
+   "z_rmse_m": 0.32,
+   "route": "drone-gen2",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 0,
+   "duration_s": 275.9,
+   "realtime_factor": 358.6
+  },
+  {
+   "distance_m": 2966.9,
+   "score_log10": 1.303,
+   "mae_m": {
+    "0-250": 0.76,
+    "250-500": 1.35,
+    "500-1000": 4.65,
+    "1000-2000": 48.55,
+    "2000+": 81.33
+   },
+   "lost_at_m": 1702.5,
+   "growth_k": 1.82,
+   "xy_rmse_m": 67.07,
+   "z_rmse_m": 0.33,
+   "route": "drone-gen2",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 1,
+   "duration_s": 275.9,
+   "realtime_factor": 334.8
+  },
+  {
+   "distance_m": 2922.8,
+   "score_log10": 0.487,
+   "mae_m": {
+    "0-250": 1.69,
+    "250-500": 3.08,
+    "500-1000": 1.41,
+    "1000-2000": 4.68,
+    "2000+": 6.2
+   },
+   "lost_at_m": 2922.8,
+   "growth_k": 0.37,
+   "xy_rmse_m": 5.9,
+   "z_rmse_m": 0.34,
+   "route": "drone-gen3",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 0,
+   "duration_s": 285.7,
+   "realtime_factor": 336.4
+  },
+  {
+   "distance_m": 2922.8,
+   "score_log10": 1.121,
+   "mae_m": {
+    "0-250": 0.83,
+    "250-500": 4.42,
+    "500-1000": 6.22,
+    "1000-2000": 9.82,
+    "2000+": 99.82
+   },
+   "lost_at_m": 2310.2,
+   "growth_k": 1.46,
+   "xy_rmse_m": 76.64,
+   "z_rmse_m": 0.36,
+   "route": "drone-gen3",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 1,
+   "duration_s": 285.7,
+   "realtime_factor": 354.2
+  },
+  {
+   "distance_m": 3004.9,
+   "score_log10": 0.744,
+   "mae_m": {
+    "0-250": 0.86,
+    "250-500": 7.22,
+    "500-1000": 13.11,
+    "1000-2000": 8.06,
+    "2000+": 5.99
+   },
+   "lost_at_m": 3004.9,
+   "growth_k": 0.07,
+   "xy_rmse_m": 9.62,
+   "z_rmse_m": 0.32,
+   "route": "drone-gen4",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 0,
+   "duration_s": 276.9,
+   "realtime_factor": 340.1
+  },
+  {
+   "distance_m": 3004.9,
+   "score_log10": 0.622,
+   "mae_m": {
+    "0-250": 0.59,
+    "250-500": 6.21,
+    "500-1000": 12.51,
+    "1000-2000": 5.46,
+    "2000+": 7.11
+   },
+   "lost_at_m": 3004.9,
+   "growth_k": 0.06,
+   "xy_rmse_m": 10.39,
+   "z_rmse_m": 0.43,
+   "route": "drone-gen4",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 1,
+   "duration_s": 276.9,
+   "realtime_factor": 352.1
+  },
+  {
+   "distance_m": 3114.0,
+   "score_log10": 1.055,
+   "mae_m": {
+    "0-250": 1.68,
+    "250-500": 16.05,
+    "500-1000": 41.39,
+    "1000-2000": 12.93,
+    "2000+": 12.78
+   },
+   "lost_at_m": 747.8,
+   "growth_k": -0.08,
+   "xy_rmse_m": 22.67,
+   "z_rmse_m": 0.47,
+   "route": "drone-gen5",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 0,
+   "duration_s": 344.3,
+   "realtime_factor": 336.3
+  },
+  {
+   "distance_m": 3114.0,
+   "score_log10": 2.111,
+   "mae_m": {
+    "0-250": 2.46,
+    "250-500": 23.49,
+    "500-1000": 38.97,
+    "1000-2000": 93.09,
+    "2000+": 1282.29
+   },
+   "lost_at_m": 535.4,
+   "growth_k": 2.09,
+   "xy_rmse_m": 867.84,
+   "z_rmse_m": 0.59,
+   "route": "drone-gen5",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 1,
+   "duration_s": 344.3,
+   "realtime_factor": 349.5
+  },
+  {
+   "distance_m": 3278.2,
+   "score_log10": 1.21,
+   "mae_m": {
+    "0-250": 1.5,
+    "250-500": 8.85,
+    "500-1000": 30.57,
+    "1000-2000": 27.23,
+    "2000+": 18.75
+   },
+   "lost_at_m": 1231.0,
+   "growth_k": 0.33,
+   "xy_rmse_m": 25.26,
+   "z_rmse_m": 0.44,
+   "route": "drone-gen6",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 0,
+   "duration_s": 257.2,
+   "realtime_factor": 399.4
+  },
+  {
+   "distance_m": 3278.2,
+   "score_log10": 0.743,
+   "mae_m": {
+    "0-250": 1.68,
+    "250-500": 3.96,
+    "500-1000": 7.6,
+    "1000-2000": 12.24,
+    "2000+": 5.35
+   },
+   "lost_at_m": 3278.2,
+   "growth_k": 0.07,
+   "xy_rmse_m": 9.54,
+   "z_rmse_m": 0.44,
+   "route": "drone-gen6",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 1,
+   "duration_s": 257.2,
+   "realtime_factor": 443.9
+  },
+  {
+   "distance_m": 3204.5,
+   "score_log10": 1.102,
+   "mae_m": {
+    "0-250": 3.22,
+    "250-500": 5.71,
+    "500-1000": 6.07,
+    "1000-2000": 13.65,
+    "2000+": 37.89
+   },
+   "lost_at_m": 2672.2,
+   "growth_k": 0.89,
+   "xy_rmse_m": 32.0,
+   "z_rmse_m": 0.37,
+   "route": "drone-gen7",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 0,
+   "duration_s": 418.5,
+   "realtime_factor": 570.7
+  },
+  {
+   "distance_m": 3204.5,
+   "score_log10": 1.127,
+   "mae_m": {
+    "0-250": 1.12,
+    "250-500": 5.1,
+    "500-1000": 6.94,
+    "1000-2000": 8.79,
+    "2000+": 87.97
+   },
+   "lost_at_m": 2549.6,
+   "growth_k": 1.47,
+   "xy_rmse_m": 71.26,
+   "z_rmse_m": 0.44,
+   "route": "drone-gen7",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 1,
+   "duration_s": 418.5,
+   "realtime_factor": 581.7
+  },
+  {
+   "distance_m": 2998.6,
+   "score_log10": 0.774,
+   "mae_m": {
+    "0-250": 0.79,
+    "250-500": 1.78,
+    "500-1000": 5.89,
+    "1000-2000": 15.87,
+    "2000+": 7.55
+   },
+   "lost_at_m": 2998.6,
+   "growth_k": 0.64,
+   "xy_rmse_m": 12.81,
+   "z_rmse_m": 0.76,
+   "route": "drone-gen8",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 0,
+   "duration_s": 269.2,
+   "realtime_factor": 465.1
+  },
+  {
+   "distance_m": 2998.6,
+   "score_log10": 0.548,
+   "mae_m": {
+    "0-250": 1.02,
+    "250-500": 1.49,
+    "500-1000": 2.73,
+    "1000-2000": 8.23,
+    "2000+": 3.83
+   },
+   "lost_at_m": 2998.6,
+   "growth_k": 0.42,
+   "xy_rmse_m": 6.49,
+   "z_rmse_m": 0.5,
+   "route": "drone-gen8",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 1,
+   "duration_s": 269.2,
+   "realtime_factor": 482.6
+  },
+  {
+   "distance_m": 3136.8,
+   "score_log10": 0.815,
+   "mae_m": {
+    "0-250": 1.76,
+    "250-500": 1.58,
+    "500-1000": 4.29,
+    "1000-2000": 10.29,
+    "2000+": 12.37
+   },
+   "lost_at_m": 3136.8,
+   "growth_k": 0.66,
+   "xy_rmse_m": 12.3,
+   "z_rmse_m": 0.95,
+   "route": "drone-gen9",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 0,
+   "duration_s": 433.9,
+   "realtime_factor": 609.9
+  },
+  {
+   "distance_m": 3136.8,
+   "score_log10": 0.875,
+   "mae_m": {
+    "0-250": 0.85,
+    "250-500": 1.76,
+    "500-1000": 5.58,
+    "1000-2000": 13.42,
+    "2000+": 11.29
+   },
+   "lost_at_m": 3136.8,
+   "growth_k": 0.72,
+   "xy_rmse_m": 12.37,
+   "z_rmse_m": 0.41,
+   "route": "drone-gen9",
+   "world": "yosemite",
+   "platform": "drone",
+   "seed": 1,
+   "duration_s": 433.9,
+   "realtime_factor": 620.4
+  }
+ ]
+}
