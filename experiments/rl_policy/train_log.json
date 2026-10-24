@@ -1,0 +1,23 @@
+{
+ "navigator": "terrain_pf_guarded",
+ "args": {
+  "iters": 1,
+  "pop": 8,
+  "episodes": 2,
+  "elite": 0.25,
+  "jobs": 4
+ },
+ "log": [
+  {
+   "iter": 0,
+   "mean_reward": -88.26,
+   "best_reward": -61.33,
+   "mean_policy_reward": -61.33,
+   "best_success": 0.0,
+   "mean_success": 0.0,
+   "mean_violation": 0.062,
+   "sigma": 0.187,
+   "wall_s": 43
+  }
+ ]
+}

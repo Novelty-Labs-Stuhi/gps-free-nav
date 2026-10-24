@@ -1,0 +1,10 @@
+{
+ "radius_k": 3.76,
+ "samples": 156198,
+ "lost_share_excluded": 0.279,
+ "runs": 72,
+ "train_runs": [
+  20,
+  25
+ ]
+}

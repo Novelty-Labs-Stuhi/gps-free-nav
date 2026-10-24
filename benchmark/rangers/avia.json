@@ -7,9 +7,17 @@
  "noise_frac": 0.002,
  "_noise": "ASSUMPTION from the datasheet class: about 2 cm range precision (1 sigma).",
  "dropout": 0.05,
- "pattern": {"azimuths": 16, "elevations_deg": [-55, -65, -78], "down": true},
+ "pattern": {
+  "azimuths": 16,
+  "elevations_deg": [
+   -55,
+   -65,
+   -78
+  ],
+  "down": true
+ },
  "_pattern": "Non-repetitive 70.4 x 77.2 deg field of view around nadir: rings 12-35 deg from straight down plus nadir, 49 beams per frame.",
  "_source": "https://openelab.io/blogs/learn/livox-avia-for-drone-mapping-and-slam-solid-state-lidar-explained",
- "price_usd": 1599.0,
- "_price": "ASSUMPTION: Livox list price for the Avia; no current official quote found in 2026-10."
+ "price_usd": 2079.0,
+ "_price": "roboticscenter.ai Livox Avia, qty 1, 2026-10 (DJI HK store HKD 11,399): https://www.roboticscenter.ai/es/store/product/livox-dji-livox-avia (sourced by Arsenii on echo-lidar)"
 }

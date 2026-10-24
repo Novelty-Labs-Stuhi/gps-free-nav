@@ -75,6 +75,8 @@ def _world(wid):
     if wid not in _worlds:
         while len(_worlds) >= 2:
             _worlds.pop(next(iter(_worlds)))
+            import gc
+            gc.collect()
         _worlds[wid] = World(wid)
     return _worlds[wid]
 
@@ -156,7 +158,7 @@ def run_one(experiment: str, scenario, index: int, suite: dict, save_trajectory=
     metrics = score(score_t, truth, est, suite, unc)
     if "record" in hooks:  # replay export: hand back everything that was simulated
         hooks["record"].update(traj=traj, route=route, data=data, sensors=sensors, score_t=score_t, est=est,
-                               unc=unc, map=mp, world=world, scenario=sc)
+                               unc=unc, map=mp, world=world, scenario=sc, algo=algo)
     metrics.update(scenario=sc["id"], run=index, world=sc["world"], platform=sc["platform"],
                    start_offset_m=round(float(np.linalg.norm(offset)), 1),
                    duration_s=round(float(score_t[-1] - score_t[0]), 1),
@@ -211,6 +213,8 @@ def score(t, truth, est, suite, unc=None):
         # hazardously misleading information: truly off by more than the alert limit while claiming to be within it
         hmi = mm & (exy > al) & (unc <= al)
         out["hmi_frac"] = round(float(hmi[m].mean()), 4)
+        # false alarm: says it is lost (radius over the alert limit) while actually within it
+        out["false_alarm_frac"] = round(float((mm & (exy <= al) & (unc > al))[m].mean()), 4)
         out["silent_failure"] = bool(hmi.any())
         out["median_radius_m"] = round(float(np.nanmedian(np.where(np.isfinite(unc[mm]), unc[mm], np.nan))), 2) if np.isfinite(unc[mm]).any() else None
     out["xy_rmse_m"] = round(float(np.sqrt(np.nanmean(np.sum(diff[:, :2] ** 2, axis=1)))), 2)
@@ -245,6 +249,7 @@ def summarize(runs, suite):
             s["misleading_frac"] = round(float(np.mean([r["misleading_frac"] for r in integ])), 4)
             s["silent_failure_frac"] = round(float(np.mean([r["silent_failure"] for r in integ])), 3)
             s["warned_frac"] = round(float(np.mean([r["warned_at_m"] is not None for r in integ])), 3)
+            s["false_alarm_frac"] = round(float(np.mean([r.get("false_alarm_frac", 0.0) for r in integ])), 4)
         summary[key] = s
     if summary:
         logs = [s["score_log10"] for s in summary.values()]
@@ -257,6 +262,7 @@ def summarize(runs, suite):
         if integ:
             summary["overall"]["misleading_frac"] = round(float(np.mean([r["misleading_frac"] for r in integ])), 4)
             summary["overall"]["silent_failure_frac"] = round(float(np.mean([r["silent_failure"] for r in integ])), 3)
+            summary["overall"]["false_alarm_frac"] = round(float(np.mean([r.get("false_alarm_frac", 0.0) for r in integ])), 4)
     return summary
 
 
