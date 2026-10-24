@@ -34,15 +34,28 @@ def route_paths(worlds=None, platforms=None):
             and (not platforms or p.stem.split("-")[0] in platforms)]
 
 
-def suite_fingerprint():
-    h = hashlib.sha256((BENCHMARK / "suite.json").read_bytes())
-    for p in route_paths():
+def suite_groups(platforms=None):
+    """world/platform groups the suite scores, optionally only for the given platforms."""
+    suite = load_suite()
+    return [f"{w}/{p}" for w in suite["worlds"] for p in suite["platforms"] if not platforms or p in platforms]
+
+
+def group_fingerprint(group: str, hardware=None) -> str:
+    """What one world/platform result depends on: scoring and sensor config, that group's routes and the hardware
+    profiles the experiment uses. Adding a world, routes elsewhere or other hardware profiles leaves it unchanged."""
+    world, platform = group.split("/")
+    rules = {k: v for k, v in load_suite().items() if k not in ("worlds", "platforms")}
+    h = hashlib.sha256(json.dumps(rules, sort_keys=True).encode())
+    for p in route_paths([world], [platform]):
         h.update(p.relative_to(ROUTES).as_posix().encode())
         h.update(p.read_bytes())
-    for p in sorted(HARDWARE.glob("*.json")):
-        h.update(p.name.encode())
-        h.update(p.read_bytes())
+    for name in [hardware] if isinstance(hardware, str) else hardware or []:
+        h.update((HARDWARE / f"{name}.json").read_bytes())
     return h.hexdigest()[:12]
+
+
+def is_stale(result: dict, group: str) -> bool:
+    return result.get("fingerprints", {}).get(group) != group_fingerprint(group, result.get("hardware"))
 
 
 def load_algorithm(experiment: str) -> type[Algorithm]:
@@ -171,14 +184,16 @@ def evaluate(experiment: str, worlds=None, platforms=None, jobs=None):
     else:
         runs = [run_one(*t) for t in tasks]
     runs = [r for r in runs if r is not None]
+    summary = summarize(runs, suite)
+    hardware = load_algorithm(experiment).hardware
     return {
         "experiment": experiment,
         "author": _git_user(),
-        "hardware": load_algorithm(experiment).hardware,
-        "suite": suite_fingerprint(),
+        "hardware": hardware,
+        "fingerprints": {g: group_fingerprint(g, hardware) for g in summary},
         "partial": bool(worlds or platforms),
         "elapsed_s": round(time.time() - t0, 1),
-        "summary": summarize(runs, suite),
+        "summary": summary,
         "runs": runs,
     }
 
@@ -188,16 +203,16 @@ def results_path(experiment: str) -> Path:
 
 
 def compare(old: dict, new: dict, tol_log10=0.01):
-    """Ranked score that differs beyond tolerance (used by CI to verify committed results)."""
+    """Groups whose committed result is missing, stale or doesn't reproduce (used by CI to verify results)."""
     problems = []
-    if old.get("suite") != new.get("suite"):
-        problems.append(f"suite changed: committed {old.get('suite')} vs current {new.get('suite')}")
-    for key, s in new["summary"].items():
-        o = old.get("summary", {}).get(key)
+    for g, s in new["summary"].items():
+        o = old.get("summary", {}).get(g)
         if o is None:
-            problems.append(f"{key}: missing from committed results")
+            problems.append(f"{g}: missing from committed results")
+        elif old.get("fingerprints", {}).get(g) != new["fingerprints"][g]:
+            problems.append(f"{g}: committed results are for older rules/routes/hardware, re-run `gpsfree eval`")
         elif o.get("runs") != s["runs"] or abs(o.get("score_log10", np.inf) - s["score_log10"]) > tol_log10:
-            problems.append(f"{key}: committed {o.get('score_log10')} ({o.get('runs')} runs) "
+            problems.append(f"{g}: committed {o.get('score_log10')} ({o.get('runs')} runs) "
                             f"vs reproduced {s['score_log10']} ({s['runs']} runs)")
     return problems
 
