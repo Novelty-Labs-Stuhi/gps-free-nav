@@ -1,0 +1,12 @@
+html, body { margin: 0; height: 100%; overflow: hidden; background: #000; }
+canvas { display: block; }
+#hud {
+  position: absolute; top: 10px; left: 10px; pointer-events: none;
+  font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; color: #eee;
+  background: rgba(10, 12, 16, 0.7); padding: 8px 12px; border-radius: 8px;
+}
+#status { white-space: pre; }
+#help { margin-top: 6px; padding-top: 6px; border-top: 1px solid #444; color: #aaa; }
+#help b { color: #fff; }
+#credit { position: absolute; right: 8px; bottom: 6px; font: 11px system-ui, sans-serif; color: rgba(255, 255, 255, 0.6); }
+#world { pointer-events: auto; margin-bottom: 6px; font: inherit; background: #222; color: #eee; border: 1px solid #555; border-radius: 4px; }
