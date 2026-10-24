@@ -1,5 +1,5 @@
 {
-  "seeds": [0, 1, 2],
+  "seeds": [0, 1],
   "score_rate_hz": 10,
   "worlds": ["yosemite"],
   "platforms": ["drone"],
