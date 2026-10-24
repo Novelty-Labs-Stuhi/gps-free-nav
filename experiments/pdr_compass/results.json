@@ -2,9 +2,10 @@
  "experiment": "pdr_compass",
  "author": "Arsenii Chistiakov",
  "hardware": null,
- "suite": "5991a6bcbe8d",
+ "ranger": "tf03",
+ "suite": "5c61abea5374",
  "partial": false,
- "elapsed_s": 0.6,
+ "elapsed_s": 0.1,
  "summary": {},
  "runs": []
 }
