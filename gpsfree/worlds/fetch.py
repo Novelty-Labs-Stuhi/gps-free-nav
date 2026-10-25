@@ -68,9 +68,12 @@ def tile_range(cfg, z):
 
 
 def fetch_terrain(cfg, out: Path):
-    elev, img = tile_range(cfg, ELEV_ZOOM), tile_range(cfg, IMG_ZOOM)
+    elev = tile_range(cfg, cfg.get("elev_zoom", ELEV_ZOOM))
+    img = tile_range(cfg, IMG_ZOOM) if cfg.get("imagery", True) else None
     jobs = []
     for kind, r, url, ext in (("elev", elev, ELEV_URL, "png"), ("img", img, IMG_URL, "jpg")):
+        if r is None:
+            continue
         (out / kind).mkdir(parents=True, exist_ok=True)
         for x in range(r["x0"], r["x1"] + 1):
             for y in range(r["y0"], r["y1"] + 1):

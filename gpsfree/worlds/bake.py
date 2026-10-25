@@ -161,7 +161,8 @@ def _mosaic(folder: Path, r, ext):
 
 
 def bake_terrain(cfg, out: Path, raw: dict, step=15.0):
-    elev, img = raw["elev"], raw["img"]
+    elev, img = raw["elev"], raw.get("img")
+    step = cfg.get("step_m", step)
     e = np.asarray(_mosaic(out / "elev", elev, "png"), dtype=np.float64)
     hmap = e[..., 0] * 256 + e[..., 1] + e[..., 2] / 256 - 32768
 
@@ -182,15 +183,22 @@ def bake_terrain(cfg, out: Path, raw: dict, step=15.0):
     h = sample(ex - elev["x0"] * 256, ey - elev["y0"] * 256)
     cx, cy = _mercator_px(np.array(cfg["lat"]), np.array(cfg["lon"]), elev["z"])
     h0 = float(sample(cx - elev["x0"] * 256, cy - elev["y0"] * 256))
+    if cfg.get("despike_m"):  # zoom-15 tiles have void pixels: pits far below the local median are refilled
+        from scipy.ndimage import median_filter
+        bad = h < median_filter(h, size=9) - cfg["despike_m"]
+        if bad.any():
+            h = _fill_grid(np.where(bad, np.nan, h))
     if cfg.get("sea_level"):
         h, h0 = np.maximum(h, 0.0), max(h0, 0.0)
     h -= h0
     gv, gf = _grid_mesh(xs, xs, h)
 
-    tex = _mosaic(out / "img", img, "jpg")
-    ix, iy = _mercator_px(lat, lon, img["z"])
-    uv = np.c_[((ix - img["x0"] * 256) / tex.width).ravel(), ((iy - img["y0"] * 256) / tex.height).ravel()]
-    tex.save(out / "texture.jpg", quality=85)
+    uv = np.zeros((gv.shape[0], 2))
+    if img:
+        tex = _mosaic(out / "img", img, "jpg")
+        ix, iy = _mercator_px(lat, lon, img["z"])
+        uv = np.c_[((ix - img["x0"] * 256) / tex.width).ravel(), ((iy - img["y0"] * 256) / tex.height).ravel()]
+        tex.save(out / "texture.jpg", quality=85)
     return {"ground": (gv, gf, uv), "buildings": (np.zeros((0, 3)), np.zeros((0, 3), dtype=np.int64)), "grid": (xs, h)}
 
 
