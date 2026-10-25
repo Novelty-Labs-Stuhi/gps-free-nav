@@ -94,7 +94,7 @@ def start_offset(scenario, index):
 
 
 def run_one(experiment: str, scenario, index: int, suite: dict, save_trajectory=True, hooks=None):
-    """One run. scenario: id or dict. hooks (studies, replays): sensor_world, map, start_offset, algo_cls,
+    """One run. scenario: id or dict. hooks (studies, replays): route, sensor_world, map, start_offset, algo_cls,
     record (a dict that receives the simulated streams, estimate and uncertainty)."""
     hooks = hooks or {}
     sc = load_scenario(scenario) if isinstance(scenario, str) else scenario
@@ -102,7 +102,7 @@ def run_one(experiment: str, scenario, index: int, suite: dict, save_trajectory=
     if sc["platform"] not in algo_cls.platforms:
         return None
     world = _world(sc["world"])
-    route = scenario_route(sc, index, world)
+    route = hooks.get("route") or scenario_route(sc, index, world)
     seed = run_seed(sc["id"], index)
     traj = Trajectory(route, wind=sc.get("wind"), seed=seed)
     sensors = hardware_sensors(suite["sensors"], algo_cls.hardware, algo_cls.ranger or suite["default_ranger"])
